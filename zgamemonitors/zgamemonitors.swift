@@ -55,8 +55,9 @@ struct zgamemonitors: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             zgamemonitorsEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("ZGameMonitors")
+        .description("Gets the status of the ZGameLogic monitors.")
+        .supportedFamilies([.systemSmall])
     }
 }
 
