@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import WidgetKit
 
 struct Monitor: Codable, Comparable {
+    
     static func < (lhs: Monitor, rhs: Monitor) -> Bool {
         if(lhs.type == rhs.type){
             return lhs.name < rhs.name
@@ -23,15 +25,6 @@ struct Monitor: Codable, Comparable {
     
     enum DecodingKeys: String, CodingKey {
         case name, status, type, online, onlinePlayers
-    }
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.name = try container.decode(String.self, forKey: .name)
-        self.status = try container.decode(Bool.self, forKey: .status)
-        self.type = try container.decode(String.self, forKey: .type)
-        self.online = try container.decodeIfPresent(Int.self, forKey: .online)
-        self.onlinePlayers = try container.decodeIfPresent([String].self, forKey: .onlinePlayers)
     }
     
     let name: String

@@ -29,8 +29,11 @@ struct ContentView: View {
                                 Text("Online: \(monitor.online!)")
                                 Spacer()
                             }
-                            ForEach(monitor.onlinePlayers ?? [], id:\.self){player in
-                                Text(player)
+                            ForEach((monitor.onlinePlayers ?? []).sorted(by: <), id:\.self){player in
+                                HStack {
+                                    Text("\t \(player)")
+                                    Spacer()
+                                }
                             }
                         }
                     }
@@ -63,6 +66,9 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(monitors: [
+            Monitor(name: "Test API", status: false, type: "api", online: nil, onlinePlayers: nil),
+            Monitor(name: "Test Minecraft", status: true, type: "minecraft", online: 3, onlinePlayers: ["RebaHatesThings", "zabory", "annaisanerd"])
+        ])
     }
 }
