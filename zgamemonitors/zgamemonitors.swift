@@ -49,31 +49,6 @@ struct Provider: IntentTimelineProvider {
     }
 }
 
-struct MonitorStatusEntry: TimelineEntry {
-    let date: Date
-    var up: Int
-    var down: Int
-    let total: Int
-    var downMonitors: [String]
-    var upMonitors: [String]
-    
-    init(date: Date, monitors: [Monitor]) {
-        self.date = date
-        downMonitors = []
-        upMonitors = []
-        for monitor in monitors {
-            if(monitor.status){ // up
-                upMonitors.append(monitor.name)
-            } else { // down
-                downMonitors.append(monitor.name)
-            }
-        }
-        up = upMonitors.count
-        down = downMonitors.count
-        total = down + up
-    }
-}
-
 struct zgamemonitorsEntryView : View {
     var entry: Provider.Entry
     @Environment(\.widgetFamily) var family
@@ -84,31 +59,11 @@ struct zgamemonitorsEntryView : View {
             switch family {
             case .systemSmall:
                 Group {
-                    Gauge(value: Double(entry.up), in: 0...Double(entry.total)) {}
-                currentValueLabel: {
-                    Text(entry.up, format: .number).foregroundColor(entry.down == 0 ? .green : .red)
-                } minimumValueLabel: {
-                    Text("0").foregroundColor(.red)
-                } maximumValueLabel: {
-                    Text(entry.total, format: .number).foregroundColor(.green)
-                }
-                .gaugeStyle(.accessoryCircular)
-                .tint(entry.down == 0 ? .green : .red)
-                .scaleEffect(2)
+                    GuageView(entry: entry)
                 }
             case .systemMedium:
                 HStack {
-                    Gauge(value: Double(entry.up), in: 0...Double(entry.total)) {}
-                currentValueLabel: {
-                    Text(entry.up, format: .number).foregroundColor(entry.down == 0 ? .green : .red)
-                } minimumValueLabel: {
-                    Text("0").foregroundColor(.red)
-                } maximumValueLabel: {
-                    Text(entry.total, format: .number).foregroundColor(.green)
-                }
-                .gaugeStyle(.accessoryCircular)
-                .tint(entry.down == 0 ? .green : .red)
-                .scaleEffect(2)
+                    GuageView(entry: entry)
                 .padding([.leading], 65)
                 .padding([.trailing], 50)
                     VStack {
@@ -161,7 +116,7 @@ struct zgamemonitors_Previews: PreviewProvider {
     static var previews: some View {
         zgamemonitorsEntryView(entry: MonitorStatusEntry(date: Date(), monitors: [
             Monitor(name: "Test", status: true, type: "minecraft", online: 0, onlinePlayers: []),
-            Monitor(name: "Test 2", status: false, type: "api", online: nil, onlinePlayers: nil)
+            Monitor(name: "Test 2 with a really long title", status: false, type: "api", online: nil, onlinePlayers: nil)
         ]))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }

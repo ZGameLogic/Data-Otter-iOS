@@ -24,7 +24,7 @@ struct ContentView: View {
                             Text("\t \(monitor.type)").font(.footnote)
                             Spacer()
                         }
-                        if(monitor.type == "minecraft"){
+                        if(monitor.type == "minecraft" && (monitor.onlinePlayers ?? []).count != 0){
                             HStack {
                                 Text("Online: \(monitor.online!)")
                                 Spacer()
