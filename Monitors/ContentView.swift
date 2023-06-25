@@ -16,12 +16,11 @@ struct ContentView: View {
                 ForEach(monitors.sorted(), id:\.name){monitor in
                     VStack {
                         HStack {
-                            Text(monitor.status ? "🟩" : "🟥")
-                            Text(monitor.name)
+                            Text(monitor.name).foregroundColor(monitor.status ? .green : .red)
                             Spacer()
                         }
                         HStack {
-                            Text("\t \(monitor.type)").font(.footnote)
+                            Text(monitor.type).font(.footnote)
                             Spacer()
                         }
                         if(monitor.type == "minecraft" && (monitor.onlinePlayers ?? []).count != 0){
