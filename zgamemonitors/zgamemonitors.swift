@@ -12,15 +12,15 @@ import Intents
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> MonitorStatusEntry {
         MonitorStatusEntry(date: Date(), monitors: [
-            Monitor(name: "Test", status: true, type: "minecraft", online: 0, onlinePlayers: []),
-            Monitor(name: "Test 2", status: false, type: "api", online: nil, onlinePlayers: nil)
+            Monitor(name: "test", status: true, type: "minecraft", url: "zgamelogic.com", port: 25565, max: 10, onlinePlayers: ["zabory"], online: 1, motd: "Have fun!", version: "1.19.2", regex: nil, healthCheckUrl: nil),
+            Monitor(name: "test 2", status: false, type: "api", url: "zgamelogic.com", port: 8080, max: nil, onlinePlayers: nil, online: nil, motd: nil, version: nil, regex: nil, healthCheckUrl: "health")
         ])
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (MonitorStatusEntry) -> ()) {
         let entry = MonitorStatusEntry(date: Date(), monitors: [
-            Monitor(name: "Test", status: true, type: "minecraft", online: 0, onlinePlayers: []),
-            Monitor(name: "Test 2", status: false, type: "api", online: nil, onlinePlayers: nil)
+            Monitor(name: "test", status: true, type: "minecraft", url: "zgamelogic.com", port: 25565, max: 10, onlinePlayers: ["zabory"], online: 1, motd: "Have fun!", version: "1.19.2", regex: nil, healthCheckUrl: nil),
+            Monitor(name: "test 2", status: false, type: "api", url: "zgamelogic.com", port: 8080, max: nil, onlinePlayers: nil, online: nil, motd: nil, version: nil, regex: nil, healthCheckUrl: "health")
         ])
         completion(entry)
     }
@@ -114,10 +114,7 @@ struct zgamemonitors: Widget {
 
 struct zgamemonitors_Previews: PreviewProvider {
     static var previews: some View {
-        zgamemonitorsEntryView(entry: MonitorStatusEntry(date: Date(), monitors: [
-            Monitor(name: "Test", status: true, type: "minecraft", online: 0, onlinePlayers: []),
-            Monitor(name: "Test 2 with a really long title", status: false, type: "api", online: nil, onlinePlayers: nil)
-        ]))
+        zgamemonitorsEntryView(entry: MonitorStatusEntry(date: Date(), monitors: Monitor.previewArray()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

@@ -14,24 +14,26 @@ struct ContentView: View {
         NavigationStack {
             List {
                 ForEach(monitors.sorted(), id:\.name){monitor in
-                    VStack {
-                        HStack {
-                            Text(monitor.name).foregroundColor(monitor.status ? .green : .red)
-                            Spacer()
-                        }
-                        HStack {
-                            Text(monitor.type).font(.footnote)
-                            Spacer()
-                        }
-                        if(monitor.type == "minecraft" && (monitor.onlinePlayers ?? []).count != 0){
+                    NavigationLink{monitor.body} label: {
+                        VStack {
                             HStack {
-                                Text("Online: \(monitor.online!)")
+                                Text(monitor.name).foregroundColor(monitor.status ? .green : .red)
                                 Spacer()
                             }
-                            ForEach((monitor.onlinePlayers ?? []).sorted(by: <), id:\.self){player in
+                            HStack {
+                                Text(monitor.type).font(.footnote)
+                                Spacer()
+                            }
+                            if(monitor.type == "minecraft" && (monitor.onlinePlayers ?? []).count != 0){
                                 HStack {
-                                    Text("\t \(player)")
+                                    Text("Online: \(monitor.online!)")
                                     Spacer()
+                                }
+                                ForEach((monitor.onlinePlayers ?? []).sorted(by: <), id:\.self){player in
+                                    HStack {
+                                        Text("\t \(player)")
+                                        Spacer()
+                                    }
                                 }
                             }
                         }
@@ -65,9 +67,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(monitors: [
-            Monitor(name: "Test API", status: false, type: "api", online: nil, onlinePlayers: nil),
-            Monitor(name: "Test Minecraft", status: true, type: "minecraft", online: 3, onlinePlayers: ["RebaHatesThings", "zabory", "annaisanerd"])
-        ])
+        ContentView(monitors: Monitor.previewArray())
     }
 }

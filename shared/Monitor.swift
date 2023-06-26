@@ -7,6 +7,7 @@
 
 import Foundation
 import WidgetKit
+import SwiftUI
 
 struct Monitor: Codable, Comparable {
     
@@ -24,14 +25,53 @@ struct Monitor: Codable, Comparable {
     }
     
     enum DecodingKeys: String, CodingKey {
-        case name, status, type, online, onlinePlayers
+        case name, status, type, url, port, max, online, onlinePlayers, motd, version, regex, healthCheckUrl
     }
     
     let name: String
     let status: Bool
     let type: String
-    let online: Int?
+    let url: String
+    let port: Int
+    
+    // minecraft
+    let max: Int?
     let onlinePlayers: [String]?
+    let online: Int?
+    let motd: String?
+    let version: String?
+    
+    // website
+    let regex: String?
+    
+    // api
+    let healthCheckUrl: String?
+    
+    static func previewArray() -> [Monitor] {
+       [
+            Monitor(name: "test", status: true, type: "minecraft", url: "zgamelogic.com", port: 25565, max: 10, onlinePlayers: ["zabory"], online: 1, motd: "Have fun!", version: "1.19.2", regex: nil, healthCheckUrl: nil),
+            Monitor(name: "test 2", status: false, type: "api", url: "zgamelogic.com", port: 8080, max: nil, onlinePlayers: nil, online: nil, motd: nil, version: nil, regex: nil, healthCheckUrl: "health")
+        ]
+    }
+    
+    static func previewMonitor() -> Monitor {
+        Monitor(name: "test", status: true, type: "minecraft", url: "zgamelogic.com", port: 25565, max: 10, onlinePlayers: ["zabory"], online: 1, motd: "Have fun!", version: "1.19.2", regex: nil, healthCheckUrl: nil)
+    }
+    
+    var body: some View {
+        VStack {
+            Text(name).font(.title)
+            Text(type).font(.footnote)
+            Text(status ? "Online" : "Offline").foregroundColor(status ? .green : .red)
+            Spacer()
+            Text(url)
+            Text("\(String(port))")
+            Spacer()
+            Spacer()
+            Spacer()
+        }
+    }
+    
 }
 
 func fetch() async throws -> [Monitor] {
