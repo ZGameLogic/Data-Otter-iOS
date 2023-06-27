@@ -66,6 +66,25 @@ struct Monitor: Codable, Comparable {
             Spacer()
             Text(url)
             Text("\(String(port))")
+            Group {
+                switch(type){
+                case "minecraft":
+                    Text("Max players: \(max!)")
+                    Text("Current online: \(online!)")
+                    if(!(onlinePlayers ?? []).isEmpty){
+                        Text("Online Players")
+                        ForEach (onlinePlayers!, id:\.self){Text($0)}
+                    }
+                    Text("MOTD: \(motd!)")
+                    Text("version \(version!)")
+                case "api":
+                    Text("Health check URL: \(healthCheckUrl!)")
+                case "web":
+                    Text("Regex: \(regex!)")
+                default:
+                    Text("none")
+                }
+            }
             Spacer()
             Spacer()
             Spacer()
