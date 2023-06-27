@@ -12,6 +12,5 @@ import SwiftUI
 struct zgamemonitorsBundle: WidgetBundle {
     var body: some Widget {
         zgamemonitors()
-        zgamemonitorsLiveActivity()
     }
 }
