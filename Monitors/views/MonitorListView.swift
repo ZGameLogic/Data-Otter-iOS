@@ -17,21 +17,12 @@ struct MonitorListView: View {
                 Spacer()
             }
             HStack {
-                Text(monitor.type).font(.footnote)
-                Spacer()
-            }
-            if(monitor.type == "minecraft" && (monitor.onlinePlayers ?? []).count != 0){
-                HStack {
+                Text(monitor.type)
+                if((monitor.onlinePlayers ?? []).count != 0){
                     Text("Online: \(monitor.online!)")
-                    Spacer()
                 }
-                ForEach((monitor.onlinePlayers ?? []).sorted(by: <), id:\.self){player in
-                    HStack {
-                        Text("\t \(player)")
-                        Spacer()
-                    }
-                }
-            }
+                Spacer()
+            }.font(.footnote)
         }
     }
 }
