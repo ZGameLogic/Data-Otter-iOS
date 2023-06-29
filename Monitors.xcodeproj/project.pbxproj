@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B512CBF52A4B6EEB003BBD17 /* AddMonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B512CBF42A4B6EEB003BBD17 /* AddMonitorView.swift */; };
+		B53DA5602A4E0A5B006C7D53 /* MonitorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA55F2A4E0A5B006C7D53 /* MonitorDetailView.swift */; };
+		B53DA5622A4E0D37006C7D53 /* MonitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */; };
 		B59747402A41DBF600A5DA4C /* MonitorsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597473F2A41DBF600A5DA4C /* MonitorsApp.swift */; };
 		B59747422A41DBF600A5DA4C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59747412A41DBF600A5DA4C /* ContentView.swift */; };
 		B59747442A41DBF700A5DA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59747432A41DBF700A5DA4C /* Assets.xcassets */; };
@@ -51,6 +54,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B512CBF42A4B6EEB003BBD17 /* AddMonitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMonitorView.swift; sourceTree = "<group>"; };
+		B512CBF62A4C75E2003BBD17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B53DA55F2A4E0A5B006C7D53 /* MonitorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorDetailView.swift; sourceTree = "<group>"; };
+		B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorListView.swift; sourceTree = "<group>"; };
 		B597473C2A41DBF600A5DA4C /* Monitors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monitors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B597473F2A41DBF600A5DA4C /* MonitorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorsApp.swift; sourceTree = "<group>"; };
 		B59747412A41DBF600A5DA4C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +97,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B512CBF32A4B6EBC003BBD17 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				B512CBF42A4B6EEB003BBD17 /* AddMonitorView.swift */,
+				B53DA55F2A4E0A5B006C7D53 /* MonitorDetailView.swift */,
+				B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		B59747332A41DBF600A5DA4C = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +130,8 @@
 		B597473E2A41DBF600A5DA4C /* Monitors */ = {
 			isa = PBXGroup;
 			children = (
+				B512CBF62A4C75E2003BBD17 /* Info.plist */,
+				B512CBF32A4B6EBC003BBD17 /* views */,
 				B597473F2A41DBF600A5DA4C /* MonitorsApp.swift */,
 				B59747412A41DBF600A5DA4C /* ContentView.swift */,
 				B59747432A41DBF700A5DA4C /* Assets.xcassets */,
@@ -278,8 +297,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B53DA5602A4E0A5B006C7D53 /* MonitorDetailView.swift in Sources */,
 				B59D50252A43628500207428 /* Monitor.swift in Sources */,
 				B59747422A41DBF600A5DA4C /* ContentView.swift in Sources */,
+				B512CBF52A4B6EEB003BBD17 /* AddMonitorView.swift in Sources */,
+				B53DA5622A4E0D37006C7D53 /* MonitorListView.swift in Sources */,
 				B59747402A41DBF600A5DA4C /* MonitorsApp.swift in Sources */,
 				B59747632A41DC2C00A5DA4C /* zgamemonitors.intentdefinition in Sources */,
 			);
@@ -436,6 +458,7 @@
 				DEVELOPMENT_TEAM = 6M38R97L4D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Monitors/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Data Otter";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -467,6 +490,7 @@
 				DEVELOPMENT_TEAM = 6M38R97L4D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Monitors/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Data Otter";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

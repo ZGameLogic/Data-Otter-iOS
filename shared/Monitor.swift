@@ -9,7 +9,7 @@ import Foundation
 import WidgetKit
 import SwiftUI
 
-struct Monitor: Codable, Comparable {
+struct Monitor: Codable, Comparable, Hashable {
     
     static func < (lhs: Monitor, rhs: Monitor) -> Bool {
         if(lhs.type == rhs.type){
@@ -26,6 +26,37 @@ struct Monitor: Codable, Comparable {
     
     enum DecodingKeys: String, CodingKey {
         case name, status, type, url, port, max, online, onlinePlayers, motd, version, regex, healthCheckUrl
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.status = try container.decode(Bool.self, forKey: .status)
+        self.type = try container.decode(String.self, forKey: .type)
+        self.url = try container.decode(String.self, forKey: .url)
+        self.port = try container.decode(Int.self, forKey: .port)
+        self.max = try container.decodeIfPresent(Int.self, forKey: .max)
+        self.onlinePlayers = try container.decodeIfPresent([String].self, forKey: .onlinePlayers)
+        self.online = try container.decodeIfPresent(Int.self, forKey: .online)
+        self.motd = try container.decodeIfPresent(String.self, forKey: .motd)
+        self.version = try container.decodeIfPresent(String.self, forKey: .version)
+        self.regex = try container.decodeIfPresent(String.self, forKey: .regex)
+        self.healthCheckUrl = try container.decodeIfPresent(String.self, forKey: .healthCheckUrl)
+    }
+    
+    init(name: String, status: Bool, type: String, url: String, port: Int, max: Int? = nil, onlinePlayers: [String]? = nil, online: Int? = nil, motd: String? = nil, version: String? = nil, regex: String? = nil, healthCheckUrl: String? = nil) {
+        self.name = name
+        self.status = status
+        self.type = type
+        self.url = url
+        self.port = port
+        self.max = max
+        self.onlinePlayers = onlinePlayers
+        self.online = online
+        self.motd = motd
+        self.version = version
+        self.regex = regex
+        self.healthCheckUrl = healthCheckUrl
     }
     
     let name: String
@@ -57,40 +88,6 @@ struct Monitor: Codable, Comparable {
     static func previewMonitor() -> Monitor {
         Monitor(name: "test", status: true, type: "minecraft", url: "zgamelogic.com", port: 25565, max: 10, onlinePlayers: ["zabory"], online: 1, motd: "Have fun!", version: "1.19.2", regex: nil, healthCheckUrl: nil)
     }
-    
-    var body: some View {
-        VStack {
-            Text(name).font(.title)
-            Text(type).font(.footnote)
-            Text(status ? "Online" : "Offline").foregroundColor(status ? .green : .red)
-            Spacer()
-            Text(url)
-            Text("\(String(port))")
-            Group {
-                switch(type){
-                case "minecraft":
-                    Text("Max players: \(max!)")
-                    Text("Current online: \(online!)")
-                    if(!(onlinePlayers ?? []).isEmpty){
-                        Text("Online Players")
-                        ForEach (onlinePlayers!, id:\.self){Text($0)}
-                    }
-                    Text("MOTD: \(motd!)")
-                    Text("version \(version!)")
-                case "api":
-                    Text("Health check URL: \(healthCheckUrl!)")
-                case "web":
-                    Text("Regex: \(regex!)")
-                default:
-                    Text("none")
-                }
-            }
-            Spacer()
-            Spacer()
-            Spacer()
-        }
-    }
-    
 }
 
 func fetch() async throws -> [Monitor] {

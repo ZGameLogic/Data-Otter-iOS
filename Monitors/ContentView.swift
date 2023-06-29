@@ -9,41 +9,41 @@ import SwiftUI
 
 struct ContentView: View {
     @State var monitors: [Monitor] = []
+    @State var showAddMonitor = false
     
     var body: some View {
         NavigationStack {
             List {
                 ForEach(monitors.sorted(), id:\.name){monitor in
-                    NavigationLink{monitor.body} label: {
-                        VStack {
-                            HStack {
-                                Text(monitor.name).foregroundColor(monitor.status ? .green : .red)
-                                Spacer()
-                            }
-                            HStack {
-                                Text(monitor.type).font(.footnote)
-                                Spacer()
-                            }
-                            if(monitor.type == "minecraft" && (monitor.onlinePlayers ?? []).count != 0){
-                                HStack {
-                                    Text("Online: \(monitor.online!)")
-                                    Spacer()
-                                }
-                                ForEach((monitor.onlinePlayers ?? []).sorted(by: <), id:\.self){player in
-                                    HStack {
-                                        Text("\t \(player)")
-                                        Spacer()
-                                    }
-                                }
-                            }
-                        }
+                    NavigationLink(value: monitor) {
+                        MonitorListView(monitor: monitor)
                     }
                 }
             }.navigationTitle("Monitors")
-                .refreshable {
-                    await refresh()
+                .navigationDestination(for: Monitor.self, destination: { MonitorDetailView(monitor: $0)})
+                .toolbar {
+                    ToolbarItem {
+                        Button(action: {
+                            showAddMonitor = true
+                        }) {
+                            Label("Add Item", systemImage: "plus")
+                        }
+                    }
+            }
+            .refreshable {
+                await refresh()
             }
         }
+        .sheet(isPresented: $showAddMonitor, content: {
+            AddMonitorView(showing: $showAddMonitor)
+        })
+        .onChange(of: showAddMonitor, perform: {newValue in
+            if(!newValue){
+                Task {
+                    await refresh()
+                }
+            }
+        })
         .padding()
         .task {
             await refresh()
