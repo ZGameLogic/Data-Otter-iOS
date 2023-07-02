@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(monitors.sorted(), id:\.name){monitor in
+                ForEach(monitors.sorted()){monitor in
                     NavigationLink(value: monitor) {
                         MonitorListView(monitor: monitor)
                     }

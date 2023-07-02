@@ -9,7 +9,7 @@ import Foundation
 import WidgetKit
 import SwiftUI
 
-struct Monitor: Codable, Comparable, Hashable {
+struct Monitor: Codable, Comparable, Hashable, Identifiable {
     
     static func < (lhs: Monitor, rhs: Monitor) -> Bool {
         if(lhs.type == rhs.type){
@@ -25,11 +25,12 @@ struct Monitor: Codable, Comparable, Hashable {
     }
     
     enum DecodingKeys: String, CodingKey {
-        case name, status, type, url, port, max, online, onlinePlayers, motd, version, regex, healthCheckUrl
+        case name, status, type, url, port, max, online, onlinePlayers, motd, version, regex, healthCheckUrl, id
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(Int.self, forKey: .id)
         self.name = try container.decode(String.self, forKey: .name)
         self.status = try container.decode(Bool.self, forKey: .status)
         self.type = try container.decode(String.self, forKey: .type)
@@ -44,7 +45,8 @@ struct Monitor: Codable, Comparable, Hashable {
         self.healthCheckUrl = try container.decodeIfPresent(String.self, forKey: .healthCheckUrl)
     }
     
-    init(name: String, status: Bool, type: String, url: String, port: Int, max: Int? = nil, onlinePlayers: [String]? = nil, online: Int? = nil, motd: String? = nil, version: String? = nil, regex: String? = nil, healthCheckUrl: String? = nil) {
+    init(name: String, status: Bool, type: String, url: String, port: Int, id: Int, max: Int? = nil, onlinePlayers: [String]? = nil, online: Int? = nil, motd: String? = nil, version: String? = nil, regex: String? = nil, healthCheckUrl: String? = nil) {
+        self.id = id
         self.name = name
         self.status = status
         self.type = type
@@ -64,6 +66,7 @@ struct Monitor: Codable, Comparable, Hashable {
     let type: String
     let url: String
     let port: Int
+    let id: Int
     
     // minecraft
     let max: Int?
@@ -80,13 +83,13 @@ struct Monitor: Codable, Comparable, Hashable {
     
     static func previewArray() -> [Monitor] {
        [
-            Monitor(name: "test", status: true, type: "minecraft", url: "zgamelogic.com", port: 25565, max: 10, onlinePlayers: ["zabory"], online: 1, motd: "Have fun!", version: "1.19.2", regex: nil, healthCheckUrl: nil),
-            Monitor(name: "test 2", status: false, type: "api", url: "zgamelogic.com", port: 8080, max: nil, onlinePlayers: nil, online: nil, motd: nil, version: nil, regex: nil, healthCheckUrl: "health")
+        Monitor(name: "test", status: true, type: "minecraft", url: "zgamelogic.com", port: 25565, id: 0, max: 10, onlinePlayers: ["zabory"], online: 1, motd: "Have fun!", version: "1.19.2", regex: nil, healthCheckUrl: nil),
+        Monitor(name: "test 2", status: false, type: "api", url: "zgamelogic.com", port: 8080, id: 1, max: nil, onlinePlayers: nil, online: nil, motd: nil, version: nil, regex: nil, healthCheckUrl: "health")
         ]
     }
     
     static func previewMonitor() -> Monitor {
-        Monitor(name: "test", status: true, type: "minecraft", url: "zgamelogic.com", port: 25565, max: 10, onlinePlayers: ["zabory"], online: 1, motd: "Have fun!", version: "1.19.2", regex: nil, healthCheckUrl: nil)
+        Monitor(name: "test", status: true, type: "minecraft", url: "zgamelogic.com", port: 25565, id: 0, max: 10, onlinePlayers: ["zabory"], online: 1, motd: "Have fun!", version: "1.19.2", regex: nil, healthCheckUrl: nil)
     }
 }
 

@@ -65,11 +65,11 @@ struct AddMonitorView: View {
     func getMonitorFromUI() -> Monitor? {
         switch(monitorType){
         case "minecraft":
-            return Monitor(name: monitorName, status: false, type: monitorType, url: self.url, port: Int(port)!)
+            return Monitor(name: monitorName, status: false, type: monitorType, url: self.url, port: Int(port)!, id: 0)
         case "api":
-            return Monitor(name: monitorName, status: false, type: monitorType, url: self.url, port: Int(port)!, healthCheckUrl: healthCheck)
+            return Monitor(name: monitorName, status: false, type: monitorType, url: self.url, port: Int(port)!, id: 0, healthCheckUrl: healthCheck)
         case "web":
-            return Monitor(name: monitorName, status: false, type: monitorType, url: self.url, port: Int(port)!, regex: healthCheck)
+            return Monitor(name: monitorName, status: false, type: monitorType, url: self.url, port: Int(port)!, id: 0, regex: healthCheck)
         default:
             return nil
         }
