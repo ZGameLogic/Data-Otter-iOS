@@ -13,8 +13,8 @@ struct MonitorStatusEntry: TimelineEntry {
     var up: Int
     var down: Int
     let total: Int
-    var downMonitors: [String]
-    var upMonitors: [String]
+    var downMonitors: [Monitor]
+    var upMonitors: [Monitor]
     
     init(date: Date, monitors: [Monitor]) {
         self.date = date
@@ -22,9 +22,9 @@ struct MonitorStatusEntry: TimelineEntry {
         upMonitors = []
         for monitor in monitors {
             if(monitor.status){ // up
-                upMonitors.append(monitor.name)
+                upMonitors.append(monitor)
             } else { // down
-                downMonitors.append(monitor.name)
+                downMonitors.append(monitor)
             }
         }
         up = upMonitors.count

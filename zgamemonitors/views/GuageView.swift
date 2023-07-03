@@ -24,9 +24,3 @@ struct GuageView: View {
             .scaleEffect(2)
             }
 }
-
-//struct GuageView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        GuageView(entry: Mon)
-//    }
-//}

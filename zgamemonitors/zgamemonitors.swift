@@ -63,25 +63,26 @@ struct zgamemonitorsEntryView : View {
                     VStack {
                         if(entry.downMonitors.count != 0){
                             Text("Alerting").padding([.top], 5)
-                            ForEach(entry.downMonitors, id:\.self){ monitor in
+                            ForEach(entry.downMonitors.sorted()){ monitor in
                                 HStack {
-                                    Text("🔴 \(monitor)")
+                                    Text("🔴 \(monitor.name)")
                                     Spacer()
                                 }.padding([.leading], 5)
                             }
                         } else {
                             Text("All good").padding([.top], 5)
-                            ForEach(entry.upMonitors, id:\.self){monitor in
+                            ForEach(entry.upMonitors.sorted()){monitor in
                                 HStack {
-                                    Text("🟢 \(monitor)")
+                                    Text("🟢 \(monitor.name)")
                                     Spacer()
                                 }.padding([.leading], 5)
                             }
                         }
                         Spacer()
-                    }.frame(width:180)
+                    }
+                        .frame(width:180)
                         .minimumScaleFactor(0.6)
-                    .background(.white.opacity(0.25))
+                        .background(.white.opacity(0.25))
                     Spacer()
                 }
             case .systemLarge:
