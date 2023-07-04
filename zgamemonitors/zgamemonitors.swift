@@ -22,7 +22,7 @@ struct Provider: IntentTimelineProvider {
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let newDate = Calendar.current.date(byAdding: .minute, value: 15, to: Date())!
+        let newDate = Calendar.current.date(byAdding: .minute, value: 1, to: Date())!
         Task{
             do {
                 var entries: [MonitorStatusEntry] = []

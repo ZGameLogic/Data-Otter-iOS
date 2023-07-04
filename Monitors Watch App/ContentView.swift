@@ -20,6 +20,7 @@ struct ContentView: View {
                     }
                 }
                 Button("Refresh"){
+                    monitors = []
                     refreshing = true
                     Task {
                         await refresh()
