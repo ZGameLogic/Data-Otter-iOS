@@ -8,19 +8,49 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var monitors: [Monitor] = []
+    @State var refreshing = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationStack {
+            List {
+                ForEach(monitors.sorted()){monitor in
+                    NavigationLink(value: monitor) {
+                        MonitorListView(monitor: monitor)
+                    }
+                }
+                Button("Refresh"){
+                    refreshing = true
+                    Task {
+                        await refresh()
+                    }
+                }.disabled(refreshing)
+            }.navigationTitle("Monitors")
+                .navigationDestination(for: Monitor.self, destination: { MonitorDetailView(monitor: $0, title: false)})
         }
-        .padding()
+        .task {
+            await refresh()
+        }
+    }
+    
+    func refresh() async {
+        do {
+            monitors = try await fetch()
+            refreshing = false
+        } catch networkError.inavlidURL {
+            print("u")
+        } catch networkError.invalidData {
+            print("d")
+        } catch networkError.inavlidResponse {
+            print("r")
+        } catch {
+            print("huh")
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(monitors: Monitor.previewArray())
     }
 }

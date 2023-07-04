@@ -21,6 +21,5 @@ struct GuageView: View {
             }
             .gaugeStyle(.accessoryCircular)
             .tint(entry.down == 0 ? .green : .red)
-            .scaleEffect(2)
             }
 }

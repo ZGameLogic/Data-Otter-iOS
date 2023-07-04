@@ -105,7 +105,7 @@ struct zgamemonitors: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             zgamemonitorsEntryView(entry: entry)
         }
-        .configurationDisplayName("ZGameMonitors")
+        .configurationDisplayName("Data Otter")
         .description("Gets the status of the ZGameLogic monitors.")
         .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular])
     }

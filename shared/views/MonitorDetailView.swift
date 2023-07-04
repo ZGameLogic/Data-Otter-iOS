@@ -9,8 +9,13 @@ import SwiftUI
 
 struct MonitorDetailView: View {
     let monitor: Monitor
+    let title: Bool
     
     var body: some View {
+        if(title){
+            Text(monitor.name).font(.title)
+            Text(monitor.status ? "Online" : "Offline").foregroundColor(monitor.status ? .green : .red)
+        }
         if(monitor.type == "minecraft"){
             minecraftView()
         } else {
@@ -20,8 +25,6 @@ struct MonitorDetailView: View {
     
     func minecraftView() -> some View {
         VStack {
-            Text(monitor.name).font(.title)
-            Text(monitor.status ? "Online" : "Offline").foregroundColor(monitor.status ? .green : .red)
             Form {
                 if(monitor.online! > 0){
                     Section("Players online"){
@@ -44,8 +47,6 @@ struct MonitorDetailView: View {
     
     func webView() -> some View {
         VStack {
-            Text(monitor.name).font(.title)
-            Text(monitor.status ? "Online" : "Offline").foregroundColor(monitor.status ? .green : .red)
             Form {
                 Section("General Information"){
                     Text("URL: \(monitor.url)")
@@ -59,6 +60,6 @@ struct MonitorDetailView: View {
 
 struct MonitorDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        MonitorDetailView(monitor: Monitor.previewMonitor())
+        MonitorDetailView(monitor: Monitor.previewMonitor(), title: true)
     }
 }

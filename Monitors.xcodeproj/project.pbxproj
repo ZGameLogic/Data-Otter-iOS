@@ -9,11 +9,27 @@
 /* Begin PBXBuildFile section */
 		B512CBF52A4B6EEB003BBD17 /* AddMonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B512CBF42A4B6EEB003BBD17 /* AddMonitorView.swift */; };
 		B53DA5602A4E0A5B006C7D53 /* MonitorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA55F2A4E0A5B006C7D53 /* MonitorDetailView.swift */; };
-		B53DA5622A4E0D37006C7D53 /* MonitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */; };
 		B55DBC852A545E1B00009957 /* MonitorsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55DBC842A545E1B00009957 /* MonitorsApp.swift */; };
 		B55DBC872A545E1B00009957 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55DBC862A545E1B00009957 /* ContentView.swift */; };
 		B55DBC892A545E1C00009957 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B55DBC882A545E1C00009957 /* Assets.xcassets */; };
 		B55DBC8C2A545E1C00009957 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B55DBC8B2A545E1C00009957 /* Preview Assets.xcassets */; };
+		B55DBC952A545F3E00009957 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59747532A41DC2800A5DA4C /* WidgetKit.framework */; };
+		B55DBC962A545F3E00009957 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59747552A41DC2800A5DA4C /* SwiftUI.framework */; };
+		B55DBC992A545F3E00009957 /* Monitors_Watch_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55DBC982A545F3E00009957 /* Monitors_Watch_Widget.swift */; };
+		B55DBC9C2A545F4000009957 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B55DBC9B2A545F4000009957 /* Assets.xcassets */; };
+		B55DBC9E2A545F4000009957 /* Monitors_Watch_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B55DBC9A2A545F3E00009957 /* Monitors_Watch_Widget.intentdefinition */; };
+		B55DBC9F2A545F4000009957 /* Monitors_Watch_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B55DBC9A2A545F3E00009957 /* Monitors_Watch_Widget.intentdefinition */; };
+		B55DBCA22A545F4000009957 /* Monitors Watch WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B55DBC942A545F3E00009957 /* Monitors Watch WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B55DBCA92A545FC600009957 /* GuageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196F62A43F2E30089518A /* GuageView.swift */; };
+		B55DBCAA2A545FCA00009957 /* MonitorStatusEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196F82A4484550089518A /* MonitorStatusEntry.swift */; };
+		B55DBCAB2A54604D00009957 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D50242A43628500207428 /* Monitor.swift */; };
+		B55DBCAC2A54605100009957 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D50242A43628500207428 /* Monitor.swift */; };
+		B55DBCAD2A54605200009957 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D50242A43628500207428 /* Monitor.swift */; };
+		B57C4AD02A5469A80050E1F6 /* MonitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */; };
+		B57C4AD12A5469A80050E1F6 /* MonitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */; };
+		B57C4AD22A5469C00050E1F6 /* MonitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */; };
+		B57C4AD32A5469C10050E1F6 /* MonitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */; };
+		B57C4AD42A546B910050E1F6 /* MonitorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA55F2A4E0A5B006C7D53 /* MonitorDetailView.swift */; };
 		B59747402A41DBF600A5DA4C /* MonitorsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597473F2A41DBF600A5DA4C /* MonitorsApp.swift */; };
 		B59747422A41DBF600A5DA4C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59747412A41DBF600A5DA4C /* ContentView.swift */; };
 		B59747442A41DBF700A5DA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59747432A41DBF700A5DA4C /* Assets.xcassets */; };
@@ -27,13 +43,19 @@
 		B59747622A41DC2C00A5DA4C /* zgamemonitors.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B597475E2A41DC2800A5DA4C /* zgamemonitors.intentdefinition */; };
 		B59747632A41DC2C00A5DA4C /* zgamemonitors.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B597475E2A41DC2800A5DA4C /* zgamemonitors.intentdefinition */; };
 		B59747662A41DC2C00A5DA4C /* zgamemonitorsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B59747512A41DC2800A5DA4C /* zgamemonitorsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B59D50252A43628500207428 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D50242A43628500207428 /* Monitor.swift */; };
 		B59D50262A43628500207428 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D50242A43628500207428 /* Monitor.swift */; };
 		B5E196F72A43F2E30089518A /* GuageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196F62A43F2E30089518A /* GuageView.swift */; };
 		B5E196F92A4484550089518A /* MonitorStatusEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196F82A4484550089518A /* MonitorStatusEntry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B55DBCA02A545F4000009957 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B59747342A41DBF600A5DA4C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B55DBC932A545F3E00009957;
+			remoteInfo = "Monitors Watch WidgetExtension";
+		};
 		B59747642A41DC2C00A5DA4C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B59747342A41DBF600A5DA4C /* Project object */;
@@ -44,6 +66,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		B55DBCA62A545F4000009957 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B55DBCA22A545F4000009957 /* Monitors Watch WidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B597476A2A41DC2C00A5DA4C /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -62,11 +95,16 @@
 		B512CBF62A4C75E2003BBD17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B53DA55F2A4E0A5B006C7D53 /* MonitorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorDetailView.swift; sourceTree = "<group>"; };
 		B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorListView.swift; sourceTree = "<group>"; };
-		B55DBC822A545E1B00009957 /* Monitors Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Monitors Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B55DBC822A545E1B00009957 /* Data Otter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Data Otter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55DBC842A545E1B00009957 /* MonitorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorsApp.swift; sourceTree = "<group>"; };
 		B55DBC862A545E1B00009957 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B55DBC882A545E1C00009957 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B55DBC8B2A545E1C00009957 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B55DBC942A545F3E00009957 /* Monitors Watch WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Monitors Watch WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B55DBC982A545F3E00009957 /* Monitors_Watch_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monitors_Watch_Widget.swift; sourceTree = "<group>"; };
+		B55DBC9A2A545F3E00009957 /* Monitors_Watch_Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Monitors_Watch_Widget.intentdefinition; sourceTree = "<group>"; };
+		B55DBC9B2A545F4000009957 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B55DBC9D2A545F4000009957 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B597473C2A41DBF600A5DA4C /* Monitors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monitors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B597473F2A41DBF600A5DA4C /* MonitorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorsApp.swift; sourceTree = "<group>"; };
 		B59747412A41DBF600A5DA4C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +132,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B55DBC912A545F3E00009957 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B55DBC962A545F3E00009957 /* SwiftUI.framework in Frameworks */,
+				B55DBC952A545F3E00009957 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B59747392A41DBF600A5DA4C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -117,8 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				B512CBF42A4B6EEB003BBD17 /* AddMonitorView.swift */,
-				B53DA55F2A4E0A5B006C7D53 /* MonitorDetailView.swift */,
-				B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -142,6 +187,17 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		B55DBC972A545F3E00009957 /* Monitors Watch Widget */ = {
+			isa = PBXGroup;
+			children = (
+				B55DBC982A545F3E00009957 /* Monitors_Watch_Widget.swift */,
+				B55DBC9A2A545F3E00009957 /* Monitors_Watch_Widget.intentdefinition */,
+				B55DBC9B2A545F4000009957 /* Assets.xcassets */,
+				B55DBC9D2A545F4000009957 /* Info.plist */,
+			);
+			path = "Monitors Watch Widget";
+			sourceTree = "<group>";
+		};
 		B59747332A41DBF600A5DA4C = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +205,7 @@
 				B597473E2A41DBF600A5DA4C /* Monitors */,
 				B55DBC832A545E1B00009957 /* Monitors Watch App */,
 				B59747572A41DC2800A5DA4C /* zgamemonitors */,
+				B55DBC972A545F3E00009957 /* Monitors Watch Widget */,
 				B59747522A41DC2800A5DA4C /* Frameworks */,
 				B597473D2A41DBF600A5DA4C /* Products */,
 			);
@@ -159,7 +216,8 @@
 			children = (
 				B597473C2A41DBF600A5DA4C /* Monitors.app */,
 				B59747512A41DC2800A5DA4C /* zgamemonitorsExtension.appex */,
-				B55DBC822A545E1B00009957 /* Monitors Watch App.app */,
+				B55DBC822A545E1B00009957 /* Data Otter.app */,
+				B55DBC942A545F3E00009957 /* Monitors Watch WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -197,8 +255,6 @@
 		B59747572A41DC2800A5DA4C /* zgamemonitors */ = {
 			isa = PBXGroup;
 			children = (
-				B5E196F32A43F27D0089518A /* data */,
-				B5E196F02A43F1BE0089518A /* views */,
 				B59747582A41DC2800A5DA4C /* zgamemonitorsBundle.swift */,
 				B597475A2A41DC2800A5DA4C /* zgamemonitorsLiveActivity.swift */,
 				B597475C2A41DC2800A5DA4C /* zgamemonitors.swift */,
@@ -212,7 +268,8 @@
 		B59D50272A4362C200207428 /* shared */ = {
 			isa = PBXGroup;
 			children = (
-				B59D50242A43628500207428 /* Monitor.swift */,
+				B5E196F32A43F27D0089518A /* data */,
+				B5E196F02A43F1BE0089518A /* views */,
 			);
 			path = shared;
 			sourceTree = "<group>";
@@ -220,6 +277,8 @@
 		B5E196F02A43F1BE0089518A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				B53DA55F2A4E0A5B006C7D53 /* MonitorDetailView.swift */,
+				B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */,
 				B5E196F62A43F2E30089518A /* GuageView.swift */,
 			);
 			path = views;
@@ -228,6 +287,7 @@
 		B5E196F32A43F27D0089518A /* data */ = {
 			isa = PBXGroup;
 			children = (
+				B59D50242A43628500207428 /* Monitor.swift */,
 				B5E196F82A4484550089518A /* MonitorStatusEntry.swift */,
 			);
 			path = data;
@@ -243,15 +303,34 @@
 				B55DBC7E2A545E1B00009957 /* Sources */,
 				B55DBC7F2A545E1B00009957 /* Frameworks */,
 				B55DBC802A545E1B00009957 /* Resources */,
+				B55DBCA62A545F4000009957 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B55DBCA12A545F4000009957 /* PBXTargetDependency */,
+			);
+			name = "Monitors Watch App";
+			productName = "Monitors Watch App";
+			productReference = B55DBC822A545E1B00009957 /* Data Otter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B55DBC932A545F3E00009957 /* Monitors Watch WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B55DBCA32A545F4000009957 /* Build configuration list for PBXNativeTarget "Monitors Watch WidgetExtension" */;
+			buildPhases = (
+				B55DBC902A545F3E00009957 /* Sources */,
+				B55DBC912A545F3E00009957 /* Frameworks */,
+				B55DBC922A545F3E00009957 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Monitors Watch App";
-			productName = "Monitors Watch App";
-			productReference = B55DBC822A545E1B00009957 /* Monitors Watch App.app */;
-			productType = "com.apple.product-type.application";
+			name = "Monitors Watch WidgetExtension";
+			productName = "Monitors Watch WidgetExtension";
+			productReference = B55DBC942A545F3E00009957 /* Monitors Watch WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		B597473B2A41DBF600A5DA4C /* Monitors */ = {
 			isa = PBXNativeTarget;
@@ -302,6 +381,9 @@
 					B55DBC812A545E1B00009957 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
+					B55DBC932A545F3E00009957 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
 					B597473B2A41DBF600A5DA4C = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -326,6 +408,7 @@
 				B597473B2A41DBF600A5DA4C /* Monitors */,
 				B59747502A41DC2700A5DA4C /* zgamemonitorsExtension */,
 				B55DBC812A545E1B00009957 /* Monitors Watch App */,
+				B55DBC932A545F3E00009957 /* Monitors Watch WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -337,6 +420,14 @@
 			files = (
 				B55DBC8C2A545E1C00009957 /* Preview Assets.xcassets in Resources */,
 				B55DBC892A545E1C00009957 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B55DBC922A545F3E00009957 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B55DBC9C2A545F4000009957 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,8 +455,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B57C4AD42A546B910050E1F6 /* MonitorDetailView.swift in Sources */,
+				B57C4AD32A5469C10050E1F6 /* MonitorListView.swift in Sources */,
+				B55DBCAD2A54605200009957 /* Monitor.swift in Sources */,
 				B55DBC872A545E1B00009957 /* ContentView.swift in Sources */,
 				B55DBC852A545E1B00009957 /* MonitorsApp.swift in Sources */,
+				B55DBC9F2A545F4000009957 /* Monitors_Watch_Widget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B55DBC902A545F3E00009957 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B55DBC992A545F3E00009957 /* Monitors_Watch_Widget.swift in Sources */,
+				B55DBCAB2A54604D00009957 /* Monitor.swift in Sources */,
+				B55DBCAA2A545FCA00009957 /* MonitorStatusEntry.swift in Sources */,
+				B57C4AD02A5469A80050E1F6 /* MonitorListView.swift in Sources */,
+				B55DBCA92A545FC600009957 /* GuageView.swift in Sources */,
+				B55DBC9E2A545F4000009957 /* Monitors_Watch_Widget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,10 +482,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B53DA5602A4E0A5B006C7D53 /* MonitorDetailView.swift in Sources */,
-				B59D50252A43628500207428 /* Monitor.swift in Sources */,
 				B59747422A41DBF600A5DA4C /* ContentView.swift in Sources */,
+				B55DBCAC2A54605100009957 /* Monitor.swift in Sources */,
 				B512CBF52A4B6EEB003BBD17 /* AddMonitorView.swift in Sources */,
-				B53DA5622A4E0D37006C7D53 /* MonitorListView.swift in Sources */,
+				B57C4AD22A5469C00050E1F6 /* MonitorListView.swift in Sources */,
 				B59747402A41DBF600A5DA4C /* MonitorsApp.swift in Sources */,
 				B59747632A41DC2C00A5DA4C /* zgamemonitors.intentdefinition in Sources */,
 			);
@@ -394,12 +502,18 @@
 				B59747622A41DC2C00A5DA4C /* zgamemonitors.intentdefinition in Sources */,
 				B5E196F72A43F2E30089518A /* GuageView.swift in Sources */,
 				B59747592A41DC2800A5DA4C /* zgamemonitorsBundle.swift in Sources */,
+				B57C4AD12A5469A80050E1F6 /* MonitorListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B55DBCA12A545F4000009957 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B55DBC932A545F3E00009957 /* Monitors Watch WidgetExtension */;
+			targetProxy = B55DBCA02A545F4000009957 /* PBXContainerItemProxy */;
+		};
 		B59747652A41DC2C00A5DA4C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B59747502A41DC2700A5DA4C /* zgamemonitorsExtension */;
@@ -411,6 +525,7 @@
 		B55DBC8D2A545E1C00009957 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -419,7 +534,6 @@
 				DEVELOPMENT_TEAM = 6M38R97L4D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Monitors;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -428,7 +542,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = .watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Data Otter";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -441,6 +555,7 @@
 		B55DBC8E2A545E1C00009957 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -449,7 +564,6 @@
 				DEVELOPMENT_TEAM = 6M38R97L4D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Monitors;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -458,6 +572,66 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = .watchkitapp;
+				PRODUCT_NAME = "Data Otter";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+			};
+			name = Release;
+		};
+		B55DBCA42A545F4000009957 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6M38R97L4D;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Monitors Watch Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Data Otter Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ".watchkitapp.Monitors-Watch-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+			};
+			name = Debug;
+		};
+		B55DBCA52A545F4000009957 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6M38R97L4D;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Monitors Watch Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Data Otter Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ".watchkitapp.Monitors-Watch-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -708,6 +882,15 @@
 			buildConfigurations = (
 				B55DBC8D2A545E1C00009957 /* Debug */,
 				B55DBC8E2A545E1C00009957 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B55DBCA32A545F4000009957 /* Build configuration list for PBXNativeTarget "Monitors Watch WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B55DBCA42A545F4000009957 /* Debug */,
+				B55DBCA52A545F4000009957 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
