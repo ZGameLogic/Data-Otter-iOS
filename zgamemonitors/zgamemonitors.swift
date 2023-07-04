@@ -51,13 +51,17 @@ struct zgamemonitorsEntryView : View {
         ZStack {
             ContainerRelativeShape().fill(Color(red:50/250.0, green:20/250.0, blue:79/250.0).gradient)
             switch family {
-            case .systemSmall:
+            case .accessoryCircular:
                 Group {
                     GuageView(entry: entry)
                 }
+            case .systemSmall:
+                Group {
+                    GuageView(entry: entry).scaleEffect(2)
+                }
             case .systemMedium:
                 HStack {
-                    GuageView(entry: entry)
+                    GuageView(entry: entry).scaleEffect(2)
                 .padding([.leading], 65)
                 .padding([.trailing], 50)
                     VStack {
@@ -103,7 +107,7 @@ struct zgamemonitors: Widget {
         }
         .configurationDisplayName("ZGameMonitors")
         .description("Gets the status of the ZGameLogic monitors.")
-        .supportedFamilies([.systemSmall, .systemMedium])
+        .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular])
     }
 }
 
