@@ -20,7 +20,7 @@ struct ContentView: View {
                     }
                 }
             }.navigationTitle("Monitors")
-                .navigationDestination(for: Monitor.self, destination: { MonitorDetailView(monitor: $0, title: true)})
+                .navigationDestination(for: Monitor.self, destination: { MonitorDetailView(monitors: $monitors, id: $0.id, title: true)})
                 .toolbar {
                     ToolbarItem {
                         Button(action: {

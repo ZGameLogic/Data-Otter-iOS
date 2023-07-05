@@ -8,51 +8,75 @@
 import SwiftUI
 
 struct MonitorDetailView: View {
-    let monitor: Monitor
+    @Binding var monitors: [Monitor]
+    let id: Int
     let title: Bool
     
     var body: some View {
         if(title){
-            Text(monitor.name).font(.title)
-            Text(monitor.status ? "Online" : "Offline").foregroundColor(monitor.status ? .green : .red)
+            Text(monitors.first(where: {$0.id == self.id})!.name).font(.title)
+            Text(monitors.first(where: {$0.id == self.id})!.status ? "Online" : "Offline").foregroundColor(monitors.first(where: {$0.id == self.id})!.status ? .green : .red)
         }
-        if(monitor.type == "minecraft"){
-            minecraftView()
-        } else {
-            webView()
+        VStack{
+            Form {
+                if(!title){
+                    Section("Monitor"){
+                        Text(monitors.first(where: {$0.id == self.id})!.name)
+                        Text(monitors.first(where: {$0.id == self.id})!.status ? "Online" : "Offline").foregroundColor(monitors.first(where: {$0.id == self.id})!.status ? .green : .red)
+                    }
+                }
+                if(monitors.first(where: {$0.id == self.id})!.type == "minecraft"){
+                    minecraftView()
+                } else {
+                    webView()
+                }
+            }.refreshable {
+                await refresh()
+            }
+        }
+    }
+    
+    func refresh() async {
+        do {
+            let index = monitors.firstIndex(of: {monitors.first(where: {$0.id == self.id})!}())!
+            monitors[index] = try await fetch(id: id)[0]
+        } catch networkError.inavlidURL {
+            print("u")
+        } catch networkError.invalidData {
+            print("d")
+        } catch networkError.inavlidResponse {
+            print("r")
+        } catch {
+            print("huh")
         }
     }
     
     func minecraftView() -> some View {
-        VStack {
-            Form {
-                if(monitor.online! > 0){
-                    Section("Players online"){
-                        ForEach(monitor.onlinePlayers!.sorted(by: <), id: \.self){player in
-                            Text(player)
-                        }
+        Group {
+            if(monitors.first(where: {$0.id == self.id})!.online! > 0){
+                Section("Players online"){
+                    ForEach(monitors.first(where: {$0.id == self.id})!.onlinePlayers!.sorted(by: <), id: \.self){player in
+                        Text(player)
                     }
                 }
-                Section("General information"){
-                    Text("Address: \(monitor.url)")
-                    Text("Port: \(String(monitor.port))")
-                    Text("Currently online: \(monitor.online!)")
-                    Text("Max players: \(monitor.max!)")
-                    Text("MOTD: \(monitor.motd!)")
-                    Text("version \(monitor.version!)")
-                }
+            }
+            Section("General information"){
+                Text("Address: \(monitors.first(where: {$0.id == self.id})!.url)")
+                Text("Port: \(String(monitors.first(where: {$0.id == self.id})!.port))")
+                Text("Currently online: \(monitors.first(where: {$0.id == self.id})!.online!)")
+                Text("Max players: \(monitors.first(where: {$0.id == self.id})!.max!)")
+                Text("MOTD: \(monitors.first(where: {$0.id == self.id})!.motd!)")
+                Text("version \(monitors.first(where: {$0.id == self.id})!.version!)")
             }
         }
     }
     
     func webView() -> some View {
-        VStack {
-            Form {
-                Section("General Information"){
-                    Text("URL: \(monitor.url)")
-                    Text("Port: \(String(monitor.port))")
-                    Text("\(monitor.type == "api" ? "Health check URL: \(monitor.healthCheckUrl!)" : "Regex: \(monitor.regex!)")")
-                }
+        Group {
+            Section("General Information"){
+                Text("URL: \(monitors.first(where: {$0.id == self.id})!.url)")
+                Text("Port: \(String(monitors.first(where: {$0.id == self.id})!.port))")
+                Text("\(monitors.first(where: {$0.id == self.id})!.type == "api" ? "Health check URL: \(monitors.first(where: {$0.id == self.id})!.healthCheckUrl!)" : "Regex: \(monitors.first(where: {$0.id == self.id})!.regex!)")")
             }
         }
     }
@@ -60,6 +84,6 @@ struct MonitorDetailView: View {
 
 struct MonitorDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        MonitorDetailView(monitor: Monitor.previewMonitor(), title: true)
+        MonitorDetailView(monitors: Binding.constant(Monitor.previewArray()), id: 0, title: true)
     }
 }

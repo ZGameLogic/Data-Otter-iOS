@@ -109,7 +109,24 @@ func fetch() async throws -> [Monitor] {
     } catch {
         throw networkError.invalidData
     }
+}
+
+func fetch(id: Int) async throws -> [Monitor] {
+    print("Fetching monitor \(id) from API")
+    guard let url = URL(string: "http://54.211.139.84:8080/monitors/\(id)") else { throw networkError.inavlidURL }
     
+    let(data, response) = try await URLSession.shared.data(from: url)
+    
+    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+        throw networkError.inavlidResponse
+    }
+    
+    do {
+        let decoder = JSONDecoder()
+        return try decoder.decode([Monitor].self, from: data)
+    } catch {
+        throw networkError.invalidData
+    }
 }
 
 enum networkError: Error {

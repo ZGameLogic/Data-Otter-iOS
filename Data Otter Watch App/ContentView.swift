@@ -27,7 +27,7 @@ struct ContentView: View {
                     }
                 }.disabled(refreshing)
             }.navigationTitle("Monitors")
-                .navigationDestination(for: Monitor.self, destination: { MonitorDetailView(monitor: $0, title: false)})
+                .navigationDestination(for: Monitor.self, destination: { MonitorDetailView(monitors: $monitors, id: $0.id, title: false)})
         }
         .task {
             await refresh()
