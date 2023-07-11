@@ -88,6 +88,13 @@ struct Monitor: Codable, Comparable, Hashable, Identifiable {
         ]
     }
     
+    static func previewArrayAllGood() -> [Monitor] {
+       [
+        Monitor(name: "Minecraft", status: true, type: "minecraft", url: "zgamelogic.com", port: 25565, id: 0, max: 10, onlinePlayers: ["zabory"], online: 1, motd: "Have fun!", version: "1.19.2", regex: nil, healthCheckUrl: nil),
+        Monitor(name: "test 2", status: true, type: "api", url: "zgamelogic.com", port: 8080, id: 1, max: nil, onlinePlayers: nil, online: nil, motd: nil, version: nil, regex: nil, healthCheckUrl: "health")
+        ]
+    }
+    
     static func previewMonitor() -> Monitor {
         Monitor(name: "test", status: true, type: "minecraft", url: "zgamelogic.com", port: 25565, id: 0, max: 10, onlinePlayers: ["zabory"], online: 1, motd: "Have fun!", version: "1.19.2", regex: nil, healthCheckUrl: nil)
     }

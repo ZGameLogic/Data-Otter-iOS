@@ -77,7 +77,7 @@ struct zgamemonitorsEntryView : View {
                             Text("All good").padding([.top], 5)
                             ForEach(entry.upMonitors.sorted()){monitor in
                                 HStack {
-                                    Text("🟢 \(monitor.name)")
+                                    Text("🟢 \(monitor.name)\(monitor.type == "minecraft" ? " (\(monitor.online!))" : "")")
                                     Spacer()
                                 }.padding([.leading], 5)
                             }
@@ -113,7 +113,7 @@ struct zgamemonitors: Widget {
 
 struct zgamemonitors_Previews: PreviewProvider {
     static var previews: some View {
-        zgamemonitorsEntryView(entry: MonitorStatusEntry(date: Date(), monitors: Monitor.previewArray()))
+        zgamemonitorsEntryView(entry: MonitorStatusEntry(date: Date(), monitors: Monitor.previewArrayAllGood()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
