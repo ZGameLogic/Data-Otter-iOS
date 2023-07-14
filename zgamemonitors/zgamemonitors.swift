@@ -74,12 +74,19 @@ struct zgamemonitorsEntryView : View {
                                 }.padding([.leading], 5)
                             }
                         } else {
-                            Text("All good").padding([.top], 5)
-                            ForEach(entry.upMonitors.sorted()){monitor in
-                                HStack {
-                                    Text("🟢 \(monitor.name)\(monitor.type == "minecraft" ? " (\(monitor.online!))" : "")")
-                                    Spacer()
-                                }.padding([.leading], 5)
+                            if(entry.hasOnlinePlayers()){
+                                Text("Online players").padding([.top], 5)
+                                ForEach(entry.getOnlinePlayerNames(), id:\.self){name in
+                                    Text(name)
+                                }
+                            } else {
+                                Text("All good").padding([.top], 5)
+                                ForEach(entry.upMonitors.sorted()){monitor in
+                                    HStack {
+                                        Text("🟢 \(monitor.name)\(monitor.type == "minecraft" ? " (\(monitor.online!))" : "")")
+                                        Spacer()
+                                    }.padding([.leading], 5)
+                                }
                             }
                         }
                         Spacer()

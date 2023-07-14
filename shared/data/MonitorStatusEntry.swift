@@ -40,4 +40,16 @@ struct MonitorStatusEntry: TimelineEntry {
     func hasOnlinePlayers() -> Bool {
         onlinePlayers > 0
     }
+    
+    func getOnlinePlayerNames() -> [String] {
+        var names: [String] = []
+        
+        for monitor in upMonitors {
+            if(monitor.type == "minecraft"){
+                names.append(contentsOf: monitor.onlinePlayers!)
+            }
+        }
+        
+        return names.sorted(by: <)
+    }
 }
