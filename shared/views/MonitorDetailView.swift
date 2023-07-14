@@ -14,8 +14,7 @@ struct MonitorDetailView: View {
     
     var body: some View {
         if(title){
-            Text(monitors.first(where: {$0.id == self.id})!.name).font(.title)
-            Text(monitors.first(where: {$0.id == self.id})!.status ? "Online" : "Offline").foregroundColor(monitors.first(where: {$0.id == self.id})!.status ? .green : .red)
+            Text(monitors.first(where: {$0.id == self.id})!.name).font(.title).foregroundColor(monitors.first(where: {$0.id == self.id})!.status ? .green : .red)
         }
         VStack{
             Form {
