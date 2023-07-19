@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MonitorDetailView: View {
     @Binding var monitors: [Monitor]
+    @State var history: [Monitor] = []
+    
     let id: Int
     let title: Bool
     
@@ -31,6 +33,10 @@ struct MonitorDetailView: View {
                 }
             }.refreshable {
                 await refresh()
+            }.onAppear(){
+                Task {
+                    await refresh()
+                }
             }
         }
     }
@@ -39,6 +45,7 @@ struct MonitorDetailView: View {
         do {
             let index = monitors.firstIndex(of: {monitors.first(where: {$0.id == self.id})!}())!
             monitors[index] = try await fetch(id: id)[0]
+            history = try await fetchHistory(id: id)
         } catch networkError.inavlidURL {
             print("u")
         } catch networkError.invalidData {

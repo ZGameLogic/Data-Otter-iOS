@@ -25,7 +25,7 @@ struct Monitor: Codable, Comparable, Hashable, Identifiable {
     }
     
     enum DecodingKeys: String, CodingKey {
-        case name, status, type, url, port, max, online, onlinePlayers, motd, version, regex, healthCheckUrl, id
+        case name, status, type, url, taken, port, max, online, onlinePlayers, motd, version, regex, healthCheckUrl, id
     }
     
     init(from decoder: Decoder) throws {
@@ -34,6 +34,7 @@ struct Monitor: Codable, Comparable, Hashable, Identifiable {
         self.name = try container.decode(String.self, forKey: .name)
         self.status = try container.decode(Bool.self, forKey: .status)
         self.type = try container.decode(String.self, forKey: .type)
+        self.taken = try container.decode(Date.self, forKey: .taken)
         self.url = try container.decode(String.self, forKey: .url)
         self.port = try container.decode(Int.self, forKey: .port)
         self.max = try container.decodeIfPresent(Int.self, forKey: .max)
@@ -45,11 +46,12 @@ struct Monitor: Codable, Comparable, Hashable, Identifiable {
         self.healthCheckUrl = try container.decodeIfPresent(String.self, forKey: .healthCheckUrl)
     }
     
-    init(name: String, status: Bool, type: String, url: String, port: Int, id: Int, max: Int? = nil, onlinePlayers: [String]? = nil, online: Int? = nil, motd: String? = nil, version: String? = nil, regex: String? = nil, healthCheckUrl: String? = nil) {
+    init(name: String, status: Bool, type: String, taken: Date, url: String, port: Int, id: Int, max: Int? = nil, onlinePlayers: [String]? = nil, online: Int? = nil, motd: String? = nil, version: String? = nil, regex: String? = nil, healthCheckUrl: String? = nil) {
         self.id = id
         self.name = name
         self.status = status
         self.type = type
+        self.taken = taken
         self.url = url
         self.port = port
         self.max = max
@@ -67,6 +69,7 @@ struct Monitor: Codable, Comparable, Hashable, Identifiable {
     let url: String
     let port: Int
     let id: Int
+    let taken: Date
     
     // minecraft
     let max: Int?
@@ -83,20 +86,20 @@ struct Monitor: Codable, Comparable, Hashable, Identifiable {
     
     static func previewArray() -> [Monitor] {
        [
-        Monitor(name: "test", status: true, type: "minecraft", url: "zgamelogic.com", port: 25565, id: 0, max: 10, onlinePlayers: ["zabory"], online: 1, motd: "Have fun!", version: "1.19.2", regex: nil, healthCheckUrl: nil),
-        Monitor(name: "test 2", status: false, type: "api", url: "zgamelogic.com", port: 8080, id: 1, max: nil, onlinePlayers: nil, online: nil, motd: nil, version: nil, regex: nil, healthCheckUrl: "health")
+        Monitor(name: "test", status: true, type: "minecraft", taken: Date(), url: "zgamelogic.com", port: 25565, id: 0, max: 10, onlinePlayers: ["zabory"], online: 1, motd: "Have fun!", version: "1.19.2", regex: nil, healthCheckUrl: nil),
+        Monitor(name: "test 2", status: false, type: "api", taken: Date(), url: "zgamelogic.com", port: 8080, id: 1, max: nil, onlinePlayers: nil, online: nil, motd: nil, version: nil, regex: nil, healthCheckUrl: "health")
         ]
     }
     
     static func previewArrayAllGood() -> [Monitor] {
        [
-        Monitor(name: "Minecraft", status: true, type: "minecraft", url: "zgamelogic.com", port: 25565, id: 0, max: 10, onlinePlayers: ["zabory", "RebaHatesThings"], online: 2, motd: "Have fun!", version: "1.19.2", regex: nil, healthCheckUrl: nil),
-        Monitor(name: "test 2", status: true, type: "api", url: "zgamelogic.com", port: 8080, id: 1, max: nil, onlinePlayers: nil, online: nil, motd: nil, version: nil, regex: nil, healthCheckUrl: "health")
+        Monitor(name: "Minecraft", status: true, type: "minecraft", taken: Date(), url: "zgamelogic.com", port: 25565, id: 0, max: 10, onlinePlayers: ["zabory", "RebaHatesThings"], online: 2, motd: "Have fun!", version: "1.19.2", regex: nil, healthCheckUrl: nil),
+        Monitor(name: "test 2", status: true, type: "api", taken: Date(), url: "zgamelogic.com", port: 8080, id: 1, max: nil, onlinePlayers: nil, online: nil, motd: nil, version: nil, regex: nil, healthCheckUrl: "health")
         ]
     }
     
     static func previewMonitor() -> Monitor {
-        Monitor(name: "test", status: true, type: "minecraft", url: "zgamelogic.com", port: 25565, id: 0, max: 10, onlinePlayers: ["zabory"], online: 1, motd: "Have fun!", version: "1.19.2", regex: nil, healthCheckUrl: nil)
+        Monitor(name: "test", status: true, type: "minecraft", taken: Date(), url: "zgamelogic.com", port: 25565, id: 0, max: 10, onlinePlayers: ["zabory"], online: 1, motd: "Have fun!", version: "1.19.2", regex: nil, healthCheckUrl: nil)
     }
 }
 
@@ -114,6 +117,7 @@ func fetch() async throws -> [Monitor] {
         let decoder = JSONDecoder()
         return try decoder.decode([Monitor].self, from: data)
     } catch {
+        print(error)
         throw networkError.invalidData
     }
 }
@@ -121,6 +125,24 @@ func fetch() async throws -> [Monitor] {
 func fetch(id: Int) async throws -> [Monitor] {
     print("Fetching monitor \(id) from API")
     guard let url = URL(string: "http://54.211.139.84:8080/monitors/\(id)") else { throw networkError.inavlidURL }
+    
+    let(data, response) = try await URLSession.shared.data(from: url)
+    
+    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+        throw networkError.inavlidResponse
+    }
+    
+    do {
+        let decoder = JSONDecoder()
+        return try decoder.decode([Monitor].self, from: data)
+    } catch {
+        throw networkError.invalidData
+    }
+}
+
+func fetchHistory(id: Int) async throws -> [Monitor] {
+    print("Fetching monitor \(id) history from API")
+    guard let url = URL(string: "http://54.211.139.84:8080/history/\(id)") else { throw networkError.inavlidURL }
     
     let(data, response) = try await URLSession.shared.data(from: url)
     
