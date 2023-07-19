@@ -83,7 +83,7 @@ struct zgamemonitorsEntryView : View {
                                 Text("All good").padding([.top], 5)
                                 ForEach(entry.upMonitors.sorted()){monitor in
                                     HStack {
-                                        Text("🟢 \(monitor.name)\(monitor.type == "minecraft" ? " (\(monitor.online!))" : "")")
+                                        Text("🟢 \(monitor.name)")
                                         Spacer()
                                     }.padding([.leading], 5)
                                 }
