@@ -8,14 +8,15 @@
 import WidgetKit
 import SwiftUI
 import Intents
+import Charts
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> MonitorStatusEntry {
-        MonitorStatusEntry(date: Date(), monitors: Monitor.previewArray())
+        MonitorStatusEntry(date: Date(), monitors: Monitor.previewArray(), historyData: Monitor.previewHistoryData())
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (MonitorStatusEntry) -> ()) {
-        let entry = MonitorStatusEntry(date: Date(), monitors: Monitor.previewArray())
+        let entry = MonitorStatusEntry(date: Date(), monitors: Monitor.previewArray(), historyData: Monitor.previewHistoryData())
         completion(entry)
     }
 
@@ -26,7 +27,7 @@ struct Provider: IntentTimelineProvider {
         Task{
             do {
                 var entries: [MonitorStatusEntry] = []
-                let entry = try await MonitorStatusEntry(date: newDate, monitors: fetch())
+                let entry = try await MonitorStatusEntry(date: newDate, monitors: fetch(), historyData: fetchHistory())
                 entries.append(entry)
                 let timeline = Timeline(entries: entries, policy: .atEnd)
                 completion(timeline)
@@ -97,7 +98,9 @@ struct zgamemonitorsEntryView : View {
                     Spacer()
                 }
             case .systemLarge:
-                Text("Large")
+                AllHistoryGraphView(history: entry.historyData)
+                    .padding()
+                    .background(.white.opacity(0.75))
             default:
                 Text("Some other WidgetFamily in the future.")
             }
@@ -114,13 +117,13 @@ struct zgamemonitors: Widget {
         }
         .configurationDisplayName("Data Otter")
         .description("Gets the status of the ZGameLogic monitors.")
-        .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular])
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryCircular])
     }
 }
 
 struct zgamemonitors_Previews: PreviewProvider {
     static var previews: some View {
-        zgamemonitorsEntryView(entry: MonitorStatusEntry(date: Date(), monitors: Monitor.previewArrayAllGood()))
+        zgamemonitorsEntryView(entry: MonitorStatusEntry(date: Date(), monitors: Monitor.previewArrayAllGood(), historyData: Monitor.previewHistoryData()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

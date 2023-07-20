@@ -16,9 +16,11 @@ struct MonitorStatusEntry: TimelineEntry {
     var onlinePlayers: Int
     var downMonitors: [Monitor]
     var upMonitors: [Monitor]
+    var historyData: [Monitor]
     
-    init(date: Date, monitors: [Monitor]) {
+    init(date: Date, monitors: [Monitor], historyData: [Monitor]) {
         self.date = date
+        self.historyData = historyData
         downMonitors = []
         upMonitors = []
         onlinePlayers = 0

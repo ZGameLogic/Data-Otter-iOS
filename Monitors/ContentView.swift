@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var monitors: [Monitor] = []
+    @State var allHistoryData: [Monitor] = []
     @State var showAddMonitor = false
     
     var body: some View {
@@ -53,6 +54,7 @@ struct ContentView: View {
     func refresh() async {
         do {
             monitors = try await fetch()
+            allHistoryData = try await fetchHistory()
         } catch networkError.inavlidURL {
             print("u")
         } catch networkError.invalidData {

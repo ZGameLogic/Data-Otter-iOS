@@ -38,13 +38,14 @@
 		B59747542A41DC2800A5DA4C /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59747532A41DC2800A5DA4C /* WidgetKit.framework */; };
 		B59747562A41DC2800A5DA4C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59747552A41DC2800A5DA4C /* SwiftUI.framework */; };
 		B59747592A41DC2800A5DA4C /* zgamemonitorsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59747582A41DC2800A5DA4C /* zgamemonitorsBundle.swift */; };
-		B597475B2A41DC2800A5DA4C /* zgamemonitorsLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597475A2A41DC2800A5DA4C /* zgamemonitorsLiveActivity.swift */; };
 		B597475D2A41DC2800A5DA4C /* zgamemonitors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597475C2A41DC2800A5DA4C /* zgamemonitors.swift */; };
 		B59747602A41DC2C00A5DA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B597475F2A41DC2C00A5DA4C /* Assets.xcassets */; };
 		B59747622A41DC2C00A5DA4C /* zgamemonitors.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B597475E2A41DC2800A5DA4C /* zgamemonitors.intentdefinition */; };
 		B59747632A41DC2C00A5DA4C /* zgamemonitors.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B597475E2A41DC2800A5DA4C /* zgamemonitors.intentdefinition */; };
 		B59747662A41DC2C00A5DA4C /* zgamemonitorsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B59747512A41DC2800A5DA4C /* zgamemonitorsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B59D50262A43628500207428 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D50242A43628500207428 /* Monitor.swift */; };
+		B5A15D4F2A69CB3A00548331 /* AllHistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A15D4E2A69CB3A00548331 /* AllHistoryGraphView.swift */; };
+		B5A15D502A69CB3A00548331 /* AllHistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A15D4E2A69CB3A00548331 /* AllHistoryGraphView.swift */; };
 		B5E196F72A43F2E30089518A /* GuageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196F62A43F2E30089518A /* GuageView.swift */; };
 		B5E196F92A4484550089518A /* MonitorStatusEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196F82A4484550089518A /* MonitorStatusEntry.swift */; };
 /* End PBXBuildFile section */
@@ -133,12 +134,12 @@
 		B59747532A41DC2800A5DA4C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		B59747552A41DC2800A5DA4C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		B59747582A41DC2800A5DA4C /* zgamemonitorsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zgamemonitorsBundle.swift; sourceTree = "<group>"; };
-		B597475A2A41DC2800A5DA4C /* zgamemonitorsLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zgamemonitorsLiveActivity.swift; sourceTree = "<group>"; };
 		B597475C2A41DC2800A5DA4C /* zgamemonitors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zgamemonitors.swift; sourceTree = "<group>"; };
 		B597475E2A41DC2800A5DA4C /* zgamemonitors.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = zgamemonitors.intentdefinition; sourceTree = "<group>"; };
 		B597475F2A41DC2C00A5DA4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B59747612A41DC2C00A5DA4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B59D50242A43628500207428 /* Monitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
+		B5A15D4E2A69CB3A00548331 /* AllHistoryGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllHistoryGraphView.swift; sourceTree = "<group>"; };
 		B5E196F62A43F2E30089518A /* GuageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuageView.swift; sourceTree = "<group>"; };
 		B5E196F82A4484550089518A /* MonitorStatusEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorStatusEntry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -275,7 +276,6 @@
 			isa = PBXGroup;
 			children = (
 				B59747582A41DC2800A5DA4C /* zgamemonitorsBundle.swift */,
-				B597475A2A41DC2800A5DA4C /* zgamemonitorsLiveActivity.swift */,
 				B597475C2A41DC2800A5DA4C /* zgamemonitors.swift */,
 				B597475E2A41DC2800A5DA4C /* zgamemonitors.intentdefinition */,
 				B597475F2A41DC2C00A5DA4C /* Assets.xcassets */,
@@ -299,6 +299,7 @@
 				B53DA55F2A4E0A5B006C7D53 /* MonitorDetailView.swift */,
 				B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */,
 				B5E196F62A43F2E30089518A /* GuageView.swift */,
+				B5A15D4E2A69CB3A00548331 /* AllHistoryGraphView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -506,6 +507,7 @@
 				B59747422A41DBF600A5DA4C /* ContentView.swift in Sources */,
 				B55DBCAC2A54605100009957 /* Monitor.swift in Sources */,
 				B512CBF52A4B6EEB003BBD17 /* AddMonitorView.swift in Sources */,
+				B5A15D4F2A69CB3A00548331 /* AllHistoryGraphView.swift in Sources */,
 				B57C4AD22A5469C00050E1F6 /* MonitorListView.swift in Sources */,
 				B59747402A41DBF600A5DA4C /* MonitorsApp.swift in Sources */,
 				B59747632A41DC2C00A5DA4C /* zgamemonitors.intentdefinition in Sources */,
@@ -516,7 +518,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B597475B2A41DC2800A5DA4C /* zgamemonitorsLiveActivity.swift in Sources */,
 				B5E196F92A4484550089518A /* MonitorStatusEntry.swift in Sources */,
 				B59D50262A43628500207428 /* Monitor.swift in Sources */,
 				B597475D2A41DC2800A5DA4C /* zgamemonitors.swift in Sources */,
@@ -524,6 +525,7 @@
 				B5E196F72A43F2E30089518A /* GuageView.swift in Sources */,
 				B59747592A41DC2800A5DA4C /* zgamemonitorsBundle.swift in Sources */,
 				B57C4AD12A5469A80050E1F6 /* MonitorListView.swift in Sources */,
+				B5A15D502A69CB3A00548331 /* AllHistoryGraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
