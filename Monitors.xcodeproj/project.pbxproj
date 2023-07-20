@@ -44,8 +44,9 @@
 		B59747632A41DC2C00A5DA4C /* zgamemonitors.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B597475E2A41DC2800A5DA4C /* zgamemonitors.intentdefinition */; };
 		B59747662A41DC2C00A5DA4C /* zgamemonitorsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B59747512A41DC2800A5DA4C /* zgamemonitorsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B59D50262A43628500207428 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D50242A43628500207428 /* Monitor.swift */; };
-		B5A15D4F2A69CB3A00548331 /* AllHistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A15D4E2A69CB3A00548331 /* AllHistoryGraphView.swift */; };
-		B5A15D502A69CB3A00548331 /* AllHistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A15D4E2A69CB3A00548331 /* AllHistoryGraphView.swift */; };
+		B5A15D4F2A69CB3A00548331 /* HistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A15D4E2A69CB3A00548331 /* HistoryGraphView.swift */; };
+		B5A15D502A69CB3A00548331 /* HistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A15D4E2A69CB3A00548331 /* HistoryGraphView.swift */; };
+		B5A15D512A69E11900548331 /* HistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A15D4E2A69CB3A00548331 /* HistoryGraphView.swift */; };
 		B5E196F72A43F2E30089518A /* GuageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196F62A43F2E30089518A /* GuageView.swift */; };
 		B5E196F92A4484550089518A /* MonitorStatusEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196F82A4484550089518A /* MonitorStatusEntry.swift */; };
 /* End PBXBuildFile section */
@@ -139,7 +140,7 @@
 		B597475F2A41DC2C00A5DA4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B59747612A41DC2C00A5DA4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B59D50242A43628500207428 /* Monitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
-		B5A15D4E2A69CB3A00548331 /* AllHistoryGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllHistoryGraphView.swift; sourceTree = "<group>"; };
+		B5A15D4E2A69CB3A00548331 /* HistoryGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryGraphView.swift; sourceTree = "<group>"; };
 		B5E196F62A43F2E30089518A /* GuageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuageView.swift; sourceTree = "<group>"; };
 		B5E196F82A4484550089518A /* MonitorStatusEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorStatusEntry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -299,7 +300,7 @@
 				B53DA55F2A4E0A5B006C7D53 /* MonitorDetailView.swift */,
 				B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */,
 				B5E196F62A43F2E30089518A /* GuageView.swift */,
-				B5A15D4E2A69CB3A00548331 /* AllHistoryGraphView.swift */,
+				B5A15D4E2A69CB3A00548331 /* HistoryGraphView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -482,6 +483,7 @@
 				B50DCDB42A54E4770051B857 /* MonitorDetailView.swift in Sources */,
 				B50DCDA22A54E4230051B857 /* ContentView.swift in Sources */,
 				B50DCDB32A54E46D0051B857 /* Monitor.swift in Sources */,
+				B5A15D512A69E11900548331 /* HistoryGraphView.swift in Sources */,
 				B50DCDA02A54E4230051B857 /* Data_OtterApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,7 +509,7 @@
 				B59747422A41DBF600A5DA4C /* ContentView.swift in Sources */,
 				B55DBCAC2A54605100009957 /* Monitor.swift in Sources */,
 				B512CBF52A4B6EEB003BBD17 /* AddMonitorView.swift in Sources */,
-				B5A15D4F2A69CB3A00548331 /* AllHistoryGraphView.swift in Sources */,
+				B5A15D4F2A69CB3A00548331 /* HistoryGraphView.swift in Sources */,
 				B57C4AD22A5469C00050E1F6 /* MonitorListView.swift in Sources */,
 				B59747402A41DBF600A5DA4C /* MonitorsApp.swift in Sources */,
 				B59747632A41DC2C00A5DA4C /* zgamemonitors.intentdefinition in Sources */,
@@ -525,7 +527,7 @@
 				B5E196F72A43F2E30089518A /* GuageView.swift in Sources */,
 				B59747592A41DC2800A5DA4C /* zgamemonitorsBundle.swift in Sources */,
 				B57C4AD12A5469A80050E1F6 /* MonitorListView.swift in Sources */,
-				B5A15D502A69CB3A00548331 /* AllHistoryGraphView.swift in Sources */,
+				B5A15D502A69CB3A00548331 /* HistoryGraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

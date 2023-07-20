@@ -15,11 +15,11 @@ struct MonitorDetailView: View {
     let title: Bool
     
     var body: some View {
-        if(title){
-            Text(monitors.first(where: {$0.id == self.id})!.name).font(.title)
-            Text(monitors.first(where: {$0.id == self.id})!.status ? "Online" : "Offline").foregroundColor(monitors.first(where: {$0.id == self.id})!.status ? .green : .red)
-        }
         VStack{
+            if(title){
+                Text(monitors.first(where: {$0.id == self.id})!.name).font(.title)
+                Text(monitors.first(where: {$0.id == self.id})!.status ? "Online" : "Offline").foregroundColor(monitors.first(where: {$0.id == self.id})!.status ? .green : .red)
+            }
             Form {
                 if(!title){
                     Section("Monitor"){
@@ -30,6 +30,12 @@ struct MonitorDetailView: View {
                     minecraftView()
                 } else {
                     webView()
+                }
+                if(!history.isEmpty){
+                    Section("History"){
+                        AllHistoryGraphView(history: history)
+                            .padding()
+                    }
                 }
             }.refreshable {
                 await refresh()
