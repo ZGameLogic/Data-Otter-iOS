@@ -17,6 +17,12 @@ struct MonitorStatusEntry: TimelineEntry {
     var downMonitors: [Monitor]
     var upMonitors: [Monitor]
     var historyData: [Monitor]
+    var minecraftOnly = false
+    
+    init(date: Date, monitors: [Monitor], historyData: [Monitor], minecraftOnly: Bool){
+        self.init(date: date, monitors: monitors, historyData: historyData)
+        self.minecraftOnly = minecraftOnly
+    }
     
     init(date: Date, monitors: [Monitor], historyData: [Monitor]) {
         self.date = date

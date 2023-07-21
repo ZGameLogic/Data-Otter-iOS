@@ -27,7 +27,7 @@ struct Provider: IntentTimelineProvider {
         Task{
             do {
                 var entries: [MonitorStatusEntry] = []
-                let entry = try await MonitorStatusEntry(date: newDate, monitors: fetch(), historyData: fetchHistory())
+                let entry = try await MonitorStatusEntry(date: newDate, monitors: fetch(), historyData: fetchHistory(), minecraftOnly: (configuration.minecraft ?? false) as! Bool)
                 entries.append(entry)
                 let timeline = Timeline(entries: entries, policy: .atEnd)
                 completion(timeline)
@@ -98,9 +98,16 @@ struct zgamemonitorsEntryView : View {
                     Spacer()
                 }
             case .systemLarge:
-                HistoryGraphView(history: entry.historyData)
+                Group {
+                    if(!entry.minecraftOnly){
+                        HistoryGraphView(history: entry.historyData)
+                    } else {
+                        PlayerHistoryGraphView(history: entry.historyData.filter{$0.type == "minecraft"})
+                    }
+                }
                     .padding()
                     .background(.black.opacity(0.70))
+                
             default:
                 Text("Some other WidgetFamily in the future.")
             }

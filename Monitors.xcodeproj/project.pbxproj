@@ -30,6 +30,7 @@
 		B53DA5602A4E0A5B006C7D53 /* MonitorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA55F2A4E0A5B006C7D53 /* MonitorDetailView.swift */; };
 		B53DC3562A6AF91700AE4DED /* PlayerHistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DC3552A6AF91700AE4DED /* PlayerHistoryGraphView.swift */; };
 		B53DC3572A6AF91700AE4DED /* PlayerHistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DC3552A6AF91700AE4DED /* PlayerHistoryGraphView.swift */; };
+		B53DC35B2A6B1BBB00AE4DED /* PlayerHistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DC3552A6AF91700AE4DED /* PlayerHistoryGraphView.swift */; };
 		B55DBCAC2A54605100009957 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D50242A43628500207428 /* Monitor.swift */; };
 		B57C4AD12A5469A80050E1F6 /* MonitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */; };
 		B57C4AD22A5469C00050E1F6 /* MonitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */; };
@@ -542,6 +543,7 @@
 				B59747592A41DC2800A5DA4C /* zgamemonitorsBundle.swift in Sources */,
 				B57C4AD12A5469A80050E1F6 /* MonitorListView.swift in Sources */,
 				B5A15D502A69CB3A00548331 /* HistoryGraphView.swift in Sources */,
+				B53DC35B2A6B1BBB00AE4DED /* PlayerHistoryGraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
