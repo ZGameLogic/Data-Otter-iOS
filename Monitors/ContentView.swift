@@ -20,6 +20,11 @@ struct ContentView: View {
                         MonitorListView(monitor: monitor)
                     }
                 }
+                if(!allHistoryData.isEmpty){
+                    Section("History"){
+                        AllHistoryGraphView(history: allHistoryData)
+                    }
+                }
             }.navigationTitle("Monitors")
                 .navigationDestination(for: Monitor.self, destination: { MonitorDetailView(monitors: $monitors, id: $0.id, title: true)})
                 .toolbar {
