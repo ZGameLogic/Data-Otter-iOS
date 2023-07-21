@@ -11,6 +11,8 @@ import SwiftUI
 
 struct Monitor: Codable, Comparable, Hashable, Identifiable {
     
+    static let BASE_URL = "http://54.211.139.84:8080"
+    
     static func < (lhs: Monitor, rhs: Monitor) -> Bool {
         if(lhs.type == rhs.type){
             return lhs.name < rhs.name
@@ -34,8 +36,8 @@ struct Monitor: Codable, Comparable, Hashable, Identifiable {
         self.name = try container.decode(String.self, forKey: .name)
         self.status = try container.decode(Bool.self, forKey: .status)
         self.type = try container.decode(String.self, forKey: .type)
-        let num = try container.decode(Int.self, forKey: .taken)
-        let dateNum = Double(num/1000)
+        let num = try container.decodeIfPresent(UInt64.self, forKey: .taken)
+        let dateNum = Double((num ?? 1000)/1000)
         self.taken = Date(timeIntervalSince1970: dateNum)
         self.url = try container.decode(String.self, forKey: .url)
         self.port = try container.decode(Int.self, forKey: .port)
@@ -127,7 +129,7 @@ struct Monitor: Codable, Comparable, Hashable, Identifiable {
 
 func fetch() async throws -> [Monitor] {
     print("Fetching monitors from API")
-    guard let url = URL(string: "http://54.211.139.84:8080/monitors") else { throw networkError.inavlidURL }
+    guard let url = URL(string: "\(Monitor.BASE_URL)/monitors") else { throw networkError.inavlidURL }
     
     let(data, response) = try await URLSession.shared.data(from: url)
     
@@ -146,7 +148,7 @@ func fetch() async throws -> [Monitor] {
 
 func fetch(id: Int) async throws -> [Monitor] {
     print("Fetching monitor \(id) from API")
-    guard let url = URL(string: "http://54.211.139.84:8080/monitors/\(id)") else { throw networkError.inavlidURL }
+    guard let url = URL(string: "\(Monitor.BASE_URL)/monitors/\(id)") else { throw networkError.inavlidURL }
     
     let(data, response) = try await URLSession.shared.data(from: url)
     
@@ -164,7 +166,7 @@ func fetch(id: Int) async throws -> [Monitor] {
 
 func fetchHistory() async throws -> [Monitor] {
     print("Fetching monitor history from API")
-    guard let url = URL(string: "http://54.211.139.84:8080/history") else { throw networkError.inavlidURL }
+    guard let url = URL(string: "\(Monitor.BASE_URL)/history") else { throw networkError.inavlidURL }
     
     let(data, response) = try await URLSession.shared.data(from: url)
     
@@ -183,7 +185,7 @@ func fetchHistory() async throws -> [Monitor] {
 
 func fetchHistory(id: Int) async throws -> [Monitor] {
     print("Fetching monitor \(id) history from API")
-    guard let url = URL(string: "http://54.211.139.84:8080/history/\(id)") else { throw networkError.inavlidURL }
+    guard let url = URL(string: "\(Monitor.BASE_URL)/history/\(id)") else { throw networkError.inavlidURL }
     
     let(data, response) = try await URLSession.shared.data(from: url)
     

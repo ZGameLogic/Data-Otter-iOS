@@ -100,7 +100,7 @@ struct zgamemonitorsEntryView : View {
             case .systemLarge:
                 AllHistoryGraphView(history: entry.historyData)
                     .padding()
-                    .background(.white.opacity(0.75))
+                    .background(.black.opacity(0.70))
             default:
                 Text("Some other WidgetFamily in the future.")
             }
