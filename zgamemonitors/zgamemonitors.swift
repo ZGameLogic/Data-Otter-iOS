@@ -98,7 +98,7 @@ struct zgamemonitorsEntryView : View {
                     Spacer()
                 }
             case .systemLarge:
-                AllHistoryGraphView(history: entry.historyData)
+                HistoryGraphView(history: entry.historyData)
                     .padding()
                     .background(.black.opacity(0.70))
             default:

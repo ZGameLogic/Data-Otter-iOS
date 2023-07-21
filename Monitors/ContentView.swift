@@ -8,72 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var monitors: [Monitor] = []
-    @State var allHistoryData: [Monitor] = []
-    @State var showAddMonitor = false
+    @AppStorage("Ip") var ip: String = ""
+    @State var selected = 1
     
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(monitors.sorted()){monitor in
-                    NavigationLink(value: monitor) {
-                        MonitorListView(monitor: monitor)
-                    }
-                }
-                if(!allHistoryData.isEmpty){
-                    Section("History"){
-                        AllHistoryGraphView(history: allHistoryData)
-                    }
-                }
-            }.navigationTitle("Monitors")
-                .navigationDestination(for: Monitor.self, destination: { MonitorDetailView(monitors: $monitors, id: $0.id, title: true)})
-                .toolbar {
-                    ToolbarItem {
-                        Button(action: {
-                            showAddMonitor = true
-                        }) {
-                            Label("Add Item", systemImage: "plus")
-                        }
-                    }
-            }
-            .refreshable {
-                await refresh()
-            }
-        }
-        .sheet(isPresented: $showAddMonitor, content: {
-            AddMonitorView(showing: $showAddMonitor)
-        })
-        .onChange(of: showAddMonitor, perform: {newValue in
-            if(!newValue){
-                Task {
-                    await refresh()
-                }
-            }
-        })
-        .padding()
-        .task {
-            await refresh()
-        }
-    }
-    
-    func refresh() async {
-        do {
-            monitors = try await fetch()
-            allHistoryData = try await fetchHistory()
-        } catch networkError.inavlidURL {
-            print("u")
-        } catch networkError.invalidData {
-            print("d")
-        } catch networkError.inavlidResponse {
-            print("r")
-        } catch {
-            print("huh")
-        }
+        MonitorsGeneralView()
+//        TabView(selection: $selected) {
+//            MonitorsGeneralView().tabItem({
+//                Label("Monitors", systemImage: "externaldrive")
+//            }).tag(1)
+//            SettingsView().tabItem(){
+//                Label("Settings", systemImage: "gear")
+//            }.tag(2)
+//        }.onAppear(){
+//            if(ip.isEmpty){
+//                selected = 2
+//            }
+//        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(monitors: Monitor.previewArray())
+        ContentView()
     }
 }

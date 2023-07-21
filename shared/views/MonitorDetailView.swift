@@ -33,7 +33,7 @@ struct MonitorDetailView: View {
                 }
                 if(!history.isEmpty){
                     Section("History"){
-                        AllHistoryGraphView(history: history)
+                        HistoryGraphView(history: history)
                             .padding()
                     }
                 }
@@ -79,6 +79,11 @@ struct MonitorDetailView: View {
                 Text("Max players: \(monitors.first(where: {$0.id == self.id})!.max!)")
                 Text("MOTD: \(monitors.first(where: {$0.id == self.id})!.motd!)")
                 Text("version \(monitors.first(where: {$0.id == self.id})!.version!)")
+            }
+            if(!history.isEmpty){
+                Section("Player count"){
+                    PlayerHistoryGraphView(history: history)
+                }
             }
         }
     }

@@ -28,6 +28,8 @@
 		B50DCDCF2A54E5510051B857 /* GuageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196F62A43F2E30089518A /* GuageView.swift */; };
 		B512CBF52A4B6EEB003BBD17 /* AddMonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B512CBF42A4B6EEB003BBD17 /* AddMonitorView.swift */; };
 		B53DA5602A4E0A5B006C7D53 /* MonitorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA55F2A4E0A5B006C7D53 /* MonitorDetailView.swift */; };
+		B53DC3562A6AF91700AE4DED /* PlayerHistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DC3552A6AF91700AE4DED /* PlayerHistoryGraphView.swift */; };
+		B53DC3572A6AF91700AE4DED /* PlayerHistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DC3552A6AF91700AE4DED /* PlayerHistoryGraphView.swift */; };
 		B55DBCAC2A54605100009957 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D50242A43628500207428 /* Monitor.swift */; };
 		B57C4AD12A5469A80050E1F6 /* MonitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */; };
 		B57C4AD22A5469C00050E1F6 /* MonitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */; };
@@ -49,6 +51,8 @@
 		B5A15D512A69E11900548331 /* HistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A15D4E2A69CB3A00548331 /* HistoryGraphView.swift */; };
 		B5E196F72A43F2E30089518A /* GuageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196F62A43F2E30089518A /* GuageView.swift */; };
 		B5E196F92A4484550089518A /* MonitorStatusEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196F82A4484550089518A /* MonitorStatusEntry.swift */; };
+		B5EEA4552A6AD368009D606B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EEA4542A6AD368009D606B /* SettingsView.swift */; };
+		B5EEA4592A6ADBEB009D606B /* MonitorsGeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EEA4582A6ADBEB009D606B /* MonitorsGeneralView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +130,7 @@
 		B512CBF62A4C75E2003BBD17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B53DA55F2A4E0A5B006C7D53 /* MonitorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorDetailView.swift; sourceTree = "<group>"; };
 		B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorListView.swift; sourceTree = "<group>"; };
+		B53DC3552A6AF91700AE4DED /* PlayerHistoryGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerHistoryGraphView.swift; sourceTree = "<group>"; };
 		B597473C2A41DBF600A5DA4C /* Monitors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monitors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B597473F2A41DBF600A5DA4C /* MonitorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorsApp.swift; sourceTree = "<group>"; };
 		B59747412A41DBF600A5DA4C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -143,6 +148,8 @@
 		B5A15D4E2A69CB3A00548331 /* HistoryGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryGraphView.swift; sourceTree = "<group>"; };
 		B5E196F62A43F2E30089518A /* GuageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuageView.swift; sourceTree = "<group>"; };
 		B5E196F82A4484550089518A /* MonitorStatusEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorStatusEntry.swift; sourceTree = "<group>"; };
+		B5EEA4542A6AD368009D606B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B5EEA4582A6ADBEB009D606B /* MonitorsGeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorsGeneralView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +222,8 @@
 			isa = PBXGroup;
 			children = (
 				B512CBF42A4B6EEB003BBD17 /* AddMonitorView.swift */,
+				B5EEA4542A6AD368009D606B /* SettingsView.swift */,
+				B5EEA4582A6ADBEB009D606B /* MonitorsGeneralView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -301,6 +310,7 @@
 				B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */,
 				B5E196F62A43F2E30089518A /* GuageView.swift */,
 				B5A15D4E2A69CB3A00548331 /* HistoryGraphView.swift */,
+				B53DC3552A6AF91700AE4DED /* PlayerHistoryGraphView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -481,6 +491,7 @@
 				B50DCDB52A54E47C0051B857 /* MonitorListView.swift in Sources */,
 				B50DCDC52A54E50F0051B857 /* Data_Otter_Watch_Widget.intentdefinition in Sources */,
 				B50DCDB42A54E4770051B857 /* MonitorDetailView.swift in Sources */,
+				B53DC3572A6AF91700AE4DED /* PlayerHistoryGraphView.swift in Sources */,
 				B50DCDA22A54E4230051B857 /* ContentView.swift in Sources */,
 				B50DCDB32A54E46D0051B857 /* Monitor.swift in Sources */,
 				B5A15D512A69E11900548331 /* HistoryGraphView.swift in Sources */,
@@ -505,9 +516,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B53DC3562A6AF91700AE4DED /* PlayerHistoryGraphView.swift in Sources */,
 				B53DA5602A4E0A5B006C7D53 /* MonitorDetailView.swift in Sources */,
 				B59747422A41DBF600A5DA4C /* ContentView.swift in Sources */,
 				B55DBCAC2A54605100009957 /* Monitor.swift in Sources */,
+				B5EEA4552A6AD368009D606B /* SettingsView.swift in Sources */,
+				B5EEA4592A6ADBEB009D606B /* MonitorsGeneralView.swift in Sources */,
 				B512CBF52A4B6EEB003BBD17 /* AddMonitorView.swift in Sources */,
 				B5A15D4F2A69CB3A00548331 /* HistoryGraphView.swift in Sources */,
 				B57C4AD22A5469C00050E1F6 /* MonitorListView.swift in Sources */,

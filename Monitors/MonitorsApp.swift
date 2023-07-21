@@ -13,5 +13,6 @@ struct MonitorsApp: App {
         WindowGroup {
             ContentView()
         }
+        
     }
 }

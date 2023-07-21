@@ -1,21 +1,22 @@
 //
-//  AllHistoryGraphView.swift
+//  PlayerHistoryGraphView.swift
 //  Monitors
 //
-//  Created by Benjamin Shabowski on 7/20/23.
+//  Created by Benjamin Shabowski on 7/21/23.
 //
 
 import SwiftUI
 import Charts
 
-struct HistoryGraphView: View {
+struct PlayerHistoryGraphView: View {
+    
     let history: [Monitor]
     
     var body: some View {
         Chart(history) {
             LineMark(
                 x: .value("Time", $0.taken),
-                y: .value("Name", $0.status ? "Online" : "Offline")
+                y: .value("Online", $0.online ?? 0)
             )
             .foregroundStyle(by: .value("Name", $0.name))
         }
@@ -31,11 +32,14 @@ struct HistoryGraphView: View {
                 ]
             )
         }
+        .chartYAxis {
+            AxisMarks(values: [0, 5, 10, 15])
+        }
     }
 }
 
-struct AllHistoryGraphView_Previews: PreviewProvider {
+struct PlayerHistoryGraphView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryGraphView(history: Monitor.previewHistoryData())
+        PlayerHistoryGraphView(history: Monitor.previewHistoryData())
     }
 }
