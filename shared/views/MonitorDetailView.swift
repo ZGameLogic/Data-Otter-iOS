@@ -34,7 +34,6 @@ struct MonitorDetailView: View {
                 if(!history.isEmpty){
                     Section("History"){
                         HistoryGraphView(history: history)
-                            .padding()
                     }
                 }
             }.refreshable {
