@@ -74,10 +74,10 @@ struct MonitorDetailView: View {
             Section("General information"){
                 Text("Address: \(monitors.first(where: {$0.id == self.id})!.url)")
                 Text("Port: \(String(monitors.first(where: {$0.id == self.id})!.port))")
-                Text("Currently online: \(monitors.first(where: {$0.id == self.id})!.online!)")
-                Text("Max players: \(monitors.first(where: {$0.id == self.id})!.max!)")
-                Text("MOTD: \(monitors.first(where: {$0.id == self.id})!.motd!)")
-                Text("version \(monitors.first(where: {$0.id == self.id})!.version!)")
+                Text("Currently online: \(monitors.first(where: {$0.id == self.id})!.online ?? 0)")
+                Text("Max players: \(monitors.first(where: {$0.id == self.id})!.max ?? 0)")
+                Text("MOTD: \(monitors.first(where: {$0.id == self.id})!.motd ?? "")")
+                Text("Version: \(monitors.first(where: {$0.id == self.id})!.version ?? "")")
             }
             if(!history.isEmpty){
                 Section("Player count"){
