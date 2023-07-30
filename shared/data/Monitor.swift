@@ -11,8 +11,8 @@ import SwiftUI
 
 struct Monitor: Codable, Comparable, Hashable, Identifiable {
     
-    // static let BASE_URL = "http://54.211.139.84:8080"
-    static let BASE_URL = "http://localhost:8080"
+    static let BASE_URL = "http://54.211.139.84:8080"
+    // static let BASE_URL = "http://localhost:8080"
     
     enum DecodingKeys: String, CodingKey {
         case name, status, type, url, port, regex, healthCheckUrl, id
