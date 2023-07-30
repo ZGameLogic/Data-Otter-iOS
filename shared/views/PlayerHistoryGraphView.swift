@@ -10,11 +10,11 @@ import Charts
 
 struct PlayerHistoryGraphView: View {
     
-    let history: [Monitor]
+    let history: [GraphEntry]
     
     var body: some View {
         VStack{
-            Chart(history) {
+            Chart(history.sorted(by: <)) {
                 LineMark(
                     x: .value("Time", $0.taken),
                     y: .value("Online", $0.online ?? 0)
@@ -44,6 +44,6 @@ struct PlayerHistoryGraphView: View {
 
 struct PlayerHistoryGraphView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerHistoryGraphView(history: Monitor.previewHistoryData())
+        PlayerHistoryGraphView(history: Monitor.convertToGraph(monitors: Monitor.previewHistoryData()))
     }
 }

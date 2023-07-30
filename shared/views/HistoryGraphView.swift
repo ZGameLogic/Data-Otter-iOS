@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 struct HistoryGraphView: View {
-    let history: [Monitor]
+    let history: [GraphEntry]
     
     var body: some View {
         VStack {
@@ -43,6 +43,6 @@ struct HistoryGraphView: View {
 
 struct AllHistoryGraphView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryGraphView(history: Monitor.previewHistoryData())
+        HistoryGraphView(history: Monitor.convertToGraph(monitors: Monitor.previewHistoryData()))
     }
 }

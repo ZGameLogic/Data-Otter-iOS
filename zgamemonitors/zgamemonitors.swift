@@ -12,11 +12,11 @@ import Charts
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> MonitorStatusEntry {
-        MonitorStatusEntry(date: Date(), monitors: Monitor.previewArray(), historyData: Monitor.previewHistoryData())
+        MonitorStatusEntry(date: Date(), monitors: Monitor.previewArray())
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (MonitorStatusEntry) -> ()) {
-        let entry = MonitorStatusEntry(date: Date(), monitors: Monitor.previewArray(), historyData: Monitor.previewHistoryData())
+        let entry = MonitorStatusEntry(date: Date(), monitors: Monitor.previewArray())
         completion(entry)
     }
 
@@ -27,7 +27,7 @@ struct Provider: IntentTimelineProvider {
         Task{
             do {
                 var entries: [MonitorStatusEntry] = []
-                let entry = try await MonitorStatusEntry(date: newDate, monitors: fetch(), historyData: fetchHistory(), minecraftOnly: (configuration.minecraft ?? false) as! Bool)
+                let entry = try await MonitorStatusEntry(date: newDate, monitors: fetchHistory(), minecraftOnly: (configuration.minecraft ?? false) as! Bool)
                 entries.append(entry)
                 let timeline = Timeline(entries: entries, policy: .atEnd)
                 completion(timeline)
@@ -100,9 +100,9 @@ struct zgamemonitorsEntryView : View {
             case .systemLarge:
                 Group {
                     if(!entry.minecraftOnly){
-                        HistoryGraphView(history: entry.historyData)
+                        HistoryGraphView(history: Monitor.convertToGraph(monitors: entry.monitors).sorted(by: < ))
                     } else {
-                        PlayerHistoryGraphView(history: entry.historyData.filter{$0.type == "minecraft"})
+                        PlayerHistoryGraphView(history: Monitor.convertToGraph(monitors: entry.monitors.filter{$0.type == "minecraft"}))
                     }
                 }
                     .padding()
@@ -130,7 +130,7 @@ struct zgamemonitors: Widget {
 
 struct zgamemonitors_Previews: PreviewProvider {
     static var previews: some View {
-        zgamemonitorsEntryView(entry: MonitorStatusEntry(date: Date(), monitors: Monitor.previewArrayAllGood(), historyData: Monitor.previewHistoryData()))
+        zgamemonitorsEntryView(entry: MonitorStatusEntry(date: Date(), monitors: Monitor.previewArrayAllGood()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

@@ -40,6 +40,6 @@ struct GuageView: View {
 
 struct GuageView_Previews: PreviewProvider {
     static var previews: some View {
-        GuageView(entry: MonitorStatusEntry(date: Date(), monitors: Monitor.previewArrayAllGood(), historyData: [])).previewContext(WidgetPreviewContext(family: .accessoryCircular))
+        GuageView(entry: MonitorStatusEntry(date: Date(), monitors: Monitor.previewArrayAllGood())).previewContext(WidgetPreviewContext(family: .accessoryCircular))
     }
 }

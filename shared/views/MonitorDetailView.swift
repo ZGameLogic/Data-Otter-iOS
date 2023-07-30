@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MonitorDetailView: View {
+    
     @Binding var monitors: [Monitor]
-    @State var history: [Monitor] = []
     
     let id: Int
     let title: Bool
@@ -17,23 +17,23 @@ struct MonitorDetailView: View {
     var body: some View {
         VStack{
             if(title){
-                Text(monitors.first(where: {$0.id == self.id})!.name).font(.title)
-                Text(monitors.first(where: {$0.id == self.id})!.status ? "Online" : "Offline").foregroundColor(monitors.first(where: {$0.id == self.id})!.status ? .green : .red)
+                Text(monitor().name).font(.title)
+                Text(monitor().status[0].status ? "Online" : "Offline").foregroundColor(monitor().status[0].status ? .green : .red)
             }
             Form {
                 if(!title){
                     Section("Monitor"){
-                        Text(monitors.first(where: {$0.id == self.id})!.name).foregroundColor(monitors.first(where: {$0.id == self.id})!.status ? .green : .red)
+                        Text(monitor().name).foregroundColor(monitor().status[0].status ? .green : .red)
                     }
                 }
-                if(monitors.first(where: {$0.id == self.id})!.type == "minecraft"){
+                if(monitor().type == "minecraft"){
                     minecraftView()
                 } else {
                     webView()
                 }
-                if(!history.isEmpty){
+                if(!monitor().status.isEmpty){
                     Section("History"){
-                        HistoryGraphView(history: history)
+                        HistoryGraphView(history: monitor().convertForGraph())
                     }
                 }
             }.refreshable {
@@ -48,9 +48,8 @@ struct MonitorDetailView: View {
     
     func refresh() async {
         do {
-            let index = monitors.firstIndex(of: {monitors.first(where: {$0.id == self.id})!}())!
-            monitors[index] = try await fetch(id: id)[0]
-            history = try await fetchHistory(id: id)
+            let index = monitors.firstIndex(of: {monitor()}())!
+            monitors[index] = try await fetchHistory(id: id)[0]
         } catch networkError.inavlidURL {
             print("u")
         } catch networkError.invalidData {
@@ -64,25 +63,23 @@ struct MonitorDetailView: View {
     
     func minecraftView() -> some View {
         Group {
-            if(monitors.first(where: {$0.id == self.id})!.online! > 0){
+            if(monitor().playersOnline()! > 0){
                 Section("Players online"){
-                    ForEach(monitors.first(where: {$0.id == self.id})!.onlinePlayers!.sorted(by: <), id: \.self){player in
+                    ForEach(monitor().onlinePlayers()!.sorted(by: <), id: \.self){player in
                         Text(player)
                     }
                 }
             }
             Section("General information"){
-                Text("Address: \(monitors.first(where: {$0.id == self.id})!.url)")
-                Text("Port: \(String(monitors.first(where: {$0.id == self.id})!.port))")
-                Text("Currently online: \(monitors.first(where: {$0.id == self.id})!.online ?? 0)")
-                Text("Max players: \(monitors.first(where: {$0.id == self.id})!.max ?? 0)")
-                Text("MOTD: \(monitors.first(where: {$0.id == self.id})!.motd ?? "")")
-                Text("Version: \(monitors.first(where: {$0.id == self.id})!.version ?? "")")
+                Text("Address: \(monitor().url)")
+                Text("Port: \(String(monitor().port))")
+                Text("Currently online: \(monitor().status[0].online ?? 0)")
+                Text("Max players: \(monitor().status[0].max ?? 0)")
+                Text("MOTD: \(monitor().status[0].motd ?? "")")
+                Text("Version: \(monitor().status[0].version ?? "")")
             }
-            if(!history.isEmpty){
-                Section("Player count"){
-                    PlayerHistoryGraphView(history: history)
-                }
+            Section("Player count"){
+                PlayerHistoryGraphView(history: monitor().convertForGraph())
             }
         }
     }
@@ -90,11 +87,15 @@ struct MonitorDetailView: View {
     func webView() -> some View {
         Group {
             Section("General Information"){
-                Text("URL: \(monitors.first(where: {$0.id == self.id})!.url)")
-                Text("Port: \(String(monitors.first(where: {$0.id == self.id})!.port))")
-                Text("\(monitors.first(where: {$0.id == self.id})!.type == "api" ? "Health check URL: \(monitors.first(where: {$0.id == self.id})!.healthCheckUrl!)" : "Regex: \(monitors.first(where: {$0.id == self.id})!.regex!)")")
+                Text("URL: \(monitor().url)")
+                Text("Port: \(String(monitor().port))")
+                Text("\(monitor().type == "api" ? "Health check URL: \(monitor().healthCheckUrl!)" : "Regex: \(monitor().regex!)")")
             }
         }
+    }
+    
+    func monitor() -> Monitor {
+        monitors.first(where: {$0.id == self.id})!
     }
 }
 

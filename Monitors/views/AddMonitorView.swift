@@ -64,12 +64,12 @@ struct AddMonitorView: View {
     
     func getMonitorFromUI() -> Monitor? {
         switch(monitorType){
-        case "minecraft":
-            return Monitor(name: monitorName, status: false, type: monitorType, taken: Date(), url: self.url, port: Int(port)!, id: 0)
-        case "api":
-            return Monitor(name: monitorName, status: false, type: monitorType, taken: Date(), url: self.url, port: Int(port)!, id: 0, healthCheckUrl: healthCheck)
-        case "web":
-            return Monitor(name: monitorName, status: false, type: monitorType, taken: Date(), url: self.url, port: Int(port)!, id: 0, regex: healthCheck)
+//        case "minecraft":
+//            return Monitor(name: monitorName, status: false, type: monitorType, taken: Date(), url: self.url, port: Int(port)!, id: 0)
+//        case "api":
+//            return Monitor(name: monitorName, status: false, type: monitorType, taken: Date(), url: self.url, port: Int(port)!, id: 0, healthCheckUrl: healthCheck)
+//        case "web":
+//            return Monitor(name: monitorName, status: false, type: monitorType, taken: Date(), url: self.url, port: Int(port)!, id: 0, regex: healthCheck)
         default:
             return nil
         }
@@ -120,7 +120,7 @@ struct AddMonitorView: View {
         do {
             let (data, _) = try await URLSession.shared.upload(for: request, from: encoded)
             let monitor = try JSONDecoder().decode(Monitor.self, from: data)
-            if(monitor.status) {
+            if(monitor.status[0].status) {
                 tested = true
                 succcess = true
             }

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MonitorsGeneralView: View {
     @State var monitors: [Monitor] = []
-    @State var allHistoryData: [Monitor] = []
     @State var showAddMonitor = false
     
     var body: some View {
@@ -20,16 +19,15 @@ struct MonitorsGeneralView: View {
                         MonitorListView(monitor: monitor)
                     }
                 }
-                if(!allHistoryData.isEmpty){
-                    if(allHistoryData.contains{$0.online ?? 0 > 0}){
-                        Section("Players online"){
-                            PlayerHistoryGraphView(history: allHistoryData.filter{$0.type == "minecraft"})
-                        }
-                    }
-                    Section("History"){
-                        HistoryGraphView(history: allHistoryData)
+                if(monitors.contains{$0.status.contains{$0.online ?? 0 > 0}}){
+                    Section("Players online"){
+                        PlayerHistoryGraphView(history: Monitor.convertToGraph(monitors: monitors.filter{$0.type == "minecraft"}))
                     }
                 }
+                Section("History"){
+                    HistoryGraphView(history: Monitor.convertToGraph(monitors: monitors))
+                }
+                
             }.navigationTitle("Monitors")
                 .navigationDestination(for: Monitor.self, destination: { MonitorDetailView(monitors: $monitors, id: $0.id, title: true)})
                 .toolbar {
@@ -63,8 +61,7 @@ struct MonitorsGeneralView: View {
     
     func refresh() async {
         do {
-            monitors = try await fetch()
-            allHistoryData = try await fetchHistory()
+            monitors = try await fetchHistory()
         } catch networkError.inavlidURL {
             print("u")
         } catch networkError.invalidData {
