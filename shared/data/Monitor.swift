@@ -201,6 +201,45 @@ func fetch(id: Int) async throws -> [Monitor] {
     }
 }
 
+func fetchExtendedHistory() async throws -> [Monitor] {
+    print("Fetching extended monitor history from API")
+    guard let url = URL(string: "\(Monitor.BASE_URL)/monitors?history=true&extended=true") else { throw networkError.inavlidURL }
+    
+    let(data, response) = try await URLSession.shared.data(from: url)
+    
+    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+        throw networkError.inavlidResponse
+    }
+    
+    do {
+        let decoder = JSONDecoder()
+        let data = try decoder.decode([Monitor].self, from: data)
+        return data
+    } catch {
+        print(error)
+        throw networkError.invalidData
+    }
+}
+
+func fetchExtendedHistory(id: Int) async throws -> [Monitor] {
+    print("Fetching extended monitor \(id) history from API")
+    guard let url = URL(string: "\(Monitor.BASE_URL)/monitors?id=\(id)&history=true&extended=true") else { throw networkError.inavlidURL }
+    
+    let(data, response) = try await URLSession.shared.data(from: url)
+    
+    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+        throw networkError.inavlidResponse
+    }
+    
+    do {
+        let decoder = JSONDecoder()
+        return try decoder.decode([Monitor].self, from: data)
+    } catch {
+        throw networkError.invalidData
+    }
+}
+
+
 func fetchHistory() async throws -> [Monitor] {
     print("Fetching monitor history from API")
     guard let url = URL(string: "\(Monitor.BASE_URL)/monitors?history=true") else { throw networkError.inavlidURL }

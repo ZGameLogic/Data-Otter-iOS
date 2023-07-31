@@ -10,6 +10,7 @@ import Charts
 
 struct HistoryGraphView: View {
     let history: [GraphEntry]
+    let extended: Bool
     
     var body: some View {
         VStack {
@@ -23,7 +24,13 @@ struct HistoryGraphView: View {
             .chartXAxis {
                 AxisMarks(
                     format: Date.FormatStyle().hour().minute(),
-                    values: [
+                    values: extended ? [
+                        Calendar.current.date(byAdding: .hour, value: -12, to: Date())!,
+                        Calendar.current.date(byAdding: .hour, value: -9, to: Date())!,
+                        Calendar.current.date(byAdding: .hour, value: -6, to: Date())!,
+                        Calendar.current.date(byAdding: .hour, value: -3, to: Date())!,
+                        Date()
+                    ] : [
                         Calendar.current.date(byAdding: .hour, value: -8, to: Date())!,
                         Calendar.current.date(byAdding: .hour, value: -6, to: Date())!,
                         Calendar.current.date(byAdding: .hour, value: -4, to: Date())!,
@@ -43,6 +50,6 @@ struct HistoryGraphView: View {
 
 struct AllHistoryGraphView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryGraphView(history: Monitor.convertToGraph(monitors: Monitor.previewHistoryData()))
+        HistoryGraphView(history: Monitor.convertToGraph(monitors: Monitor.previewHistoryData()), extended: true)
     }
 }

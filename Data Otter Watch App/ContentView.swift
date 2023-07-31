@@ -36,7 +36,7 @@ struct ContentView: View {
     
     func refresh() async {
         do {
-            monitors = try await fetch()
+            monitors = try await fetchExtendedHistory()
             refreshing = false
         } catch networkError.inavlidURL {
             print("u")

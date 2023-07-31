@@ -21,13 +21,16 @@ struct Provider: IntentTimelineProvider {
     }
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let newDate = Calendar.current.date(byAdding: .minute, value: 1, to: Date())!
         Task{
             do {
                 var entries: [MonitorStatusEntry] = []
-                let entry = try await MonitorStatusEntry(date: newDate, monitors: fetchHistory(), minecraftOnly: (configuration.minecraft ?? false) as! Bool)
+                let entry = try await MonitorStatusEntry(
+                    date: newDate,
+                    monitors: context.family == .systemLarge ? fetchExtendedHistory() : fetchHistory(),
+                    minecraftOnly: (configuration.minecraft ?? false) as! Bool
+                )
                 entries.append(entry)
                 let timeline = Timeline(entries: entries, policy: .atEnd)
                 completion(timeline)
@@ -100,9 +103,9 @@ struct zgamemonitorsEntryView : View {
             case .systemLarge:
                 Group {
                     if(!entry.minecraftOnly){
-                        HistoryGraphView(history: Monitor.convertToGraph(monitors: entry.monitors).sorted(by: < ))
+                        HistoryGraphView(history: Monitor.convertToGraph(monitors: entry.monitors).sorted(by: < ), extended: false)
                     } else {
-                        PlayerHistoryGraphView(history: Monitor.convertToGraph(monitors: entry.monitors.filter{$0.type == "minecraft"}))
+                        PlayerHistoryGraphView(history: Monitor.convertToGraph(monitors: entry.monitors.filter{$0.type == "minecraft"}), extended: false)
                     }
                 }
                     .padding()

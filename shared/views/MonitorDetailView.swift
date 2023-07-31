@@ -33,7 +33,7 @@ struct MonitorDetailView: View {
                 }
                 if(!monitor().status.isEmpty){
                     Section("History"){
-                        HistoryGraphView(history: monitor().convertForGraph())
+                        HistoryGraphView(history: monitor().convertForGraph(), extended: true)
                     }
                 }
             }.refreshable {
@@ -49,7 +49,7 @@ struct MonitorDetailView: View {
     func refresh() async {
         do {
             let index = monitors.firstIndex(of: {monitor()}())!
-            monitors[index] = try await fetchHistory(id: id)[0]
+            monitors[index] = try await fetchExtendedHistory(id: id)[0]
         } catch networkError.inavlidURL {
             print("u")
         } catch networkError.invalidData {
@@ -79,7 +79,7 @@ struct MonitorDetailView: View {
                 Text("Version: \(monitor().status[0].version ?? "")")
             }
             Section("Player count"){
-                PlayerHistoryGraphView(history: monitor().convertForGraph())
+                PlayerHistoryGraphView(history: monitor().convertForGraph(), extended: true)
             }
         }
     }

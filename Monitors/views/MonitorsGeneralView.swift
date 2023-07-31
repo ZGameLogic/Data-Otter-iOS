@@ -21,11 +21,11 @@ struct MonitorsGeneralView: View {
                 }
                 if(monitors.contains{$0.status.contains{$0.online ?? 0 > 0}}){
                     Section("Players online"){
-                        PlayerHistoryGraphView(history: Monitor.convertToGraph(monitors: monitors.filter{$0.type == "minecraft"}))
+                        PlayerHistoryGraphView(history: Monitor.convertToGraph(monitors: monitors.filter{$0.type == "minecraft"}), extended: true)
                     }
                 }
                 Section("History"){
-                    HistoryGraphView(history: Monitor.convertToGraph(monitors: monitors))
+                    HistoryGraphView(history: Monitor.convertToGraph(monitors: monitors), extended: true)
                 }
                 
             }.navigationTitle("Monitors")
@@ -61,7 +61,7 @@ struct MonitorsGeneralView: View {
     
     func refresh() async {
         do {
-            monitors = try await fetchHistory()
+            monitors = try await fetchExtendedHistory()
         } catch networkError.inavlidURL {
             print("u")
         } catch networkError.invalidData {
