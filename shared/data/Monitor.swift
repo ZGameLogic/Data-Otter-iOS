@@ -164,9 +164,17 @@ struct Monitor: Codable, Comparable, Hashable, Identifiable {
 
 
 
-func fetch() async throws -> [Monitor] {
+func fetch(id: Int? = nil, history: Bool = false, extended: Bool = false) async throws -> [Monitor] {
     print("Fetching monitors from API")
-    guard let url = URL(string: "\(Monitor.BASE_URL)/monitors") else { throw networkError.inavlidURL }
+    
+    var parameters: [String] = []
+    if(id != nil) {parameters.append("id=\(id!)")}
+    if(history) {parameters.append("history=true")}
+    if(extended) {parameters.append("extended=true")}
+    
+    let parameterString = parameters.count > 0 ? "?\(parameters.joined(separator: "&"))" : ""
+    
+    guard let url = URL(string: "\(Monitor.BASE_URL)/monitors\(parameterString)") else { throw networkError.inavlidURL }
     
     let(data, response) = try await URLSession.shared.data(from: url)
     
@@ -179,101 +187,6 @@ func fetch() async throws -> [Monitor] {
         return try decoder.decode([Monitor].self, from: data)
     } catch {
         print(error)
-        throw networkError.invalidData
-    }
-}
-
-func fetch(id: Int) async throws -> [Monitor] {
-    print("Fetching monitor \(id) from API")
-    guard let url = URL(string: "\(Monitor.BASE_URL)/monitors?id=\(id)") else { throw networkError.inavlidURL }
-    
-    let(data, response) = try await URLSession.shared.data(from: url)
-    
-    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-        throw networkError.inavlidResponse
-    }
-    
-    do {
-        let decoder = JSONDecoder()
-        return try decoder.decode([Monitor].self, from: data)
-    } catch {
-        throw networkError.invalidData
-    }
-}
-
-func fetchExtendedHistory() async throws -> [Monitor] {
-    print("Fetching extended monitor history from API")
-    guard let url = URL(string: "\(Monitor.BASE_URL)/monitors?history=true&extended=true") else { throw networkError.inavlidURL }
-    
-    let(data, response) = try await URLSession.shared.data(from: url)
-    
-    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-        throw networkError.inavlidResponse
-    }
-    
-    do {
-        let decoder = JSONDecoder()
-        let data = try decoder.decode([Monitor].self, from: data)
-        return data
-    } catch {
-        print(error)
-        throw networkError.invalidData
-    }
-}
-
-func fetchExtendedHistory(id: Int) async throws -> [Monitor] {
-    print("Fetching extended monitor \(id) history from API")
-    guard let url = URL(string: "\(Monitor.BASE_URL)/monitors?id=\(id)&history=true&extended=true") else { throw networkError.inavlidURL }
-    
-    let(data, response) = try await URLSession.shared.data(from: url)
-    
-    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-        throw networkError.inavlidResponse
-    }
-    
-    do {
-        let decoder = JSONDecoder()
-        return try decoder.decode([Monitor].self, from: data)
-    } catch {
-        throw networkError.invalidData
-    }
-}
-
-
-func fetchHistory() async throws -> [Monitor] {
-    print("Fetching monitor history from API")
-    guard let url = URL(string: "\(Monitor.BASE_URL)/monitors?history=true") else { throw networkError.inavlidURL }
-    
-    let(data, response) = try await URLSession.shared.data(from: url)
-    
-    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-        throw networkError.inavlidResponse
-    }
-    
-    do {
-        let decoder = JSONDecoder()
-        let data = try decoder.decode([Monitor].self, from: data)
-        return data
-    } catch {
-        print(error)
-        throw networkError.invalidData
-    }
-}
-
-func fetchHistory(id: Int) async throws -> [Monitor] {
-    print("Fetching monitor \(id) history from API")
-    guard let url = URL(string: "\(Monitor.BASE_URL)/monitors?id=\(id)&history=true") else { throw networkError.inavlidURL }
-    
-    let(data, response) = try await URLSession.shared.data(from: url)
-    
-    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-        throw networkError.inavlidResponse
-    }
-    
-    do {
-        let decoder = JSONDecoder()
-        return try decoder.decode([Monitor].self, from: data)
-    } catch {
         throw networkError.invalidData
     }
 }

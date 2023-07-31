@@ -24,10 +24,11 @@ struct MonitorsGeneralView: View {
                         PlayerHistoryGraphView(history: Monitor.convertToGraph(monitors: monitors.filter{$0.type == "minecraft"}), extended: true)
                     }
                 }
-                Section("History"){
-                    HistoryGraphView(history: Monitor.convertToGraph(monitors: monitors), extended: true)
+                if(!monitors.isEmpty){
+                    Section("History"){
+                        HistoryGraphView(history: Monitor.convertToGraph(monitors: monitors), extended: true)
+                    }
                 }
-                
             }.navigationTitle("Monitors")
                 .navigationDestination(for: Monitor.self, destination: { MonitorDetailView(monitors: $monitors, id: $0.id, title: true)})
                 .toolbar {
@@ -61,7 +62,7 @@ struct MonitorsGeneralView: View {
     
     func refresh() async {
         do {
-            monitors = try await fetchExtendedHistory()
+            monitors = try await fetch(extended: true)
         } catch networkError.inavlidURL {
             print("u")
         } catch networkError.invalidData {

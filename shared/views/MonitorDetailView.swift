@@ -49,7 +49,7 @@ struct MonitorDetailView: View {
     func refresh() async {
         do {
             let index = monitors.firstIndex(of: {monitor()}())!
-            monitors[index] = try await fetchExtendedHistory(id: id)[0]
+            monitors[index] = try await fetch(id: id, extended: true)[0]
         } catch networkError.inavlidURL {
             print("u")
         } catch networkError.invalidData {
