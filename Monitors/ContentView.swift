@@ -8,23 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    @AppStorage("Ip") var ip: String = ""
-    @State var selected = 1
-    
     var body: some View {
-        MonitorsGeneralView()
-//        TabView(selection: $selected) {
-//            MonitorsGeneralView().tabItem({
-//                Label("Monitors", systemImage: "externaldrive")
-//            }).tag(1)
-//            SettingsView().tabItem(){
-//                Label("Settings", systemImage: "gear")
-//            }.tag(2)
-//        }.onAppear(){
-//            if(ip.isEmpty){
-//                selected = 2
-//            }
-//        }
+        TabView {
+            MonitorsGeneralView().tabItem({
+                Label("Monitors", systemImage: "chart.bar.doc.horizontal")
+            }).tag(1)
+            EventsListView().tabItem({
+                Label("Events", systemImage: "megaphone")
+            }).tag(1)
+        }
     }
 }
 
