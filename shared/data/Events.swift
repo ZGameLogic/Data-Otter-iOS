@@ -8,7 +8,15 @@
 import Foundation
 
 
-struct Events: Codable {
+struct Events: Codable, Comparable {
+    static func < (lhs: Events, rhs: Events) -> Bool {
+        lhs.time < rhs.time
+    }
+    
+    static func == (lhs: Events, rhs: Events) -> Bool {
+        lhs.time == rhs.time
+    }
+    
     
     enum DecodingKeys: String, CodingKey {
         case time, events

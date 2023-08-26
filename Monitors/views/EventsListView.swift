@@ -27,7 +27,7 @@ struct EventsListView: View {
                 if(events.isEmpty){
                     Text("No events found in the time frame given")
                 } else {
-                    ForEach(events, id: \.self.time){events in
+                    ForEach(events.sorted(by: >), id: \.self.time){events in
                         Section(formatDate(date: events.time)){
                             ForEach(events.events, id:\.self.monitor){monitor in
                                 Text("\(monitor.monitor) \(monitor.status ? "came up" : "went down")").foregroundColor(monitor.status ? Color.green : Color.red)
