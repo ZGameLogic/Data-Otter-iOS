@@ -36,7 +36,7 @@ struct Monitor: Codable, Comparable, Hashable, Identifiable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(Int.self, forKey: .id)
         self.name = try container.decode(String.self, forKey: .name)
-        self.status = try container.decode([Status].self, forKey: .status)
+        self.status = try container.decodeIfPresent([Status].self, forKey: .status) ?? []
         self.type = try container.decode(String.self, forKey: .type)
         self.url = try container.decode(String.self, forKey: .url)
         self.port = try container.decode(Int.self, forKey: .port)

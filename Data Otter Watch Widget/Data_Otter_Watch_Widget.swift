@@ -26,7 +26,7 @@ struct Provider: IntentTimelineProvider {
         Task{
             do {
                 var entries: [MonitorStatusEntry] = []
-                let entry = try await MonitorStatusEntry(date: newDate, monitors: fetch())
+                let entry = try await MonitorStatusEntry(date: newDate, monitors: fetch(history: true))
                 entries.append(entry)
                 let timeline = Timeline(entries: entries, policy: .atEnd)
                 completion(timeline)
