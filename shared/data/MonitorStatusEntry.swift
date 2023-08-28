@@ -32,7 +32,7 @@ struct MonitorStatusEntry: TimelineEntry {
         upMonitors = []
         onlinePlayers = 0
         for monitor in monitors {
-            if(monitor.status[0].status){ // up
+            if(monitor.status.count > 0 && monitor.status[0].status){ // up
                 upMonitors.append(monitor)
                 if(monitor.type == "minecraft"){
                     onlinePlayers += monitor.status[0].online!
