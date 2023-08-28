@@ -28,7 +28,7 @@ struct Provider: IntentTimelineProvider {
                 var entries: [MonitorStatusEntry] = []
                 let entry = try await MonitorStatusEntry(
                     date: newDate,
-                    monitors: fetch(history: true),
+                    monitors: context.family == .systemLarge ? fetch(history: true) : fetch(),
                     minecraftOnly: (configuration.minecraft ?? false) as! Bool
                 )
                 entries.append(entry)
