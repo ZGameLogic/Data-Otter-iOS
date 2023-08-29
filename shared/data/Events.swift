@@ -33,12 +33,56 @@ struct Events: Codable, Comparable {
         self.events = try container.decode([Event].self, forKey: .events)
     }
     
-    struct Event: Codable {
-        let monitor: String
-        let status: Bool
+    
+}
+
+struct Event: Codable {
+    let monitor: String
+    let status: Bool
+}
+
+struct GroupedEvent: Identifiable {
+    let id: String
+    let monitor: String
+    let status: Bool
+    let time: Date
+    
+    init(event: Event, time: Date) {
+        self.monitor = event.monitor
+        self.status = event.status
+        self.time = time
+        self.id = "id: \(monitor) \(formatDateDay(date: time)) \(status)"
+    }
+}
+
+func groupByDate(events: [Events]) -> [String: [GroupedEvent]]{
+    var grouped: [String : [GroupedEvent]] = [:]
+    
+    for eventGroup in events {
+        let date = formatDateDay(date: eventGroup.time)
+        let groupedData = convertEventToGrouped(events: eventGroup)
+        if(grouped[date] != nil){
+            grouped[date]?.append(contentsOf: convertEventToGrouped(events: eventGroup))
+        } else {
+            grouped[date] = convertEventToGrouped(events: eventGroup)
+        }
     }
     
-    
+    return grouped
+}
+
+private func convertEventToGrouped(events: Events) -> [GroupedEvent] {
+    var groupedEvents: [GroupedEvent] = []
+    for event in events.events {
+        groupedEvents.append(GroupedEvent(event: event, time: events.time))
+    }
+    return groupedEvents
+}
+
+private func formatDateDay(date: Date) -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "MM-dd-yyyy"
+    return formatter.string(from: date)
 }
 
 
