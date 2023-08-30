@@ -51,7 +51,7 @@ struct GroupedEvent: Identifiable {
         self.monitor = event.monitor
         self.status = event.status
         self.time = time
-        self.id = "id: \(monitor) \(formatDateDay(date: time)) \(status)"
+        self.id = "id: \(monitor) \(formatDateId(date: time)) \(status)"
     }
 }
 
@@ -77,6 +77,12 @@ private func convertEventToGrouped(events: Events) -> [GroupedEvent] {
         groupedEvents.append(GroupedEvent(event: event, time: events.time))
     }
     return groupedEvents
+}
+
+private func formatDateId(date: Date) -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "MM-dd-yyyy hh:mm a"
+    return formatter.string(from: date)
 }
 
 private func formatDateDay(date: Date) -> String {

@@ -28,7 +28,7 @@ struct Provider: IntentTimelineProvider {
                 var entries: [MonitorStatusEntry] = []
                 let entry = try await MonitorStatusEntry(
                     date: newDate,
-                    monitors: context.family == .systemLarge ? fetch(history: true) : fetch(),
+                    monitors: context.family == .systemLarge ? fetch(history: true, extended: true) : fetch(),
                     minecraftOnly: (configuration.minecraft ?? false) as! Bool
                 )
                 entries.append(entry)
@@ -103,9 +103,9 @@ struct zgamemonitorsEntryView : View {
             case .systemLarge:
                 Group {
                     if(!entry.minecraftOnly){
-                        HistoryGraphView(history: Monitor.convertToGraph(monitors: entry.monitors).sorted(by: < ), extended: false)
+                        HistoryGraphView(history: Monitor.convertToGraph(monitors: entry.monitors).sorted(by: < ), extended: true)
                     } else {
-                        PlayerHistoryGraphView(history: Monitor.convertToGraph(monitors: entry.monitors.filter{$0.type == "minecraft"}), extended: false)
+                        PlayerHistoryGraphView(history: Monitor.convertToGraph(monitors: entry.monitors.filter{$0.type == "minecraft"}), extended: true)
                     }
                 }
                     .padding()
