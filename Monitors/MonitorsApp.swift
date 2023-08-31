@@ -22,7 +22,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
-        let userInfo = response.notification.request.content.userInfo
+        _ = response.notification.request.content.userInfo
 //        guard let specialName = userInfo["special"] as? String,
 //              let specialPriceString = userInfo["price"] as? String,
 //              let specialPrice = Float(specialPriceString) else {

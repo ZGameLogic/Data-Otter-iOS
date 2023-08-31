@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EventsListView: View {
-    @State var events: [Events] = []
+    @State var events: [Event] = []
     @State var searched = ""
     
     @State var startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
@@ -29,25 +29,33 @@ struct EventsListView: View {
                 if(events.isEmpty){
                     Text("No events found in the time frame given")
                 } else {
-                    ForEach(groupByDate(events: events).sorted(by: {
-                        $0.key > $1.key
-                    }), id: \.key) { key, events in
-                        if(events.contains(where: {
-                            searched.isEmpty || $0.monitor.lowercased().contains(searched.lowercased())
-                        })){
-                            Section(key){
-                                ForEach(events.sorted(by: {
-                                    $0.time > $1.time
-                                })) {event in
+                    ForEach(getDayDates(events: events), id: \.self) { day in
+                        if(!events.filter{
+                            let trimmedDate = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: $0.startTime))!
+                            return trimmedDate == day && ($0.monitor.lowercased().contains(searched.lowercased()) || searched.isEmpty)
+                        }.isEmpty){
+                            Section(formatDate(date: day)) {
+                                ForEach(events.filter{
+                                    let trimmedDate = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: $0.startTime))!
+                                    return trimmedDate == day
+                                }) { event in
                                     if(searched.isEmpty || event.monitor.lowercased().contains(searched.lowercased())){
-                                        VStack {
-                                            HStack{
-                                                Text("\(event.monitor) \(event.status ? "came up" : "went down")").foregroundColor(event.status ? Color.green : Color.red)
-                                                Spacer()
-                                            }
+                                        NavigationLink {
+                                        EventDetailView(event: event)
+                                        } label: {
                                             HStack {
-                                                Text("\(formatDate(date:event.time))").font(.caption2)
+                                                VStack{
+                                                    HStack {
+                                                        Text(event.monitor)
+                                                        Spacer()
+                                                    }
+                                                    HStack {
+                                                        Text("\(formatTime(date: event.startTime)) - \(formatTime(date: event.endTime))").font(.caption2)
+                                                        Spacer()
+                                                    }
+                                                }
                                                 Spacer()
+                                                Text(event.currentStatus ? "Online" : "Offline").foregroundColor(event.currentStatus ? Color.green : Color.red)
                                             }
                                         }
                                     }
@@ -69,9 +77,15 @@ struct EventsListView: View {
         .onChange(of: endDate, perform: {_ in Task {await refresh()}})
     }
     
+    func formatTime(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        return formatter.string(from: date)
+    }
+    
     func formatDate(date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "hh:mm a"
+        formatter.dateFormat = "MM/dd"
         return formatter.string(from: date)
     }
     
