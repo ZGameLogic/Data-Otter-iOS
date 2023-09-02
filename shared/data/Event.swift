@@ -35,7 +35,13 @@ struct Event: Codable, Comparable, Identifiable {
     }
     
     static func < (lhs: Event, rhs: Event) -> Bool {
-        lhs.startTime < rhs.startTime
+        let lhsTrimmedDate = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: lhs.startTime))!
+        let rhsTrimmedDate = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: rhs.startTime))!
+        
+        if(lhsTrimmedDate == rhsTrimmedDate){
+            return lhs.monitor > rhs.monitor
+        }
+        return lhsTrimmedDate < rhsTrimmedDate
     }
     
     static func == (lhs: Event, rhs: Event) -> Bool {

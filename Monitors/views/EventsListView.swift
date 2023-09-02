@@ -38,7 +38,7 @@ struct EventsListView: View {
                                 ForEach(events.filter{
                                     let trimmedDate = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: $0.startTime))!
                                     return trimmedDate == day
-                                }) { event in
+                                }.sorted(by: >)) { event in
                                     if(searched.isEmpty || event.monitor.lowercased().contains(searched.lowercased())){
                                         NavigationLink {
                                             EventDetailView(event: event)
