@@ -137,7 +137,7 @@ struct Monitor: Codable, Comparable, Hashable, Identifiable {
         for _ in 0...count {
             let taken = Date()
             let status = allGood || [true, false].randomElement()!
-            let completedInMilliseconds = [123, 124, 12, 13, 45].randomElement()!
+            let completedInMilliseconds = UInt64([123, 124, 12, 13, 45].randomElement()!)
             
             var stat = Status(taken: taken, status: status, completedInMilliseconds: completedInMilliseconds)
            
@@ -194,12 +194,13 @@ func fetch(id: Int? = nil, history: Bool = false, extended: Bool = false) async 
 struct Status: Codable, Hashable {
     
     enum DecodingKeys: String, CodingKey {
-        case taken, max, online, onlinePlayers, motd, version, status, completedInMilliseconds
+        case taken, max, online, onlinePlayers, motd, version, status, completedInMilliseconds, nodes
     }
     
     let taken: Date
     let status: Bool
-    let completedInMilliseconds: Int
+    let completedInMilliseconds: UInt64
+    let nodes: [String]?
     
     // minecraft
     let max: Int?
@@ -219,10 +220,11 @@ struct Status: Codable, Hashable {
         self.motd = try container.decodeIfPresent(String.self, forKey: .motd)
         self.version = try container.decodeIfPresent(String.self, forKey: .version)
         self.status = try container.decode(Bool.self, forKey: .status)
-        self.completedInMilliseconds = try container.decode(Int.self, forKey: .completedInMilliseconds)
+        self.completedInMilliseconds = try container.decode(UInt64.self, forKey: .completedInMilliseconds)
+        self.nodes = try container.decodeIfPresent([String].self, forKey: .nodes)
     }
     
-    init(taken: Date, status: Bool, completedInMilliseconds: Int, max: Int? = nil, onlinePlayers: [String]? = nil, online: Int? = nil, motd: String? = nil, version: String? = nil) {
+    init(taken: Date, status: Bool, completedInMilliseconds: UInt64, max: Int? = nil, onlinePlayers: [String]? = nil, online: Int? = nil, motd: String? = nil, version: String? = nil, nodes: [String]? = []) {
         self.taken = taken
         self.status = status
         self.completedInMilliseconds = completedInMilliseconds
@@ -231,6 +233,7 @@ struct Status: Codable, Hashable {
         self.online = online
         self.motd = motd
         self.version = version
+        self.nodes = nodes!
     }
     
 }
@@ -245,7 +248,7 @@ struct GraphEntry: Identifiable, Comparable {
     let name: String
     let taken: Date
     let status: Bool
-    let completedInMilliseconds: Int
+    let completedInMilliseconds: UInt64
     
     // minecraft
     let max: Int?

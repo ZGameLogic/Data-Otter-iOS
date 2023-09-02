@@ -77,6 +77,7 @@ struct MonitorDetailView: View {
                 Text("Max players: \(monitor().status[0].max ?? 0)")
                 Text("MOTD: \(monitor().status[0].motd ?? "")")
                 Text("Version: \(monitor().status[0].version ?? "")")
+                Text("Nodes: \(monitor().status[0].nodes?.sorted(by: <).joined(separator: ", ") ?? "Un-reported")")
             }
             Section("Player count"){
                 PlayerHistoryGraphView(history: monitor().convertForGraph(), extended: true)
