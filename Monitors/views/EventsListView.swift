@@ -29,8 +29,10 @@ struct EventsListView: View {
                 if(events.isEmpty){
                     Text("No events found in the time frame given")
                 } else {
-                    ForEach(getDayDates(events: events).sorted(by: >), id: \.self) { day in
-                        if(!events.filter{
+                    ForEach(getDayDates(events: events).sorted(by: >).filter{
+                        return $0 >= startDate && $0 <= endDate
+                    }, id: \.self) { day in
+                        if(!events.filter {
                             let trimmedDate = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: $0.startTime))!
                             return trimmedDate == day && ($0.monitor.lowercased().contains(searched.lowercased()) || searched.isEmpty)
                         }.isEmpty){

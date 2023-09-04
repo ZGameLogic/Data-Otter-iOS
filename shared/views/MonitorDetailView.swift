@@ -91,6 +91,7 @@ struct MonitorDetailView: View {
                 Text("URL: \(monitor().url)")
                 Text("Port: \(String(monitor().port))")
                 Text("\(monitor().type == "api" ? "Health check URL: \(monitor().healthCheckUrl!)" : "Regex: \(monitor().regex!)")")
+                Text("Nodes: \(monitor().status[0].nodes?.sorted(by: <).joined(separator: ", ") ?? "Un-reported")")
             }
         }
     }
