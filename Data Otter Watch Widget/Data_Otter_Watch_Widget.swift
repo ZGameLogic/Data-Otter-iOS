@@ -53,7 +53,11 @@ struct Monitors_Watch_WidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        GuageView(entry: entry)
+            if #available(watchOSApplicationExtension 10.0, *) {
+                GuageView(entry: entry).containerBackground(.red.gradient, for: .widget)
+            } else {
+                GuageView(entry: entry)
+            }
     }
 }
 

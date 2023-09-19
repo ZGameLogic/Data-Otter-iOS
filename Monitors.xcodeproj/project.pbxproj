@@ -134,6 +134,7 @@
 		B53DA55F2A4E0A5B006C7D53 /* MonitorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorDetailView.swift; sourceTree = "<group>"; };
 		B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorListView.swift; sourceTree = "<group>"; };
 		B53DC3552A6AF91700AE4DED /* PlayerHistoryGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerHistoryGraphView.swift; sourceTree = "<group>"; };
+		B5745D5A2AB9EB5B00ADC08C /* Data-Otter-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Data-Otter-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B597473C2A41DBF600A5DA4C /* Monitors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monitors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B597473F2A41DBF600A5DA4C /* MonitorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorsApp.swift; sourceTree = "<group>"; };
 		B59747412A41DBF600A5DA4C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -197,6 +198,7 @@
 		B50DCD9E2A54E4230051B857 /* Data Otter Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				B5745D5A2AB9EB5B00ADC08C /* Data-Otter-Watch-App-Info.plist */,
 				B50DCD9F2A54E4230051B857 /* Data_OtterApp.swift */,
 				B50DCDA12A54E4230051B857 /* ContentView.swift */,
 				B50DCDA32A54E4240051B857 /* Assets.xcassets */,
@@ -590,6 +592,7 @@
 				DEVELOPMENT_TEAM = 6M38R97L4D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Data-Otter-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Data Otter";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = zgamelogic.Monitors;
@@ -621,6 +624,7 @@
 				DEVELOPMENT_TEAM = 6M38R97L4D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Data-Otter-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Data Otter";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = zgamelogic.Monitors;

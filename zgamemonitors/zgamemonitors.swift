@@ -52,67 +52,133 @@ struct zgamemonitorsEntryView : View {
     @Environment(\.widgetFamily) var family
 
     var body: some View {
-        ZStack {
-            ContainerRelativeShape().fill(Color(red:50/250.0, green:20/250.0, blue:79/250.0).gradient)
-            switch family {
-            case .accessoryCircular:
-                Group {
-                    GuageView(entry: entry)
-                }
-            case .systemSmall:
-                Group {
-                    GuageView(entry: entry).scaleEffect(2)
-                }
-            case .systemMedium:
-                HStack {
-                    GuageView(entry: entry).scaleEffect(2)
-                .padding([.leading], 65)
-                .padding([.trailing], 50)
-                    VStack {
-                        if(entry.downMonitors.count != 0){
-                            Text("Alerting").padding([.top], 5)
-                            ForEach(entry.downMonitors.sorted()){ monitor in
-                                HStack {
-                                    Text("🔴 \(monitor.name)")
-                                    Spacer()
-                                }.padding([.leading], 5)
-                            }
-                        } else {
-                            if(entry.hasOnlinePlayers()){
-                                Text("Online players").padding([.top], 5)
-                                ForEach(entry.getOnlinePlayerNames(), id:\.self){name in
-                                    Text(name)
-                                }
-                            } else {
-                                Text("All good").padding([.top], 5)
-                                ForEach(entry.upMonitors.sorted()){monitor in
+        if #available(iOSApplicationExtension 17.0, *) {
+            ZStack {
+                ContainerRelativeShape().fill(Color(red:50/250.0, green:20/250.0, blue:79/250.0).gradient)
+                switch family {
+                case .accessoryCircular:
+                    Group {
+                        GuageView(entry: entry)
+                    }
+                case .systemSmall:
+                    Group {
+                        GuageView(entry: entry).scaleEffect(2)
+                    }
+                case .systemMedium:
+                    HStack {
+                        GuageView(entry: entry).scaleEffect(2)
+                    .padding([.leading], 65)
+                    .padding([.trailing], 50)
+                        VStack {
+                            if(entry.downMonitors.count != 0){
+                                Text("Alerting").padding([.top], 5)
+                                ForEach(entry.downMonitors.sorted()){ monitor in
                                     HStack {
-                                        Text("🟢 \(monitor.name)")
+                                        Text("🔴 \(monitor.name)")
                                         Spacer()
                                     }.padding([.leading], 5)
                                 }
+                            } else {
+                                if(entry.hasOnlinePlayers()){
+                                    Text("Online players").padding([.top], 5)
+                                    ForEach(entry.getOnlinePlayerNames(), id:\.self){name in
+                                        Text(name)
+                                    }
+                                } else {
+                                    Text("All good").padding([.top], 5)
+                                    ForEach(entry.upMonitors.sorted()){monitor in
+                                        HStack {
+                                            Text("🟢 \(monitor.name)")
+                                            Spacer()
+                                        }.padding([.leading], 5)
+                                    }
+                                }
                             }
+                            Spacer()
                         }
+                            .frame(width:180)
+                            .minimumScaleFactor(0.6)
+                            .background(.white.opacity(0.25))
                         Spacer()
                     }
-                        .frame(width:180)
-                        .minimumScaleFactor(0.6)
-                        .background(.white.opacity(0.25))
-                    Spacer()
-                }
-            case .systemLarge:
-                Group {
-                    if(!entry.minecraftOnly){
-                        HistoryGraphView(history: Monitor.convertToGraph(monitors: entry.monitors).sorted(by: < ), extended: true)
-                    } else {
-                        PlayerHistoryGraphView(history: Monitor.convertToGraph(monitors: entry.monitors.filter{$0.type == "minecraft"}), extended: true)
+                case .systemLarge:
+                    Group {
+                        if(!entry.minecraftOnly){
+                            HistoryGraphView(history: Monitor.convertToGraph(monitors: entry.monitors).sorted(by: < ), extended: true)
+                        } else {
+                            PlayerHistoryGraphView(history: Monitor.convertToGraph(monitors: entry.monitors.filter{$0.type == "minecraft"}), extended: true)
+                        }
                     }
+                        .padding()
+                        .background(.black.opacity(0.70))
+                    
+                default:
+                    Text("Some other WidgetFamily in the future.")
                 }
-                    .padding()
-                    .background(.black.opacity(0.70))
-                
-            default:
-                Text("Some other WidgetFamily in the future.")
+            }.containerBackground(.red.gradient, for: .widget)
+        } else {
+            ZStack {
+                ContainerRelativeShape().fill(Color(red:50/250.0, green:20/250.0, blue:79/250.0).gradient)
+                switch family {
+                case .accessoryCircular:
+                    Group {
+                        GuageView(entry: entry)
+                    }
+                case .systemSmall:
+                    Group {
+                        GuageView(entry: entry).scaleEffect(2)
+                    }
+                case .systemMedium:
+                    HStack {
+                        GuageView(entry: entry).scaleEffect(2)
+                    .padding([.leading], 65)
+                    .padding([.trailing], 50)
+                        VStack {
+                            if(entry.downMonitors.count != 0){
+                                Text("Alerting").padding([.top], 5)
+                                ForEach(entry.downMonitors.sorted()){ monitor in
+                                    HStack {
+                                        Text("🔴 \(monitor.name)")
+                                        Spacer()
+                                    }.padding([.leading], 5)
+                                }
+                            } else {
+                                if(entry.hasOnlinePlayers()){
+                                    Text("Online players").padding([.top], 5)
+                                    ForEach(entry.getOnlinePlayerNames(), id:\.self){name in
+                                        Text(name)
+                                    }
+                                } else {
+                                    Text("All good").padding([.top], 5)
+                                    ForEach(entry.upMonitors.sorted()){monitor in
+                                        HStack {
+                                            Text("🟢 \(monitor.name)")
+                                            Spacer()
+                                        }.padding([.leading], 5)
+                                    }
+                                }
+                            }
+                            Spacer()
+                        }
+                            .frame(width:180)
+                            .minimumScaleFactor(0.6)
+                            .background(.white.opacity(0.25))
+                        Spacer()
+                    }
+                case .systemLarge:
+                    Group {
+                        if(!entry.minecraftOnly){
+                            HistoryGraphView(history: Monitor.convertToGraph(monitors: entry.monitors).sorted(by: < ), extended: true)
+                        } else {
+                            PlayerHistoryGraphView(history: Monitor.convertToGraph(monitors: entry.monitors.filter{$0.type == "minecraft"}), extended: true)
+                        }
+                    }
+                        .padding()
+                        .background(.black.opacity(0.70))
+                    
+                default:
+                    Text("Some other WidgetFamily in the future.")
+                }
             }
         }
     }
@@ -128,6 +194,7 @@ struct zgamemonitors: Widget {
         .configurationDisplayName("Data Otter")
         .description("Gets the status of the ZGameLogic monitors.")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryCircular])
+        .contentMarginsDisabled()
     }
 }
 
