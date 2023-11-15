@@ -38,7 +38,7 @@ struct HistoryGraphView: View {
                         Date()
                     ]
                 )
-            }
+            }.chartYScale(domain: ["Online", "Offline"])
             HStack {
                 Text("Updated \(Date.now.formatted(date: .omitted, time: .shortened))").font(.caption2)
                     .fontWeight(.ultraLight)
