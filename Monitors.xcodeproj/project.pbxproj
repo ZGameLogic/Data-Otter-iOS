@@ -7,244 +7,81 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B50DCDA02A54E4230051B857 /* Data_OtterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DCD9F2A54E4230051B857 /* Data_OtterApp.swift */; };
-		B50DCDA22A54E4230051B857 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DCDA12A54E4230051B857 /* ContentView.swift */; };
-		B50DCDA42A54E4240051B857 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B50DCDA32A54E4240051B857 /* Assets.xcassets */; };
-		B50DCDA72A54E4240051B857 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B50DCDA62A54E4240051B857 /* Preview Assets.xcassets */; };
-		B50DCDAA2A54E4240051B857 /* Data Otter Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B50DCD9D2A54E4230051B857 /* Data Otter Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B50DCDB32A54E46D0051B857 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D50242A43628500207428 /* Monitor.swift */; };
-		B50DCDB42A54E4770051B857 /* MonitorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA55F2A4E0A5B006C7D53 /* MonitorDetailView.swift */; };
-		B50DCDB52A54E47C0051B857 /* MonitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */; };
-		B50DCDBB2A54E50E0051B857 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59747532A41DC2800A5DA4C /* WidgetKit.framework */; };
-		B50DCDBC2A54E50E0051B857 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59747552A41DC2800A5DA4C /* SwiftUI.framework */; };
-		B50DCDBF2A54E50E0051B857 /* Data_Otter_Watch_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DCDBE2A54E50E0051B857 /* Data_Otter_Watch_Widget.swift */; };
-		B50DCDC22A54E50F0051B857 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B50DCDC12A54E50F0051B857 /* Assets.xcassets */; };
-		B50DCDC42A54E50F0051B857 /* Data_Otter_Watch_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B50DCDC02A54E50E0051B857 /* Data_Otter_Watch_Widget.intentdefinition */; };
-		B50DCDC52A54E50F0051B857 /* Data_Otter_Watch_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B50DCDC02A54E50E0051B857 /* Data_Otter_Watch_Widget.intentdefinition */; };
-		B50DCDC82A54E50F0051B857 /* Data Otter Watch WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B50DCDBA2A54E50E0051B857 /* Data Otter Watch WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B50DCDCC2A54E53C0051B857 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D50242A43628500207428 /* Monitor.swift */; };
-		B50DCDCD2A54E5420051B857 /* MonitorStatusEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196F82A4484550089518A /* MonitorStatusEntry.swift */; };
-		B50DCDCE2A54E54D0051B857 /* MonitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */; };
-		B50DCDCF2A54E5510051B857 /* GuageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196F62A43F2E30089518A /* GuageView.swift */; };
-		B512CBF52A4B6EEB003BBD17 /* AddMonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B512CBF42A4B6EEB003BBD17 /* AddMonitorView.swift */; };
-		B53DA5602A4E0A5B006C7D53 /* MonitorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA55F2A4E0A5B006C7D53 /* MonitorDetailView.swift */; };
-		B53DC3562A6AF91700AE4DED /* PlayerHistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DC3552A6AF91700AE4DED /* PlayerHistoryGraphView.swift */; };
-		B53DC3572A6AF91700AE4DED /* PlayerHistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DC3552A6AF91700AE4DED /* PlayerHistoryGraphView.swift */; };
-		B53DC35B2A6B1BBB00AE4DED /* PlayerHistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DC3552A6AF91700AE4DED /* PlayerHistoryGraphView.swift */; };
-		B55DBCAC2A54605100009957 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D50242A43628500207428 /* Monitor.swift */; };
-		B57C4AD12A5469A80050E1F6 /* MonitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */; };
-		B57C4AD22A5469C00050E1F6 /* MonitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */; };
-		B59747402A41DBF600A5DA4C /* MonitorsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597473F2A41DBF600A5DA4C /* MonitorsApp.swift */; };
-		B59747422A41DBF600A5DA4C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59747412A41DBF600A5DA4C /* ContentView.swift */; };
-		B59747442A41DBF700A5DA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59747432A41DBF700A5DA4C /* Assets.xcassets */; };
-		B59747472A41DBF700A5DA4C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59747462A41DBF700A5DA4C /* Preview Assets.xcassets */; };
-		B59747542A41DC2800A5DA4C /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59747532A41DC2800A5DA4C /* WidgetKit.framework */; };
-		B59747562A41DC2800A5DA4C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59747552A41DC2800A5DA4C /* SwiftUI.framework */; };
-		B59747592A41DC2800A5DA4C /* zgamemonitorsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59747582A41DC2800A5DA4C /* zgamemonitorsBundle.swift */; };
-		B597475D2A41DC2800A5DA4C /* zgamemonitors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597475C2A41DC2800A5DA4C /* zgamemonitors.swift */; };
-		B59747602A41DC2C00A5DA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B597475F2A41DC2C00A5DA4C /* Assets.xcassets */; };
-		B59747622A41DC2C00A5DA4C /* zgamemonitors.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B597475E2A41DC2800A5DA4C /* zgamemonitors.intentdefinition */; };
-		B59747632A41DC2C00A5DA4C /* zgamemonitors.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B597475E2A41DC2800A5DA4C /* zgamemonitors.intentdefinition */; };
-		B59747662A41DC2C00A5DA4C /* zgamemonitorsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B59747512A41DC2800A5DA4C /* zgamemonitorsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B59D50262A43628500207428 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D50242A43628500207428 /* Monitor.swift */; };
-		B5A15D4F2A69CB3A00548331 /* HistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A15D4E2A69CB3A00548331 /* HistoryGraphView.swift */; };
-		B5A15D502A69CB3A00548331 /* HistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A15D4E2A69CB3A00548331 /* HistoryGraphView.swift */; };
-		B5A15D512A69E11900548331 /* HistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A15D4E2A69CB3A00548331 /* HistoryGraphView.swift */; };
-		B5DE170F2A98DDB300431BF9 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE170E2A98DDB300431BF9 /* Event.swift */; };
-		B5DE17112A98E18100431BF9 /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE17102A98E18100431BF9 /* EventsListView.swift */; };
-		B5E196F72A43F2E30089518A /* GuageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196F62A43F2E30089518A /* GuageView.swift */; };
-		B5E196F92A4484550089518A /* MonitorStatusEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196F82A4484550089518A /* MonitorStatusEntry.swift */; };
-		B5EEA4592A6ADBEB009D606B /* MonitorsGeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EEA4582A6ADBEB009D606B /* MonitorsGeneralView.swift */; };
-		B5F481C22AA1318800F9F732 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F481C12AA1318800F9F732 /* EventDetailView.swift */; };
+		B586C9D02BF25577009A564A /* Data_OtterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9CF2BF25577009A564A /* Data_OtterApp.swift */; };
+		B586C9D22BF25577009A564A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9D12BF25577009A564A /* ContentView.swift */; };
+		B586C9D42BF25579009A564A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B586C9D32BF25579009A564A /* Assets.xcassets */; };
+		B586C9D72BF25579009A564A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B586C9D62BF25579009A564A /* Preview Assets.xcassets */; };
+		B586C9DD2BF25685009A564A /* GeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9DC2BF25685009A564A /* GeneralView.swift */; };
+		B586C9DE2BF2569A009A564A /* MonitorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9BF2BF18230009A564A /* MonitorStatus.swift */; };
+		B586C9DF2BF2569D009A564A /* MonitorsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9C42BF1948A009A564A /* MonitorsService.swift */; };
+		B586C9E12BF256EF009A564A /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E02BF256EF009A564A /* EventsListView.swift */; };
+		B586C9E32BF25ABE009A564A /* MonitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E22BF25ABE009A564A /* MonitorListView.swift */; };
+		B586C9E52BF25C2C009A564A /* MonitorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E42BF25C2C009A564A /* MonitorDetailView.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		B50DCDA82A54E4240051B857 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B59747342A41DBF600A5DA4C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B50DCD9C2A54E4230051B857;
-			remoteInfo = "Data Otter Watch App";
-		};
-		B50DCDC62A54E50F0051B857 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B59747342A41DBF600A5DA4C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B50DCDB92A54E50E0051B857;
-			remoteInfo = "Data Otter Watch WidgetExtension";
-		};
-		B59747642A41DC2C00A5DA4C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B59747342A41DBF600A5DA4C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B59747502A41DC2700A5DA4C;
-			remoteInfo = zgamemonitorsExtension;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		B50DCDAB2A54E4240051B857 /* Embed Watch Content */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
-			files = (
-				B50DCDAA2A54E4240051B857 /* Data Otter Watch App.app in Embed Watch Content */,
-			);
-			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B50DCDB22A54E4450051B857 /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				B50DCDC82A54E50F0051B857 /* Data Otter Watch WidgetExtension.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B597476A2A41DC2C00A5DA4C /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				B59747662A41DC2C00A5DA4C /* zgamemonitorsExtension.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		B50DCD9D2A54E4230051B857 /* Data Otter Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Data Otter Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B50DCD9F2A54E4230051B857 /* Data_OtterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_OtterApp.swift; sourceTree = "<group>"; };
-		B50DCDA12A54E4230051B857 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		B50DCDA32A54E4240051B857 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B50DCDA62A54E4240051B857 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B50DCDBA2A54E50E0051B857 /* Data Otter Watch WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Data Otter Watch WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B50DCDBE2A54E50E0051B857 /* Data_Otter_Watch_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_Otter_Watch_Widget.swift; sourceTree = "<group>"; };
-		B50DCDC02A54E50E0051B857 /* Data_Otter_Watch_Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Data_Otter_Watch_Widget.intentdefinition; sourceTree = "<group>"; };
-		B50DCDC12A54E50F0051B857 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B50DCDC32A54E50F0051B857 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B512CBF42A4B6EEB003BBD17 /* AddMonitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMonitorView.swift; sourceTree = "<group>"; };
-		B512CBF62A4C75E2003BBD17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		B53DA55F2A4E0A5B006C7D53 /* MonitorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorDetailView.swift; sourceTree = "<group>"; };
-		B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorListView.swift; sourceTree = "<group>"; };
-		B53DC3552A6AF91700AE4DED /* PlayerHistoryGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerHistoryGraphView.swift; sourceTree = "<group>"; };
-		B5745D5A2AB9EB5B00ADC08C /* Data-Otter-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Data-Otter-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
-		B597473C2A41DBF600A5DA4C /* Monitors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monitors.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B597473F2A41DBF600A5DA4C /* MonitorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorsApp.swift; sourceTree = "<group>"; };
-		B59747412A41DBF600A5DA4C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		B59747432A41DBF700A5DA4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B59747462A41DBF700A5DA4C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B59747512A41DC2800A5DA4C /* zgamemonitorsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = zgamemonitorsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B586C9BF2BF18230009A564A /* MonitorStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorStatus.swift; sourceTree = "<group>"; };
+		B586C9C42BF1948A009A564A /* MonitorsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MonitorsService.swift; path = services/MonitorsService.swift; sourceTree = "<group>"; };
+		B586C9CD2BF25577009A564A /* Data Otter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Data Otter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B586C9CF2BF25577009A564A /* Data_OtterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_OtterApp.swift; sourceTree = "<group>"; };
+		B586C9D12BF25577009A564A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B586C9D32BF25579009A564A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B586C9D62BF25579009A564A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B586C9DC2BF25685009A564A /* GeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralView.swift; sourceTree = "<group>"; };
+		B586C9E02BF256EF009A564A /* EventsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListView.swift; sourceTree = "<group>"; };
+		B586C9E22BF25ABE009A564A /* MonitorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorListView.swift; sourceTree = "<group>"; };
+		B586C9E42BF25C2C009A564A /* MonitorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorDetailView.swift; sourceTree = "<group>"; };
 		B59747532A41DC2800A5DA4C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		B59747552A41DC2800A5DA4C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		B59747582A41DC2800A5DA4C /* zgamemonitorsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zgamemonitorsBundle.swift; sourceTree = "<group>"; };
-		B597475C2A41DC2800A5DA4C /* zgamemonitors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zgamemonitors.swift; sourceTree = "<group>"; };
-		B597475E2A41DC2800A5DA4C /* zgamemonitors.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = zgamemonitors.intentdefinition; sourceTree = "<group>"; };
-		B597475F2A41DC2C00A5DA4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B59747612A41DC2C00A5DA4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B59D50242A43628500207428 /* Monitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
-		B5A15D4E2A69CB3A00548331 /* HistoryGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryGraphView.swift; sourceTree = "<group>"; };
-		B5CEF3102A82DCE700A7EB18 /* Monitors.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Monitors.entitlements; sourceTree = "<group>"; };
-		B5DE170E2A98DDB300431BF9 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		B5DE17102A98E18100431BF9 /* EventsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListView.swift; sourceTree = "<group>"; };
-		B5E196F62A43F2E30089518A /* GuageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuageView.swift; sourceTree = "<group>"; };
-		B5E196F82A4484550089518A /* MonitorStatusEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorStatusEntry.swift; sourceTree = "<group>"; };
-		B5EEA4582A6ADBEB009D606B /* MonitorsGeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorsGeneralView.swift; sourceTree = "<group>"; };
-		B5F481C12AA1318800F9F732 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B50DCD9A2A54E4230051B857 /* Frameworks */ = {
+		B586C9CA2BF25577009A564A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B50DCDB72A54E50E0051B857 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B50DCDBC2A54E50E0051B857 /* SwiftUI.framework in Frameworks */,
-				B50DCDBB2A54E50E0051B857 /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B59747392A41DBF600A5DA4C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B597474E2A41DC2700A5DA4C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B59747562A41DC2800A5DA4C /* SwiftUI.framework in Frameworks */,
-				B59747542A41DC2800A5DA4C /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B50DCD9E2A54E4230051B857 /* Data Otter Watch App */ = {
+		B586C9CE2BF25577009A564A /* Data Otter */ = {
 			isa = PBXGroup;
 			children = (
-				B5745D5A2AB9EB5B00ADC08C /* Data-Otter-Watch-App-Info.plist */,
-				B50DCD9F2A54E4230051B857 /* Data_OtterApp.swift */,
-				B50DCDA12A54E4230051B857 /* ContentView.swift */,
-				B50DCDA32A54E4240051B857 /* Assets.xcassets */,
-				B50DCDA52A54E4240051B857 /* Preview Content */,
+				B586C9DB2BF2566A009A564A /* Views */,
+				B586C9CF2BF25577009A564A /* Data_OtterApp.swift */,
+				B586C9D12BF25577009A564A /* ContentView.swift */,
+				B586C9D32BF25579009A564A /* Assets.xcassets */,
+				B586C9D52BF25579009A564A /* Preview Content */,
 			);
-			path = "Data Otter Watch App";
+			path = "Data Otter";
 			sourceTree = "<group>";
 		};
-		B50DCDA52A54E4240051B857 /* Preview Content */ = {
+		B586C9D52BF25579009A564A /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				B50DCDA62A54E4240051B857 /* Preview Assets.xcassets */,
+				B586C9D62BF25579009A564A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		B50DCDBD2A54E50E0051B857 /* Data Otter Watch Widget */ = {
+		B586C9DB2BF2566A009A564A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B50DCDBE2A54E50E0051B857 /* Data_Otter_Watch_Widget.swift */,
-				B50DCDC02A54E50E0051B857 /* Data_Otter_Watch_Widget.intentdefinition */,
-				B50DCDC12A54E50F0051B857 /* Assets.xcassets */,
-				B50DCDC32A54E50F0051B857 /* Info.plist */,
+				B586C9DC2BF25685009A564A /* GeneralView.swift */,
+				B586C9E02BF256EF009A564A /* EventsListView.swift */,
+				B586C9E22BF25ABE009A564A /* MonitorListView.swift */,
+				B586C9E42BF25C2C009A564A /* MonitorDetailView.swift */,
 			);
-			path = "Data Otter Watch Widget";
-			sourceTree = "<group>";
-		};
-		B512CBF32A4B6EBC003BBD17 /* views */ = {
-			isa = PBXGroup;
-			children = (
-				B512CBF42A4B6EEB003BBD17 /* AddMonitorView.swift */,
-				B5EEA4582A6ADBEB009D606B /* MonitorsGeneralView.swift */,
-				B5DE17102A98E18100431BF9 /* EventsListView.swift */,
-				B5F481C12AA1318800F9F732 /* EventDetailView.swift */,
-			);
-			path = views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B59747332A41DBF600A5DA4C = {
 			isa = PBXGroup;
 			children = (
-				B59D50272A4362C200207428 /* shared */,
-				B597473E2A41DBF600A5DA4C /* Monitors */,
-				B59747572A41DC2800A5DA4C /* zgamemonitors */,
-				B50DCD9E2A54E4230051B857 /* Data Otter Watch App */,
-				B50DCDBD2A54E50E0051B857 /* Data Otter Watch Widget */,
+				B59D50272A4362C200207428 /* Shared */,
+				B586C9CE2BF25577009A564A /* Data Otter */,
 				B59747522A41DC2800A5DA4C /* Frameworks */,
 				B597473D2A41DBF600A5DA4C /* Products */,
 			);
@@ -253,34 +90,9 @@
 		B597473D2A41DBF600A5DA4C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B597473C2A41DBF600A5DA4C /* Monitors.app */,
-				B59747512A41DC2800A5DA4C /* zgamemonitorsExtension.appex */,
-				B50DCD9D2A54E4230051B857 /* Data Otter Watch App.app */,
-				B50DCDBA2A54E50E0051B857 /* Data Otter Watch WidgetExtension.appex */,
+				B586C9CD2BF25577009A564A /* Data Otter.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		B597473E2A41DBF600A5DA4C /* Monitors */ = {
-			isa = PBXGroup;
-			children = (
-				B5CEF3102A82DCE700A7EB18 /* Monitors.entitlements */,
-				B512CBF62A4C75E2003BBD17 /* Info.plist */,
-				B512CBF32A4B6EBC003BBD17 /* views */,
-				B597473F2A41DBF600A5DA4C /* MonitorsApp.swift */,
-				B59747412A41DBF600A5DA4C /* ContentView.swift */,
-				B59747432A41DBF700A5DA4C /* Assets.xcassets */,
-				B59747452A41DBF700A5DA4C /* Preview Content */,
-			);
-			path = Monitors;
-			sourceTree = "<group>";
-		};
-		B59747452A41DBF700A5DA4C /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				B59747462A41DBF700A5DA4C /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		B59747522A41DC2800A5DA4C /* Frameworks */ = {
@@ -292,45 +104,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B59747572A41DC2800A5DA4C /* zgamemonitors */ = {
-			isa = PBXGroup;
-			children = (
-				B59747582A41DC2800A5DA4C /* zgamemonitorsBundle.swift */,
-				B597475C2A41DC2800A5DA4C /* zgamemonitors.swift */,
-				B597475E2A41DC2800A5DA4C /* zgamemonitors.intentdefinition */,
-				B597475F2A41DC2C00A5DA4C /* Assets.xcassets */,
-				B59747612A41DC2C00A5DA4C /* Info.plist */,
-			);
-			path = zgamemonitors;
-			sourceTree = "<group>";
-		};
-		B59D50272A4362C200207428 /* shared */ = {
+		B59D50272A4362C200207428 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
 				B5E196F32A43F27D0089518A /* data */,
-				B5E196F02A43F1BE0089518A /* views */,
+				B586C9C42BF1948A009A564A /* MonitorsService.swift */,
 			);
-			path = shared;
-			sourceTree = "<group>";
-		};
-		B5E196F02A43F1BE0089518A /* views */ = {
-			isa = PBXGroup;
-			children = (
-				B53DA55F2A4E0A5B006C7D53 /* MonitorDetailView.swift */,
-				B53DA5612A4E0D37006C7D53 /* MonitorListView.swift */,
-				B5E196F62A43F2E30089518A /* GuageView.swift */,
-				B5A15D4E2A69CB3A00548331 /* HistoryGraphView.swift */,
-				B53DC3552A6AF91700AE4DED /* PlayerHistoryGraphView.swift */,
-			);
-			path = views;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		B5E196F32A43F27D0089518A /* data */ = {
 			isa = PBXGroup;
 			children = (
-				B59D50242A43628500207428 /* Monitor.swift */,
-				B5E196F82A4484550089518A /* MonitorStatusEntry.swift */,
-				B5DE170E2A98DDB300431BF9 /* Event.swift */,
+				B586C9BF2BF18230009A564A /* MonitorStatus.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -338,79 +124,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B50DCD9C2A54E4230051B857 /* Data Otter Watch App */ = {
+		B586C9CC2BF25577009A564A /* Data Otter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B50DCDAE2A54E4240051B857 /* Build configuration list for PBXNativeTarget "Data Otter Watch App" */;
+			buildConfigurationList = B586C9D82BF25579009A564A /* Build configuration list for PBXNativeTarget "Data Otter" */;
 			buildPhases = (
-				B50DCD992A54E4230051B857 /* Sources */,
-				B50DCD9A2A54E4230051B857 /* Frameworks */,
-				B50DCD9B2A54E4230051B857 /* Resources */,
-				B50DCDB22A54E4450051B857 /* Embed Foundation Extensions */,
+				B586C9C92BF25577009A564A /* Sources */,
+				B586C9CA2BF25577009A564A /* Frameworks */,
+				B586C9CB2BF25577009A564A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B50DCDC72A54E50F0051B857 /* PBXTargetDependency */,
 			);
-			name = "Data Otter Watch App";
-			productName = "Data Otter Watch App";
-			productReference = B50DCD9D2A54E4230051B857 /* Data Otter Watch App.app */;
+			name = "Data Otter";
+			productName = "Data Otter";
+			productReference = B586C9CD2BF25577009A564A /* Data Otter.app */;
 			productType = "com.apple.product-type.application";
-		};
-		B50DCDB92A54E50E0051B857 /* Data Otter Watch WidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B50DCDC92A54E50F0051B857 /* Build configuration list for PBXNativeTarget "Data Otter Watch WidgetExtension" */;
-			buildPhases = (
-				B50DCDB62A54E50E0051B857 /* Sources */,
-				B50DCDB72A54E50E0051B857 /* Frameworks */,
-				B50DCDB82A54E50E0051B857 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Data Otter Watch WidgetExtension";
-			productName = "Data Otter Watch WidgetExtension";
-			productReference = B50DCDBA2A54E50E0051B857 /* Data Otter Watch WidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
-		B597473B2A41DBF600A5DA4C /* Monitors */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B597474A2A41DBF700A5DA4C /* Build configuration list for PBXNativeTarget "Monitors" */;
-			buildPhases = (
-				B59747382A41DBF600A5DA4C /* Sources */,
-				B59747392A41DBF600A5DA4C /* Frameworks */,
-				B597473A2A41DBF600A5DA4C /* Resources */,
-				B597476A2A41DC2C00A5DA4C /* Embed Foundation Extensions */,
-				B50DCDAB2A54E4240051B857 /* Embed Watch Content */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B59747652A41DC2C00A5DA4C /* PBXTargetDependency */,
-				B50DCDA92A54E4240051B857 /* PBXTargetDependency */,
-			);
-			name = Monitors;
-			productName = Monitors;
-			productReference = B597473C2A41DBF600A5DA4C /* Monitors.app */;
-			productType = "com.apple.product-type.application";
-		};
-		B59747502A41DC2700A5DA4C /* zgamemonitorsExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B59747672A41DC2C00A5DA4C /* Build configuration list for PBXNativeTarget "zgamemonitorsExtension" */;
-			buildPhases = (
-				B597474D2A41DC2700A5DA4C /* Sources */,
-				B597474E2A41DC2700A5DA4C /* Frameworks */,
-				B597474F2A41DC2700A5DA4C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = zgamemonitorsExtension;
-			productName = zgamemonitorsExtension;
-			productReference = B59747512A41DC2800A5DA4C /* zgamemonitorsExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -419,20 +148,11 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
-					B50DCD9C2A54E4230051B857 = {
-						CreatedOnToolsVersion = 14.3.1;
-					};
-					B50DCDB92A54E50E0051B857 = {
-						CreatedOnToolsVersion = 14.3.1;
-					};
-					B597473B2A41DBF600A5DA4C = {
-						CreatedOnToolsVersion = 14.3.1;
-					};
-					B59747502A41DC2700A5DA4C = {
-						CreatedOnToolsVersion = 14.3.1;
+					B586C9CC2BF25577009A564A = {
+						CreatedOnToolsVersion = 15.3;
 					};
 				};
 			};
@@ -449,258 +169,108 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B597473B2A41DBF600A5DA4C /* Monitors */,
-				B59747502A41DC2700A5DA4C /* zgamemonitorsExtension */,
-				B50DCD9C2A54E4230051B857 /* Data Otter Watch App */,
-				B50DCDB92A54E50E0051B857 /* Data Otter Watch WidgetExtension */,
+				B586C9CC2BF25577009A564A /* Data Otter */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B50DCD9B2A54E4230051B857 /* Resources */ = {
+		B586C9CB2BF25577009A564A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B50DCDA72A54E4240051B857 /* Preview Assets.xcassets in Resources */,
-				B50DCDA42A54E4240051B857 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B50DCDB82A54E50E0051B857 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B50DCDC22A54E50F0051B857 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B597473A2A41DBF600A5DA4C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B59747472A41DBF700A5DA4C /* Preview Assets.xcassets in Resources */,
-				B59747442A41DBF700A5DA4C /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B597474F2A41DC2700A5DA4C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B59747602A41DC2C00A5DA4C /* Assets.xcassets in Resources */,
+				B586C9D72BF25579009A564A /* Preview Assets.xcassets in Resources */,
+				B586C9D42BF25579009A564A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B50DCD992A54E4230051B857 /* Sources */ = {
+		B586C9C92BF25577009A564A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B50DCDB52A54E47C0051B857 /* MonitorListView.swift in Sources */,
-				B50DCDC52A54E50F0051B857 /* Data_Otter_Watch_Widget.intentdefinition in Sources */,
-				B50DCDB42A54E4770051B857 /* MonitorDetailView.swift in Sources */,
-				B53DC3572A6AF91700AE4DED /* PlayerHistoryGraphView.swift in Sources */,
-				B50DCDA22A54E4230051B857 /* ContentView.swift in Sources */,
-				B50DCDB32A54E46D0051B857 /* Monitor.swift in Sources */,
-				B5A15D512A69E11900548331 /* HistoryGraphView.swift in Sources */,
-				B50DCDA02A54E4230051B857 /* Data_OtterApp.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B50DCDB62A54E50E0051B857 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B50DCDCE2A54E54D0051B857 /* MonitorListView.swift in Sources */,
-				B50DCDBF2A54E50E0051B857 /* Data_Otter_Watch_Widget.swift in Sources */,
-				B50DCDCD2A54E5420051B857 /* MonitorStatusEntry.swift in Sources */,
-				B50DCDCC2A54E53C0051B857 /* Monitor.swift in Sources */,
-				B50DCDCF2A54E5510051B857 /* GuageView.swift in Sources */,
-				B50DCDC42A54E50F0051B857 /* Data_Otter_Watch_Widget.intentdefinition in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B59747382A41DBF600A5DA4C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B53DC3562A6AF91700AE4DED /* PlayerHistoryGraphView.swift in Sources */,
-				B5F481C22AA1318800F9F732 /* EventDetailView.swift in Sources */,
-				B5DE170F2A98DDB300431BF9 /* Event.swift in Sources */,
-				B53DA5602A4E0A5B006C7D53 /* MonitorDetailView.swift in Sources */,
-				B59747422A41DBF600A5DA4C /* ContentView.swift in Sources */,
-				B55DBCAC2A54605100009957 /* Monitor.swift in Sources */,
-				B5EEA4592A6ADBEB009D606B /* MonitorsGeneralView.swift in Sources */,
-				B512CBF52A4B6EEB003BBD17 /* AddMonitorView.swift in Sources */,
-				B5DE17112A98E18100431BF9 /* EventsListView.swift in Sources */,
-				B5A15D4F2A69CB3A00548331 /* HistoryGraphView.swift in Sources */,
-				B57C4AD22A5469C00050E1F6 /* MonitorListView.swift in Sources */,
-				B59747402A41DBF600A5DA4C /* MonitorsApp.swift in Sources */,
-				B59747632A41DC2C00A5DA4C /* zgamemonitors.intentdefinition in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B597474D2A41DC2700A5DA4C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B5E196F92A4484550089518A /* MonitorStatusEntry.swift in Sources */,
-				B59D50262A43628500207428 /* Monitor.swift in Sources */,
-				B597475D2A41DC2800A5DA4C /* zgamemonitors.swift in Sources */,
-				B59747622A41DC2C00A5DA4C /* zgamemonitors.intentdefinition in Sources */,
-				B5E196F72A43F2E30089518A /* GuageView.swift in Sources */,
-				B59747592A41DC2800A5DA4C /* zgamemonitorsBundle.swift in Sources */,
-				B57C4AD12A5469A80050E1F6 /* MonitorListView.swift in Sources */,
-				B5A15D502A69CB3A00548331 /* HistoryGraphView.swift in Sources */,
-				B53DC35B2A6B1BBB00AE4DED /* PlayerHistoryGraphView.swift in Sources */,
+				B586C9E52BF25C2C009A564A /* MonitorDetailView.swift in Sources */,
+				B586C9DF2BF2569D009A564A /* MonitorsService.swift in Sources */,
+				B586C9E12BF256EF009A564A /* EventsListView.swift in Sources */,
+				B586C9DD2BF25685009A564A /* GeneralView.swift in Sources */,
+				B586C9D22BF25577009A564A /* ContentView.swift in Sources */,
+				B586C9E32BF25ABE009A564A /* MonitorListView.swift in Sources */,
+				B586C9DE2BF2569A009A564A /* MonitorStatus.swift in Sources */,
+				B586C9D02BF25577009A564A /* Data_OtterApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		B50DCDA92A54E4240051B857 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B50DCD9C2A54E4230051B857 /* Data Otter Watch App */;
-			targetProxy = B50DCDA82A54E4240051B857 /* PBXContainerItemProxy */;
-		};
-		B50DCDC72A54E50F0051B857 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B50DCDB92A54E50E0051B857 /* Data Otter Watch WidgetExtension */;
-			targetProxy = B50DCDC62A54E50F0051B857 /* PBXContainerItemProxy */;
-		};
-		B59747652A41DC2C00A5DA4C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B59747502A41DC2700A5DA4C /* zgamemonitorsExtension */;
-			targetProxy = B59747642A41DC2C00A5DA4C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		B50DCDAC2A54E4240051B857 /* Debug */ = {
+		B586C9D92BF25579009A564A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Data Otter Watch App/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Data Otter/Preview Content\"";
 				DEVELOPMENT_TEAM = 6M38R97L4D;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Data-Otter-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Data Otter";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = zgamelogic.Monitors;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = zgamelogic.Monitors.watchkitapp;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Data-Otter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		B50DCDAD2A54E4240051B857 /* Release */ = {
+		B586C9DA2BF25579009A564A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Data Otter Watch App/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Data Otter/Preview Content\"";
 				DEVELOPMENT_TEAM = 6M38R97L4D;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Data-Otter-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Data Otter";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = zgamelogic.Monitors;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = zgamelogic.Monitors.watchkitapp;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Data-Otter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.4;
-			};
-			name = Release;
-		};
-		B50DCDCA2A54E50F0051B857 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6M38R97L4D;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Data Otter Watch Widget/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Data Otter Watch Widget";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Monitors.watchkitapp.Data-Otter-Watch-Widget";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.4;
-			};
-			name = Debug;
-		};
-		B50DCDCB2A54E50F0051B857 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6M38R97L4D;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Data Otter Watch Widget/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Data Otter Watch Widget";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Monitors.watchkitapp.Data-Otter-Watch-Widget";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -708,6 +278,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -768,6 +339,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -818,143 +390,14 @@
 			};
 			name = Release;
 		};
-		B597474B2A41DBF700A5DA4C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Monitors/Monitors.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Monitors/Preview Content\"";
-				DEVELOPMENT_TEAM = 6M38R97L4D;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Monitors/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Data Otter";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = zgamelogic.Monitors;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		B597474C2A41DBF700A5DA4C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Monitors/Monitors.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Monitors/Preview Content\"";
-				DEVELOPMENT_TEAM = 6M38R97L4D;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Monitors/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Data Otter";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = zgamelogic.Monitors;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		B59747682A41DC2C00A5DA4C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6M38R97L4D;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = zgamemonitors/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Data Otter";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = zgamelogic.Monitors.zgamemonitors;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		B59747692A41DC2C00A5DA4C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6M38R97L4D;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = zgamemonitors/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Data Otter";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = zgamelogic.Monitors.zgamemonitors;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B50DCDAE2A54E4240051B857 /* Build configuration list for PBXNativeTarget "Data Otter Watch App" */ = {
+		B586C9D82BF25579009A564A /* Build configuration list for PBXNativeTarget "Data Otter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B50DCDAC2A54E4240051B857 /* Debug */,
-				B50DCDAD2A54E4240051B857 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B50DCDC92A54E50F0051B857 /* Build configuration list for PBXNativeTarget "Data Otter Watch WidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B50DCDCA2A54E50F0051B857 /* Debug */,
-				B50DCDCB2A54E50F0051B857 /* Release */,
+				B586C9D92BF25579009A564A /* Debug */,
+				B586C9DA2BF25579009A564A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -964,24 +407,6 @@
 			buildConfigurations = (
 				B59747482A41DBF700A5DA4C /* Debug */,
 				B59747492A41DBF700A5DA4C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B597474A2A41DBF700A5DA4C /* Build configuration list for PBXNativeTarget "Monitors" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B597474B2A41DBF700A5DA4C /* Debug */,
-				B597474C2A41DBF700A5DA4C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B59747672A41DC2C00A5DA4C /* Build configuration list for PBXNativeTarget "zgamemonitorsExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B59747682A41DC2C00A5DA4C /* Debug */,
-				B59747692A41DC2C00A5DA4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
