@@ -13,7 +13,7 @@ struct MonitorListView: View {
     var body: some View {
         VStack {
             HStack {
-                Text(monitor.name).foregroundColor(monitor.getStatusColor())
+                Text(monitor.name).foregroundStyle(monitor.getStatusColor())
                 Spacer()
             }
             HStack {

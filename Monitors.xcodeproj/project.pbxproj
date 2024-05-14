@@ -17,6 +17,8 @@
 		B586C9E12BF256EF009A564A /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E02BF256EF009A564A /* EventsListView.swift */; };
 		B586C9E32BF25ABE009A564A /* MonitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E22BF25ABE009A564A /* MonitorListView.swift */; };
 		B586C9E52BF25C2C009A564A /* MonitorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E42BF25C2C009A564A /* MonitorDetailView.swift */; };
+		B586C9E72BF2AF92009A564A /* MonitorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E62BF2AF92009A564A /* MonitorData.swift */; };
+		B586C9E92BF2B3D3009A564A /* MonitorCreationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E82BF2B3D3009A564A /* MonitorCreationResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		B586C9E02BF256EF009A564A /* EventsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListView.swift; sourceTree = "<group>"; };
 		B586C9E22BF25ABE009A564A /* MonitorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorListView.swift; sourceTree = "<group>"; };
 		B586C9E42BF25C2C009A564A /* MonitorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorDetailView.swift; sourceTree = "<group>"; };
+		B586C9E62BF2AF92009A564A /* MonitorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorData.swift; sourceTree = "<group>"; };
+		B586C9E82BF2B3D3009A564A /* MonitorCreationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorCreationResult.swift; sourceTree = "<group>"; };
 		B59747532A41DC2800A5DA4C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		B59747552A41DC2800A5DA4C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -117,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				B586C9BF2BF18230009A564A /* MonitorStatus.swift */,
+				B586C9E62BF2AF92009A564A /* MonitorData.swift */,
+				B586C9E82BF2B3D3009A564A /* MonitorCreationResult.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -192,8 +198,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B586C9E52BF25C2C009A564A /* MonitorDetailView.swift in Sources */,
+				B586C9E72BF2AF92009A564A /* MonitorData.swift in Sources */,
 				B586C9DF2BF2569D009A564A /* MonitorsService.swift in Sources */,
 				B586C9E12BF256EF009A564A /* EventsListView.swift in Sources */,
+				B586C9E92BF2B3D3009A564A /* MonitorCreationResult.swift in Sources */,
 				B586C9DD2BF25685009A564A /* GeneralView.swift in Sources */,
 				B586C9D22BF25577009A564A /* ContentView.swift in Sources */,
 				B586C9E32BF25ABE009A564A /* MonitorListView.swift in Sources */,

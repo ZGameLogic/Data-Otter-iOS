@@ -10,18 +10,24 @@ import SwiftUI
 
 struct MonitorStatus: Codable, Identifiable, Hashable {
     let id: Int
-    let name: String
-    let type: String
-    let url: String
-    let regex: String
+    var name: String
+    var type: String
+    var url: String
+    var regex: String
     let status: Status?
-    
     
     func getStatusColor() -> Color {
         guard let status = status else {
             return .primary
         }
         return status.status ? .green : .red
+    }
+    
+    mutating func update(data: MonitorData){
+        name = data.name
+        type = data.type
+        url = data.url
+        regex = data.regex
     }
     
     init(from decoder: any Decoder) throws {

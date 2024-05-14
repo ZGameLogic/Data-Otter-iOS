@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GeneralView: View {
     @State var monitorData: [MonitorStatus]
-    @State var monitorHistoryData: [Int64: [Status]]
+    @State var monitorHistoryData: [Int: [Status]]
     @State private var showAddMonitor = false
     
     var body: some View {
@@ -23,7 +23,7 @@ struct GeneralView: View {
             }.navigationTitle("Monitors")
                 .navigationDestination(for: MonitorStatus.self) { monitor in
                     if let index = monitorData.firstIndex(where: { $0.id == monitor.id }) {
-                        MonitorDetailView(monitor: $monitorData[index])
+                        MonitorDetailView(monitor: $monitorData[index], history: monitorHistoryData[monitorData[index].id] ?? [])
                     }
                 }
                 .toolbar {
@@ -36,22 +36,45 @@ struct GeneralView: View {
                     }
                 }
                 .refreshable {
-                    fetchMonitorStatus()
+                    fetchMonitorsHistory()
                 }
         }.onAppear {
             fetchMonitorStatus()
-        }.onChange(of: monitorData, fetchMonitorsHistory)
-    }
-    
-    func fetchMonitorsHistory() {
-        print("Fetching monitory history")
-        for monitor in monitorData {
-            print(monitor.id)
+        }.onChange(of: monitorHistoryData) { old, new in
+            print("Old: \(old) \nNew: \(new)")
         }
     }
     
+    func fetchMonitorsHistory() {
+           print("Fetching monitor history")
+           let dispatchGroup = DispatchGroup()
+           var tempHistoryData: [Int: [Status]] = [:]
+
+           for monitor in monitorData {
+               dispatchGroup.enter()
+               MonitorsService.getMonitorHistory(id: monitor.id) { result in
+                   DispatchQueue.main.async {
+                       switch result {
+                       case .success(let data):
+                           tempHistoryData[monitor.id] = data
+                       case .failure(let error):
+                           print(error)
+                       }
+                       dispatchGroup.leave()
+                   }
+               }
+           }
+
+           dispatchGroup.notify(queue: .main) {
+               self.monitorHistoryData = tempHistoryData
+               print("All history data fetched and updated")
+           }
+       }
+    
     func fetchMonitorStatus() {
         print("Fetching monitor data")
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
         MonitorsService.getMonitorsWithStatus { result in
             DispatchQueue.main.async {
                 switch result {
@@ -60,7 +83,12 @@ struct GeneralView: View {
                 case .failure(let error):
                     print(error)
                 }
+                dispatchGroup.leave()
             }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            fetchMonitorsHistory()
         }
     }
 }
