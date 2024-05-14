@@ -9,24 +9,24 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: AppIntentTimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
+    func placeholder(in context: Context) -> MonitorStatusEntry {
+        MonitorStatusEntry(monitors: [])
     }
 
-    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration)
+    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> MonitorStatusEntry {
+        MonitorStatusEntry(monitors: [])
     }
     
-    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
-        var entries: [SimpleEntry] = []
+    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<MonitorStatusEntry> {
+        var entries: [MonitorStatusEntry] = []
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
-        }
+//        let currentDate = Date()
+//        for hourOffset in 0 ..< 5 {
+//            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
+//            let entry = SimpleEntry(date: entryDate, configuration: configuration)
+//            entries.append(entry)
+//        }
 
         return Timeline(entries: entries, policy: .atEnd)
     }
@@ -44,21 +44,21 @@ struct Data_Otter_iOS_WidgetEntryView : View {
         VStack {
             Text("Time:")
             Text(entry.date, style: .time)
-
-            Text("Favorite Emoji:")
-            Text(entry.configuration.favoriteEmoji)
         }
     }
 }
 
-struct Data_Otter_iOS_Widget: Widget {
-    let kind: String = "Data_Otter_iOS_Widget"
+struct zgamemonitors: Widget {
+    let kind: String = "zgamemonitors"
 
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
             Data_Otter_iOS_WidgetEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
         }
+        .configurationDisplayName("Data Otter")
+        .description("Gets the status of the ZGameLogic monitors.")
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryCircular])
+        .contentMarginsDisabled()
     }
 }
 
@@ -77,7 +77,7 @@ extension ConfigurationAppIntent {
 }
 
 #Preview(as: .systemSmall) {
-    Data_Otter_iOS_Widget()
+    zgamemonitors()
 } timeline: {
     SimpleEntry(date: .now, configuration: .smiley)
     SimpleEntry(date: .now, configuration: .starEyes)

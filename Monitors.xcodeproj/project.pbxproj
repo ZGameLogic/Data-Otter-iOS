@@ -31,6 +31,10 @@
 		B586CA072BF3DBA2009A564A /* MonitorsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9C42BF1948A009A564A /* MonitorsService.swift */; };
 		B586CA082BF3DBAB009A564A /* MonitorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9BF2BF18230009A564A /* MonitorStatus.swift */; };
 		B586CA092BF3DBB0009A564A /* HistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9EB2BF3A6EB009A564A /* HistoryGraphView.swift */; };
+		B586CA0A2BF3DC36009A564A /* MonitorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E62BF2AF92009A564A /* MonitorData.swift */; };
+		B586CA0B2BF3DC49009A564A /* MonitorCreationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E82BF2B3D3009A564A /* MonitorCreationResult.swift */; };
+		B586CA0D2BF3E5C5009A564A /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586CA0C2BF3E5C5009A564A /* EventsView.swift */; };
+		B586CA102BF3FEDA009A564A /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586CA0F2BF3FEDA009A564A /* EventDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +83,8 @@
 		B586C9FB2BF3DB8B009A564A /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		B586C9FD2BF3DB8E009A564A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B586C9FF2BF3DB8F009A564A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B586CA0C2BF3E5C5009A564A /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
+		B586CA0F2BF3FEDA009A564A /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		B59747532A41DC2800A5DA4C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		B59747552A41DC2800A5DA4C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -126,8 +132,8 @@
 		B586C9DB2BF2566A009A564A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B586CA0E2BF3FEB4009A564A /* Event */,
 				B586C9DC2BF25685009A564A /* GeneralView.swift */,
-				B586C9E02BF256EF009A564A /* EventsListView.swift */,
 				B586C9E22BF25ABE009A564A /* MonitorListView.swift */,
 				B586C9E42BF25C2C009A564A /* MonitorDetailView.swift */,
 				B586C9ED2BF3BB04009A564A /* AddMonitorView.swift */,
@@ -153,6 +159,16 @@
 				B586C9FF2BF3DB8F009A564A /* Info.plist */,
 			);
 			path = "Data Otter iOS Widget";
+			sourceTree = "<group>";
+		};
+		B586CA0E2BF3FEB4009A564A /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				B586CA0C2BF3E5C5009A564A /* EventsView.swift */,
+				B586C9E02BF256EF009A564A /* EventsListView.swift */,
+				B586CA0F2BF3FEDA009A564A /* EventDetailView.swift */,
+			);
+			path = Event;
 			sourceTree = "<group>";
 		};
 		B59747332A41DBF600A5DA4C = {
@@ -305,11 +321,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B586CA0D2BF3E5C5009A564A /* EventsView.swift in Sources */,
 				B586C9EC2BF3A6EB009A564A /* HistoryGraphView.swift in Sources */,
 				B586C9E52BF25C2C009A564A /* MonitorDetailView.swift in Sources */,
 				B586C9E72BF2AF92009A564A /* MonitorData.swift in Sources */,
 				B586C9EE2BF3BB04009A564A /* AddMonitorView.swift in Sources */,
 				B586C9DF2BF2569D009A564A /* MonitorsService.swift in Sources */,
+				B586CA102BF3FEDA009A564A /* EventDetailView.swift in Sources */,
 				B586C9E12BF256EF009A564A /* EventsListView.swift in Sources */,
 				B586C9E92BF2B3D3009A564A /* MonitorCreationResult.swift in Sources */,
 				B586C9DD2BF25685009A564A /* GeneralView.swift in Sources */,
@@ -326,7 +344,9 @@
 			files = (
 				B586CA072BF3DBA2009A564A /* MonitorsService.swift in Sources */,
 				B586C9FA2BF3DB8B009A564A /* Data_Otter_iOS_Widget.swift in Sources */,
+				B586CA0B2BF3DC49009A564A /* MonitorCreationResult.swift in Sources */,
 				B586C9F82BF3DB8B009A564A /* Data_Otter_iOS_WidgetBundle.swift in Sources */,
+				B586CA0A2BF3DC36009A564A /* MonitorData.swift in Sources */,
 				B586CA082BF3DBAB009A564A /* MonitorStatus.swift in Sources */,
 				B586CA092BF3DBB0009A564A /* HistoryGraphView.swift in Sources */,
 				B586C9FC2BF3DB8B009A564A /* AppIntent.swift in Sources */,

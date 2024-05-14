@@ -11,6 +11,6 @@ import SwiftUI
 @main
 struct Data_Otter_iOS_WidgetBundle: WidgetBundle {
     var body: some Widget {
-        Data_Otter_iOS_Widget()
+        zgamemonitors()
     }
 }

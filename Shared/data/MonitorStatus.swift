@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import WidgetKit
 
 struct MonitorStatus: Codable, Identifiable, Hashable {
     let id: Int
@@ -83,4 +84,76 @@ struct Status: Codable, Hashable {
         self.attempts = attempts
         self.statusCode = statusCode
     }
+}
+
+struct MonitorStatusEntry: TimelineEntry {
+    let date: Date
+    let monitors: [MonitorStatus]
+    var downMonitors: [String] { monitors.filter { $0.status?.status == false }.map { $0.name }}
+    var upMonitors : [String] { monitors.filter { $0.status?.status == true }.map { $0.name }}
+    var up: Int { monitors.filter { $0.status?.status == true }.count }
+    var down: Int { monitors.filter { $0.status?.status == false }.count }
+    
+    init(monitors: [MonitorStatus]){
+        date = Date()
+        self.monitors = monitors
+    }
+}
+
+struct MonitorEvent: Identifiable, Hashable, Equatable {
+    
+    static func == (lhs: MonitorEvent, rhs: MonitorEvent) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    let id: String
+    let monitorId: Int
+    let name: String
+    let log: [MonitorEventStatus]
+    
+    var eventStatus: Bool {
+        if let top = log.sorted(by: { $0.date > $1.date }).first {
+            return top.status
+        }
+        return true
+    }
+    
+    var start: Date {
+        if let first = log.sorted(by: { $0.date < $1.date }).first {
+            return first.date
+        }
+        return Date()
+    }
+    
+    var end: Date {
+        if let last = log.sorted(by: { $0.date > $1.date }).first {
+            return last.date
+        }
+        return Date()
+    }
+    
+    init(monitor: MonitorToggle, log: [MonitorEventStatus]) {
+        self.monitorId = monitor.id
+        self.name = monitor.name
+        self.log = log
+        id = "\(monitorId) \(name) \(log)"
+    }
+}
+
+struct MonitorEventStatus: Equatable, Hashable, Identifiable {
+    let id: String
+    var date: Date
+    var status: Bool
+    
+    init(status: Status) {
+        self.date = status.dateRecorded
+        self.status = status.status
+        self.id = "\(status) \(date)"
+    }
+}
+
+struct MonitorToggle: Identifiable, Equatable {
+    let id: Int
+    let name: String
+    var isSelected: Bool
 }

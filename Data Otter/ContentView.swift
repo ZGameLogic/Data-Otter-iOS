@@ -13,7 +13,7 @@ struct ContentView: View {
             GeneralView(monitorData: [], monitorHistoryData: [:]).tabItem({
                 Label("Monitors", systemImage: "chart.bar.doc.horizontal")
             }).tag(0)
-            EventsListView().tabItem({
+            EventsView(monitorData: [], monitorHistoryData: [:]).tabItem({
                 Label("Events", systemImage: "megaphone")
             }).tag(1)
         }

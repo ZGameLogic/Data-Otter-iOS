@@ -31,22 +31,41 @@ struct MonitorsService {
         }.resume()
     }
     
-    public static func getMonitorHistory(id: Int, completion: @escaping (Result<[Status], Error>) -> Void) {
-        let currentDate = Date()
-        let calendar = Calendar.current
-        let twelveHoursAgo = calendar.date(byAdding: .hour, value: -12, to: currentDate)!
+    public static func getMonitors(completion: @escaping (Result<[MonitorStatus], Error>) -> Void) {
+        let url = URL(string: "\(BASE_URL)/monitors")!
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let data = data else {
+                completion(.failure(URLError(.badServerResponse)))
+                return
+            }
+            do {
+                let decodedData = try JSONDecoder().decode([MonitorStatus].self, from: data)
+                completion(.success(decodedData))
+           } catch {
+               completion(.failure(error))
+               return
+           }
+        }.resume()
+    }
+    
+    public static func getMonitorHistory(id: Int, start: Date, end: Date, completion: @escaping (Result<[Status], Error>) -> Void) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
-        let formattedDate = dateFormatter.string(from: twelveHoursAgo)
+        let formattedStartDate = dateFormatter.string(from: start)
+        let formattedEndDate = dateFormatter.string(from: end)
         
         var urlComponents = URLComponents(string: "\(BASE_URL)/monitors/\(id)/history")!
         urlComponents.queryItems = [
             URLQueryItem(name: "condensed", value: "true"),
-            URLQueryItem(name: "start", value: formattedDate)
+            URLQueryItem(name: "start", value: formattedStartDate),
+            URLQueryItem(name: "end", value: formattedEndDate)
         ]
         
         let url = urlComponents.url!
-        print(url)
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(error))
@@ -58,15 +77,19 @@ struct MonitorsService {
             }
             do {
                 let decodedData = try JSONDecoder().decode([Status].self, from: data)
-                for thing in decodedData {
-                    print(thing)
-                }
                 completion(.success(decodedData))
            } catch {
                completion(.failure(error))
                return
            }
         }.resume()
+    }
+    
+    public static func getMonitorHistory(id: Int, completion: @escaping (Result<[Status], Error>) -> Void) {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let twelveHoursAgo = calendar.date(byAdding: .hour, value: -12, to: currentDate)!
+        return getMonitorHistory(id: id, start: twelveHoursAgo, end: currentDate, completion: completion)
     }
     
     public static func testMonitor(monitorData: MonitorData, completion: @escaping (Result<MonitorCreationResult, Error>) -> Void) {
@@ -93,7 +116,6 @@ struct MonitorsService {
                 return
             }
             do {
-                print(data)
                 let decodedData = try JSONDecoder().decode(MonitorCreationResult.self, from: data)
                 completion(.success(decodedData))
             } catch {
@@ -126,7 +148,6 @@ struct MonitorsService {
                 return
             }
             do {
-                print(data)
                 let decodedData = try JSONDecoder().decode(MonitorStatus.self, from: data)
                 completion(.success(decodedData))
             } catch {
@@ -159,7 +180,6 @@ struct MonitorsService {
                 return
             }
             do {
-                print(data)
                 let decodedData = try JSONDecoder().decode(MonitorStatus.self, from: data)
                 completion(.success(decodedData))
             } catch {
