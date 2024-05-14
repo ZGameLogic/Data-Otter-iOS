@@ -36,9 +36,13 @@ struct EventsView: View {
                 if(events.isEmpty){
                     Text("No events found for filter")
                 } else {
-                    ForEach(events){ event in
-                        NavigationLink(value: event) {
-                            EventsListView(event: event)
+                    ForEach(groupEventsByDate(), id: \.key) { date, events in
+                        Section(header: Text(date, style: .date)) {
+                            ForEach(events) { event in
+                                NavigationLink(value: event) {
+                                    EventsListView(event: event)
+                                }
+                            }
                         }
                     }
                 }
@@ -60,6 +64,22 @@ struct EventsView: View {
         .onChange(of: endDate, fetchMonitorStatus)
         .onChange(of: monitorToggles, fetchMonitorStatus)
         .onAppear{fetchMonitorStatus()}
+    }
+    
+    func groupEventsByDate() -> [(key: Date, value: [MonitorEvent])] {
+        let calendar = Calendar.current
+        var groupedEvents: [Date: [MonitorEvent]] = [:]
+        
+        for event in events {
+            let startDate = calendar.startOfDay(for: event.start)
+            if groupedEvents[startDate] != nil {
+                groupedEvents[startDate]!.append(event)
+            } else {
+                groupedEvents[startDate] = [event]
+            }
+        }
+        
+        return groupedEvents.sorted { $0.key > $1.key }
     }
     
     func fetchMonitorsHistory() {
