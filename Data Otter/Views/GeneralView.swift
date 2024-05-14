@@ -11,6 +11,9 @@ struct GeneralView: View {
     @State var monitorData: [MonitorStatus]
     @State var monitorHistoryData: [Int: [Status]]
     @State private var showAddMonitor = false
+    @State private var showAlert = false
+    
+    @State var monitorToDelete: MonitorStatus? = nil
     
     var body: some View {
         NavigationStack {
@@ -18,9 +21,23 @@ struct GeneralView: View {
                 ForEach(monitorData){monitor in
                     NavigationLink(value: monitor) {
                         MonitorListView(monitor: monitor)
+                    }.swipeActions(edge: .trailing) {
+                        Button(role: .destructive) {
+                            monitorToDelete = monitor
+                            showAlert = true
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
                     }
                 }
-            }.navigationTitle("Monitors")
+                
+                if(!monitorHistoryData.isEmpty){
+                    Section("History"){
+                        HistoryGraphView(monitorData: monitorData, monitorHistoryData: monitorHistoryData)
+                    }
+                }
+            }
+            .navigationTitle("Monitors")
                 .navigationDestination(for: MonitorStatus.self) { monitor in
                     if let index = monitorData.firstIndex(where: { $0.id == monitor.id }) {
                         MonitorDetailView(monitor: $monitorData[index], history: monitorHistoryData[monitorData[index].id] ?? [])
@@ -36,12 +53,43 @@ struct GeneralView: View {
                     }
                 }
                 .refreshable {
-                    fetchMonitorsHistory()
+                    fetchMonitorStatus()
                 }
         }.onAppear {
             fetchMonitorStatus()
         }.onChange(of: monitorHistoryData) { old, new in
             print("Old: \(old) \nNew: \(new)")
+        }.sheet(isPresented: $showAddMonitor, onDismiss: {
+            fetchMonitorStatus()
+        }, content: {
+            AddMonitorView(isPresented: $showAddMonitor)
+        })
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Delete monitor"),
+                message: Text("Are you sure you want to delete this monitor? This Action cannot be undone."),
+                primaryButton: .destructive(Text("Delete")) {
+                    if let monitor = monitorToDelete {
+                        deleteMonitor(monitor: monitor)
+                    }
+                },
+                secondaryButton: .cancel()
+            )
+        }
+    }
+    
+    func deleteMonitor(monitor: MonitorStatus){
+        MonitorsService.deleteMonitor(monitorId: monitor.id) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success():
+                    monitorHistoryData.removeValue(forKey: monitor.id)
+                    monitorToDelete = nil
+                    fetchMonitorStatus()
+                case .failure(let error):
+                    print(error)
+                }
+            }
         }
     }
     

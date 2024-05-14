@@ -32,7 +32,21 @@ struct MonitorsService {
     }
     
     public static func getMonitorHistory(id: Int, completion: @escaping (Result<[Status], Error>) -> Void) {
-        let url = URL(string: "\(BASE_URL)/monitors/\(id)/history?condensed=true")!
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let twelveHoursAgo = calendar.date(byAdding: .hour, value: -12, to: currentDate)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
+        let formattedDate = dateFormatter.string(from: twelveHoursAgo)
+        
+        var urlComponents = URLComponents(string: "\(BASE_URL)/monitors/\(id)/history")!
+        urlComponents.queryItems = [
+            URLQueryItem(name: "condensed", value: "true"),
+            URLQueryItem(name: "start", value: formattedDate)
+        ]
+        
+        let url = urlComponents.url!
+        print(url)
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(error))
@@ -44,6 +58,9 @@ struct MonitorsService {
             }
             do {
                 let decodedData = try JSONDecoder().decode([Status].self, from: data)
+                for thing in decodedData {
+                    print(thing)
+                }
                 completion(.success(decodedData))
            } catch {
                completion(.failure(error))
@@ -118,8 +135,8 @@ struct MonitorsService {
         }.resume()
     }
     
-    public static func createMonitor(monitorData: MonitorStatus, completion: @escaping (Result<MonitorStatus, Error>) -> Void) {
-        let url = URL(string: "\(BASE_URL)/monitors/\(monitorData.id)")!
+    public static func createMonitor(monitorData: MonitorData, completion: @escaping (Result<MonitorStatus, Error>) -> Void) {
+        let url = URL(string: "\(BASE_URL)/monitors")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -148,6 +165,24 @@ struct MonitorsService {
             } catch {
                 completion(.failure(error))
             }
+        }.resume()
+    }
+    
+    public static func deleteMonitor(monitorId: Int, completion: @escaping (Result<Void, Error>) -> Void) {
+        let url = URL(string: "\(BASE_URL)/monitors/\(monitorId)")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard data != nil else {
+                completion(.failure(URLError(.badServerResponse)))
+                return
+            }
+            completion(.success(()))
         }.resume()
     }
 }

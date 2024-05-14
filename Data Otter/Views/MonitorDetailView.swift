@@ -24,6 +24,11 @@ struct MonitorDetailView: View {
                     Text("Type: \(monitor.type)")
                     Text("Regex: \(monitor.regex)")
                 }
+                if(!history.isEmpty){
+                    Section("History"){
+                        HistoryGraphView(monitorData: monitor, monitorHistoryData: history)
+                    }
+                }
             }
             Spacer()
         }.toolbar {
@@ -59,7 +64,7 @@ struct EditMonitorView: View {
                 showing = false
             }, label: {
                 Text("Cancel").foregroundStyle(.red)
-            })
+            }).buttonStyle(.bordered).tint(.red)
             Spacer()
             if(!confirmed){
                 Button("Verify"){
@@ -78,14 +83,14 @@ struct EditMonitorView: View {
                             }
                         }
                     }
-                }
+                }.buttonStyle(.bordered).tint(.blue)
             } else {
                 Button("Submit"){
                     monitor.update(data: MonitorData(name: name, type: type, url: url, regex: regex))
                     MonitorsService.updateMonitor(monitorData: monitor) { _ in
                         showing = false
                     }
-                }
+                }.buttonStyle(.bordered).tint(.green)
             }
         }.padding()
         Form {

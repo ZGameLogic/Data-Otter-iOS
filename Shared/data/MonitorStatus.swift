@@ -68,7 +68,7 @@ struct Status: Codable, Hashable {
     init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-dd-MM HH:mm:ss"
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
         self.dateRecorded = dateFormatter.date(from: try container.decode(String.self, forKey: .dateRecorded)) ?? Date()
         self.milliseconds = try container.decode(Int64.self, forKey: .milliseconds)
         self.status = try container.decode(Bool.self, forKey: .status)

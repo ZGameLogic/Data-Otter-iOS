@@ -19,7 +19,43 @@
 		B586C9E52BF25C2C009A564A /* MonitorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E42BF25C2C009A564A /* MonitorDetailView.swift */; };
 		B586C9E72BF2AF92009A564A /* MonitorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E62BF2AF92009A564A /* MonitorData.swift */; };
 		B586C9E92BF2B3D3009A564A /* MonitorCreationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E82BF2B3D3009A564A /* MonitorCreationResult.swift */; };
+		B586C9EC2BF3A6EB009A564A /* HistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9EB2BF3A6EB009A564A /* HistoryGraphView.swift */; };
+		B586C9EE2BF3BB04009A564A /* AddMonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9ED2BF3BB04009A564A /* AddMonitorView.swift */; };
+		B586C9F42BF3DB8B009A564A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59747532A41DC2800A5DA4C /* WidgetKit.framework */; };
+		B586C9F52BF3DB8B009A564A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59747552A41DC2800A5DA4C /* SwiftUI.framework */; };
+		B586C9F82BF3DB8B009A564A /* Data_Otter_iOS_WidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9F72BF3DB8B009A564A /* Data_Otter_iOS_WidgetBundle.swift */; };
+		B586C9FA2BF3DB8B009A564A /* Data_Otter_iOS_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9F92BF3DB8B009A564A /* Data_Otter_iOS_Widget.swift */; };
+		B586C9FC2BF3DB8B009A564A /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9FB2BF3DB8B009A564A /* AppIntent.swift */; };
+		B586C9FE2BF3DB8E009A564A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B586C9FD2BF3DB8E009A564A /* Assets.xcassets */; };
+		B586CA022BF3DB8F009A564A /* Data Otter iOS WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B586C9F32BF3DB8B009A564A /* Data Otter iOS WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B586CA072BF3DBA2009A564A /* MonitorsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9C42BF1948A009A564A /* MonitorsService.swift */; };
+		B586CA082BF3DBAB009A564A /* MonitorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9BF2BF18230009A564A /* MonitorStatus.swift */; };
+		B586CA092BF3DBB0009A564A /* HistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9EB2BF3A6EB009A564A /* HistoryGraphView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B586CA002BF3DB8F009A564A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B59747342A41DBF600A5DA4C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B586C9F22BF3DB8B009A564A;
+			remoteInfo = "Data Otter iOS WidgetExtension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B586CA062BF3DB8F009A564A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B586CA022BF3DB8F009A564A /* Data Otter iOS WidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B586C9BF2BF18230009A564A /* MonitorStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorStatus.swift; sourceTree = "<group>"; };
@@ -35,6 +71,14 @@
 		B586C9E42BF25C2C009A564A /* MonitorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorDetailView.swift; sourceTree = "<group>"; };
 		B586C9E62BF2AF92009A564A /* MonitorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorData.swift; sourceTree = "<group>"; };
 		B586C9E82BF2B3D3009A564A /* MonitorCreationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorCreationResult.swift; sourceTree = "<group>"; };
+		B586C9EB2BF3A6EB009A564A /* HistoryGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryGraphView.swift; sourceTree = "<group>"; };
+		B586C9ED2BF3BB04009A564A /* AddMonitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMonitorView.swift; sourceTree = "<group>"; };
+		B586C9F32BF3DB8B009A564A /* Data Otter iOS WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Data Otter iOS WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B586C9F72BF3DB8B009A564A /* Data_Otter_iOS_WidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_Otter_iOS_WidgetBundle.swift; sourceTree = "<group>"; };
+		B586C9F92BF3DB8B009A564A /* Data_Otter_iOS_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_Otter_iOS_Widget.swift; sourceTree = "<group>"; };
+		B586C9FB2BF3DB8B009A564A /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		B586C9FD2BF3DB8E009A564A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B586C9FF2BF3DB8F009A564A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B59747532A41DC2800A5DA4C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		B59747552A41DC2800A5DA4C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -44,6 +88,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B586C9F02BF3DB8B009A564A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B586C9F52BF3DB8B009A564A /* SwiftUI.framework in Frameworks */,
+				B586C9F42BF3DB8B009A564A /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,8 +130,29 @@
 				B586C9E02BF256EF009A564A /* EventsListView.swift */,
 				B586C9E22BF25ABE009A564A /* MonitorListView.swift */,
 				B586C9E42BF25C2C009A564A /* MonitorDetailView.swift */,
+				B586C9ED2BF3BB04009A564A /* AddMonitorView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B586C9EA2BF3A6D7009A564A /* views */ = {
+			isa = PBXGroup;
+			children = (
+				B586C9EB2BF3A6EB009A564A /* HistoryGraphView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		B586C9F62BF3DB8B009A564A /* Data Otter iOS Widget */ = {
+			isa = PBXGroup;
+			children = (
+				B586C9F72BF3DB8B009A564A /* Data_Otter_iOS_WidgetBundle.swift */,
+				B586C9F92BF3DB8B009A564A /* Data_Otter_iOS_Widget.swift */,
+				B586C9FB2BF3DB8B009A564A /* AppIntent.swift */,
+				B586C9FD2BF3DB8E009A564A /* Assets.xcassets */,
+				B586C9FF2BF3DB8F009A564A /* Info.plist */,
+			);
+			path = "Data Otter iOS Widget";
 			sourceTree = "<group>";
 		};
 		B59747332A41DBF600A5DA4C = {
@@ -86,6 +160,7 @@
 			children = (
 				B59D50272A4362C200207428 /* Shared */,
 				B586C9CE2BF25577009A564A /* Data Otter */,
+				B586C9F62BF3DB8B009A564A /* Data Otter iOS Widget */,
 				B59747522A41DC2800A5DA4C /* Frameworks */,
 				B597473D2A41DBF600A5DA4C /* Products */,
 			);
@@ -95,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				B586C9CD2BF25577009A564A /* Data Otter.app */,
+				B586C9F32BF3DB8B009A564A /* Data Otter iOS WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,6 +187,7 @@
 		B59D50272A4362C200207428 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				B586C9EA2BF3A6D7009A564A /* views */,
 				B5E196F32A43F27D0089518A /* data */,
 				B586C9C42BF1948A009A564A /* MonitorsService.swift */,
 			);
@@ -137,15 +214,34 @@
 				B586C9C92BF25577009A564A /* Sources */,
 				B586C9CA2BF25577009A564A /* Frameworks */,
 				B586C9CB2BF25577009A564A /* Resources */,
+				B586CA062BF3DB8F009A564A /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B586CA012BF3DB8F009A564A /* PBXTargetDependency */,
 			);
 			name = "Data Otter";
 			productName = "Data Otter";
 			productReference = B586C9CD2BF25577009A564A /* Data Otter.app */;
 			productType = "com.apple.product-type.application";
+		};
+		B586C9F22BF3DB8B009A564A /* Data Otter iOS WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B586CA032BF3DB8F009A564A /* Build configuration list for PBXNativeTarget "Data Otter iOS WidgetExtension" */;
+			buildPhases = (
+				B586C9EF2BF3DB8B009A564A /* Sources */,
+				B586C9F02BF3DB8B009A564A /* Frameworks */,
+				B586C9F12BF3DB8B009A564A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Data Otter iOS WidgetExtension";
+			productName = "Data Otter iOS WidgetExtension";
+			productReference = B586C9F32BF3DB8B009A564A /* Data Otter iOS WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -158,6 +254,9 @@
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					B586C9CC2BF25577009A564A = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					B586C9F22BF3DB8B009A564A = {
 						CreatedOnToolsVersion = 15.3;
 					};
 				};
@@ -176,6 +275,7 @@
 			projectRoot = "";
 			targets = (
 				B586C9CC2BF25577009A564A /* Data Otter */,
+				B586C9F22BF3DB8B009A564A /* Data Otter iOS WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -190,6 +290,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B586C9F12BF3DB8B009A564A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B586C9FE2BF3DB8E009A564A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -197,8 +305,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B586C9EC2BF3A6EB009A564A /* HistoryGraphView.swift in Sources */,
 				B586C9E52BF25C2C009A564A /* MonitorDetailView.swift in Sources */,
 				B586C9E72BF2AF92009A564A /* MonitorData.swift in Sources */,
+				B586C9EE2BF3BB04009A564A /* AddMonitorView.swift in Sources */,
 				B586C9DF2BF2569D009A564A /* MonitorsService.swift in Sources */,
 				B586C9E12BF256EF009A564A /* EventsListView.swift in Sources */,
 				B586C9E92BF2B3D3009A564A /* MonitorCreationResult.swift in Sources */,
@@ -210,12 +320,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B586C9EF2BF3DB8B009A564A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B586CA072BF3DBA2009A564A /* MonitorsService.swift in Sources */,
+				B586C9FA2BF3DB8B009A564A /* Data_Otter_iOS_Widget.swift in Sources */,
+				B586C9F82BF3DB8B009A564A /* Data_Otter_iOS_WidgetBundle.swift in Sources */,
+				B586CA082BF3DBAB009A564A /* MonitorStatus.swift in Sources */,
+				B586CA092BF3DBB0009A564A /* HistoryGraphView.swift in Sources */,
+				B586C9FC2BF3DB8B009A564A /* AppIntent.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B586CA012BF3DB8F009A564A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B586C9F22BF3DB8B009A564A /* Data Otter iOS WidgetExtension */;
+			targetProxy = B586CA002BF3DB8F009A564A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B586C9D92BF25579009A564A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -251,6 +383,7 @@
 		B586C9DA2BF25579009A564A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -276,6 +409,69 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Data-Otter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B586CA042BF3DB8F009A564A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6M38R97L4D;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Data Otter iOS Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Data Otter iOS Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Data-Otter.Data-Otter-iOS-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B586CA052BF3DB8F009A564A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6M38R97L4D;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Data Otter iOS Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Data Otter iOS Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Data-Otter.Data-Otter-iOS-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -406,6 +602,15 @@
 			buildConfigurations = (
 				B586C9D92BF25579009A564A /* Debug */,
 				B586C9DA2BF25579009A564A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B586CA032BF3DB8F009A564A /* Build configuration list for PBXNativeTarget "Data Otter iOS WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B586CA042BF3DB8F009A564A /* Debug */,
+				B586CA052BF3DB8F009A564A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
