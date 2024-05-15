@@ -9,25 +9,32 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: AppIntentTimelineProvider {
+    let previewData: [MonitorStatus] = [
+        MonitorStatus(id: 1, name: "Test Monitor 1", type: "API", url: "", regex: "", status: Status(dateRecorded: Date(), milliseconds: 1, status: true, attempts: 1, statusCode: 200)),
+        MonitorStatus(id: 2, name: "Test Monitor 2", type: "API", url: "", regex: "", status: Status(dateRecorded: Date(), milliseconds: 1, status: true, attempts: 1, statusCode: 200)),
+        MonitorStatus(id: 3, name: "Test Monitor 3", type: "WEB", url: "", regex: "", status: Status(dateRecorded: Date(), milliseconds: 1, status: true, attempts: 1, statusCode: 200)),
+        MonitorStatus(id: 4, name: "Test Monitor 4", type: "API", url: "", regex: "", status: Status(dateRecorded: Date(), milliseconds: 1, status: true, attempts: 1, statusCode: 200))
+    ]
+    
+    
     func placeholder(in context: Context) -> MonitorStatusEntry {
-        MonitorStatusEntry(monitors: [])
+        MonitorStatusEntry(date: Date(), monitors: previewData)
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> MonitorStatusEntry {
-        MonitorStatusEntry(monitors: [])
+        MonitorStatusEntry(date: Date(), monitors: previewData)
     }
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<MonitorStatusEntry> {
+        let newDate = Calendar.current.date(byAdding: .minute, value: 1, to: Date())!
         var entries: [MonitorStatusEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-//        let currentDate = Date()
-//        for hourOffset in 0 ..< 5 {
-//            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-//            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-//            entries.append(entry)
-//        }
-
+        let result = MonitorsService.getMonitorsWithStatusSyncronous()
+        switch result {
+        case .success(let monitors):
+            entries.append(MonitorStatusEntry(date: newDate, monitors: monitors))
+        case .failure(let error):
+            print("Error: \(error)")
+        }
         return Timeline(entries: entries, policy: .atEnd)
     }
 }
@@ -37,48 +44,22 @@ struct SimpleEntry: TimelineEntry {
     let configuration: ConfigurationAppIntent
 }
 
-struct Data_Otter_iOS_WidgetEntryView : View {
-    var entry: Provider.Entry
-
-    var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-        }
-    }
-}
-
 struct zgamemonitors: Widget {
     let kind: String = "zgamemonitors"
 
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
-            Data_Otter_iOS_WidgetEntryView(entry: entry)
+            DataOtterGuageWidgetView(entry: entry)
         }
-        .configurationDisplayName("Data Otter")
+        .configurationDisplayName("Data Otter Guage")
         .description("Gets the status of the ZGameLogic monitors.")
-        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryCircular])
+        .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular])
         .contentMarginsDisabled()
-    }
-}
-
-extension ConfigurationAppIntent {
-    fileprivate static var smiley: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "😀"
-        return intent
-    }
-    
-    fileprivate static var starEyes: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "🤩"
-        return intent
     }
 }
 
 #Preview(as: .systemSmall) {
     zgamemonitors()
 } timeline: {
-    SimpleEntry(date: .now, configuration: .smiley)
-    SimpleEntry(date: .now, configuration: .starEyes)
+    MonitorStatusEntry(date: Date(), monitors: [])
 }

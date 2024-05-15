@@ -31,6 +31,20 @@ struct MonitorsService {
         }.resume()
     }
     
+    public static func getMonitorsWithStatusSyncronous() -> Result<[MonitorStatus], Error> {
+        let semaphore = DispatchSemaphore(value: 0)
+        var result: Result<[MonitorStatus], Error>!
+
+        getMonitorsWithStatus { asyncResult in
+            result = asyncResult
+            semaphore.signal()
+        }
+
+        semaphore.wait()
+        return result
+    }
+
+    
     public static func getMonitors(completion: @escaping (Result<[MonitorStatus], Error>) -> Void) {
         let url = URL(string: "\(BASE_URL)/monitors")!
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -50,6 +64,19 @@ struct MonitorsService {
                return
            }
         }.resume()
+    }
+    
+    public static func getMonitorsSyncronous() -> Result<[MonitorStatus], Error> {
+        let semaphore = DispatchSemaphore(value: 0)
+        var result: Result<[MonitorStatus], Error>!
+
+        getMonitors { asyncResult in
+            result = asyncResult
+            semaphore.signal()
+        }
+
+        semaphore.wait()
+        return result
     }
     
     public static func getMonitorHistory(id: Int, start: Date, end: Date, completion: @escaping (Result<[Status], Error>) -> Void) {
@@ -83,6 +110,19 @@ struct MonitorsService {
                return
            }
         }.resume()
+    }
+    
+    public static func getMonitorHistorySyncronous(id: Int) -> Result<[Status], Error> {
+        let semaphore = DispatchSemaphore(value: 0)
+        var result: Result<[Status], Error>!
+
+        getMonitorHistory(id: id) { asyncResult in
+            result = asyncResult
+            semaphore.signal()
+        }
+
+        semaphore.wait()
+        return result
     }
     
     public static func getMonitorHistory(id: Int, completion: @escaping (Result<[Status], Error>) -> Void) {

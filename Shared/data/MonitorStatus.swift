@@ -86,6 +86,12 @@ struct Status: Codable, Hashable {
     }
 }
 
+struct MonitorStatusHistoryEntry: TimelineEntry {
+    let date: Date
+    let monitors: [MonitorStatus]
+    let history: [Int: [Status]]
+}
+
 struct MonitorStatusEntry: TimelineEntry {
     let date: Date
     let monitors: [MonitorStatus]
@@ -93,9 +99,10 @@ struct MonitorStatusEntry: TimelineEntry {
     var upMonitors : [String] { monitors.filter { $0.status?.status == true }.map { $0.name }}
     var up: Int { monitors.filter { $0.status?.status == true }.count }
     var down: Int { monitors.filter { $0.status?.status == false }.count }
+    var total: Int { monitors.count }
     
-    init(monitors: [MonitorStatus]){
-        date = Date()
+    init(date: Date, monitors: [MonitorStatus]){
+        self.date = date
         self.monitors = monitors
     }
 }
