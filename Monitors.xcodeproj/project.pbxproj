@@ -69,6 +69,7 @@
 		B586CA0B2BF3DC49009A564A /* MonitorCreationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E82BF2B3D3009A564A /* MonitorCreationResult.swift */; };
 		B586CA0D2BF3E5C5009A564A /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586CA0C2BF3E5C5009A564A /* EventsView.swift */; };
 		B586CA102BF3FEDA009A564A /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586CA0F2BF3FEDA009A564A /* EventDetailView.swift */; };
+		B5FB16922BF685BD00BA9447 /* StatusListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FB16912BF685BD00BA9447 /* StatusListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +185,7 @@
 		B586CA0F2BF3FEDA009A564A /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		B59747532A41DC2800A5DA4C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		B59747552A41DC2800A5DA4C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		B5FB16912BF685BD00BA9447 /* StatusListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +305,7 @@
 				B586C9E22BF25ABE009A564A /* MonitorListView.swift */,
 				B586C9E42BF25C2C009A564A /* MonitorDetailView.swift */,
 				B586C9ED2BF3BB04009A564A /* AddMonitorView.swift */,
+				B5FB16912BF685BD00BA9447 /* StatusListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B586CA0D2BF3E5C5009A564A /* EventsView.swift in Sources */,
+				B5FB16922BF685BD00BA9447 /* StatusListView.swift in Sources */,
 				B586C9EC2BF3A6EB009A564A /* HistoryGraphView.swift in Sources */,
 				B586C9E52BF25C2C009A564A /* MonitorDetailView.swift in Sources */,
 				B586C9E72BF2AF92009A564A /* MonitorData.swift in Sources */,

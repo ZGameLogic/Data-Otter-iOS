@@ -89,7 +89,7 @@ struct EventsView: View {
 
         for monitor in monitorToggles.filter({$0.isSelected}) {
                dispatchGroup.enter()
-               MonitorsService.getMonitorHistory(id: monitor.id, start: startDate, end: endDate) { result in
+            MonitorsService.getMonitorHistory(id: monitor.id, start: startDate, end: endDate, condensed: true) { result in
                    DispatchQueue.main.async {
                        switch result {
                        case .success(let data):

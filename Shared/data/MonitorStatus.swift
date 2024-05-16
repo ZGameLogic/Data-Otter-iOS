@@ -51,7 +51,8 @@ struct MonitorStatus: Codable, Identifiable, Hashable {
     }
 }
 
-struct Status: Codable, Hashable {
+struct Status: Codable, Hashable, Identifiable {
+    let id: String
     let dateRecorded: Date
     let milliseconds: Int64
     let status: Bool
@@ -75,6 +76,7 @@ struct Status: Codable, Hashable {
         self.status = try container.decode(Bool.self, forKey: .status)
         self.attempts = try container.decode(Int.self, forKey: .attempts)
         self.statusCode = try container.decode(Int.self, forKey: .statusCode)
+        id = "\(dateRecorded)\(milliseconds)\(status)\(attempts)\(statusCode)"
     }
     
     init(dateRecorded: Date, milliseconds: Int64, status: Bool, attempts: Int, statusCode: Int) {
@@ -83,6 +85,7 @@ struct Status: Codable, Hashable {
         self.status = status
         self.attempts = attempts
         self.statusCode = statusCode
+        id = "\(dateRecorded)\(milliseconds)\(status)\(attempts)\(statusCode)"
     }
 }
 

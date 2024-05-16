@@ -79,14 +79,14 @@ struct MonitorsService {
         return result
     }
     
-    public static func getMonitorHistory(id: Int, start: Date, end: Date?, completion: @escaping (Result<[Status], Error>) -> Void) {
+    public static func getMonitorHistory(id: Int, start: Date, end: Date?, condensed: Bool, completion: @escaping (Result<[Status], Error>) -> Void) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
         let formattedStartDate = dateFormatter.string(from: start)
         
         var urlComponents = URLComponents(string: "\(BASE_URL)/monitors/\(id)/history")!
         urlComponents.queryItems = [
-            URLQueryItem(name: "condensed", value: "true"),
+            URLQueryItem(name: "condensed", value: "\(condensed)"),
             URLQueryItem(name: "start", value: formattedStartDate),
         ]
         
@@ -119,7 +119,7 @@ struct MonitorsService {
         let semaphore = DispatchSemaphore(value: 0)
         var result: Result<[Status], Error>!
 
-        getMonitorHistory(id: id) { asyncResult in
+        getMonitorHistory(id: id, condensed: true) { asyncResult in
             result = asyncResult
             semaphore.signal()
         }
@@ -128,11 +128,11 @@ struct MonitorsService {
         return result
     }
     
-    public static func getMonitorHistory(id: Int, completion: @escaping (Result<[Status], Error>) -> Void) {
+    public static func getMonitorHistory(id: Int, condensed: Bool, completion: @escaping (Result<[Status], Error>) -> Void) {
         let currentDate = Date()
         let calendar = Calendar.current
         let twelveHoursAgo = calendar.date(byAdding: .hour, value: -12, to: currentDate)!
-        return getMonitorHistory(id: id, start: twelveHoursAgo, end: nil, completion: completion)
+        return getMonitorHistory(id: id, start: twelveHoursAgo, end: nil, condensed: condensed, completion: completion)
     }
     
     public static func testMonitor(monitorData: MonitorData, completion: @escaping (Result<MonitorCreationResult, Error>) -> Void) {

@@ -11,10 +11,10 @@ struct MonitorDetailView: View {
     @Binding var monitor: MonitorStatus
     var history: [Status]
     @State var showEditMonitor = false
+    @State var showStatusHistory = false
     
     var body: some View {
         VStack {
-            Text(monitor.name).font(.title)
             if let status = monitor.status {
                 Text(status.status ? "Online" : "Offline").foregroundStyle(monitor.getStatusColor())
             }
@@ -27,11 +27,15 @@ struct MonitorDetailView: View {
                 if(!history.isEmpty){
                     Section("History"){
                         HistoryGraphView(monitorData: monitor, monitorHistoryData: history)
+                        NavigationLink("Status History", destination: StatusListView(id: monitor.id, history: history))
                     }
                 }
             }
             Spacer()
-        }.toolbar {
+        }
+        .navigationTitle(monitor.name)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
             ToolbarItem {
                 Button(action: {
                     showEditMonitor = true

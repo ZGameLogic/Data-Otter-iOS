@@ -100,7 +100,7 @@ struct GeneralView: View {
 
            for monitor in monitorData {
                dispatchGroup.enter()
-               MonitorsService.getMonitorHistory(id: monitor.id) { result in
+               MonitorsService.getMonitorHistory(id: monitor.id, condensed: true) { result in
                    DispatchQueue.main.async {
                        switch result {
                        case .success(let data):
