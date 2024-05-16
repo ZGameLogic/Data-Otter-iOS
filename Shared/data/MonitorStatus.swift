@@ -16,6 +16,17 @@ struct MonitorStatus: Codable, Identifiable, Hashable {
     var url: String
     var regex: String
     let status: Status?
+    let groups: [Int]
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case type
+        case url
+        case regex
+        case status
+        case groups = "group ids"
+    }
     
     func getStatusColor() -> Color {
         guard let status = status else {
@@ -39,15 +50,17 @@ struct MonitorStatus: Codable, Identifiable, Hashable {
         self.url = try container.decode(String.self, forKey: .url)
         self.regex = try container.decode(String.self, forKey: .regex)
         self.status = try container.decodeIfPresent(Status.self, forKey: .status)
+        self.groups = try container.decode([Int].self, forKey: .groups)
     }
     
-    init(id: Int, name: String, type: String, url: String, regex: String, status: Status?) {
+    init(id: Int, name: String, type: String, url: String, regex: String, status: Status?, groups: [Int]) {
         self.id = id
         self.name = name
         self.type = type
         self.url = url
         self.regex = regex
         self.status = status
+        self.groups = groups
     }
 }
 
@@ -166,4 +179,9 @@ struct MonitorToggle: Identifiable, Equatable {
     let id: Int
     let name: String
     var isSelected: Bool
+}
+
+struct MonitorGroup: Identifiable, Codable {
+    let id: Int
+    let name: String
 }

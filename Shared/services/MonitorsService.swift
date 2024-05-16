@@ -31,6 +31,27 @@ struct MonitorsService {
         }.resume()
     }
     
+    public static func getMonitorGroups(completion: @escaping (Result<[MonitorGroup], Error>) -> Void) {
+        let url = URL(string: "\(BASE_URL)/groups")!
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let data = data else {
+                completion(.failure(URLError(.badServerResponse)))
+                return
+            }
+            do {
+                let decodedData = try JSONDecoder().decode([MonitorGroup].self, from: data)
+                completion(.success(decodedData))
+           } catch {
+               completion(.failure(error))
+               return
+           }
+        }.resume()
+    }
+    
     public static func getMonitorsWithStatusSyncronous() -> Result<[MonitorStatus], Error> {
         let semaphore = DispatchSemaphore(value: 0)
         var result: Result<[MonitorStatus], Error>!

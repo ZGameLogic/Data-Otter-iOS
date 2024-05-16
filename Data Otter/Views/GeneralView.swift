@@ -10,6 +10,7 @@ import SwiftUI
 struct GeneralView: View {
     @State var monitorData: [MonitorStatus]
     @State var monitorHistoryData: [Int: [Status]]
+    @State var groups: [MonitorGroup]
     @State private var showAddMonitor = false
     @State private var showAlert = false
     
@@ -20,7 +21,7 @@ struct GeneralView: View {
             List {
                 ForEach(monitorData){monitor in
                     NavigationLink(value: monitor) {
-                        MonitorListView(monitor: monitor)
+                        MonitorListView(monitor: monitor, groups: groups)
                     }.swipeActions(edge: .trailing) {
                         Button(role: .destructive) {
                             monitorToDelete = monitor
@@ -40,7 +41,7 @@ struct GeneralView: View {
             .navigationTitle("Monitors")
                 .navigationDestination(for: MonitorStatus.self) { monitor in
                     if let index = monitorData.firstIndex(where: { $0.id == monitor.id }) {
-                        MonitorDetailView(monitor: $monitorData[index], history: monitorHistoryData[monitorData[index].id] ?? [])
+                        MonitorDetailView(monitor: $monitorData[index], history: monitorHistoryData[monitorData[index].id] ?? [], groups: groups)
                     }
                 }
                 .toolbar {
@@ -53,13 +54,16 @@ struct GeneralView: View {
                     }
                 }
                 .refreshable {
+                    fetchMonitorGroups()
                     fetchMonitorStatus()
                 }
         }.onAppear {
+            fetchMonitorGroups()
             fetchMonitorStatus()
         }.onChange(of: monitorHistoryData) { old, new in
             print("Old: \(old) \nNew: \(new)")
         }.sheet(isPresented: $showAddMonitor, onDismiss: {
+            fetchMonitorGroups()
             fetchMonitorStatus()
         }, content: {
             AddMonitorView(isPresented: $showAddMonitor)
@@ -86,6 +90,20 @@ struct GeneralView: View {
                     monitorHistoryData.removeValue(forKey: monitor.id)
                     monitorToDelete = nil
                     fetchMonitorStatus()
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    func fetchMonitorGroups () {
+        print("Fetching monitor groups")
+        MonitorsService.getMonitorGroups { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    groups = data
                 case .failure(let error):
                     print(error)
                 }
@@ -143,7 +161,7 @@ struct GeneralView: View {
 
 #Preview {
     GeneralView(monitorData: [
-        MonitorStatus(id: 1, name: "Test Monitor 1", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 1, statusCode: 200)),
-        MonitorStatus(id: 2, name: "Test Monitor 2", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: false, attempts: 3, statusCode: 200))
-    ], monitorHistoryData: [:])
+        MonitorStatus(id: 1, name: "Test Monitor 1", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 1, statusCode: 200), groups: []),
+        MonitorStatus(id: 2, name: "Test Monitor 2", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: false, attempts: 3, statusCode: 200), groups: [])
+    ], monitorHistoryData: [:], groups: [])
 }

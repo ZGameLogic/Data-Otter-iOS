@@ -16,10 +16,10 @@ struct Provider: AppIntentTimelineProvider {
     
     init() {
         previewData = [
-            MonitorStatus(id: 1, name: "Test Monitor 1", type: "API", url: "", regex: "", status: nil),
-            MonitorStatus(id: 2, name: "Test Monitor 2", type: "API", url: "", regex: "", status: nil),
-            MonitorStatus(id: 3, name: "Test Monitor 3", type: "WEB", url: "", regex: "", status: nil),
-            MonitorStatus(id: 4, name: "Test Monitor 4", type: "API", url: "", regex: "", status: nil)
+            MonitorStatus(id: 1, name: "Test Monitor 1", type: "API", url: "", regex: "", status: nil, groups: []),
+            MonitorStatus(id: 2, name: "Test Monitor 2", type: "API", url: "", regex: "", status: nil, groups: []),
+            MonitorStatus(id: 3, name: "Test Monitor 3", type: "WEB", url: "", regex: "", status: nil, groups: []),
+            MonitorStatus(id: 4, name: "Test Monitor 4", type: "API", url: "", regex: "", status: nil, groups: [])
         ]
         startDate = Calendar.current.date(byAdding: .hour, value: -12, to: Date())!
         endDate = Date()
