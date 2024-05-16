@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 struct HistoryGraphView: View {
-   let history: [GraphEntry]
+    let history: [GraphEntry]
     
     init(monitorData: MonitorStatus, monitorHistoryData: [Status]){
         let name = monitorData.name

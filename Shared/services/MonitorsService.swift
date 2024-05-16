@@ -8,7 +8,7 @@
 import Foundation
 
 struct MonitorsService {
-    private static let BASE_URL = "http://localhost:8080"
+    private static let BASE_URL = "http://20.40.218.161:8080"
     
     public static func getMonitorsWithStatus(completion: @escaping (Result<[MonitorStatus], Error>) -> Void) {
         let url = URL(string: "\(BASE_URL)/monitors?include-status=true")!
@@ -79,18 +79,21 @@ struct MonitorsService {
         return result
     }
     
-    public static func getMonitorHistory(id: Int, start: Date, end: Date, completion: @escaping (Result<[Status], Error>) -> Void) {
+    public static func getMonitorHistory(id: Int, start: Date, end: Date?, completion: @escaping (Result<[Status], Error>) -> Void) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
         let formattedStartDate = dateFormatter.string(from: start)
-        let formattedEndDate = dateFormatter.string(from: end)
         
         var urlComponents = URLComponents(string: "\(BASE_URL)/monitors/\(id)/history")!
         urlComponents.queryItems = [
             URLQueryItem(name: "condensed", value: "true"),
             URLQueryItem(name: "start", value: formattedStartDate),
-            URLQueryItem(name: "end", value: formattedEndDate)
         ]
+        
+        if let end = end {
+            let formattedEndDate = dateFormatter.string(from: end)
+            urlComponents.queryItems!.append(URLQueryItem(name: "end", value: formattedEndDate))
+        }
         
         let url = urlComponents.url!
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -129,7 +132,7 @@ struct MonitorsService {
         let currentDate = Date()
         let calendar = Calendar.current
         let twelveHoursAgo = calendar.date(byAdding: .hour, value: -12, to: currentDate)!
-        return getMonitorHistory(id: id, start: twelveHoursAgo, end: currentDate, completion: completion)
+        return getMonitorHistory(id: id, start: twelveHoursAgo, end: nil, completion: completion)
     }
     
     public static func testMonitor(monitorData: MonitorData, completion: @escaping (Result<MonitorCreationResult, Error>) -> Void) {
