@@ -10,7 +10,7 @@ import SwiftUI
 struct MonitorListView: View {
     let monitor: MonitorStatus
     let groups: [MonitorGroup]
-    
+
     var body: some View {
         VStack(alignment: .leading){
             Text(monitor.name).foregroundStyle(monitor.getStatusColor())

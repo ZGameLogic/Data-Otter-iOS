@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B509826E2BF6A8FF00F5A277 /* MonitorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509826D2BF6A8FF00F5A277 /* MonitorsModel.swift */; };
 		B5210EAF2BF5950B00854A3C /* Data_Otter_WatchOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5210EAE2BF5950B00854A3C /* Data_Otter_WatchOSApp.swift */; };
 		B5210EB12BF5950B00854A3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5210EB02BF5950B00854A3C /* ContentView.swift */; };
 		B5210EB32BF5950D00854A3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5210EB22BF5950D00854A3C /* Assets.xcassets */; };
@@ -141,6 +142,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B509826D2BF6A8FF00F5A277 /* MonitorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorsModel.swift; sourceTree = "<group>"; };
 		B5210EAC2BF5950B00854A3C /* Data Otter WatchOS Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Data Otter WatchOS Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5210EAE2BF5950B00854A3C /* Data_Otter_WatchOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_Otter_WatchOSApp.swift; sourceTree = "<group>"; };
 		B5210EB02BF5950B00854A3C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -233,6 +235,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B509826C2BF6A8DE00F5A277 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B509826D2BF6A8FF00F5A277 /* MonitorsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		B5210EAD2BF5950B00854A3C /* Data Otter WatchOS Watch App */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				B5745BCB2BF57E390049B304 /* Data-Otter-Info.plist */,
+				B509826C2BF6A8DE00F5A277 /* Models */,
 				B586C9DB2BF2566A009A564A /* Views */,
 				B586C9CF2BF25577009A564A /* Data_OtterApp.swift */,
 				B586C9D12BF25577009A564A /* ContentView.swift */,
@@ -643,6 +654,7 @@
 				B586CA102BF3FEDA009A564A /* EventDetailView.swift in Sources */,
 				B586C9E12BF256EF009A564A /* EventsListView.swift in Sources */,
 				B586C9E92BF2B3D3009A564A /* MonitorCreationResult.swift in Sources */,
+				B509826E2BF6A8FF00F5A277 /* MonitorsModel.swift in Sources */,
 				B586C9DD2BF25685009A564A /* GeneralView.swift in Sources */,
 				B586C9D22BF25577009A564A /* ContentView.swift in Sources */,
 				B586C9E32BF25ABE009A564A /* MonitorListView.swift in Sources */,
