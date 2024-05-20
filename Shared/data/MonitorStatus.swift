@@ -16,17 +16,7 @@ struct MonitorStatus: Codable, Identifiable, Hashable {
     var url: String
     var regex: String
     let status: Status?
-    let groups: [Int]
-    
-    enum CodingKeys: String, CodingKey {
-        case id
-        case name
-        case type
-        case url
-        case regex
-        case status
-        case groups = "group ids"
-    }
+    var groups: [Int]
     
     func getStatusColor() -> Color {
         guard let status = status else {
@@ -177,11 +167,18 @@ struct MonitorEventStatus: Equatable, Hashable, Identifiable {
 
 struct MonitorToggle: Identifiable, Equatable {
     let id: Int
-    let name: String
+    var name: String
     var isSelected: Bool
 }
 
-struct MonitorGroup: Identifiable, Codable {
+struct MonitorGroup: Identifiable, Codable, Hashable {
     let id: Int
     let name: String
+    var monitors: [Int]
+}
+
+
+struct MonitorGroupPayload: Codable {
+    let name: String
+    let monitors: [String]
 }

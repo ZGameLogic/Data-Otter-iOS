@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GeneralView: View {
-    @EnvironmentObject var viewModel: Monitors
+    @EnvironmentObject var viewModel: DataOtterModel
     
     @State private var showAddMonitor = false
     @State private var showAlert = false
@@ -76,13 +76,11 @@ struct GeneralView: View {
     }
     
     func deleteMonitor(monitor: MonitorStatus){
-        MonitorsService.deleteMonitor(monitorId: monitor.id) { result in
+        viewModel.deleteMonitor(monitorId: monitor.id) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success():
-                    viewModel.monitorHistoryData.removeValue(forKey: monitor.id)
                     monitorToDelete = nil
-                    viewModel.refreshData()
                 case .failure(let error):
                     print(error)
                 }
@@ -90,10 +88,3 @@ struct GeneralView: View {
         }
     }
 }
-
-//#Preview {
-//    GeneralView(monitorData: [
-//        MonitorStatus(id: 1, name: "Test Monitor 1", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 1, statusCode: 200), groups: []),
-//        MonitorStatus(id: 2, name: "Test Monitor 2", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: false, attempts: 3, statusCode: 200), groups: [])
-//    ], monitorHistoryData: [:], groups: [])
-//}

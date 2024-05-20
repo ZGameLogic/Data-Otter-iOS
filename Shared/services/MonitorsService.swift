@@ -8,7 +8,11 @@
 import Foundation
 
 struct MonitorsService {
-    private static let BASE_URL = "http://20.40.218.161:8080"
+    #if targetEnvironment(simulator)
+    static let BASE_URL = "http://localhost:8080"
+    #else
+    static let BASE_URL = "http://20.40.218.161:8080"
+    #endif
     
     public static func getMonitorsWithStatus(completion: @escaping (Result<[MonitorStatus], Error>) -> Void) {
         let url = URL(string: "\(BASE_URL)/monitors?include-status=true")!
@@ -267,6 +271,134 @@ struct MonitorsService {
                 return
             }
             completion(.success(()))
+        }.resume()
+    }
+    
+    public static func createGroup(name: String, completion: @escaping (Result<MonitorGroup, Error>) -> Void) {
+        let url = URL(string: "\(BASE_URL)/groups")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let jsonData = try JSONEncoder().encode(MonitorGroupPayload(name: name, monitors: []))
+            request.httpBody = jsonData
+        } catch {
+            completion(.failure(error))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let data = data else {
+                completion(.failure(URLError(.badServerResponse)))
+                return
+            }
+            do {
+                let decodedData = try JSONDecoder().decode(MonitorGroup.self, from: data)
+                completion(.success(decodedData))
+            } catch {
+                completion(.failure(error))
+            }
+        }.resume()
+    }
+    
+    public static func removeMonitorFromGroup(monitorId: Int, groupId: Int, completion: @escaping (Result<MonitorGroup, Error>) -> Void) {
+        let url = URL(string: "\(BASE_URL)/monitors/\(monitorId)/group/\(groupId)")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let data = data else {
+                completion(.failure(URLError(.badServerResponse)))
+                return
+            }
+            do {
+                let decodedData = try JSONDecoder().decode(MonitorGroup.self, from: data)
+                completion(.success(decodedData))
+            } catch {
+                completion(.failure(error))
+            }
+        }.resume()
+    }
+    
+    public static func addMonitorToGroup(monitorId: Int, groupId: Int, completion: @escaping (Result<MonitorGroup, Error>) -> Void) {
+        let url = URL(string: "\(BASE_URL)/monitors/\(monitorId)/group/\(groupId)")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let data = data else {
+                completion(.failure(URLError(.badServerResponse)))
+                return
+            }
+            do {
+                let decodedData = try JSONDecoder().decode(MonitorGroup.self, from: data)
+                completion(.success(decodedData))
+            } catch {
+                completion(.failure(error))
+            }
+        }.resume()
+    }
+    
+    public static func createGroup(groupConfiguration: MonitorGroup, completion: @escaping (Result<MonitorGroup, Error>) -> Void) {
+        let url = URL(string: "\(BASE_URL)/groups")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let jsonData = try JSONEncoder().encode(groupConfiguration)
+            request.httpBody = jsonData
+        } catch {
+            completion(.failure(error))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let data = data else {
+                completion(.failure(URLError(.badServerResponse)))
+                return
+            }
+            do {
+                let decodedData = try JSONDecoder().decode(MonitorGroup.self, from: data)
+                completion(.success(decodedData))
+            } catch {
+                completion(.failure(error))
+            }
+        }.resume()
+    }
+    
+    public static func deleteGroup(groupId: Int, completion: @escaping (Result<Void, Error>) -> Void) {
+        let url = URL(string: "\(BASE_URL)/groups/\(groupId)")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard data != nil else {
+                completion(.failure(URLError(.badServerResponse)))
+                return
+            }
+            completion(.success(Void()))
         }.resume()
     }
 }

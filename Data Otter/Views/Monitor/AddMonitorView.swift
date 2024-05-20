@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AddMonitorView: View {
+    @EnvironmentObject var viewModel: DataOtterModel
+    
     @State var name = ""
     @State var type = "API"
     @State var url = ""
@@ -47,7 +49,7 @@ struct AddMonitorView: View {
                 }.buttonStyle(.bordered).tint(.blue)
             } else {
                 Button("Submit"){
-                    MonitorsService.createMonitor(monitorData: MonitorData(name: name, type: type, url: url, regex: regex)) { result in
+                    viewModel.createMonitor(monitorData: MonitorData(name: name, type: type, url: url, regex: regex)) { result in
                         DispatchQueue.main.async {
                             switch result {
                             case .success( _):

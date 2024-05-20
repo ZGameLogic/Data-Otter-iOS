@@ -16,7 +16,10 @@ struct ContentView: View {
             EventsView(monitorData: [], monitorHistoryData: [:]).tabItem({
                 Label("Events", systemImage: "megaphone")
             }).tag(1)
-        }.environmentObject(Monitors())
+            GroupsView().tabItem({
+                Label("Groups", systemImage: "rectangle.3.group")
+            }).tag(2)
+        }.environmentObject(DataOtterModel())
     }
 }
 

@@ -19,15 +19,14 @@ struct HistoryGraphView: View {
     }
     
     init(monitorData: [MonitorStatus], monitorHistoryData: [Int : [Status]]) {
-        history = monitorHistoryData.flatMap { key, statuses in
-            let name = monitorData.first(where: { $0.id == key })!.name
-            return statuses.map { status in
-                GraphEntry(name: name, taken: status.dateRecorded, status: status.status)
+        history = monitorData.flatMap({ monitor in
+            if let historyData = monitorHistoryData[monitor.id] {
+                return historyData.map({status in
+                    GraphEntry(name: monitor.name, taken: status.dateRecorded, status: status.status)
+                })
             }
-        }
-        for thing in history {
-            print(thing)
-        }
+            return []
+        })
     }
     
     var body: some View {

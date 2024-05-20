@@ -24,7 +24,7 @@ struct MonitorDetailView: View {
                     Text("URL: \(monitor.url)")
                     Text("Type: \(monitor.type)")
                     Text("Regex: \(monitor.regex)")
-                    Text("Groups: \(getGroups(monitorGroups: monitor.groups, groups: groups))")
+                    NavigationLink("Groups: \(getGroups(monitorGroups: monitor.groups, groups: groups))", destination: MonitorGroupListView(monitor: $monitor))
                 }
                 if(!history.isEmpty){
                     Section("History"){
@@ -62,6 +62,7 @@ struct MonitorDetailView: View {
 }
 
 struct EditMonitorView: View {
+    @EnvironmentObject var viewModel: DataOtterModel
     @Binding var monitor: MonitorStatus
     @Binding var showing: Bool
     
@@ -101,7 +102,7 @@ struct EditMonitorView: View {
             } else {
                 Button("Submit"){
                     monitor.update(data: MonitorData(name: name, type: type, url: url, regex: regex))
-                    MonitorsService.updateMonitor(monitorData: monitor) { _ in
+                    viewModel.updateMonitor(monitorData: monitor) { _ in
                         showing = false
                     }
                 }.buttonStyle(.bordered).tint(.green)
@@ -135,5 +136,5 @@ struct EditMonitorView: View {
 }
 
 #Preview {
-    MonitorDetailView(monitor: Binding.constant(MonitorStatus(id: 1, name: "Test Monitor", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 1, statusCode: 200), groups: [1])), history: [], groups: [MonitorGroup(id: 1, name: "Test Group")])
+    MonitorDetailView(monitor: Binding.constant(MonitorStatus(id: 1, name: "Test Monitor", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 1, statusCode: 200), groups: [1])), history: [], groups: [MonitorGroup(id: 1, name: "Test Group", monitors: [])])
 }
