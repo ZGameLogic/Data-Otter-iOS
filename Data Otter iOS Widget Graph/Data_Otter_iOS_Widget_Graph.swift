@@ -71,7 +71,18 @@ struct Data_Otter_iOS_Widget_GraphEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        HistoryGraphView(monitorData: entry.monitors, monitorHistoryData: entry.history)
+        HistoryGraphView(history: getHistoryForGraph())
+    }
+    
+    func getHistoryForGraph() -> [GraphEntry] {
+        return entry.monitors.flatMap({ monitor in
+            if let historyData = entry.history[monitor.id] {
+                return historyData.map({status in
+                    GraphEntry(name: monitor.name, taken: status.dateRecorded, status: status.status)
+                })
+            }
+            return []
+        })
     }
 }
 

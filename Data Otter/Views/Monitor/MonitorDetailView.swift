@@ -28,7 +28,7 @@ struct MonitorDetailView: View {
                 }
                 if(!history.isEmpty){
                     Section("History"){
-                        HistoryGraphView(monitorData: monitor, monitorHistoryData: history)
+                        HistoryGraphView(history: getMonitorHistoryForGraph())
                         NavigationLink("Status History", destination: StatusListView(id: monitor.id, history: history))
                     }
                 }
@@ -49,6 +49,12 @@ struct MonitorDetailView: View {
             EditMonitorView(monitor: $monitor, showing: $showEditMonitor)
         }).onAppear{
             print(history.count)
+        }
+    }
+    
+    func getMonitorHistoryForGraph() -> [GraphEntry] {
+        return history.map { status in
+            GraphEntry(name: monitor.name, taken: status.dateRecorded, status: status.status)
         }
     }
     

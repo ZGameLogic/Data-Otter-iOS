@@ -21,6 +21,10 @@ class DataOtterModel: ObservableObject {
         refreshData()
     }
     
+    func getMonitorHistoryData(monitor: MonitorStatus) -> [Status]{
+        return monitorHistoryData[monitor.id] ?? []
+    }
+    
     /// Get an array of groups coorsponding to this monitor
     /// - Parameter monitor: Monitor to get the group IDs from
     /// - Returns: Array of groups

@@ -11,24 +11,6 @@ import Charts
 struct HistoryGraphView: View {
     let history: [GraphEntry]
     
-    init(monitorData: MonitorStatus, monitorHistoryData: [Status]){
-        let name = monitorData.name
-        history = monitorHistoryData.map { status in
-            GraphEntry(name: name, taken: status.dateRecorded, status: status.status)
-        }
-    }
-    
-    init(monitorData: [MonitorStatus], monitorHistoryData: [Int : [Status]]) {
-        history = monitorData.flatMap({ monitor in
-            if let historyData = monitorHistoryData[monitor.id] {
-                return historyData.map({status in
-                    GraphEntry(name: monitor.name, taken: status.dateRecorded, status: status.status)
-                })
-            }
-            return []
-        })
-    }
-    
     var body: some View {
             VStack {
                 Chart(history) {
@@ -75,8 +57,4 @@ struct GraphEntry: Identifiable, Comparable {
         self.taken = taken
         self.status = status
     }
-}
-
-#Preview {
-    HistoryGraphView(monitorData: [], monitorHistoryData: [:])
 }

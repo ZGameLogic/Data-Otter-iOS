@@ -32,6 +32,7 @@ struct GroupsView: View {
                         }
                     }
                 }
+                historyView
             }.toolbar(){
                 ToolbarItem {
                     Button(action: {
@@ -62,6 +63,44 @@ struct GroupsView: View {
                 )
             }
         }
+    }
+    
+    var historyView: some View {
+        let history = getGroupStatusHistory()
+        
+        return Section("History") {
+            if(history.isEmpty){
+                Text("No history to be shown")
+            } else {
+                Section("History"){
+                    HistoryGraphView(history: history)
+                }
+            }
+        }
+    }
+    
+    func getGroupStatusHistory() -> [GraphEntry] {
+        var entries = viewModel.groups.compactMap { group in
+            // List of dates to get datapoints for for the whole group
+            let dates = Set(viewModel.getMonitorsInGroup(group: group).flatMap { monitor in
+                viewModel.getMonitorHistoryData(monitor: monitor).map { monitorStatus in
+                    monitorStatus.dateRecorded
+                }
+            }.map { perciseDate in
+                let calendar = Calendar.current
+                return calendar.date(from: calendar.dateComponents([.year, .month, .day, .hour, .minute], from: perciseDate))!
+            }.sorted())
+            /*
+             TODO
+             Make a loop for each date
+             Check each monitors status at said date
+                the closest status in the past will do here
+             create and return a graph entry with the group name, group id, and group status at that specific time
+             */
+            return "bep"
+        }
+        
+        return []
     }
     
     func deleteGroup(group: MonitorGroup){

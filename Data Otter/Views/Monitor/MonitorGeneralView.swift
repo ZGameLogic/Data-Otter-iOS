@@ -32,7 +32,7 @@ struct GeneralView: View {
                 
                 if(!viewModel.monitorHistoryData.isEmpty){
                     Section("History"){
-                        HistoryGraphView(monitorData: viewModel.monitorConfigurations, monitorHistoryData: viewModel.monitorHistoryData)
+                        HistoryGraphView(history: getHistoryForGraph())
                     }
                 }
             }
@@ -73,6 +73,17 @@ struct GeneralView: View {
                 secondaryButton: .cancel()
             )
         }
+    }
+    
+    func getHistoryForGraph() -> [GraphEntry] {
+        return viewModel.monitorConfigurations.flatMap({ monitor in
+            if let historyData = viewModel.monitorHistoryData[monitor.id] {
+                return historyData.map({status in
+                    GraphEntry(name: monitor.name, taken: status.dateRecorded, status: status.status)
+                })
+            }
+            return []
+        })
     }
     
     func deleteMonitor(monitor: MonitorStatus){

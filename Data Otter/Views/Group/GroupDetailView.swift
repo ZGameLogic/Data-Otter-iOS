@@ -29,10 +29,21 @@ struct GroupDetailView: View {
             }
             if(viewModel.getMonitorsInGroup(group: group).contains(where: {$0.status != nil})){
                 Section("History"){
-                    HistoryGraphView(monitorData: viewModel.getMonitorsInGroup(group: group), monitorHistoryData: viewModel.monitorHistoryData)
+                    HistoryGraphView(history: getHistoryForGraph())
                 }
             }
         }.navigationTitle("\(group.name)").navigationBarTitleDisplayMode(.inline)
+    }
+    
+    func getHistoryForGraph() -> [GraphEntry] {
+        return viewModel.getMonitorsInGroup(group: group).flatMap({ monitor in
+            if let historyData = viewModel.monitorHistoryData[monitor.id] {
+                return historyData.map({status in
+                    GraphEntry(name: monitor.name, taken: status.dateRecorded, status: status.status)
+                })
+            }
+            return []
+        })
     }
     
     func getMonitors() -> String {
