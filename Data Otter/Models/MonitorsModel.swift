@@ -179,6 +179,22 @@ class DataOtterModel: ObservableObject {
         }
     }
     
+    func createGroup(name: String, completion: @escaping (Result<MonitorGroup, Error>) -> Void) {
+        print(name)
+        MonitorsService.createGroup(name: name) { result in
+            DispatchGroup().notify(queue: .main) {
+                switch(result){
+                case .success(let data):
+                    print("Result Data \(data)")
+                    self.groups.append(data)
+                    completion(.success(data))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+    
     /// Delete a monitor on the backend API
     /// - Parameters:
     ///   - monitorId: Monitor ID to delete

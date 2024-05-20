@@ -111,12 +111,13 @@ struct MonitorGroupListView: View {
     }
     
     private func confirmCreation() {
-        viewModel.createGroup(group: MonitorGroup(id: -1, name: monitorCreationText, monitors: [])) { result in
+        viewModel.createGroup(name: monitorCreationText){ result in
             switch result {
-            case .success(_):
+            case .success(let data):
                 DispatchGroup().notify(queue: .main) {
                     creatingGroup = false
                     monitorCreationText = ""
+                    groupToggles.append(GroupToggle(id: data.id, name: data.name, isSelected: true))
                     onToggleChange(newValue: true, index: groupToggles.count - 1)
                 }
             case .failure(let error):
