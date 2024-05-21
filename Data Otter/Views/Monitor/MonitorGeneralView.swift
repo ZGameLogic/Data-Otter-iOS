@@ -14,8 +14,10 @@ struct GeneralView: View {
     @State private var showAlert = false
     @State var monitorToDelete: MonitorStatus? = nil
     
+    @State var navigationPath = NavigationPath()
+    
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navigationPath) {
             List {
                 ForEach(viewModel.monitorConfigurations){monitor in
                     NavigationLink(value: monitor) {
@@ -26,6 +28,11 @@ struct GeneralView: View {
                             showAlert = true
                         } label: {
                             Label("Delete", systemImage: "trash")
+                        }
+                    }.onReceive(NotificationCenter.default.publisher(for: .monitorSelected)) { notification in
+                        if let monitorID = notification.object as? Int, let selectedMonitor = viewModel.getMonitorById(monitorID) {
+                            navigationPath.removeLast(navigationPath.count)
+                            navigationPath.append(selectedMonitor)
                         }
                     }
                 }

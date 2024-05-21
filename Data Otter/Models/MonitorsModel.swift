@@ -21,6 +21,10 @@ class DataOtterModel: ObservableObject {
         refreshData()
     }
     
+    func getMonitorById(_ monitorId: Int) -> MonitorStatus? {
+        monitorConfigurations.first(where: {$0.id == monitorId})
+    }
+    
     func getMonitorHistoryData(monitor: MonitorStatus) -> [Status]{
         return monitorHistoryData[monitor.id] ?? []
     }

@@ -182,3 +182,7 @@ struct MonitorGroupPayload: Codable {
     let name: String
     let monitors: [String]
 }
+
+extension Notification.Name {
+    static let monitorSelected = Notification.Name("monitorSelected")
+}

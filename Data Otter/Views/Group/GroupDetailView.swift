@@ -20,10 +20,18 @@ struct GroupDetailView: View {
                     Text("No monitors assigned to group")
                 }
                 ForEach(viewModel.getMonitorsInGroup(group: group)) { monitor in
-                    VStack(alignment: .leading){
-                        Text(monitor.name).foregroundStyle(monitor.getStatusColor())
-                        Text(monitor.type).font(.footnote)
-                    }
+                    Button(action: {
+                        NotificationCenter.default.post(name: .monitorSelected, object: monitor.id)
+                    }) {
+                        HStack {
+                            VStack(alignment: .leading){
+                                Text(monitor.name).foregroundStyle(monitor.getStatusColor())
+                                Text(monitor.type).font(.footnote).foregroundColor(Color.primary)
+                            }
+                            Spacer()
+                            Image(systemName: "chevron.right").foregroundColor(Color.gray)
+                        }.contentShape(Rectangle())
+                    }.buttonStyle(PlainButtonStyle())
                 }
                 NavigationLink("Edit Monitors") { GroupMonitorListView(group: $group) }
             }

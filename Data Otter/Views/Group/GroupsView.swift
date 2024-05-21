@@ -88,9 +88,6 @@ struct GroupsView: View {
                 viewModel.getMonitorHistoryData(monitor: monitor).map { monitorStatus in
                     monitorStatus.dateRecorded
                 }
-            }.map { perciseDate in
-                let calendar = Calendar.current
-                return calendar.date(from: calendar.dateComponents([.year, .month, .day, .hour, .minute], from: perciseDate))!
             }.sorted())
             return dates.map { date in
                 let status = monitorsInGroup.reduce(true) { prev, monitor in
