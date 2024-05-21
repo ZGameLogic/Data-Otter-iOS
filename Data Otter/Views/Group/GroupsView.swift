@@ -80,9 +80,11 @@ struct GroupsView: View {
     }
     
     func getGroupStatusHistory() -> [GraphEntry] {
-        var entries = viewModel.groups.compactMap { group in
+        let entries = viewModel.groups.flatMap { group in
+            let monitorsInGroup = viewModel.getMonitorsInGroup(group: group)
+            
             // List of dates to get datapoints for for the whole group
-            let dates = Set(viewModel.getMonitorsInGroup(group: group).flatMap { monitor in
+            let dates = Set(monitorsInGroup.flatMap { monitor in
                 viewModel.getMonitorHistoryData(monitor: monitor).map { monitorStatus in
                     monitorStatus.dateRecorded
                 }
@@ -90,17 +92,16 @@ struct GroupsView: View {
                 let calendar = Calendar.current
                 return calendar.date(from: calendar.dateComponents([.year, .month, .day, .hour, .minute], from: perciseDate))!
             }.sorted())
-            /*
-             TODO
-             Make a loop for each date
-             Check each monitors status at said date
-                the closest status in the past will do here
-             create and return a graph entry with the group name, group id, and group status at that specific time
-             */
-            return "bep"
+            return dates.map { date in
+                let status = monitorsInGroup.reduce(true) { prev, monitor in
+                    let lastStatus = viewModel.getMonitorHistoryData(monitor: monitor).filter {date <= $0.dateRecorded}.max(by: {date < $1.dateRecorded})?.status ?? true
+                    return prev && lastStatus
+                }
+                return GraphEntry(name: group.name, taken: date, status: status)
+            }
         }
         
-        return []
+        return entries
     }
     
     func deleteGroup(group: MonitorGroup){
