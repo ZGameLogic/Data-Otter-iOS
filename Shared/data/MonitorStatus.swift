@@ -16,9 +16,11 @@ struct MonitorStatus: Codable, Identifiable, Hashable {
     var url: String
     var regex: String
     let status: Status?
+    let active: Bool
     var groups: [Int]
     
     func getStatusColor() -> Color {
+        if(!active){ return .yellow }
         guard let status = status else {
             return .primary
         }
@@ -41,6 +43,7 @@ struct MonitorStatus: Codable, Identifiable, Hashable {
         self.regex = try container.decode(String.self, forKey: .regex)
         self.status = try container.decodeIfPresent(Status.self, forKey: .status)
         self.groups = try container.decode([Int].self, forKey: .groups)
+        self.active = try container.decode(Bool.self, forKey: .active)
     }
     
     init(id: Int, name: String, type: String, url: String, regex: String, status: Status?, groups: [Int]) {
@@ -51,6 +54,7 @@ struct MonitorStatus: Codable, Identifiable, Hashable {
         self.regex = regex
         self.status = status
         self.groups = groups
+        active = true
     }
 }
 

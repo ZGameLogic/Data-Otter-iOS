@@ -401,4 +401,16 @@ struct MonitorsService {
             completion(.success(Void()))
         }.resume()
     }
+    
+    public static func registrationEndpoint(add: Bool, token: String) async throws {
+        guard let url = URL(string: BASE_URL + "/devices/\(add ? "register" : "unregister")/\(token)") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue(
+            "application/json",
+            forHTTPHeaderField: "Content-Type"
+        )
+        _ = try await URLSession.shared.data(for: request)
+    }
 }

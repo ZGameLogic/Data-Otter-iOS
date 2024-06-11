@@ -164,6 +164,7 @@
 		B5210ECA2BF5959600854A3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5210ECC2BF5959600854A3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5210EDE2BF5963500854A3C /* Data-Otter-WatchOS-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Data-Otter-WatchOS-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B555328F2C17A3AD000EEEC5 /* Data Otter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Data Otter.entitlements"; sourceTree = "<group>"; };
 		B5745BA92BF506910049B304 /* DataOtterGuageWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataOtterGuageWidgetView.swift; sourceTree = "<group>"; };
 		B5745BAF2BF5319F0049B304 /* Data Otter iOS Widget GraphExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Data Otter iOS Widget GraphExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5745BB32BF5319F0049B304 /* Data_Otter_iOS_Widget_GraphBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_Otter_iOS_Widget_GraphBundle.swift; sourceTree = "<group>"; };
@@ -301,6 +302,7 @@
 		B586C9CE2BF25577009A564A /* Data Otter */ = {
 			isa = PBXGroup;
 			children = (
+				B555328F2C17A3AD000EEEC5 /* Data Otter.entitlements */,
 				B5745BCB2BF57E390049B304 /* Data-Otter-Info.plist */,
 				B509826C2BF6A8DE00F5A277 /* Models */,
 				B586C9DB2BF2566A009A564A /* Views */,
@@ -955,6 +957,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Data Otter/Data Otter.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Data Otter/Preview Content\"";
@@ -992,6 +995,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Data Otter/Data Otter.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Data Otter/Preview Content\"";

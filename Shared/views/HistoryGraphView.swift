@@ -13,7 +13,7 @@ struct HistoryGraphView: View {
     
     var body: some View {
             VStack {
-                Chart(history) {
+                Chart(history.sorted()) {
                     LineMark(
                         x: .value("Time", $0.taken),
                         y: .value("Name", $0.status ? "Online" : "Offline")

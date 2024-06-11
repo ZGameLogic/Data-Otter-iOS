@@ -84,11 +84,11 @@ struct GroupsView: View {
             let monitorsInGroup = viewModel.getMonitorsInGroup(group: group)
             
             // List of dates to get datapoints for for the whole group
-            let dates = Set(monitorsInGroup.flatMap { monitor in
+            let dates = monitorsInGroup.flatMap { monitor in
                 viewModel.getMonitorHistoryData(monitor: monitor).map { monitorStatus in
                     monitorStatus.dateRecorded
                 }
-            }.sorted())
+            }.sorted()
             return dates.map { date in
                 let status = monitorsInGroup.reduce(true) { prev, monitor in
                     let lastStatus = viewModel.getMonitorHistoryData(monitor: monitor).filter {date <= $0.dateRecorded}.max(by: {date < $1.dateRecorded})?.status ?? true
