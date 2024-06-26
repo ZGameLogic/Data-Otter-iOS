@@ -76,6 +76,7 @@
 		B586CA102BF3FEDA009A564A /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586CA0F2BF3FEDA009A564A /* EventDetailView.swift */; };
 		B586D8D22BF7FBCA00E10E7A /* GroupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586D8D12BF7FBCA00E10E7A /* GroupsView.swift */; };
 		B586D8D42BF8000D00E10E7A /* MonitorGroupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586D8D32BF8000D00E10E7A /* MonitorGroupListView.swift */; };
+		B5CB0B292C2C68FB001D202C /* MonitorListSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB0B282C2C68FB001D202C /* MonitorListSkeleton.swift */; };
 		B5FB16922BF685BD00BA9447 /* StatusListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FB16912BF685BD00BA9447 /* StatusListView.swift */; };
 /* End PBXBuildFile section */
 
@@ -200,6 +201,7 @@
 		B586D8D32BF8000D00E10E7A /* MonitorGroupListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorGroupListView.swift; sourceTree = "<group>"; };
 		B59747532A41DC2800A5DA4C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		B59747552A41DC2800A5DA4C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		B5CB0B282C2C68FB001D202C /* MonitorListSkeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorListSkeleton.swift; sourceTree = "<group>"; };
 		B5FB16912BF685BD00BA9447 /* StatusListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -368,6 +370,7 @@
 			children = (
 				B586C9DC2BF25685009A564A /* MonitorGeneralView.swift */,
 				B586C9E22BF25ABE009A564A /* MonitorListView.swift */,
+				B5CB0B282C2C68FB001D202C /* MonitorListSkeleton.swift */,
 				B586C9E42BF25C2C009A564A /* MonitorDetailView.swift */,
 				B586C9ED2BF3BB04009A564A /* AddMonitorView.swift */,
 				B5FB16912BF685BD00BA9447 /* StatusListView.swift */,
@@ -686,6 +689,7 @@
 				B586C9E52BF25C2C009A564A /* MonitorDetailView.swift in Sources */,
 				B586C9E72BF2AF92009A564A /* MonitorData.swift in Sources */,
 				B586C9EE2BF3BB04009A564A /* AddMonitorView.swift in Sources */,
+				B5CB0B292C2C68FB001D202C /* MonitorListSkeleton.swift in Sources */,
 				B507824B2BFA561A00BD6D8D /* AddGroupView.swift in Sources */,
 				B586C9DF2BF2569D009A564A /* MonitorsService.swift in Sources */,
 				B586CA102BF3FEDA009A564A /* EventDetailView.swift in Sources */,

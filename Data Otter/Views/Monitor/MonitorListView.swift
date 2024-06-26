@@ -31,5 +31,5 @@ struct MonitorListView: View {
 }
 
 #Preview {
-    MonitorListView(monitor: MonitorStatus(id: 1, name: "Test Monitor", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 1, statusCode: 200), groups: []), groups: [])
+    MonitorListView(monitor: MonitorStatus(id: 1, name: "Test Monitor", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 1, statusCode: 200), groups: [1]), groups: [MonitorGroup(id: 1, name: "Test", monitors: [1])])
 }

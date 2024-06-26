@@ -13,11 +13,16 @@ class DataOtterModel: ObservableObject {
     @Published var monitorHistoryData: [Int: [Status]]
     @Published var groups: [MonitorGroup]
     
+    @Published var monitorStatusLoading: Bool
+    @Published var monitorHistoryLoading: Bool
+    
     init() {
         print("Inited view model")
         monitorConfigurations = []
         monitorHistoryData = [:]
         groups = []
+        monitorStatusLoading = true
+        monitorHistoryLoading = true
         refreshData()
     }
     
@@ -264,6 +269,7 @@ class DataOtterModel: ObservableObject {
         dispatchGroup.enter()
         MonitorsService.getMonitorsWithStatus { result in
             DispatchQueue.main.async {
+                self.monitorStatusLoading = false
                 switch result {
                 case .success(let data):
                     self.monitorConfigurations = data
@@ -289,6 +295,7 @@ class DataOtterModel: ObservableObject {
             dispatchGroup.enter()
             MonitorsService.getMonitorHistory(id: monitor.id, condensed: true) { result in
                 DispatchQueue.main.async {
+                    self.monitorHistoryLoading = false
                     switch result {
                     case .success(let data):
                         tempHistoryData[monitor.id] = data

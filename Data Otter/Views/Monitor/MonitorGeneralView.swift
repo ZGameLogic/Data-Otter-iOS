@@ -19,27 +19,33 @@ struct GeneralView: View {
     var body: some View {
         NavigationStack(path: $navigationPath) {
             List {
-                ForEach(viewModel.monitorConfigurations){monitor in
-                    NavigationLink(value: monitor) {
-                        MonitorListView(monitor: monitor, groups: viewModel.groups)
-                    }.swipeActions(edge: .trailing) {
-                        Button(role: .destructive) {
-                            monitorToDelete = monitor
-                            showAlert = true
-                        } label: {
-                            Label("Delete", systemImage: "trash")
-                        }
-                    }.onReceive(NotificationCenter.default.publisher(for: .monitorSelected)) { notification in
-                        if let monitorID = notification.object as? Int, let selectedMonitor = viewModel.getMonitorById(monitorID) {
-                            navigationPath.removeLast(navigationPath.count)
-                            navigationPath.append(selectedMonitor)
+                if(viewModel.monitorStatusLoading){
+                    MonitorListSkeleton()
+                    MonitorListSkeleton()
+                    MonitorListSkeleton()
+                } else {
+                    ForEach(viewModel.monitorConfigurations){monitor in
+                        NavigationLink(value: monitor) {
+                            MonitorListView(monitor: monitor, groups: viewModel.groups)
+                        }.swipeActions(edge: .trailing) {
+                            Button(role: .destructive) {
+                                monitorToDelete = monitor
+                                showAlert = true
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }.onReceive(NotificationCenter.default.publisher(for: .monitorSelected)) { notification in
+                            if let monitorID = notification.object as? Int, let selectedMonitor = viewModel.getMonitorById(monitorID) {
+                                navigationPath.removeLast(navigationPath.count)
+                                navigationPath.append(selectedMonitor)
+                            }
                         }
                     }
-                }
-                
-                if(!viewModel.monitorHistoryData.isEmpty){
-                    Section("History"){
-                        HistoryGraphView(history: getHistoryForGraph())
+                    
+                    if(!viewModel.monitorHistoryData.isEmpty){
+                        Section("History"){
+                            HistoryGraphView(history: getHistoryForGraph())
+                        }
                     }
                 }
             }
