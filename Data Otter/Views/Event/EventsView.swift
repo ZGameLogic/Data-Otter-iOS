@@ -106,6 +106,7 @@ struct EventsView: View {
                self.monitorHistoryData = tempHistoryData
                print("All history data fetched and updated")
                events = []
+               let timeInterval: Double = 60 * 60 * 12 //60 * 60 * 12 = 12 hours
                for monitor in monitorToggles.filter({$0.isSelected}) {
                    let eventStatuses = monitorHistoryData[monitor.id]!.sorted(by: {$0.dateRecorded < $1.dateRecorded}).map {MonitorEventStatus(status: $0)}
                    if(!eventStatuses.contains(where: {$0.status == false})) { continue }
@@ -122,7 +123,7 @@ struct EventsView: View {
                        }
                        // true to false
                        if(event.status == false && currentLog.last!.status == true){
-                           if(event.date.timeIntervalSince(currentLog.last!.date) <= 60 * 60){
+                           if(event.date.timeIntervalSince(currentLog.last!.date) <= timeInterval){
                                currentLog.append(event)
                            } else {
                                // not within threshold
