@@ -34,7 +34,7 @@ struct EventsView: View {
             }
             List {
                 if(events.isEmpty){
-                    Text("No events found for filter")
+                    ContentUnavailableView("No events found", systemImage: "calendar", description: Text("No events have been found with the time frame given."))
                 } else {
                     ForEach(groupEventsByDate(), id: \.key) { date, events in
                         Section(header: Text(date, style: .date)) {
