@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GeneralView: View {
+struct MonitorGeneralView: View {
     @EnvironmentObject var viewModel: DataOtterModel
     
     @State private var showAddMonitor = false
@@ -28,7 +28,7 @@ struct GeneralView: View {
                 } else {
                     ForEach(viewModel.monitorConfigurations){monitor in
                         NavigationLink(value: monitor) {
-                            MonitorListView(monitor: monitor, groups: viewModel.groups)
+                            MonitorListView(monitor: monitor)
                         }.swipeActions(edge: .trailing) {
                             Button(role: .destructive) {
                                 monitorToDelete = monitor
@@ -54,7 +54,7 @@ struct GeneralView: View {
             .navigationTitle("Monitors")
                 .navigationDestination(for: MonitorStatus.self) { monitor in
                     if let index = viewModel.monitorConfigurations.firstIndex(where: { $0.id == monitor.id }) {
-                        MonitorDetailView(monitor: viewModel.bindingForMonitor(at: index), history: viewModel.monitorHistoryData[viewModel.monitorConfigurations[index].id] ?? [], groups: viewModel.groups)
+                        MonitorDetailView(monitor: viewModel.bindingForMonitor(at: index), history: viewModel.monitorHistoryData[viewModel.monitorConfigurations[index].id] ?? [])
                     }
                 }
                 .toolbar {

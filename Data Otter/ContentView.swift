@@ -12,21 +12,21 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            GeneralView().tabItem({
-                Label("Monitors", systemImage: "chart.bar.doc.horizontal")
+            ApplicationGeneralView().tabItem({
+                Label("Applications", systemImage: "laptopcomputer")
             }).tag(0)
+            MonitorGeneralView().tabItem({
+                Label("Monitors", systemImage: "chart.bar.doc.horizontal")
+            }).tag(1)
             EventsView(monitorData: [], monitorHistoryData: [:]).tabItem({
                 Label("Events", systemImage: "megaphone")
-            }).tag(1)
-            GroupsView().tabItem({
-                Label("Groups", systemImage: "rectangle.3.group")
             }).tag(2)
         }
         .onReceive(NotificationCenter.default.publisher(for: .monitorSelected)) { notification in
             print("Notication \(notification)")
             if notification.object is Int {
                 DispatchGroup().notify(queue: .main) {
-                    selectedTab = 0
+                    selectedTab = 1
                 }
             }
         }.environmentObject(DataOtterModel())

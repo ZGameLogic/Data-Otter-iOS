@@ -10,7 +10,6 @@ import SwiftUI
 struct MonitorDetailView: View {
     @Binding var monitor: MonitorStatus
     var history: [Status]
-    var groups: [MonitorGroup]
     @State var showEditMonitor = false
     @State var showStatusHistory = false
     
@@ -24,7 +23,7 @@ struct MonitorDetailView: View {
                     Text("URL: \(monitor.url)")
                     Text("Type: \(monitor.type)")
                     Text("Regex: \(monitor.regex)")
-                    NavigationLink("Groups: \(getGroups(monitorGroups: monitor.groups, groups: groups))", destination: MonitorGroupListView(monitor: $monitor))
+//                    NavigationLink("Groups: \(getGroups(monitorGroups: monitor.groups, groups: groups))", destination: MonitorGroupListView(monitor: $monitor))
                 }
                 if(!history.isEmpty){
                     Section("History"){
@@ -56,14 +55,6 @@ struct MonitorDetailView: View {
         return history.map { status in
             GraphEntry(name: monitor.name, taken: status.dateRecorded, status: status.status)
         }
-    }
-    
-    func getGroups(monitorGroups: [Int], groups: [MonitorGroup]) -> String {
-        let names = monitorGroups.isEmpty ? "none" : monitorGroups.compactMap { id in
-            groups.first(where: { $0.id == id })?.name
-        }.joined(separator: ", ")
-        
-        return names
     }
 }
 
@@ -142,5 +133,5 @@ struct EditMonitorView: View {
 }
 
 #Preview {
-    MonitorDetailView(monitor: Binding.constant(MonitorStatus(id: 1, name: "Test Monitor", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 1, statusCode: 200), groups: [1])), history: [], groups: [MonitorGroup(id: 1, name: "Test Group", monitors: [])])
+    MonitorDetailView(monitor: Binding.constant(MonitorStatus(id: 1, name: "Test Monitor", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 1, statusCode: 200))), history: [])
 }

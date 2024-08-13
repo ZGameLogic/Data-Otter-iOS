@@ -24,7 +24,7 @@ struct DataOtterGuageWidgetView: View {
             default:
                 Text("No size for this one :(")
             }
-        }.containerBackground(Color(hex: "#481785").gradient, for: .widget)
+        }.containerBackground(Color(hex: "#481785"), for: .widget)
     }
 }
 
@@ -95,9 +95,9 @@ func gauge(_ entry: Provider.Entry) -> some View {
     zgamemonitors()
 } timeline: {
     MonitorStatusEntry(date: Date(), monitors: [
-        MonitorStatus(id: 1, name: "Test Monitor 1", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 1, statusCode: 200), groups: []),
-        MonitorStatus(id: 2, name: "Test Monitor 2", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 3, statusCode: 200), groups: []),
-        MonitorStatus(id: 3, name: "Test Monitor 3", type: "WEB", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 3, statusCode: 200), groups: [])
+        MonitorStatus(id: 1, name: "Test Monitor 1", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 1, statusCode: 200)),
+        MonitorStatus(id: 2, name: "Test Monitor 2", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 3, statusCode: 200)),
+        MonitorStatus(id: 3, name: "Test Monitor 3", type: "WEB", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 3, statusCode: 200))
     ])
 }
 

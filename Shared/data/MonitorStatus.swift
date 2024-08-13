@@ -17,7 +17,6 @@ struct MonitorStatus: Codable, Identifiable, Hashable {
     var regex: String
     let status: Status?
     let active: Bool
-    var groups: [Int]
     
     func getStatusColor() -> Color {
         if(!active){ return .yellow }
@@ -42,18 +41,16 @@ struct MonitorStatus: Codable, Identifiable, Hashable {
         self.url = try container.decode(String.self, forKey: .url)
         self.regex = try container.decode(String.self, forKey: .regex)
         self.status = try container.decodeIfPresent(Status.self, forKey: .status)
-        self.groups = try container.decode([Int].self, forKey: .groups)
         self.active = try container.decode(Bool.self, forKey: .active)
     }
     
-    init(id: Int, name: String, type: String, url: String, regex: String, status: Status?, groups: [Int]) {
+    init(id: Int, name: String, type: String, url: String, regex: String, status: Status?) {
         self.id = id
         self.name = name
         self.type = type
         self.url = url
         self.regex = regex
         self.status = status
-        self.groups = groups
         active = true
     }
 }
@@ -173,18 +170,6 @@ struct MonitorToggle: Identifiable, Equatable {
     let id: Int
     var name: String
     var isSelected: Bool
-}
-
-struct MonitorGroup: Identifiable, Codable, Hashable {
-    let id: Int
-    let name: String
-    var monitors: [Int]
-}
-
-
-struct MonitorGroupPayload: Codable {
-    let name: String
-    let monitors: [String]
 }
 
 extension Notification.Name {

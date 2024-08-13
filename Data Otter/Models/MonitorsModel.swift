@@ -11,18 +11,35 @@ import SwiftUI
 class DataOtterModel: ObservableObject {
     @Published var monitorConfigurations: [MonitorStatus]
     @Published var monitorHistoryData: [Int: [Status]]
-    @Published var groups: [MonitorGroup]
+    @Published var applications: [Application]
+    @Published var tags: [Tag]
     
     @Published var monitorStatusLoading: Bool
     @Published var monitorHistoryLoading: Bool
+    @Published var applicationLoading: Bool
+    @Published var tagsLoading: Bool
+    
+    init(monitorConfigurations: [MonitorStatus], monitorHistoryData: [Int: [Status]], applications: [Application], tags: [Tag]) {
+        self.monitorConfigurations = monitorConfigurations
+        self.monitorHistoryData = monitorHistoryData
+        self.applications = applications
+        self.tags = tags
+        monitorStatusLoading = false
+        monitorHistoryLoading = false
+        applicationLoading = false
+        tagsLoading = false
+    }
     
     init() {
         print("Inited view model")
         monitorConfigurations = []
         monitorHistoryData = [:]
-        groups = []
-        monitorStatusLoading = true
-        monitorHistoryLoading = true
+        applications = []
+        tags = []
+        monitorStatusLoading = false
+        monitorHistoryLoading = false
+        applicationLoading = true
+        tagsLoading = false
         refreshData()
     }
     
@@ -34,52 +51,11 @@ class DataOtterModel: ObservableObject {
         return monitorHistoryData[monitor.id] ?? []
     }
     
-    /// Get an array of groups coorsponding to this monitor
-    /// - Parameter monitor: Monitor to get the group IDs from
-    /// - Returns: Array of groups
-    func getGroupsInMonitor(monitor: MonitorStatus) -> [MonitorGroup] { getGroupsInMonitor(monitorId: monitor.id) }
-    
-    /// Get an array of groups coorsponding to this monitor
-    /// - Parameter monitorId: Monitor ID to get the group IDs from
-    /// - Returns: Array of groups
-    func getGroupsInMonitor(monitorId: Int) -> [MonitorGroup] {
-        groups.filter{ group in
-            group.monitors.contains { groupMonitorId in
-                    groupMonitorId == monitorId
-            }
-        }
-    }
-    
-    /// Get an array of monitors coorsponding to this group
-    /// - Parameter group: Group to get the monitor IDs from
-    /// - Returns: Array of monitors
-    func getMonitorsInGroup(group: MonitorGroup) -> [MonitorStatus]{ getMonitorsInGroup(groupId: group.id) }
-
-    /// Get an array of monitors coorsponding to this group
-    /// - Parameter groupId: Group to get the monitor IDs from
-    /// - Returns: Array of monitors
-    func getMonitorsInGroup(groupId: Int) -> [MonitorStatus]{
-        monitorConfigurations.filter{ monitor in
-            monitor.groups.contains{ monitorGroupId in
-                monitorGroupId == groupId
-            }
-        }
-    }
-    
     /// Fetches monitors and groups from the backend API
     func refreshData(){
-        fetchMonitors()
-        fetchGroups()
-    }
-    
-    /// Get a binding for a group at a specific index
-    /// - Parameter index: index to get the binding at
-    /// - Returns: Binding of a group
-    func bindingForGroup(at index: Int) -> Binding<MonitorGroup> {
-        Binding<MonitorGroup>(
-            get: { self.groups[index] },
-            set: { self.groups[index] = $0 }
-        )
+        fetchApplications()
+//        fetchMonitors()
+//        fetchGroups()
     }
     
     /// Get a binding for a monitor at a specific index
@@ -100,112 +76,6 @@ class DataOtterModel: ObservableObject {
             get: { self.monitorHistoryData[monitorId]! },
             set: { self.monitorHistoryData[monitorId] = $0 }
         )
-    }
-    
-    /// Deletes a group from the backend API
-    /// - Parameters:
-    ///   - groupId: Group ID to delete
-    ///   - completion: Completion to run when data gets back
-    func deleteGroup(groupId: Int, completion: @escaping (Result<Void, Error>) -> Void) {
-        MonitorsService.deleteGroup(groupId: groupId) { result in
-            DispatchGroup().notify(queue: .main) {
-                switch(result){
-                case .success():
-                    self.groups.removeAll(where: {$0.id == groupId})
-                    for monitor in (self.monitorConfigurations.filter{monitor in
-                        monitor.groups.contains(groupId)
-                    }){
-                        if let monitorIndex = self.monitorConfigurations.firstIndex(where: {$0.id == monitor.id}){
-                            self.monitorConfigurations[monitorIndex].groups.removeAll(where: {$0 == groupId})
-                        }
-                    }
-                    completion(.success(Void()))
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
-        }
-    }
-    
-    /// Adds a monitor to a group
-    /// - Parameters:
-    ///   - monitorId: Monitor ID to add to the group
-    ///   - groupId: Group ID to add the monitor ID to
-    ///   - completion: Completion to run when the data gets back
-    func addMonitorToGroup(monitorId: Int, groupId: Int, completion: @escaping (Result<MonitorGroup, Error>) -> Void) {
-        MonitorsService.addMonitorToGroup(monitorId: monitorId, groupId: groupId) { result in
-            DispatchGroup().notify(queue: .main) {
-                switch(result){
-                case .success(let data):
-                    self.groups[self.groups.firstIndex(where: {$0.id == groupId})!].monitors.append(monitorId)
-                    self.monitorConfigurations[self.monitorConfigurations.firstIndex(where: {$0.id == monitorId})!].groups.append(groupId)
-                    completion(.success(data))
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
-        }
-    }
-    
-    /// Removes a monitor from a group
-    /// - Parameters:
-    ///   - monitorId: Monitor ID to remove from the group
-    ///   - groupId: Group ID to remove the monitor ID from
-    ///   - completion: Completion ot run when the data gets back
-    func removeMonitorFromGroup(monitorId: Int, groupId: Int, completion: @escaping (Result<MonitorGroup, Error>) -> Void) {
-        MonitorsService.removeMonitorFromGroup(monitorId: monitorId, groupId: groupId) { result in
-            DispatchGroup().notify(queue: .main) {
-                switch(result){
-                case .success(let data):
-                    self.groups[self.groups.firstIndex(where: {$0.id == groupId})!].monitors.removeAll(where: {$0 == monitorId})
-                    self.monitorConfigurations[self.monitorConfigurations.firstIndex(where: {$0.id == monitorId})!].groups.removeAll(where: {$0 == groupId})
-                    completion(.success(data))
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
-        }
-    }
-    
-    /// Create a group on the backend API
-    /// - Parameters:
-    ///   - group: Group to be created
-    ///   - completion: Completion code to run when the data gets back
-    func createGroup(group: MonitorGroup, completion: @escaping (Result<MonitorGroup, Error>) -> Void) {
-        MonitorsService.createGroup(groupConfiguration: group) { result in
-            DispatchGroup().notify(queue: .main) {
-                switch(result){
-                case .success(let data):
-                    self.groups.append(data)
-                    for monitor in (self.monitorConfigurations.filter{monitor in
-                        data.monitors.contains(where: {$0 == monitor.id})
-                    }){
-                        if let monitorIndex = self.monitorConfigurations.firstIndex(where: {$0.id == monitor.id}){
-                            self.monitorConfigurations[monitorIndex].groups.append(data.id)
-                        }
-                    }
-                    completion(.success(data))
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
-        }
-    }
-    
-    func createGroup(name: String, completion: @escaping (Result<MonitorGroup, Error>) -> Void) {
-        print(name)
-        MonitorsService.createGroup(name: name) { result in
-            DispatchGroup().notify(queue: .main) {
-                switch(result){
-                case .success(let data):
-                    print("Result Data \(data)")
-                    self.groups.append(data)
-                    completion(.success(data))
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
-        }
     }
     
     /// Delete a monitor on the backend API
@@ -313,16 +183,16 @@ class DataOtterModel: ObservableObject {
         }
     }
     
-    /// Fetch the groups from the backend API
-    func fetchGroups(){
-        MonitorsService.getMonitorGroups { result in
+    func fetchApplications(){
+        MonitorsService.getApplicationsWithStatus { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
-                    self.groups = data
+                    self.applications = data
                 case .failure(let error):
                     print(error)
                 }
+                self.applicationLoading = false
             }
         }
     }
