@@ -24,7 +24,7 @@ class DataOtterModel: ObservableObject {
         self.monitorHistoryData = monitorHistoryData
         self.applications = applications
         self.tags = tags
-        monitorStatusLoading = false
+        monitorStatusLoading = true
         monitorHistoryLoading = false
         applicationLoading = false
         tagsLoading = false
@@ -36,7 +36,7 @@ class DataOtterModel: ObservableObject {
         monitorHistoryData = [:]
         applications = []
         tags = []
-        monitorStatusLoading = false
+        monitorStatusLoading = true
         monitorHistoryLoading = false
         applicationLoading = true
         tagsLoading = false
@@ -54,7 +54,7 @@ class DataOtterModel: ObservableObject {
     /// Fetches monitors and groups from the backend API
     func refreshData(){
         fetchApplications()
-//        fetchMonitors()
+        fetchMonitors()
 //        fetchGroups()
     }
     
@@ -150,9 +150,9 @@ class DataOtterModel: ObservableObject {
             }
         }
         
-        dispatchGroup.notify(queue: .main) {
-            self.fetchMonitorsHistory()
-        }
+//        dispatchGroup.notify(queue: .main) {
+//            self.fetchMonitorsHistory()
+//        }
     }
     
     /// Fetch monitor history from the backend API

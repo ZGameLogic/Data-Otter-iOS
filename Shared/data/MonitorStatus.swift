@@ -11,6 +11,7 @@ import WidgetKit
 
 struct MonitorStatus: Codable, Identifiable, Hashable {
     let id: Int
+    let applicationId: Int
     var name: String
     var type: String
     var url: String
@@ -26,6 +27,17 @@ struct MonitorStatus: Codable, Identifiable, Hashable {
         return status.status ? .green : .red
     }
     
+    enum CodingKeys: String, CodingKey {
+        case id = "monitor id"
+        case applicationId = "application id"
+        case name
+        case type
+        case url
+        case regex
+        case status
+        case active
+    }
+    
     mutating func update(data: MonitorData){
         name = data.name
         type = data.type
@@ -36,6 +48,7 @@ struct MonitorStatus: Codable, Identifiable, Hashable {
     init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(Int.self, forKey: .id)
+        self.applicationId = try container.decode(Int.self, forKey: .applicationId)
         self.name = try container.decode(String.self, forKey: .name)
         self.type = try container.decode(String.self, forKey: .type)
         self.url = try container.decode(String.self, forKey: .url)
@@ -44,8 +57,9 @@ struct MonitorStatus: Codable, Identifiable, Hashable {
         self.active = try container.decode(Bool.self, forKey: .active)
     }
     
-    init(id: Int, name: String, type: String, url: String, regex: String, status: Status?) {
+    init(id: Int, applicationId: Int, name: String, type: String, url: String, regex: String, status: Status?) {
         self.id = id
+        self.applicationId = applicationId
         self.name = name
         self.type = type
         self.url = url

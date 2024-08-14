@@ -133,5 +133,5 @@ struct EditMonitorView: View {
 }
 
 #Preview {
-    MonitorDetailView(monitor: Binding.constant(MonitorStatus(id: 1, name: "Test Monitor", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 1, statusCode: 200))), history: [])
+    MonitorDetailView(monitor: Binding.constant(MonitorStatus(id: 1, applicationId: 1, name: "Test Monitor", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 1, statusCode: 200))), history: [])
 }

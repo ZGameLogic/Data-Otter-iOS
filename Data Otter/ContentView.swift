@@ -18,9 +18,9 @@ struct ContentView: View {
             MonitorGeneralView().tabItem({
                 Label("Monitors", systemImage: "chart.bar.doc.horizontal")
             }).tag(1)
-            EventsView(monitorData: [], monitorHistoryData: [:]).tabItem({
-                Label("Events", systemImage: "megaphone")
-            }).tag(2)
+//            EventsView(monitorData: [], monitorHistoryData: [:]).tabItem({
+//                Label("Events", systemImage: "megaphone")
+//            }).tag(2).disabled(true)
         }
         .onReceive(NotificationCenter.default.publisher(for: .monitorSelected)) { notification in
             print("Notication \(notification)")
