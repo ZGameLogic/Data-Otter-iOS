@@ -12,7 +12,7 @@ struct MonitorGeneralView: View {
     
     @State private var showAddMonitor = false
     @State private var showAlert = false
-    @State var monitorToDelete: MonitorStatus? = nil
+    @State var monitorToDelete: Monitor? = nil
     
     @State var navigationPath = NavigationPath()
     
@@ -52,7 +52,7 @@ struct MonitorGeneralView: View {
                 }
             }
             .navigationTitle("Monitors")
-                .navigationDestination(for: MonitorStatus.self) { monitor in
+                .navigationDestination(for: Monitor.self) { monitor in
                     if let index = viewModel.monitorConfigurations.firstIndex(where: { $0.id == monitor.id }) {
                         MonitorDetailView(monitor: viewModel.bindingForMonitor(at: index), history: viewModel.monitorHistoryData[viewModel.monitorConfigurations[index].id] ?? [])
                     }
@@ -101,7 +101,7 @@ struct MonitorGeneralView: View {
         })
     }
     
-    func deleteMonitor(monitor: MonitorStatus){
+    func deleteMonitor(monitor: Monitor){
         viewModel.deleteMonitor(monitorId: monitor.id) { result in
             DispatchQueue.main.async {
                 switch result {

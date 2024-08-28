@@ -9,11 +9,11 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: AppIntentTimelineProvider {
-    let previewData: [MonitorStatus] = [
-        MonitorStatus(id: 1, applicationId: 1, name: "Test Monitor 1", type: "API", url: "", regex: "", status: Status(dateRecorded: Date(), milliseconds: 1, status: true, attempts: 1, statusCode: 200)),
-        MonitorStatus(id: 2, applicationId: 1, name: "Test Monitor 2", type: "API", url: "", regex: "", status: Status(dateRecorded: Date(), milliseconds: 1, status: true, attempts: 1, statusCode: 200)),
-        MonitorStatus(id: 3, applicationId: 1, name: "Test Monitor 3", type: "WEB", url: "", regex: "", status: Status(dateRecorded: Date(), milliseconds: 1, status: true, attempts: 1, statusCode: 200)),
-        MonitorStatus(id: 4, applicationId: 1, name: "Test Monitor 4", type: "API", url: "", regex: "", status: Status(dateRecorded: Date(), milliseconds: 1, status: true, attempts: 1, statusCode: 200))
+    let previewData: [Monitor] = [
+        Monitor(id: 1, applicationId: 1, name: "Test Monitor 1", type: "API", url: "", regex: "", status: Status(dateRecorded: Date(), milliseconds: 1, status: true, attempts: 1, statusCode: 200)),
+        Monitor(id: 2, applicationId: 1, name: "Test Monitor 2", type: "API", url: "", regex: "", status: Status(dateRecorded: Date(), milliseconds: 1, status: true, attempts: 1, statusCode: 200)),
+        Monitor(id: 3, applicationId: 1, name: "Test Monitor 3", type: "WEB", url: "", regex: "", status: Status(dateRecorded: Date(), milliseconds: 1, status: true, attempts: 1, statusCode: 200)),
+        Monitor(id: 4, applicationId: 1, name: "Test Monitor 4", type: "API", url: "", regex: "", status: Status(dateRecorded: Date(), milliseconds: 1, status: true, attempts: 1, statusCode: 200))
     ]
     
     func placeholder(in context: Context) -> MonitorStatusEntry {

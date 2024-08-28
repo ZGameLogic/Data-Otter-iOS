@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EventsView: View {
-    @State var monitorData: [MonitorStatus]
+    @State var monitorData: [Monitor]
     @State var monitorHistoryData: [Int: [Status]]
 
     @State var events: [MonitorEvent] = []

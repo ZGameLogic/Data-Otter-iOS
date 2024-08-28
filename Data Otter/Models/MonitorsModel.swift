@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class DataOtterModel: ObservableObject {
-    @Published var monitorConfigurations: [MonitorStatus]
+    @Published var monitorConfigurations: [Monitor]
     @Published var monitorHistoryData: [Int: [Status]]
     @Published var applications: [Application]
     @Published var tags: [Tag]
@@ -19,7 +19,7 @@ class DataOtterModel: ObservableObject {
     @Published var applicationLoading: Bool
     @Published var tagsLoading: Bool
     
-    init(monitorConfigurations: [MonitorStatus], monitorHistoryData: [Int: [Status]], applications: [Application], tags: [Tag]) {
+    init(monitorConfigurations: [Monitor], monitorHistoryData: [Int: [Status]], applications: [Application], tags: [Tag]) {
         self.monitorConfigurations = monitorConfigurations
         self.monitorHistoryData = monitorHistoryData
         self.applications = applications
@@ -43,11 +43,11 @@ class DataOtterModel: ObservableObject {
         refreshData()
     }
     
-    func getMonitorById(_ monitorId: Int) -> MonitorStatus? {
+    func getMonitorById(_ monitorId: Int) -> Monitor? {
         monitorConfigurations.first(where: {$0.id == monitorId})
     }
     
-    func getMonitorHistoryData(monitor: MonitorStatus) -> [Status]{
+    func getMonitorHistoryData(monitor: Monitor) -> [Status]{
         return monitorHistoryData[monitor.id] ?? []
     }
     
@@ -61,8 +61,8 @@ class DataOtterModel: ObservableObject {
     /// Get a binding for a monitor at a specific index
     /// - Parameter index: index to get the binding at
     /// - Returns: Binding of a monitor
-    func bindingForMonitor(at index: Int) -> Binding<MonitorStatus> {
-        Binding<MonitorStatus>(
+    func bindingForMonitor(at index: Int) -> Binding<Monitor> {
+        Binding<Monitor>(
             get: { self.monitorConfigurations[index] },
             set: { self.monitorConfigurations[index] = $0 }
         )
@@ -100,7 +100,7 @@ class DataOtterModel: ObservableObject {
     /// - Parameters:
     ///   - monitorData: Monitor data to create
     ///   - completion: Completion when the service gets data back
-    func createMonitor(monitorData: MonitorData, completion: @escaping (Result<MonitorStatus, Error>) -> Void) {
+    func createMonitor(monitorData: MonitorData, completion: @escaping (Result<Monitor, Error>) -> Void) {
         MonitorsService.createMonitor(monitorData: monitorData) { result in
             DispatchGroup().notify(queue: .main) {
                 switch(result){
@@ -118,7 +118,7 @@ class DataOtterModel: ObservableObject {
     /// - Parameters:
     ///   - monitorData: Monitor data to update with
     ///   - completion: Completion when the service gets data back
-    func updateMonitor(monitorData: MonitorStatus, completion: @escaping (Result<MonitorStatus, Error>) -> Void) {
+    func updateMonitor(monitorData: Monitor, completion: @escaping (Result<Monitor, Error>) -> Void) {
         MonitorsService.updateMonitor(monitorData: monitorData) { result in
             DispatchGroup().notify(queue: .main) {
                 switch(result){

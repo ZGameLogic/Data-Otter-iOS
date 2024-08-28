@@ -31,8 +31,8 @@
 		B5210ECF2BF5959600854A3C /* Data Otter WatchOS WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B5210EC22BF5959400854A3C /* Data Otter WatchOS WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B5210ED42BF595EA00854A3C /* HistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9EB2BF3A6EB009A564A /* HistoryGraphView.swift */; };
 		B5210ED52BF595EB00854A3C /* HistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9EB2BF3A6EB009A564A /* HistoryGraphView.swift */; };
-		B5210ED62BF595EE00854A3C /* MonitorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9BF2BF18230009A564A /* MonitorStatus.swift */; };
-		B5210ED72BF595EE00854A3C /* MonitorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9BF2BF18230009A564A /* MonitorStatus.swift */; };
+		B5210ED62BF595EE00854A3C /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9BF2BF18230009A564A /* Monitor.swift */; };
+		B5210ED72BF595EE00854A3C /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9BF2BF18230009A564A /* Monitor.swift */; };
 		B5210ED82BF595F200854A3C /* MonitorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E62BF2AF92009A564A /* MonitorData.swift */; };
 		B5210ED92BF595F200854A3C /* MonitorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E62BF2AF92009A564A /* MonitorData.swift */; };
 		B5210EDA2BF595F500854A3C /* MonitorCreationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E82BF2B3D3009A564A /* MonitorCreationResult.swift */; };
@@ -47,7 +47,7 @@
 		B5745BB82BF5319F0049B304 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5745BB72BF5319F0049B304 /* AppIntent.swift */; };
 		B5745BBA2BF531A20049B304 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5745BB92BF531A20049B304 /* Assets.xcassets */; };
 		B5745BBE2BF531A20049B304 /* Data Otter iOS Widget GraphExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B5745BAF2BF5319F0049B304 /* Data Otter iOS Widget GraphExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B5745BC22BF535EF0049B304 /* MonitorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9BF2BF18230009A564A /* MonitorStatus.swift */; };
+		B5745BC22BF535EF0049B304 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9BF2BF18230009A564A /* Monitor.swift */; };
 		B5745BC52BF571260049B304 /* MonitorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E62BF2AF92009A564A /* MonitorData.swift */; };
 		B5745BC62BF574090049B304 /* HistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9EB2BF3A6EB009A564A /* HistoryGraphView.swift */; };
 		B5745BC72BF575340049B304 /* Monitors Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9C42BF1948A009A564A /* Monitors Service.swift */; };
@@ -57,7 +57,7 @@
 		B586C9D42BF25579009A564A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B586C9D32BF25579009A564A /* Assets.xcassets */; };
 		B586C9D72BF25579009A564A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B586C9D62BF25579009A564A /* Preview Assets.xcassets */; };
 		B586C9DD2BF25685009A564A /* MonitorGeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9DC2BF25685009A564A /* MonitorGeneralView.swift */; };
-		B586C9DE2BF2569A009A564A /* MonitorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9BF2BF18230009A564A /* MonitorStatus.swift */; };
+		B586C9DE2BF2569A009A564A /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9BF2BF18230009A564A /* Monitor.swift */; };
 		B586C9DF2BF2569D009A564A /* Monitors Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9C42BF1948A009A564A /* Monitors Service.swift */; };
 		B586C9E12BF256EF009A564A /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E02BF256EF009A564A /* EventsListView.swift */; };
 		B586C9E32BF25ABE009A564A /* MonitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E22BF25ABE009A564A /* MonitorListView.swift */; };
@@ -74,7 +74,7 @@
 		B586C9FE2BF3DB8E009A564A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B586C9FD2BF3DB8E009A564A /* Assets.xcassets */; };
 		B586CA022BF3DB8F009A564A /* Data Otter iOS WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B586C9F32BF3DB8B009A564A /* Data Otter iOS WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B586CA072BF3DBA2009A564A /* Monitors Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9C42BF1948A009A564A /* Monitors Service.swift */; };
-		B586CA082BF3DBAB009A564A /* MonitorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9BF2BF18230009A564A /* MonitorStatus.swift */; };
+		B586CA082BF3DBAB009A564A /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9BF2BF18230009A564A /* Monitor.swift */; };
 		B586CA092BF3DBB0009A564A /* HistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9EB2BF3A6EB009A564A /* HistoryGraphView.swift */; };
 		B586CA0A2BF3DC36009A564A /* MonitorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E62BF2AF92009A564A /* MonitorData.swift */; };
 		B586CA0B2BF3DC49009A564A /* MonitorCreationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E82BF2B3D3009A564A /* MonitorCreationResult.swift */; };
@@ -180,7 +180,7 @@
 		B5745BB92BF531A20049B304 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5745BBB2BF531A20049B304 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5745BCB2BF57E390049B304 /* Data-Otter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Data-Otter-Info.plist"; sourceTree = SOURCE_ROOT; };
-		B586C9BF2BF18230009A564A /* MonitorStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorStatus.swift; sourceTree = "<group>"; };
+		B586C9BF2BF18230009A564A /* Monitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
 		B586C9C42BF1948A009A564A /* Monitors Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Monitors Service.swift"; path = "services/Monitors Service.swift"; sourceTree = "<group>"; };
 		B586C9CD2BF25577009A564A /* Data Otter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Data Otter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B586C9CF2BF25577009A564A /* Data_OtterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_OtterApp.swift; sourceTree = "<group>"; };
@@ -442,7 +442,7 @@
 		B5E196F32A43F27D0089518A /* data */ = {
 			isa = PBXGroup;
 			children = (
-				B586C9BF2BF18230009A564A /* MonitorStatus.swift */,
+				B586C9BF2BF18230009A564A /* Monitor.swift */,
 				B586C9E62BF2AF92009A564A /* MonitorData.swift */,
 				B586C9E82BF2B3D3009A564A /* MonitorCreationResult.swift */,
 				B51ECC8E2C66B30800B15BC7 /* Monitor Service Data.swift */,
@@ -648,7 +648,7 @@
 				B5210EDA2BF595F500854A3C /* MonitorCreationResult.swift in Sources */,
 				B5210EB12BF5950B00854A3C /* ContentView.swift in Sources */,
 				B5210ED42BF595EA00854A3C /* HistoryGraphView.swift in Sources */,
-				B5210ED62BF595EE00854A3C /* MonitorStatus.swift in Sources */,
+				B5210ED62BF595EE00854A3C /* Monitor.swift in Sources */,
 				B5210EDC2BF595F900854A3C /* Monitors Service.swift in Sources */,
 				B5210ED82BF595F200854A3C /* MonitorData.swift in Sources */,
 				B5210EAF2BF5950B00854A3C /* Data_Otter_WatchOSApp.swift in Sources */,
@@ -663,7 +663,7 @@
 				B5210EDB2BF595F600854A3C /* MonitorCreationResult.swift in Sources */,
 				B5210EC72BF5959400854A3C /* Data_Otter_WatchOS_Widget.swift in Sources */,
 				B5210ED52BF595EB00854A3C /* HistoryGraphView.swift in Sources */,
-				B5210ED72BF595EE00854A3C /* MonitorStatus.swift in Sources */,
+				B5210ED72BF595EE00854A3C /* Monitor.swift in Sources */,
 				B5210EDD2BF595F900854A3C /* Monitors Service.swift in Sources */,
 				B5210ED92BF595F200854A3C /* MonitorData.swift in Sources */,
 				B5210EC92BF5959400854A3C /* AppIntent.swift in Sources */,
@@ -677,7 +677,7 @@
 				B5745BB42BF5319F0049B304 /* Data_Otter_iOS_Widget_GraphBundle.swift in Sources */,
 				B5745BB62BF5319F0049B304 /* Data_Otter_iOS_Widget_Graph.swift in Sources */,
 				B5745BCA2BF577810049B304 /* MonitorCreationResult.swift in Sources */,
-				B5745BC22BF535EF0049B304 /* MonitorStatus.swift in Sources */,
+				B5745BC22BF535EF0049B304 /* Monitor.swift in Sources */,
 				B5745BC52BF571260049B304 /* MonitorData.swift in Sources */,
 				B5745BC72BF575340049B304 /* Monitors Service.swift in Sources */,
 				B51ECC912C66B30800B15BC7 /* Monitor Service Data.swift in Sources */,
@@ -711,7 +711,7 @@
 				B51ECC9D2C66B68200B15BC7 /* ApplicationListView.swift in Sources */,
 				B51ECC9B2C66B67100B15BC7 /* NoApplicationsFoundView.swift in Sources */,
 				B586C9E32BF25ABE009A564A /* MonitorListView.swift in Sources */,
-				B586C9DE2BF2569A009A564A /* MonitorStatus.swift in Sources */,
+				B586C9DE2BF2569A009A564A /* Monitor.swift in Sources */,
 				B586C9D02BF25577009A564A /* Data_OtterApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -726,7 +726,7 @@
 				B586CA0B2BF3DC49009A564A /* MonitorCreationResult.swift in Sources */,
 				B586C9F82BF3DB8B009A564A /* Data_Otter_iOS_WidgetBundle.swift in Sources */,
 				B586CA0A2BF3DC36009A564A /* MonitorData.swift in Sources */,
-				B586CA082BF3DBAB009A564A /* MonitorStatus.swift in Sources */,
+				B586CA082BF3DBAB009A564A /* Monitor.swift in Sources */,
 				B5745BAA2BF506910049B304 /* DataOtterGuageWidgetView.swift in Sources */,
 				B586CA092BF3DBB0009A564A /* HistoryGraphView.swift in Sources */,
 				B586C9FC2BF3DB8B009A564A /* AppIntent.swift in Sources */,

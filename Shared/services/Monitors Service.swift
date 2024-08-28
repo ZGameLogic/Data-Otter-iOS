@@ -17,8 +17,7 @@ struct MonitorsService {
     private static func getData<T: Decodable>(
         from url: String,
         query: [URLQueryItem]? = nil,
-        completion: @escaping (Result<T, Error>) -> Void
-        
+        _ completion: @escaping (Result<T, Error>) -> Void
     ) {
         var urlComponents = URLComponents(string: url)!
         urlComponents.queryItems = query
@@ -46,10 +45,7 @@ struct MonitorsService {
         }.resume()
     }
     
-    private static func getDataSynchronously<T: Decodable>(
-        from urlString: String,
-        query: [URLQueryItem]? = nil
-    ) -> Result<T, Error> {
+    private static func getDataSynchronously<T: Decodable>(from urlString: String, query: [URLQueryItem]? = nil) -> Result<T, Error> {
         let semaphore = DispatchSemaphore(value: 0)
         var result: Result<T, Error>!
         
@@ -62,31 +58,31 @@ struct MonitorsService {
         return result
     }
     
-    public static func getMonitorsWithStatus(completion: @escaping (Result<[MonitorStatus], Error>) -> Void) {
-        getData(from: "\(BASE_URL)/monitors", query: [URLQueryItem(name: "include-status", value: "true")], completion: completion)
+    public static func getMonitorsWithStatus(completion: @escaping (Result<[Monitor], Error>) -> Void) {
+        getData(from: "\(BASE_URL)/monitors", query: [URLQueryItem(name: "include-status", value: "true")], completion)
     }
     
     public static func getApplicationsWithStatus(completion: @escaping (Result<[Application], Error>) -> Void) {
-        getData(from: "\(BASE_URL)/applications", query: [URLQueryItem(name: "include-status", value: "true")], completion: completion)
+        getData(from: "\(BASE_URL)/applications", query: [URLQueryItem(name: "include-status", value: "true")], completion)
     }
     
-    public static func getMonitorsWithStatusSyncronous() -> Result<[MonitorStatus], Error> {
+    public static func getMonitorsWithStatusSyncronous() -> Result<[Monitor], Error> {
         getDataSynchronously(from: "\(BASE_URL)/monitors", query: [URLQueryItem(name: "include-status", value: "true")])
     }
 
     public static func getTags(completion: @escaping (Result<[Tag], Error>) -> Void) {
-        getData(from: "\(BASE_URL)/tags", completion: completion)
+        getData(from: "\(BASE_URL)/tags", completion)
     }
     
-    public static func getMonitors(completion: @escaping (Result<[MonitorStatus], Error>) -> Void) {
-        getData(from: "\(BASE_URL)/monitors", completion: completion)
+    public static func getMonitors(completion: @escaping (Result<[Monitor], Error>) -> Void) {
+        getData(from: "\(BASE_URL)/monitors", completion)
     }
     
     public static func getTagsSynchronous() -> Result<[Tag], Error> {
         getDataSynchronously(from: "\(BASE_URL)/tags")
     }
     
-    public static func getMonitorsSyncronous() -> Result<[MonitorStatus], Error> {
+    public static func getMonitorsSyncronous() -> Result<[Monitor], Error> {
         getDataSynchronously(from: "\(BASE_URL)/monitors")
     }
     
@@ -105,7 +101,7 @@ struct MonitorsService {
             queryItems.append(URLQueryItem(name: "end", value: formattedEndDate))
         }
         
-        getData(from: "\(BASE_URL)/monitors/\(id)/history", query: queryItems, completion: completion)
+        getData(from: "\(BASE_URL)/monitors/\(id)/history", query: queryItems, completion)
     }
     
     public static func getMonitorHistorySyncronous(id: Int) -> Result<[Status], Error> {
@@ -151,7 +147,7 @@ struct MonitorsService {
         }.resume()
     }
 
-    public static func updateMonitor(monitorData: MonitorStatus, completion: @escaping (Result<MonitorStatus, Error>) -> Void) {
+    public static func updateMonitor(monitorData: Monitor, completion: @escaping (Result<Monitor, Error>) -> Void) {
         let url = URL(string: "\(BASE_URL)/monitors/\(monitorData.id)")!
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
@@ -175,7 +171,7 @@ struct MonitorsService {
                 return
             }
             do {
-                let decodedData = try JSONDecoder().decode(MonitorStatus.self, from: data)
+                let decodedData = try JSONDecoder().decode(Monitor.self, from: data)
                 completion(.success(decodedData))
             } catch {
                 completion(.failure(error))
@@ -183,7 +179,7 @@ struct MonitorsService {
         }.resume()
     }
     
-    public static func createMonitor(monitorData: MonitorData, completion: @escaping (Result<MonitorStatus, Error>) -> Void) {
+    public static func createMonitor(monitorData: MonitorData, completion: @escaping (Result<Monitor, Error>) -> Void) {
         let url = URL(string: "\(BASE_URL)/monitors")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -207,7 +203,7 @@ struct MonitorsService {
                 return
             }
             do {
-                let decodedData = try JSONDecoder().decode(MonitorStatus.self, from: data)
+                let decodedData = try JSONDecoder().decode(Monitor.self, from: data)
                 completion(.success(decodedData))
             } catch {
                 completion(.failure(error))

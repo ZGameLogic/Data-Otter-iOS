@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import WidgetKit
 
-struct MonitorStatus: Codable, Identifiable, Hashable {
+struct Monitor: Codable, Identifiable, Hashable {
     let id: Int
     let applicationId: Int
     var name: String
@@ -109,20 +109,20 @@ struct Status: Codable, Hashable, Identifiable {
 
 struct MonitorStatusHistoryEntry: TimelineEntry {
     let date: Date
-    let monitors: [MonitorStatus]
+    let monitors: [Monitor]
     let history: [Int: [Status]]
 }
 
 struct MonitorStatusEntry: TimelineEntry {
     let date: Date
-    let monitors: [MonitorStatus]
+    let monitors: [Monitor]
     var downMonitors: [String] { monitors.filter { $0.status?.status == false }.map { $0.name }}
     var upMonitors : [String] { monitors.filter { $0.status?.status == true }.map { $0.name }}
     var up: Int { monitors.filter { $0.status?.status == true }.count }
     var down: Int { monitors.filter { $0.status?.status == false }.count }
     var total: Int { monitors.count }
     
-    init(date: Date, monitors: [MonitorStatus]){
+    init(date: Date, monitors: [Monitor]){
         self.date = date
         self.monitors = monitors
     }

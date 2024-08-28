@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MonitorListView: View {
-    let monitor: MonitorStatus
+    let monitor: Monitor
 
     var body: some View {
         VStack(alignment: .leading){

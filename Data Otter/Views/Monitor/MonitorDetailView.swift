@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MonitorDetailView: View {
-    @Binding var monitor: MonitorStatus
+    @Binding var monitor: Monitor
     var history: [Status]
     @State var showEditMonitor = false
     @State var showStatusHistory = false
@@ -60,7 +60,7 @@ struct MonitorDetailView: View {
 
 struct EditMonitorView: View {
     @EnvironmentObject var viewModel: DataOtterModel
-    @Binding var monitor: MonitorStatus
+    @Binding var monitor: Monitor
     @Binding var showing: Bool
     
     @State var confirmed = false
@@ -133,5 +133,5 @@ struct EditMonitorView: View {
 }
 
 #Preview {
-    MonitorDetailView(monitor: Binding.constant(MonitorStatus(id: 1, applicationId: 1, name: "Test Monitor", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 1, statusCode: 200))), history: [])
+    MonitorDetailView(monitor: Binding.constant(Monitor(id: 1, applicationId: 1, name: "Test Monitor", type: "API", url: "https://zgamelogic.com", regex: "Healthy", status: Status(dateRecorded: Date(), milliseconds: 3, status: true, attempts: 1, statusCode: 200))), history: [])
 }
