@@ -31,39 +31,45 @@ struct ApplicationListView: View {
 }
 
 #Preview {
-    List {
-        ApplicationListView(application: Application (
-            id: 1,
-            name: "Discord Bot",
-            description: "",
-            monitorIds: [0, 1],
-            tags: ["Kubernetes", "Discord bot"],
-            status: true
-        ))
-        ApplicationListView(application: Application (
-            id: 2,
-            name: "Main API",
-            description: "",
-            monitorIds: [3, 4],
-            tags: [],
-            status: true
-        ))
-        ApplicationListView(application: Application (
-            id: 1,
-            name: "Wraith Bot",
-            description: "",
-            monitorIds: [],
-            tags: ["Kubernetes", "Discord bot"],
-            status: nil
-        ))
-        ApplicationListView(application: Application (
-            id: 2,
-            name: "Website",
-            description: "",
-            monitorIds: [],
-            tags: [],
-            status: nil
-        ))
+    NavigationStack {
+        List {
+            ForEach([
+                Application (
+                    id: 1,
+                    name: "Discord Bot",
+                    description: "",
+                    monitorIds: [0, 1],
+                    tags: ["Kubernetes", "Discord bot"],
+                    status: true
+                ),
+                Application (
+                    id: 2,
+                    name: "Main API",
+                    description: "",
+                    monitorIds: [3, 4],
+                    tags: [],
+                    status: true
+                ),
+                Application (
+                    id: 3,
+                    name: "Wraith Bot",
+                    description: "",
+                    monitorIds: [],
+                    tags: ["Kubernetes", "Discord bot"],
+                    status: nil
+                ),
+                Application (
+                    id: 4,
+                    name: "Website",
+                    description: "",
+                    monitorIds: [],
+                    tags: [],
+                    status: nil
+                )
+            ]){
+                ApplicationListView(application: $0)
+            }
+        }.navigationTitle("Applications")
     }.environmentObject(DataOtterModel(
         monitorConfigurations: [],
         monitorHistoryData: [:],

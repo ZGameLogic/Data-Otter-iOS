@@ -40,7 +40,7 @@ struct ApplicationGeneralView: View {
             }
             .navigationTitle("Applications")
             .refreshable{ viewModel.refreshData()}
-        }
+        }.sheet(isPresented: $showAddApplication, content: {ApplicationCreateView(isPresented: $showAddApplication)})
     }
 }
 

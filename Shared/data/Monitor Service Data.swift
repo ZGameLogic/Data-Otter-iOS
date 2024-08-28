@@ -56,5 +56,5 @@ struct Application: Codable, Identifiable, Hashable {
 struct Tag: Codable, Identifiable, Hashable {
     var id: String { name }
     let name: String
-    let description: String
+    let description: String?
 }

@@ -39,7 +39,7 @@ class DataOtterModel: ObservableObject {
         monitorStatusLoading = true
         monitorHistoryLoading = false
         applicationLoading = true
-        tagsLoading = false
+        tagsLoading = true
         refreshData()
     }
     
@@ -54,8 +54,8 @@ class DataOtterModel: ObservableObject {
     /// Fetches monitors and groups from the backend API
     func refreshData(){
         fetchApplications()
+        fetchTags()
         fetchMonitors()
-//        fetchGroups()
     }
     
     /// Get a binding for a monitor at a specific index
@@ -193,6 +193,20 @@ class DataOtterModel: ObservableObject {
                     print(error)
                 }
                 self.applicationLoading = false
+            }
+        }
+    }
+    
+    func fetchTags(){
+        MonitorsService.getTags { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    self.tags = data
+                case .failure(let error):
+                    print(error)
+                }
+                self.tagsLoading = false
             }
         }
     }

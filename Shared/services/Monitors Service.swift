@@ -14,8 +14,20 @@ struct MonitorsService {
     static let BASE_URL = "http://20.40.218.161:8080"
     #endif
     
-    public static func getMonitorsWithStatus(completion: @escaping (Result<[MonitorStatus], Error>) -> Void) {
-        let url = URL(string: "\(BASE_URL)/monitors?include-status=true")!
+    private static func getData<T: Decodable>(
+        from url: String,
+        query: [URLQueryItem]? = nil,
+        completion: @escaping (Result<T, Error>) -> Void
+        
+    ) {
+        var urlComponents = URLComponents(string: url)!
+        urlComponents.queryItems = query
+        
+        guard let url = urlComponents.url else {
+            completion(.failure(URLError(.badURL)))
+            return
+        }
+        
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(error))
@@ -26,82 +38,56 @@ struct MonitorsService {
                 return
             }
             do {
-                let decodedData = try JSONDecoder().decode([MonitorStatus].self, from: data)
+                let decodedData = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(decodedData))
-           } catch {
-               completion(.failure(error))
-               return
-           }
+            } catch {
+                completion(.failure(error))
+            }
         }.resume()
+    }
+    
+    private static func getDataSynchronously<T: Decodable>(
+        from urlString: String,
+        query: [URLQueryItem]? = nil
+    ) -> Result<T, Error> {
+        let semaphore = DispatchSemaphore(value: 0)
+        var result: Result<T, Error>!
+        
+        getData(from: urlString, query: query) { asyncResult in
+            result = asyncResult
+            semaphore.signal()
+        }
+        
+        semaphore.wait()
+        return result
+    }
+    
+    public static func getMonitorsWithStatus(completion: @escaping (Result<[MonitorStatus], Error>) -> Void) {
+        getData(from: "\(BASE_URL)/monitors", query: [URLQueryItem(name: "include-status", value: "true")], completion: completion)
     }
     
     public static func getApplicationsWithStatus(completion: @escaping (Result<[Application], Error>) -> Void) {
-        let url = URL(string: "\(BASE_URL)/applications?include-status=true")!
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            guard let data = data else {
-                completion(.failure(URLError(.badServerResponse)))
-                return
-            }
-            do {
-                let decodedData = try JSONDecoder().decode([Application].self, from: data)
-                completion(.success(decodedData))
-           } catch {
-               completion(.failure(error))
-               return
-           }
-        }.resume()
+        getData(from: "\(BASE_URL)/applications", query: [URLQueryItem(name: "include-status", value: "true")], completion: completion)
     }
     
     public static func getMonitorsWithStatusSyncronous() -> Result<[MonitorStatus], Error> {
-        let semaphore = DispatchSemaphore(value: 0)
-        var result: Result<[MonitorStatus], Error>!
-
-        getMonitorsWithStatus { asyncResult in
-            result = asyncResult
-            semaphore.signal()
-        }
-
-        semaphore.wait()
-        return result
+        getDataSynchronously(from: "\(BASE_URL)/monitors", query: [URLQueryItem(name: "include-status", value: "true")])
     }
 
+    public static func getTags(completion: @escaping (Result<[Tag], Error>) -> Void) {
+        getData(from: "\(BASE_URL)/tags", completion: completion)
+    }
     
     public static func getMonitors(completion: @escaping (Result<[MonitorStatus], Error>) -> Void) {
-        let url = URL(string: "\(BASE_URL)/monitors")!
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            guard let data = data else {
-                completion(.failure(URLError(.badServerResponse)))
-                return
-            }
-            do {
-                let decodedData = try JSONDecoder().decode([MonitorStatus].self, from: data)
-                completion(.success(decodedData))
-           } catch {
-               completion(.failure(error))
-               return
-           }
-        }.resume()
+        getData(from: "\(BASE_URL)/monitors", completion: completion)
+    }
+    
+    public static func getTagsSynchronous() -> Result<[Tag], Error> {
+        getDataSynchronously(from: "\(BASE_URL)/tags")
     }
     
     public static func getMonitorsSyncronous() -> Result<[MonitorStatus], Error> {
-        let semaphore = DispatchSemaphore(value: 0)
-        var result: Result<[MonitorStatus], Error>!
-
-        getMonitors { asyncResult in
-            result = asyncResult
-            semaphore.signal()
-        }
-
-        semaphore.wait()
-        return result
+        getDataSynchronously(from: "\(BASE_URL)/monitors")
     }
     
     public static func getMonitorHistory(id: Int, start: Date, end: Date?, condensed: Bool, completion: @escaping (Result<[Status], Error>) -> Void) {
@@ -109,48 +95,21 @@ struct MonitorsService {
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
         let formattedStartDate = dateFormatter.string(from: start)
         
-        var urlComponents = URLComponents(string: "\(BASE_URL)/monitors/\(id)/history")!
-        urlComponents.queryItems = [
+        var queryItems: [URLQueryItem] = [
             URLQueryItem(name: "condensed", value: "\(condensed)"),
             URLQueryItem(name: "start", value: formattedStartDate),
         ]
         
         if let end = end {
             let formattedEndDate = dateFormatter.string(from: end)
-            urlComponents.queryItems!.append(URLQueryItem(name: "end", value: formattedEndDate))
+            queryItems.append(URLQueryItem(name: "end", value: formattedEndDate))
         }
         
-        let url = urlComponents.url!
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            guard let data = data else {
-                completion(.failure(URLError(.badServerResponse)))
-                return
-            }
-            do {
-                let decodedData = try JSONDecoder().decode([Status].self, from: data)
-                completion(.success(decodedData))
-           } catch {
-               completion(.failure(error))
-               return
-           }
-        }.resume()
+        getData(from: "\(BASE_URL)/monitors/\(id)/history", query: queryItems, completion: completion)
     }
     
     public static func getMonitorHistorySyncronous(id: Int) -> Result<[Status], Error> {
-        let semaphore = DispatchSemaphore(value: 0)
-        var result: Result<[Status], Error>!
-
-        getMonitorHistory(id: id, condensed: true) { asyncResult in
-            result = asyncResult
-            semaphore.signal()
-        }
-
-        semaphore.wait()
-        return result
+        getDataSynchronously(from: "\(BASE_URL)/monitors/\(id)/history")
     }
     
     public static func getMonitorHistory(id: Int, condensed: Bool, completion: @escaping (Result<[Status], Error>) -> Void) {
