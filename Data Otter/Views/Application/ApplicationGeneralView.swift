@@ -14,7 +14,7 @@ struct ApplicationGeneralView: View {
     
     var body: some View {
         NavigationStack {
-            Group {
+            List {
                 if(!viewModel.applicationLoading && viewModel.applications.isEmpty){ // loaded and no data
                     NoApplicationsFoundView()
                 } else if(viewModel.applicationLoading) { // not loaded
@@ -23,13 +23,12 @@ struct ApplicationGeneralView: View {
                     ApplicationListSkeletonView()
                     ApplicationListSkeletonView()
                 } else { // loaded and data
-                    List {
-                        ForEach(viewModel.applications) {
-                            ApplicationListView(application: $0)
-                        }
+                    ForEach(viewModel.applications) {
+                        ApplicationListView(application: $0)
                     }
                 }
-            }.toolbar {
+            }
+            .toolbar {
                 ToolbarItem {
                     Button(action: {
                         showAddApplication = true

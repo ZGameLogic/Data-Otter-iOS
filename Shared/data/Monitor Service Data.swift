@@ -11,7 +11,7 @@ import SwiftUI
 struct Application: Codable, Identifiable, Hashable {
     let id: Int64
     let name: String
-    let description: String
+    let description: String?
     let monitorIds: [Int64]
     let tags: [String]
     let status: Bool?
@@ -29,7 +29,7 @@ struct Application: Codable, Identifiable, Hashable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(Int64.self, forKey: .id)
         self.name = try container.decode(String.self, forKey: .name)
-        self.description = try container.decode(String.self, forKey: .description)
+        self.description = try container.decodeIfPresent(String.self, forKey: .description)
         self.monitorIds = try container.decode([Int64].self, forKey: .monitorIds)
         self.tags = try container.decode([String].self, forKey: .tags)
         self.status = try container.decodeIfPresent(Bool.self, forKey: .status)
@@ -57,4 +57,29 @@ struct Tag: Codable, Identifiable, Hashable {
     var id: String { name }
     let name: String
     let description: String?
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encodeIfPresent(description, forKey: .description)
+    }
+}
+
+struct ApplicationCreateData: Encodable {
+    let name: String
+    let description: String?
+    let tags: [Tag]
+    
+    enum CodingKeys: CodingKey {
+        case name
+        case description
+        case tags
+    }
+    
+    func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encodeIfPresent(description, forKey: .description)
+        try container.encode(tags, forKey: .tags)
+    }
 }

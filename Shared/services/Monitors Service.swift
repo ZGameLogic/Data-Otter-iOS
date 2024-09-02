@@ -58,6 +58,60 @@ struct MonitorsService {
         return result
     }
     
+    public static func deleteData(from urlString: String, _ completion: @escaping (Result<Void, Error>) -> Void) {
+        let url = URL(string: urlString)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard data != nil else {
+                completion(.failure(URLError(.badServerResponse)))
+                return
+            }
+            completion(.success(()))
+        }.resume()
+    }
+    
+    private static func createData<T: Encodable, D: Decodable>(
+        from urlString: String,
+        data dataObject: T,
+        _ completion: @escaping (Result<D, Error>) -> Void
+    ) {
+        let url = URL(string: urlString)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let jsonData = try JSONEncoder().encode(dataObject)
+            request.httpBody = jsonData
+        } catch {
+            completion(.failure(error))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let data = data else {
+                completion(.failure(URLError(.badServerResponse)))
+                return
+            }
+            do {
+                let decodedData = try JSONDecoder().decode(D.self, from: data)
+                completion(.success(decodedData))
+            } catch {
+                completion(.failure(error))
+            }
+        }.resume()
+    }
+    
     public static func getMonitorsWithStatus(completion: @escaping (Result<[Monitor], Error>) -> Void) {
         getData(from: "\(BASE_URL)/monitors", query: [URLQueryItem(name: "include-status", value: "true")], completion)
     }
@@ -180,53 +234,15 @@ struct MonitorsService {
     }
     
     public static func createMonitor(monitorData: MonitorData, completion: @escaping (Result<Monitor, Error>) -> Void) {
-        let url = URL(string: "\(BASE_URL)/monitors")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        do {
-            let jsonData = try JSONEncoder().encode(monitorData)
-            request.httpBody = jsonData
-        } catch {
-            completion(.failure(error))
-            return
-        }
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            guard let data = data else {
-                completion(.failure(URLError(.badServerResponse)))
-                return
-            }
-            do {
-                let decodedData = try JSONDecoder().decode(Monitor.self, from: data)
-                completion(.success(decodedData))
-            } catch {
-                completion(.failure(error))
-            }
-        }.resume()
+        createData(from: "\(BASE_URL)/monitors", data: monitorData, completion)
+    }
+    
+    public static func createApplication(applicationData: ApplicationCreateData, completion: @escaping (Result<Application, Error>) -> Void){
+        createData(from: "\(BASE_URL)/applications", data: applicationData, completion)
     }
     
     public static func deleteMonitor(monitorId: Int, completion: @escaping (Result<Void, Error>) -> Void) {
-        let url = URL(string: "\(BASE_URL)/monitors/\(monitorId)")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "DELETE"
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            guard data != nil else {
-                completion(.failure(URLError(.badServerResponse)))
-                return
-            }
-            completion(.success(()))
-        }.resume()
+        deleteData(from: "\(BASE_URL)/monitors/\(monitorId)", completion)
     }
     
     public static func registrationEndpoint(add: Bool, token: String) async throws {

@@ -14,9 +14,13 @@ struct AddMonitorView: View {
     @State var type = "API"
     @State var url = ""
     @State var regex = ""
+    @State var applicationSelected: Application?
+    @State var applications: [Application] = []
     
     @State var confirmed = false
     @State var showAlert = false
+    
+    var preSelected: Bool = false
     
     @Binding var isPresented: Bool
     
@@ -67,6 +71,12 @@ struct AddMonitorView: View {
         Text("Create Monitor").font(.title).padding()
         Form {
             Section("Monitor Information"){
+                Picker("Application", selection: $applicationSelected) {
+                    ForEach(applications, id: \.self){
+                        Text($0.name).tag($0.id)
+                    }
+                }.pickerStyle(MenuPickerStyle())
+                    .disabled(preSelected)
                 TextField("Name", text: $name)
                 Picker("Type", selection: $type) {
                     Text("API").tag("API")
@@ -78,10 +88,12 @@ struct AddMonitorView: View {
         }
         .alert(isPresented: $showAlert) {
             Alert(
-                title: Text("Unable to edit monitor"),
+                title: Text("Unable to create monitor"),
                 message: Text("Verify the information in this form and try again."),
                 dismissButton: .default(Text("Close"))
             )
+        }.onAppear{
+            applications = viewModel.applications
         }
     }
 }

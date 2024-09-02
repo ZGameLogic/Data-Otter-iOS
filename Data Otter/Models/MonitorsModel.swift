@@ -36,7 +36,7 @@ class DataOtterModel: ObservableObject {
         monitorHistoryData = [:]
         applications = []
         tags = []
-        monitorStatusLoading = true
+        monitorStatusLoading = false
         monitorHistoryLoading = false
         applicationLoading = true
         tagsLoading = true
@@ -55,7 +55,7 @@ class DataOtterModel: ObservableObject {
     func refreshData(){
         fetchApplications()
         fetchTags()
-        fetchMonitors()
+//        fetchMonitors()
     }
     
     /// Get a binding for a monitor at a specific index
@@ -112,6 +112,11 @@ class DataOtterModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    
+    func createApplication(applicationData: ApplicationCreateData, completion: @escaping (Result<Application, Error>) -> Void) {
+        MonitorsService.createApplication(applicationData: applicationData, completion: completion)
     }
     
     /// Update a monitor on the backend API
