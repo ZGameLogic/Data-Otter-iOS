@@ -45,4 +45,10 @@ struct ApplicationGeneralView: View {
 
 #Preview {
     ApplicationGeneralView()
+        .environmentObject(DataOtterModel(
+            monitorConfigurations: [],
+            monitorHistoryData: [:],
+            applications: [],
+            tags: []
+        ))
 }

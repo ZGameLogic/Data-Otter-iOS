@@ -63,7 +63,7 @@ struct MonitorGeneralView: View {
                             showAddMonitor = true
                         }) {
                             Label("Add Item", systemImage: "plus")
-                        }
+                        }.disabled(viewModel.applications.isEmpty)
                     }
                 }
                 .refreshable {
@@ -74,7 +74,7 @@ struct MonitorGeneralView: View {
         }.sheet(isPresented: $showAddMonitor, onDismiss: {
             viewModel.refreshData()
         }, content: {
-            AddMonitorView(isPresented: $showAddMonitor)
+            AddMonitorView(applications: viewModel.applications, isPresented: $showAddMonitor)
         })
         .alert(isPresented: $showAlert) {
             Alert(

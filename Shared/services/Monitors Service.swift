@@ -233,8 +233,8 @@ struct MonitorsService {
         }.resume()
     }
     
-    public static func createMonitor(monitorData: MonitorData, completion: @escaping (Result<Monitor, Error>) -> Void) {
-        createData(from: "\(BASE_URL)/monitors", data: monitorData, completion)
+    public static func createMonitor(monitorData: MonitorData, applicationId: Int64, completion: @escaping (Result<Monitor, Error>) -> Void) {
+        createData(from: "\(BASE_URL)/monitors/\(applicationId)", data: monitorData, completion)
     }
     
     public static func createApplication(applicationData: ApplicationCreateData, completion: @escaping (Result<Application, Error>) -> Void){

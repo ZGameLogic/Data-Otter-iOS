@@ -14,8 +14,8 @@ struct AddMonitorView: View {
     @State var type = "API"
     @State var url = ""
     @State var regex = ""
-    @State var applicationSelected: Application?
-    @State var applications: [Application] = []
+    @State var applicationSelected: Application
+    @State var applications: [Application]
     
     @State var confirmed = false
     @State var showAlert = false
@@ -24,6 +24,18 @@ struct AddMonitorView: View {
     
     @Binding var isPresented: Bool
     
+    init(applicationSelected: Application? = nil, applications: [Application], preSelected: Bool? = nil, isPresented: Binding<Bool>) {
+        if let applicationSelected = applicationSelected {
+            self.applicationSelected = applicationSelected
+        } else {
+            self.applicationSelected = applications[0]
+        }
+        self.applications = applications
+        if let preSelected = preSelected {
+            self.preSelected = preSelected
+        }
+        self._isPresented = isPresented
+    }
     
     var body: some View {
         HStack {
@@ -53,7 +65,7 @@ struct AddMonitorView: View {
                 }.buttonStyle(.bordered).tint(.blue)
             } else {
                 Button("Submit"){
-                    viewModel.createMonitor(monitorData: MonitorData(name: name, type: type, url: url, regex: regex)) { result in
+                    viewModel.createMonitor(monitorData: MonitorData(name: name, type: type, url: url, regex: regex), applicationId: applicationSelected.id) { result in
                         DispatchQueue.main.async {
                             switch result {
                             case .success( _):
@@ -92,12 +104,6 @@ struct AddMonitorView: View {
                 message: Text("Verify the information in this form and try again."),
                 dismissButton: .default(Text("Close"))
             )
-        }.onAppear{
-            applications = viewModel.applications
         }
     }
-}
-
-#Preview {
-    AddMonitorView(isPresented: Binding.constant(true))
 }

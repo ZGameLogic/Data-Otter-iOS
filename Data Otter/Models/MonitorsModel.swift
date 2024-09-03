@@ -100,8 +100,8 @@ class DataOtterModel: ObservableObject {
     /// - Parameters:
     ///   - monitorData: Monitor data to create
     ///   - completion: Completion when the service gets data back
-    func createMonitor(monitorData: MonitorData, completion: @escaping (Result<Monitor, Error>) -> Void) {
-        MonitorsService.createMonitor(monitorData: monitorData) { result in
+    func createMonitor(monitorData: MonitorData, applicationId: Int64, completion: @escaping (Result<Monitor, Error>) -> Void) {
+        MonitorsService.createMonitor(monitorData: monitorData, applicationId: applicationId) { result in
             DispatchGroup().notify(queue: .main) {
                 switch(result){
                 case .success(let data):

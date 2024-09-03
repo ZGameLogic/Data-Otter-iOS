@@ -53,7 +53,7 @@ struct ApplicationCreateView: View {
                 } else {
                     Text("Submit")
                 }
-            }).buttonStyle(.bordered).tint(.green).disabled(submitting)
+            }).buttonStyle(.bordered).tint(.green).disabled(submitting || name.isEmpty)
                 .padding()
         }
         Text("Create Application").font(.title).padding()
