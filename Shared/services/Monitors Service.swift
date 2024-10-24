@@ -202,7 +202,7 @@ struct MonitorsService {
     }
 
     public static func updateMonitor(monitorData: Monitor, completion: @escaping (Result<Monitor, Error>) -> Void) {
-        let url = URL(string: "\(BASE_URL)/monitors/\(monitorData.id)")!
+        let url = URL(string: "\(BASE_URL)/monitors/\(monitorData.applicationId)/\(monitorData.id)")!
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

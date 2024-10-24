@@ -36,7 +36,7 @@ class DataOtterModel: ObservableObject {
         monitorHistoryData = [:]
         applications = []
         tags = []
-        monitorStatusLoading = false
+        monitorStatusLoading = true
         monitorHistoryLoading = false
         applicationLoading = true
         tagsLoading = true
@@ -55,7 +55,7 @@ class DataOtterModel: ObservableObject {
     func refreshData(){
         fetchApplications()
         fetchTags()
-//        fetchMonitors()
+        fetchMonitors()
     }
     
     /// Get a binding for a monitor at a specific index
@@ -154,10 +154,6 @@ class DataOtterModel: ObservableObject {
                 dispatchGroup.leave()
             }
         }
-        
-//        dispatchGroup.notify(queue: .main) {
-//            self.fetchMonitorsHistory()
-//        }
     }
     
     /// Fetch monitor history from the backend API
