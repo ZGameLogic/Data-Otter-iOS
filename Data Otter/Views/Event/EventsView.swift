@@ -87,57 +87,57 @@ struct EventsView: View {
        let dispatchGroup = DispatchGroup()
        var tempHistoryData: [Int: [Status]] = [:]
 
-        for monitor in monitorToggles.filter({$0.isSelected}) {
-               dispatchGroup.enter()
-            MonitorsService.getMonitorHistory(id: monitor.id, start: startDate, end: endDate, condensed: true) { result in
-                   DispatchQueue.main.async {
-                       switch result {
-                       case .success(let data):
-                           tempHistoryData[monitor.id] = data
-                       case .failure(let error):
-                           print(error)
-                       }
-                       dispatchGroup.leave()
-                   }
-               }
-           }
+//        for monitor in monitorToggles.filter({$0.isSelected}) {
+//               dispatchGroup.enter()
+//            MonitorsService.getMonitorHistory(applicationId: <#Int#>, id: monitor.id, start: startDate, end: endDate, condensed: true) { result in
+//                   DispatchQueue.main.async {
+//                       switch result {
+//                       case .success(let data):
+//                           tempHistoryData[monitor.id] = data
+//                       case .failure(let error):
+//                           print(error)
+//                       }
+//                       dispatchGroup.leave()
+//                   }
+//               }
+//           }
 
-           dispatchGroup.notify(queue: .main) {
-               self.monitorHistoryData = tempHistoryData
-               print("All history data fetched and updated")
-               events = []
-               let timeInterval: Double = 60 * 60 * 12 //60 * 60 * 12 = 12 hours
-               for monitor in monitorToggles.filter({$0.isSelected}) {
-                   let eventStatuses = monitorHistoryData[monitor.id]!.sorted(by: {$0.dateRecorded < $1.dateRecorded}).map {MonitorEventStatus(status: $0)}
-                   if(!eventStatuses.contains(where: {$0.status == false})) { continue }
-                   var currentLog: [MonitorEventStatus] = []
-                   let firstBadIndex = eventStatuses.firstIndex(where: {$0.status == false})!
-                   for event in eventStatuses[firstBadIndex...] {
-                       if(currentLog.isEmpty){
-                           currentLog.append(event)
-                           continue
-                       }
-                       // false to true
-                       if(event.status == true && currentLog.last!.status == false){
-                           currentLog.append(event)
-                       }
-                       // true to false
-                       if(event.status == false && currentLog.last!.status == true){
-                           if(event.date.timeIntervalSince(currentLog.last!.date) <= timeInterval){
-                               currentLog.append(event)
-                           } else {
-                               // not within threshold
-                               events.append(MonitorEvent(monitor: monitor, log: currentLog))
-                               currentLog = []
-                               currentLog.append(event)
-                           }
-                       }
-                   }
-                   if(!currentLog.isEmpty){
-                       events.append(MonitorEvent(monitor: monitor, log: currentLog))
-                   }
-               }
-           }
+//           dispatchGroup.notify(queue: .main) {
+//               self.monitorHistoryData = tempHistoryData
+//               print("All history data fetched and updated")
+//               events = []
+//               let timeInterval: Double = 60 * 60 * 12 //60 * 60 * 12 = 12 hours
+//               for monitor in monitorToggles.filter({$0.isSelected}) {
+//                   let eventStatuses = monitorHistoryData[monitor.id]!.sorted(by: {$0.dateRecorded < $1.dateRecorded}).map {MonitorEventStatus(status: $0)}
+//                   if(!eventStatuses.contains(where: {$0.status == false})) { continue }
+//                   var currentLog: [MonitorEventStatus] = []
+//                   let firstBadIndex = eventStatuses.firstIndex(where: {$0.status == false})!
+//                   for event in eventStatuses[firstBadIndex...] {
+//                       if(currentLog.isEmpty){
+//                           currentLog.append(event)
+//                           continue
+//                       }
+//                       // false to true
+//                       if(event.status == true && currentLog.last!.status == false){
+//                           currentLog.append(event)
+//                       }
+//                       // true to false
+//                       if(event.status == false && currentLog.last!.status == true){
+//                           if(event.date.timeIntervalSince(currentLog.last!.date) <= timeInterval){
+//                               currentLog.append(event)
+//                           } else {
+//                               // not within threshold
+//                               events.append(MonitorEvent(monitor: monitor, log: currentLog))
+//                               currentLog = []
+//                               currentLog.append(event)
+//                           }
+//                       }
+//                   }
+//                   if(!currentLog.isEmpty){
+//                       events.append(MonitorEvent(monitor: monitor, log: currentLog))
+//                   }
+//               }
+//           }
        }
     
     func fetchMonitorStatus() {

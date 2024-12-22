@@ -15,16 +15,23 @@ struct ApplicationGeneralView: View {
     var body: some View {
         NavigationStack {
             List {
-                if(!viewModel.applicationLoading && viewModel.applications.isEmpty){ // loaded and no data
-                    NoApplicationsFoundView()
-                } else if(viewModel.applicationLoading) { // not loaded
-                    ApplicationListSkeletonView()
-                    ApplicationListSkeletonView()
-                    ApplicationListSkeletonView()
-                    ApplicationListSkeletonView()
-                } else { // loaded and data
-                    ForEach(viewModel.applications) {
-                        ApplicationListView(application: $0)
+                Section("Applications") {
+                    if(!viewModel.applicationLoading && viewModel.applications.isEmpty){ // loaded and no data
+                        NoApplicationsFoundView()
+                    } else if(viewModel.applicationLoading) { // not loaded
+                        ApplicationListSkeletonView()
+                        ApplicationListSkeletonView()
+                        ApplicationListSkeletonView()
+                        ApplicationListSkeletonView()
+                    } else { // loaded and data
+                        ForEach(viewModel.applications) {
+                            ApplicationListView(application: $0)
+                        }
+                    }
+                }
+                if(!viewModel.monitorHistoryLoading && !viewModel.monitorHistoryData.isEmpty) {
+                    Section("History") {
+                        HistoryGraphView(history: viewModel.applicationGraphData)
                     }
                 }
             }

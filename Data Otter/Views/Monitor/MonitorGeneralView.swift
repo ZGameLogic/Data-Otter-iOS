@@ -19,11 +19,11 @@ struct MonitorGeneralView: View {
     var body: some View {
         NavigationStack(path: $navigationPath) {
             List {
-                if(viewModel.monitorStatusLoading){
+                if(viewModel.monitorsLoading){
                     MonitorListSkeleton()
                     MonitorListSkeleton()
                     MonitorListSkeleton()
-                } else if(!viewModel.monitorStatusLoading && viewModel.monitorConfigurations.isEmpty) {
+                } else if(!viewModel.monitorsLoading && viewModel.monitorConfigurations.isEmpty) {
                     ContentUnavailableView("No monitor data available", systemImage: "chart.bar.doc.horizontal", description: Text("User the + icon to add a new monitor"))
                 } else {
                     ForEach(viewModel.monitorConfigurations){monitor in

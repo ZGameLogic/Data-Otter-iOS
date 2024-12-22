@@ -140,7 +140,7 @@ struct MonitorsService {
         getDataSynchronously(from: "\(BASE_URL)/monitors")
     }
     
-    public static func getMonitorHistory(id: Int, start: Date, end: Date?, condensed: Bool, completion: @escaping (Result<[Status], Error>) -> Void) {
+    public static func getMonitorHistory(applicationId: Int, id: Int, start: Date, end: Date?, condensed: Bool, completion: @escaping (Result<[Status], Error>) -> Void) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
         let formattedStartDate = dateFormatter.string(from: start)
@@ -155,18 +155,18 @@ struct MonitorsService {
             queryItems.append(URLQueryItem(name: "end", value: formattedEndDate))
         }
         
-        getData(from: "\(BASE_URL)/monitors/\(id)/history", query: queryItems, completion)
+        getData(from: "\(BASE_URL)/monitors/\(applicationId)/\(id)/history", query: queryItems, completion)
     }
     
     public static func getMonitorHistorySyncronous(id: Int) -> Result<[Status], Error> {
         getDataSynchronously(from: "\(BASE_URL)/monitors/\(id)/history")
     }
     
-    public static func getMonitorHistory(id: Int, condensed: Bool, completion: @escaping (Result<[Status], Error>) -> Void) {
+    public static func getMonitorHistory(applicationId: Int, id: Int, condensed: Bool, completion: @escaping (Result<[Status], Error>) -> Void) {
         let currentDate = Date()
         let calendar = Calendar.current
         let twelveHoursAgo = calendar.date(byAdding: .hour, value: -12, to: currentDate)!
-        return getMonitorHistory(id: id, start: twelveHoursAgo, end: nil, condensed: condensed, completion: completion)
+        return getMonitorHistory(applicationId: applicationId, id: id, start: twelveHoursAgo, end: nil, condensed: condensed, completion: completion)
     }
     
     public static func testMonitor(monitorData: MonitorData, completion: @escaping (Result<MonitorCreationResult, Error>) -> Void) {

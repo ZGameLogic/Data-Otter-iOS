@@ -14,17 +14,34 @@ class DataOtterModel: ObservableObject {
     @Published var applications: [Application]
     @Published var tags: [Tag]
     
-    @Published var monitorStatusLoading: Bool
+    @Published var monitorsLoading: Bool
     @Published var monitorHistoryLoading: Bool
     @Published var applicationLoading: Bool
     @Published var tagsLoading: Bool
+    
+    var applicationGraphData: [GraphEntry] {
+        return applications.flatMap { application in
+            monitorHistoryData.filter {(key, value) in
+                application.monitorIds.contains(Int64(key))
+            }.flatMap { (key, value) in
+                return value.compactMap {
+                    GraphEntry(name: application.name, taken: $0.dateRecorded, status: $0.status)
+                }
+            }
+        }
+    }
+    
+
+    var monitorGraphData: [GraphEntry] {
+        return []
+    }
     
     init(monitorConfigurations: [Monitor], monitorHistoryData: [Int: [Status]], applications: [Application], tags: [Tag]) {
         self.monitorConfigurations = monitorConfigurations
         self.monitorHistoryData = monitorHistoryData
         self.applications = applications
         self.tags = tags
-        monitorStatusLoading = true
+        monitorsLoading = true
         monitorHistoryLoading = false
         applicationLoading = false
         tagsLoading = false
@@ -36,8 +53,8 @@ class DataOtterModel: ObservableObject {
         monitorHistoryData = [:]
         applications = []
         tags = []
-        monitorStatusLoading = true
-        monitorHistoryLoading = false
+        monitorsLoading = true
+        monitorHistoryLoading = true
         applicationLoading = true
         tagsLoading = true
         refreshData()
@@ -56,6 +73,20 @@ class DataOtterModel: ObservableObject {
         fetchApplications()
         fetchTags()
         fetchMonitors()
+        // Create a background queue for polling `monitorsLoading`
+        let backgroundQueue = DispatchQueue(label: "monitors.loading.queue", qos: .background)
+        
+        backgroundQueue.async {
+            // Wait asynchronously for `monitorsLoading` to become false
+            while self.monitorsLoading {
+                usleep(100_000) // Sleep for 100ms to avoid busy-waiting
+            }
+            
+            // Once monitorsLoading is false, proceed with fetching monitor history
+            DispatchQueue.main.async {
+                self.fetchMonitorsHistory()
+            }
+        }
     }
     
     /// Get a binding for a monitor at a specific index
@@ -99,7 +130,8 @@ class DataOtterModel: ObservableObject {
     /// Create a monitor on the backend API
     /// - Parameters:
     ///   - monitorData: Monitor data to create
-    ///   - completion: Completion when the service gets data back
+    ///   - applicationId: Applicaiton Id f
+    ///  - completion: Completion when the service gets data back
     func createMonitor(monitorData: MonitorData, applicationId: Int64, completion: @escaping (Result<Monitor, Error>) -> Void) {
         MonitorsService.createMonitor(monitorData: monitorData, applicationId: applicationId) { result in
             DispatchGroup().notify(queue: .main) {
@@ -144,7 +176,7 @@ class DataOtterModel: ObservableObject {
         dispatchGroup.enter()
         MonitorsService.getMonitorsWithStatus { result in
             DispatchQueue.main.async {
-                self.monitorStatusLoading = false
+                self.monitorsLoading = false
                 switch result {
                 case .success(let data):
                     self.monitorConfigurations = data
@@ -164,13 +196,15 @@ class DataOtterModel: ObservableObject {
 
         for monitor in monitorConfigurations {
             dispatchGroup.enter()
-            MonitorsService.getMonitorHistory(id: monitor.id, condensed: true) { result in
+            MonitorsService.getMonitorHistory(applicationId: monitor.applicationId, id: monitor.id, condensed: true) { result in
                 DispatchQueue.main.async {
-                    self.monitorHistoryLoading = false
                     switch result {
                     case .success(let data):
+                        print("Ben")
+                        print(data)
                         tempHistoryData[monitor.id] = data
                     case .failure(let error):
+                        self.monitorHistoryLoading = false
                         print(error)
                     }
                     dispatchGroup.leave()
@@ -180,6 +214,7 @@ class DataOtterModel: ObservableObject {
 
         dispatchGroup.notify(queue: .main) {
             self.monitorHistoryData = tempHistoryData
+            self.monitorHistoryLoading = false
             print("All history data fetched and updated")
         }
     }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StatusListView: View {
     let id: Int
+    let applicationId: Int
     @State var history: [Status]
 
     var body: some View {
@@ -52,7 +53,7 @@ struct StatusListView: View {
     func fetchMonitorsHistory() {
        print("Fetching monitor history")
 
-       MonitorsService.getMonitorHistory(id: id, condensed: false) { result in
+        MonitorsService.getMonitorHistory(applicationId: applicationId, id: id, condensed: false) { result in
            DispatchQueue.main.async {
                switch result {
                case .success(let data):
@@ -66,7 +67,7 @@ struct StatusListView: View {
 }
 
 #Preview {
-    StatusListView(id: 1, history: [
+    StatusListView(id: 1, applicationId: 1, history: [
         Status(dateRecorded: Date(), milliseconds: 30, status: true, attempts: 1, statusCode: 200),
         Status(dateRecorded: Date(), milliseconds: 30, status: false, attempts: 3, statusCode: 404)
     ])

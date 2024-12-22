@@ -25,12 +25,12 @@ struct MonitorDetailView: View {
                     Text("Regex: \(monitor.regex)")
 //                    NavigationLink("Groups: \(getGroups(monitorGroups: monitor.groups, groups: groups))", destination: MonitorGroupListView(monitor: $monitor))
                 }
-                if(!history.isEmpty){
-                    Section("History"){
-                        HistoryGraphView(history: getMonitorHistoryForGraph())
-                        NavigationLink("Status History", destination: StatusListView(id: monitor.id, history: history))
-                    }
-                }
+//                if(!history.isEmpty){
+//                    Section("History"){
+//                        HistoryGraphView(history: getMonitorHistoryForGraph())
+//                        NavigationLink("Status History", destination: StatusListView(id: monitor.id, history: history))
+//                    }
+//                }
             }
             Spacer()
         }
