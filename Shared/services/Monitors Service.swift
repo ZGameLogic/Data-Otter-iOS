@@ -11,7 +11,7 @@ struct MonitorsService {
     #if targetEnvironment(simulator)
     static let BASE_URL = "http://localhost:8080"
     #else
-    static let BASE_URL = "http://20.40.218.161:8080"
+    static let BASE_URL = "http://44.201.152.75:8080"
     #endif
     
     private static func getData<T: Decodable>(
