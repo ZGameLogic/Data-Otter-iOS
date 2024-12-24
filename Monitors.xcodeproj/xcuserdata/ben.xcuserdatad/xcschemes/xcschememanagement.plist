@@ -4,15 +4,30 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Data Otter Watch App.xcscheme_^#shared#^_</key>
+		<key>Data Otter WatchOS Watch App.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Data Otter WatchOS WidgetExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>Data Otter iOS Widget GraphExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>Data Otter Watch WidgetExtension.xcscheme_^#shared#^_</key>
+		<key>Data Otter iOS WidgetExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>0</integer>
+		</dict>
+		<key>Data Otter.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>Monitors Watch App.xcscheme_^#shared#^_</key>
 		<dict>
@@ -24,16 +39,6 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
-		<key>Monitors.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-		<key>zgamemonitorsExtension.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -43,6 +48,16 @@
 			<true/>
 		</dict>
 		<key>B50DCDB92A54E50E0051B857</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B586C9CC2BF25577009A564A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B586C9F22BF3DB8B009A564A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
