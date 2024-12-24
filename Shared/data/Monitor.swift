@@ -110,7 +110,7 @@ struct Status: Codable, Hashable, Identifiable {
 struct MonitorStatusHistoryEntry: TimelineEntry {
     let date: Date
     let monitors: [Monitor]
-    let history: [Int: [Status]]
+    let history: [String: [Status]]
 }
 
 struct MonitorStatusEntry: TimelineEntry {

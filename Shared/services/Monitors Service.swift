@@ -158,8 +158,21 @@ struct MonitorsService {
         getData(from: "\(BASE_URL)/monitors/\(applicationId)/\(id)/history", query: queryItems, completion)
     }
     
-    public static func getMonitorHistorySyncronous(id: Int) -> Result<[Status], Error> {
-        getDataSynchronously(from: "\(BASE_URL)/monitors/\(id)/history")
+    public static func getMonitorHistorySyncronous(applicationId: Int, id: Int, condensed: Bool) -> Result<[Status], Error> {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let twelveHoursAgo = calendar.date(byAdding: .hour, value: -12, to: currentDate)!
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
+        let formattedStartDate = dateFormatter.string(from: twelveHoursAgo)
+        
+        let queryItems: [URLQueryItem] = [
+            URLQueryItem(name: "condensed", value: "\(condensed)"),
+            URLQueryItem(name: "start", value: formattedStartDate),
+        ]
+        
+        return getDataSynchronously(from: "\(BASE_URL)/monitors/\(applicationId)/\(id)/history", query: queryItems)
     }
     
     public static func getMonitorHistory(applicationId: Int, id: Int, condensed: Bool, completion: @escaping (Result<[Status], Error>) -> Void) {

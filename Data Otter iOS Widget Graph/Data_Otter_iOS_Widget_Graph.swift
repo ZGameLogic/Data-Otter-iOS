@@ -12,7 +12,7 @@ struct Provider: AppIntentTimelineProvider {
     let previewData: [Monitor]
     let startDate: Date
     let endDate: Date
-    let previewHistoryData: [Int: [Status]]
+    let previewHistoryData: [String: [Status]]
     
     init() {
         previewData = [
@@ -24,13 +24,13 @@ struct Provider: AppIntentTimelineProvider {
         startDate = Calendar.current.date(byAdding: .hour, value: -12, to: Date())!
         endDate = Date()
         previewHistoryData = [
-            1: [Status(dateRecorded: startDate, milliseconds: 1, status: true, attempts: 1, statusCode: 200),
+            "1": [Status(dateRecorded: startDate, milliseconds: 1, status: true, attempts: 1, statusCode: 200),
                 Status(dateRecorded: endDate, milliseconds: 1, status: true, attempts: 1, statusCode: 200)],
-            2: [Status(dateRecorded: startDate, milliseconds: 1, status: true, attempts: 1, statusCode: 200),
+            "2": [Status(dateRecorded: startDate, milliseconds: 1, status: true, attempts: 1, statusCode: 200),
                 Status(dateRecorded: endDate, milliseconds: 1, status: true, attempts: 1, statusCode: 200)],
-            3: [Status(dateRecorded: startDate, milliseconds: 1, status: true, attempts: 1, statusCode: 200),
+            "3": [Status(dateRecorded: startDate, milliseconds: 1, status: true, attempts: 1, statusCode: 200),
                 Status(dateRecorded: endDate, milliseconds: 1, status: true, attempts: 1, statusCode: 200)],
-            4: [Status(dateRecorded: startDate, milliseconds: 1, status: true, attempts: 1, statusCode: 200),
+            "4": [Status(dateRecorded: startDate, milliseconds: 1, status: true, attempts: 1, statusCode: 200),
                 Status(dateRecorded: endDate, milliseconds: 1, status: true, attempts: 1, statusCode: 200)]
         ]
     }
@@ -49,12 +49,12 @@ struct Provider: AppIntentTimelineProvider {
         let monitors = MonitorsService.getMonitorsSyncronous()
         switch monitors {
         case .success(let monitors):
-            var monitorsHistory: [Int: [Status]] = [:]
+            var monitorsHistory: [String: [Status]] = [:]
             for monitor in monitors {
-                let history = MonitorsService.getMonitorHistorySyncronous(id: monitor.id)
+                let history = MonitorsService.getMonitorHistorySyncronous(applicationId: monitor.applicationId, id: monitor.id, condensed: true)
                 switch history {
                 case .success(let history):
-                    monitorsHistory[monitor.id] = history
+                    monitorsHistory["\(monitor.applicationId)\(monitor.id)"] = history
                 case .failure(let error):
                     print(error)
                 }
@@ -76,7 +76,7 @@ struct Data_Otter_iOS_Widget_GraphEntryView : View {
     
     func getHistoryForGraph() -> [GraphEntry] {
         return entry.monitors.flatMap({ monitor in
-            if let historyData = entry.history[monitor.id] {
+            if let historyData = entry.history["\(monitor.applicationId)\(monitor.id)"] {
                 return historyData.map({status in
                     GraphEntry(name: monitor.name, taken: status.dateRecorded, status: status.status)
                 })

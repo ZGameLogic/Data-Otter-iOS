@@ -60,7 +60,6 @@
 		B586C9DD2BF25685009A564A /* MonitorGeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9DC2BF25685009A564A /* MonitorGeneralView.swift */; };
 		B586C9DE2BF2569A009A564A /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9BF2BF18230009A564A /* Monitor.swift */; };
 		B586C9DF2BF2569D009A564A /* Monitors Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9C42BF1948A009A564A /* Monitors Service.swift */; };
-		B586C9E12BF256EF009A564A /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E02BF256EF009A564A /* EventsListView.swift */; };
 		B586C9E32BF25ABE009A564A /* MonitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E22BF25ABE009A564A /* MonitorListView.swift */; };
 		B586C9E52BF25C2C009A564A /* MonitorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E42BF25C2C009A564A /* MonitorDetailView.swift */; };
 		B586C9E72BF2AF92009A564A /* MonitorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E62BF2AF92009A564A /* MonitorData.swift */; };
@@ -79,8 +78,6 @@
 		B586CA092BF3DBB0009A564A /* HistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9EB2BF3A6EB009A564A /* HistoryGraphView.swift */; };
 		B586CA0A2BF3DC36009A564A /* MonitorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E62BF2AF92009A564A /* MonitorData.swift */; };
 		B586CA0B2BF3DC49009A564A /* MonitorCreationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E82BF2B3D3009A564A /* MonitorCreationResult.swift */; };
-		B586CA0D2BF3E5C5009A564A /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586CA0C2BF3E5C5009A564A /* EventsView.swift */; };
-		B586CA102BF3FEDA009A564A /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586CA0F2BF3FEDA009A564A /* EventDetailView.swift */; };
 		B5CB0B292C2C68FB001D202C /* MonitorListSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB0B282C2C68FB001D202C /* MonitorListSkeleton.swift */; };
 		B5FB16922BF685BD00BA9447 /* StatusListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FB16912BF685BD00BA9447 /* StatusListView.swift */; };
 /* End PBXBuildFile section */
@@ -171,7 +168,6 @@
 		B5210EC82BF5959400854A3C /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		B5210ECA2BF5959600854A3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5210ECC2BF5959600854A3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B5210EDE2BF5963500854A3C /* Data-Otter-WatchOS-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Data-Otter-WatchOS-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B53B00D32C87918B008251FE /* Application Detail View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application Detail View.swift"; sourceTree = "<group>"; };
 		B555328F2C17A3AD000EEEC5 /* Data Otter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Data Otter.entitlements"; sourceTree = "<group>"; };
 		B5745BA92BF506910049B304 /* DataOtterGuageWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataOtterGuageWidgetView.swift; sourceTree = "<group>"; };
@@ -190,7 +186,6 @@
 		B586C9D32BF25579009A564A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B586C9D62BF25579009A564A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B586C9DC2BF25685009A564A /* MonitorGeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorGeneralView.swift; sourceTree = "<group>"; };
-		B586C9E02BF256EF009A564A /* EventsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListView.swift; sourceTree = "<group>"; };
 		B586C9E22BF25ABE009A564A /* MonitorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorListView.swift; sourceTree = "<group>"; };
 		B586C9E42BF25C2C009A564A /* MonitorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorDetailView.swift; sourceTree = "<group>"; };
 		B586C9E62BF2AF92009A564A /* MonitorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorData.swift; sourceTree = "<group>"; };
@@ -203,8 +198,6 @@
 		B586C9FB2BF3DB8B009A564A /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		B586C9FD2BF3DB8E009A564A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B586C9FF2BF3DB8F009A564A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B586CA0C2BF3E5C5009A564A /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
-		B586CA0F2BF3FEDA009A564A /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		B59747532A41DC2800A5DA4C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		B59747552A41DC2800A5DA4C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		B5CB0B282C2C68FB001D202C /* MonitorListSkeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorListSkeleton.swift; sourceTree = "<group>"; };
@@ -280,7 +273,6 @@
 		B5210EAD2BF5950B00854A3C /* Data Otter WatchOS Watch App */ = {
 			isa = PBXGroup;
 			children = (
-				B5210EDE2BF5963500854A3C /* Data-Otter-WatchOS-Watch-App-Info.plist */,
 				B5210EAE2BF5950B00854A3C /* Data_Otter_WatchOSApp.swift */,
 				B5210EB02BF5950B00854A3C /* ContentView.swift */,
 				B5210EB22BF5950D00854A3C /* Assets.xcassets */,
@@ -364,7 +356,6 @@
 				B53B00D12C879155008251FE /* Tags */,
 				B51ECC8D2C66B2B300B15BC7 /* Application */,
 				B586D8CE2BF7FB7000E10E7A /* Monitor */,
-				B586CA0E2BF3FEB4009A564A /* Event */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -388,16 +379,6 @@
 				B586C9FF2BF3DB8F009A564A /* Info.plist */,
 			);
 			path = "Data Otter iOS Widget";
-			sourceTree = "<group>";
-		};
-		B586CA0E2BF3FEB4009A564A /* Event */ = {
-			isa = PBXGroup;
-			children = (
-				B586CA0C2BF3E5C5009A564A /* EventsView.swift */,
-				B586C9E02BF256EF009A564A /* EventsListView.swift */,
-				B586CA0F2BF3FEDA009A564A /* EventDetailView.swift */,
-			);
-			path = Event;
 			sourceTree = "<group>";
 		};
 		B586D8CE2BF7FB7000E10E7A /* Monitor */ = {
@@ -572,7 +553,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					B5210EAB2BF5950B00854A3C = {
 						CreatedOnToolsVersion = 15.3;
@@ -709,7 +690,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B586CA0D2BF3E5C5009A564A /* EventsView.swift in Sources */,
 				B5FB16922BF685BD00BA9447 /* StatusListView.swift in Sources */,
 				B53B00D42C87918B008251FE /* Application Detail View.swift in Sources */,
 				B586C9EC2BF3A6EB009A564A /* HistoryGraphView.swift in Sources */,
@@ -720,8 +700,6 @@
 				B5CB0B292C2C68FB001D202C /* MonitorListSkeleton.swift in Sources */,
 				B586C9DF2BF2569D009A564A /* Monitors Service.swift in Sources */,
 				B51ECC9F2C66B69B00B15BC7 /* Application List Skeleton View.swift in Sources */,
-				B586CA102BF3FEDA009A564A /* EventDetailView.swift in Sources */,
-				B586C9E12BF256EF009A564A /* EventsListView.swift in Sources */,
 				B51ECC8F2C66B30800B15BC7 /* Monitor Service Data.swift in Sources */,
 				B586C9E92BF2B3D3009A564A /* MonitorCreationResult.swift in Sources */,
 				B509826E2BF6A8FF00F5A277 /* MonitorsModel.swift in Sources */,
@@ -782,7 +760,6 @@
 		B5210EBB2BF5950D00854A3C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -796,14 +773,14 @@
 				INFOPLIST_FILE = "Data-Otter-WatchOS-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Data Otter WatchOS";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "zgamelogic.Data-Otter";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = zgamelogic.Monitors;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Data-Otter.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = zgamelogic.Monitors.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -818,7 +795,6 @@
 		B5210EBC2BF5950D00854A3C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -832,14 +808,14 @@
 				INFOPLIST_FILE = "Data-Otter-WatchOS-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Data Otter WatchOS";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "zgamelogic.Data-Otter";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = zgamelogic.Monitors;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Data-Otter.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = zgamelogic.Monitors.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -872,7 +848,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Data-Otter.watchkitapp.Data-Otter-WatchOS-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Monitors.watchkitapp.Data-Otter-WatchOS-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -906,7 +882,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Data-Otter.watchkitapp.Data-Otter-WatchOS-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Monitors.watchkitapp.Data-Otter-WatchOS-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -940,7 +916,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Data-Otter.Data-Otter-iOS-Widget-Graph";
+				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Monitors.Data-Otter-iOS-Widget-Graph";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
@@ -973,7 +949,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Data-Otter.Data-Otter-iOS-Widget-Graph";
+				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Monitors.Data-Otter-iOS-Widget-Graph";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -985,7 +961,6 @@
 		B586C9D92BF25579009A564A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1011,7 +986,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Data-Otter";
+				PRODUCT_BUNDLE_IDENTIFIER = zgamelogic.Monitors;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1023,7 +998,6 @@
 		B586C9DA2BF25579009A564A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1049,7 +1023,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Data-Otter";
+				PRODUCT_BUNDLE_IDENTIFIER = zgamelogic.Monitors;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1079,7 +1053,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Data-Otter.Data-Otter-iOS-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Monitors.Data-Otter-iOS-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
@@ -1111,7 +1085,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Data-Otter.Data-Otter-iOS-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "zgamelogic.Monitors.Data-Otter-iOS-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
