@@ -13,11 +13,13 @@ class DataOtterModel: ObservableObject {
     @Published var monitorHistoryData: [Int: [Status]]
     @Published var applications: [Application]
     @Published var tags: [Tag]
+    @Published var rockStats: [Int64: Int64]
     
     @Published var monitorsLoading: Bool
     @Published var monitorHistoryLoading: Bool
     @Published var applicationLoading: Bool
     @Published var tagsLoading: Bool
+    @Published var rockStatsLoading: Bool
     
     var applicationGraphData: [GraphEntry] {
         return applications.flatMap { application in
@@ -36,15 +38,17 @@ class DataOtterModel: ObservableObject {
         return []
     }
     
-    init(monitorConfigurations: [Monitor], monitorHistoryData: [Int: [Status]], applications: [Application], tags: [Tag]) {
+    init(monitorConfigurations: [Monitor], monitorHistoryData: [Int: [Status]], applications: [Application], tags: [Tag], rockStats: [Int64: Int64]) {
         self.monitorConfigurations = monitorConfigurations
         self.monitorHistoryData = monitorHistoryData
         self.applications = applications
         self.tags = tags
+        self.rockStats = rockStats
         monitorsLoading = true
         monitorHistoryLoading = false
         applicationLoading = false
         tagsLoading = false
+        rockStatsLoading = false
     }
     
     init() {
@@ -53,10 +57,12 @@ class DataOtterModel: ObservableObject {
         monitorHistoryData = [:]
         applications = []
         tags = []
+        rockStats = [:]
         monitorsLoading = true
         monitorHistoryLoading = true
         applicationLoading = true
         tagsLoading = true
+        rockStatsLoading = true
         refreshData()
     }
     
@@ -224,6 +230,7 @@ class DataOtterModel: ObservableObject {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
+                    print("Applications done loading")
                     self.applications = data
                 case .failure(let error):
                     print(error)

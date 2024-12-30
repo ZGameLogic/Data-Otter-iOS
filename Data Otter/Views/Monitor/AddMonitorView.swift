@@ -65,6 +65,10 @@ struct AddMonitorView: View {
                 }.buttonStyle(.bordered).tint(.blue)
             } else {
                 Button("Submit"){
+                    if(regex.isEmpty) {
+                        regex = "none"
+                    }
+                    print("bep \(regex)")
                     viewModel.createMonitor(monitorData: MonitorData(name: name, type: type, url: url, regex: regex), applicationId: applicationSelected.id) { result in
                         DispatchQueue.main.async {
                             switch result {
@@ -93,6 +97,7 @@ struct AddMonitorView: View {
                 Picker("Type", selection: $type) {
                     Text("API").tag("API")
                     Text("Web").tag("WEB")
+                    Text("Database").tag("DATABASE")
                 }.pickerStyle(.segmented)
                 TextField("URL", text: $url).keyboardType(.URL)
                 TextField("Regex", text: $regex)

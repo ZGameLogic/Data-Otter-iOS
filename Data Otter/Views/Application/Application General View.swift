@@ -56,6 +56,7 @@ struct ApplicationGeneralView: View {
             monitorConfigurations: [],
             monitorHistoryData: [:],
             applications: [],
-            tags: []
+            tags: [],
+            rockStats: [:]
         ))
 }

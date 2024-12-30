@@ -8,6 +8,18 @@
 import Foundation
 import SwiftUI
 
+struct Rock: Codable, Identifiable {
+    let id: Date
+    let appId: Int64
+    let pebble: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "date"
+        case appId = "applicaiton id"
+        case pebble
+    }
+}
+
 struct Application: Codable, Identifiable, Hashable {
     let id: Int64
     let name: String

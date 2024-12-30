@@ -40,6 +40,8 @@
 		B5210EDC2BF595F900854A3C /* Monitors Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9C42BF1948A009A564A /* Monitors Service.swift */; };
 		B5210EDD2BF595F900854A3C /* Monitors Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9C42BF1948A009A564A /* Monitors Service.swift */; };
 		B53B00D42C87918B008251FE /* Application Detail View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B00D32C87918B008251FE /* Application Detail View.swift */; };
+		B5509A292D1B4204000D35D4 /* Rocks General View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5509A282D1B4204000D35D4 /* Rocks General View.swift */; };
+		B56226042D1C756B00EB0348 /* Application Rocks View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56226032D1C756B00EB0348 /* Application Rocks View.swift */; };
 		B5745BAA2BF506910049B304 /* DataOtterGuageWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5745BA92BF506910049B304 /* DataOtterGuageWidgetView.swift */; };
 		B5745BB02BF5319F0049B304 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59747532A41DC2800A5DA4C /* WidgetKit.framework */; };
 		B5745BB12BF5319F0049B304 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59747552A41DC2800A5DA4C /* SwiftUI.framework */; };
@@ -169,7 +171,9 @@
 		B5210ECA2BF5959600854A3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5210ECC2BF5959600854A3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B53B00D32C87918B008251FE /* Application Detail View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application Detail View.swift"; sourceTree = "<group>"; };
+		B5509A282D1B4204000D35D4 /* Rocks General View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rocks General View.swift"; sourceTree = "<group>"; };
 		B555328F2C17A3AD000EEEC5 /* Data Otter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Data Otter.entitlements"; sourceTree = "<group>"; };
+		B56226032D1C756B00EB0348 /* Application Rocks View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application Rocks View.swift"; sourceTree = "<group>"; };
 		B5745BA92BF506910049B304 /* DataOtterGuageWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataOtterGuageWidgetView.swift; sourceTree = "<group>"; };
 		B5745BAF2BF5319F0049B304 /* Data Otter iOS Widget GraphExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Data Otter iOS Widget GraphExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5745BB32BF5319F0049B304 /* Data_Otter_iOS_Widget_GraphBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_Otter_iOS_Widget_GraphBundle.swift; sourceTree = "<group>"; };
@@ -310,6 +314,8 @@
 		B53B00D22C879160008251FE /* Rocks */ = {
 			isa = PBXGroup;
 			children = (
+				B5509A282D1B4204000D35D4 /* Rocks General View.swift */,
+				B56226032D1C756B00EB0348 /* Application Rocks View.swift */,
 			);
 			path = Rocks;
 			sourceTree = "<group>";
@@ -690,6 +696,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B56226042D1C756B00EB0348 /* Application Rocks View.swift in Sources */,
 				B5FB16922BF685BD00BA9447 /* StatusListView.swift in Sources */,
 				B53B00D42C87918B008251FE /* Application Detail View.swift in Sources */,
 				B586C9EC2BF3A6EB009A564A /* HistoryGraphView.swift in Sources */,
@@ -698,6 +705,7 @@
 				B586C9E72BF2AF92009A564A /* MonitorData.swift in Sources */,
 				B586C9EE2BF3BB04009A564A /* AddMonitorView.swift in Sources */,
 				B5CB0B292C2C68FB001D202C /* MonitorListSkeleton.swift in Sources */,
+				B5509A292D1B4204000D35D4 /* Rocks General View.swift in Sources */,
 				B586C9DF2BF2569D009A564A /* Monitors Service.swift in Sources */,
 				B51ECC9F2C66B69B00B15BC7 /* Application List Skeleton View.swift in Sources */,
 				B51ECC8F2C66B30800B15BC7 /* Monitor Service Data.swift in Sources */,
