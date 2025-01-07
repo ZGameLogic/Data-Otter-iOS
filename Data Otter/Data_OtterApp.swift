@@ -36,7 +36,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         let tokenComponents = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let deviceTokenString = tokenComponents.joined()
         token = deviceTokenString
-        print("Setting token: \(token)")
         Task {
             try await MonitorsService.registrationEndpoint(add: true, token: token)
         }

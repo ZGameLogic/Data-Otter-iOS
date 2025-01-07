@@ -52,7 +52,6 @@ class DataOtterModel: ObservableObject {
     }
     
     init() {
-        print("Inited view model")
         monitorConfigurations = []
         monitorHistoryData = [:]
         applications = []
@@ -177,7 +176,6 @@ class DataOtterModel: ObservableObject {
     
     /// Fetch the monitors from backend API
     func fetchMonitors(){
-        print("Fetching monitor data")
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
         MonitorsService.getMonitorsWithStatus { result in
@@ -196,7 +194,6 @@ class DataOtterModel: ObservableObject {
     
     /// Fetch monitor history from the backend API
     func fetchMonitorsHistory(){
-        print("Fetching monitor history")
         let dispatchGroup = DispatchGroup()
         var tempHistoryData: [Int: [Status]] = [:]
 
@@ -206,8 +203,6 @@ class DataOtterModel: ObservableObject {
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let data):
-                        print("Ben")
-                        print(data)
                         tempHistoryData[monitor.id] = data
                     case .failure(let error):
                         self.monitorHistoryLoading = false
@@ -221,16 +216,15 @@ class DataOtterModel: ObservableObject {
         dispatchGroup.notify(queue: .main) {
             self.monitorHistoryData = tempHistoryData
             self.monitorHistoryLoading = false
-            print("All history data fetched and updated")
         }
     }
     
     func fetchApplications(){
+        print("Application start loading")
         MonitorsService.getApplicationsWithStatus { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
-                    print("Applications done loading")
                     self.applications = data
                 case .failure(let error):
                     print(error)

@@ -69,8 +69,6 @@ struct MonitorGeneralView: View {
                 .refreshable {
                     viewModel.refreshData()
                 }
-        }.onChange(of: viewModel.monitorConfigurations) { old, new in
-            print("Old: \(old) \nNew: \(new)")
         }.sheet(isPresented: $showAddMonitor, onDismiss: {
             viewModel.refreshData()
         }, content: {

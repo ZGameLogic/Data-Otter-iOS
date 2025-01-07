@@ -11,7 +11,7 @@ struct MonitorsService {
     #if targetEnvironment(simulator)
     static let BASE_URL = "http://localhost:8080"
     #else
-    static let BASE_URL = "http://44.201.152.75:8080"
+    static let BASE_URL = "http://monitoring.zgamelogic.com:8080"
     #endif
     
     private static func getData<T: Decodable>(
@@ -26,7 +26,9 @@ struct MonitorsService {
             completion(.failure(URLError(.badURL)))
             return
         }
-        
+        if(url.absoluteString.contains("/applications")) {
+            print("started")
+        }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(error))
@@ -37,6 +39,9 @@ struct MonitorsService {
                 return
             }
             do {
+                if(url.absoluteString.contains("/applications")) {
+                    print("completed")
+                }
                 let decodedData = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(decodedData))
             } catch {
