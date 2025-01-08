@@ -17,12 +17,18 @@ struct AgentListView: View {
             VStack(alignment: .leading) {
                 Text(agent.name).font(.title)
                 if let status = agent.status {
-                    Text("Reported: \(status.date)")
+                    Text("Reported: \(formattedDate(date: status.date))")
                 }
             }
             Spacer()
         }
     }
+    
+    func formattedDate(date: Date) -> String {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM HH:mm"
+            return formatter.string(from: date)
+        }
 }
 
 #Preview {
