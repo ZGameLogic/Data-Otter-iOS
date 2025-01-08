@@ -15,6 +15,7 @@ class DataOtterModel: ObservableObject {
     @Published var tags: [Tag]
     @Published var rockStats: [Int64: Int64]
     @Published var agents: [Agent]
+    @Published var agentStatusHistory: [Int64: [AgentStatus]]
     
     @Published var monitorsLoading: Bool
     @Published var monitorHistoryLoading: Bool
@@ -40,13 +41,14 @@ class DataOtterModel: ObservableObject {
         return []
     }
     
-    init(monitorConfigurations: [Monitor], monitorHistoryData: [Int: [Status]], applications: [Application], tags: [Tag], rockStats: [Int64: Int64]) {
+    init(monitorConfigurations: [Monitor], monitorHistoryData: [Int: [Status]], applications: [Application], tags: [Tag], rockStats: [Int64: Int64], agents: [Agent], agentStatusHistory: [Int64: [AgentStatus]]) {
         self.monitorConfigurations = monitorConfigurations
         self.monitorHistoryData = monitorHistoryData
         self.applications = applications
         self.tags = tags
         self.rockStats = rockStats
-        self.agents = []
+        self.agents = agents
+        self.agentStatusHistory = agentStatusHistory
         monitorsLoading = true
         monitorHistoryLoading = false
         applicationLoading = false
@@ -62,6 +64,7 @@ class DataOtterModel: ObservableObject {
         tags = []
         rockStats = [:]
         agents = []
+        agentStatusHistory = [:]
         monitorsLoading = true
         monitorHistoryLoading = true
         applicationLoading = true
@@ -85,18 +88,24 @@ class DataOtterModel: ObservableObject {
         fetchTags()
         fetchMonitors()
         fetchAgents()
-        // Create a background queue for polling `monitorsLoading`
+
         let backgroundQueue = DispatchQueue(label: "monitors.loading.queue", qos: .background)
-        
         backgroundQueue.async {
-            // Wait asynchronously for `monitorsLoading` to become false
             while self.monitorsLoading {
-                usleep(100_000) // Sleep for 100ms to avoid busy-waiting
+                usleep(100_000)
             }
-            
-            // Once monitorsLoading is false, proceed with fetching monitor history
             DispatchQueue.main.async {
                 self.fetchMonitorsHistory()
+            }
+        }
+        
+        let backgroundAgentQueue = DispatchQueue(label: "agents.loading.queue", qos: .background)
+        backgroundAgentQueue.async {
+            while self.agentsLoading {
+                usleep(100_000)
+            }
+            DispatchQueue.main.async {
+                self.fetchAgentHistory()
             }
         }
     }
@@ -216,6 +225,28 @@ class DataOtterModel: ObservableObject {
         }
     }
     
+    func fetchAgentHistory(){
+        let dispatchGroup = DispatchGroup()
+        var tempHistoryData: [Int64: [AgentStatus]] = [:]
+        for agent in agents {
+            dispatchGroup.enter()
+            MonitorsService.getAgentHistory(agentId: agent.id) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let data):
+                        tempHistoryData[agent.id] = data
+                    case .failure(let error):
+                        print(error)
+                    }
+                    dispatchGroup.leave()
+                }
+            }
+        }
+        dispatchGroup.notify(queue: .main) {
+            self.agentStatusHistory = tempHistoryData
+        }
+    }
+    
     /// Fetch monitor history from the backend API
     func fetchMonitorsHistory(){
         let dispatchGroup = DispatchGroup()
@@ -270,5 +301,20 @@ class DataOtterModel: ObservableObject {
                 self.tagsLoading = false
             }
         }
+    }
+    
+    func getAgentStatusHistory(agentId: Int64, stat: AgentStat) -> [SmallStat] {
+        if let history = agentStatusHistory[agentId] {
+            switch(stat) {
+            case .RAM:
+                return history.map { SmallStat(date: $0.date, value: $0.memoryUsage) }
+            case .DISK:
+                return history.map { SmallStat(date: $0.date, value: $0.diskUsage) }
+            case .CPU:
+                return history.map { SmallStat(date: $0.date, value: $0.cpuUsage) }
+            }
+        }
+        
+        return []
     }
 }

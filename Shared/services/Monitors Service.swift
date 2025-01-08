@@ -149,6 +149,23 @@ struct MonitorsService {
         getDataSynchronously(from: "\(BASE_URL)/monitors")
     }
     
+    public static func getAgentHistory(agentId: Int64, start: Date, end: Date?, completion: @escaping (Result<[AgentStatus], Error>) -> Void) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
+        let formattedStartDate = dateFormatter.string(from: start)
+        
+        var queryItems: [URLQueryItem] = [
+            URLQueryItem(name: "start", value: formattedStartDate)
+        ]
+        
+        if let end = end {
+            let formattedEndDate = dateFormatter.string(from: end)
+            queryItems.append(URLQueryItem(name: "end", value: formattedEndDate))
+        }
+        
+        getData(from: "\(BASE_URL)/agent/\(agentId)/status/history", query: queryItems, completion)
+    }
+    
     public static func getMonitorHistory(applicationId: Int, id: Int, start: Date, end: Date?, condensed: Bool, completion: @escaping (Result<[Status], Error>) -> Void) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
@@ -189,6 +206,13 @@ struct MonitorsService {
         let calendar = Calendar.current
         let twelveHoursAgo = calendar.date(byAdding: .hour, value: -12, to: currentDate)!
         return getMonitorHistory(applicationId: applicationId, id: id, start: twelveHoursAgo, end: nil, condensed: condensed, completion: completion)
+    }
+    
+    public static func getAgentHistory(agentId: Int64, completion: @escaping (Result<[AgentStatus], Error>) -> Void){
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let twelveHoursAgo = calendar.date(byAdding: .hour, value: -12, to: currentDate)!
+        return getAgentHistory(agentId: agentId, start: twelveHoursAgo, end: nil, completion: completion)
     }
     
     public static func testMonitor(monitorData: MonitorData, completion: @escaping (Result<MonitorCreationResult, Error>) -> Void) {

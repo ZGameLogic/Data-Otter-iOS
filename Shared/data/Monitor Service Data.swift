@@ -137,3 +137,9 @@ struct AgentStatus: Codable {
         self.agentVersion = try container.decode(String.self, forKey: .agentVersion)
     }
 }
+
+enum AgentStat {
+    case RAM
+    case DISK
+    case CPU
+}

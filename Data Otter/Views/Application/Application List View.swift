@@ -81,6 +81,8 @@ struct ApplicationListView: View {
             Tag(name: "Kubernetes", description: "Anything in the cluster"),
             Tag(name: "Discord bot", description: "A discord bot")
         ],
-        rockStats: [1:324234, 3:6]
+        rockStats: [1:324234, 3:6],
+        agents: [],
+        agentStatusHistory: [:]
     ))
 }

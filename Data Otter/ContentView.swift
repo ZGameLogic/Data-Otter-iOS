@@ -20,7 +20,7 @@ struct ContentView: View {
             }).tag(1)
             AgentGeneralView().tabItem({
                 Label("Agents", systemImage: "laptopcomputer")
-            }).tag(1)
+            }).tag(2)
         }
         .onReceive(NotificationCenter.default.publisher(for: .monitorSelected)) { notification in
             print("Notication \(notification)")

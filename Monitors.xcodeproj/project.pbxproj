@@ -44,6 +44,11 @@
 		B55ED8892D2F1316008E34D2 /* Agent General View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55ED8882D2F1316008E34D2 /* Agent General View.swift */; };
 		B55ED88B2D2F156B008E34D2 /* Agent List View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55ED88A2D2F156B008E34D2 /* Agent List View.swift */; };
 		B56226042D1C756B00EB0348 /* Application Rocks View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56226032D1C756B00EB0348 /* Application Rocks View.swift */; };
+		B56C22A32D2F31CE005F48F2 /* Small Stat Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56C22A22D2F31CE005F48F2 /* Small Stat Graph.swift */; };
+		B56C22A42D2F31CE005F48F2 /* Small Stat Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56C22A22D2F31CE005F48F2 /* Small Stat Graph.swift */; };
+		B56C22A52D2F31CE005F48F2 /* Small Stat Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56C22A22D2F31CE005F48F2 /* Small Stat Graph.swift */; };
+		B56C22A62D2F31CE005F48F2 /* Small Stat Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56C22A22D2F31CE005F48F2 /* Small Stat Graph.swift */; };
+		B56C22A72D2F31CE005F48F2 /* Small Stat Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56C22A22D2F31CE005F48F2 /* Small Stat Graph.swift */; };
 		B5745BAA2BF506910049B304 /* DataOtterGuageWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5745BA92BF506910049B304 /* DataOtterGuageWidgetView.swift */; };
 		B5745BB02BF5319F0049B304 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59747532A41DC2800A5DA4C /* WidgetKit.framework */; };
 		B5745BB12BF5319F0049B304 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59747552A41DC2800A5DA4C /* SwiftUI.framework */; };
@@ -178,6 +183,7 @@
 		B55ED8882D2F1316008E34D2 /* Agent General View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Agent General View.swift"; sourceTree = "<group>"; };
 		B55ED88A2D2F156B008E34D2 /* Agent List View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Agent List View.swift"; sourceTree = "<group>"; };
 		B56226032D1C756B00EB0348 /* Application Rocks View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application Rocks View.swift"; sourceTree = "<group>"; };
+		B56C22A22D2F31CE005F48F2 /* Small Stat Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Small Stat Graph.swift"; sourceTree = "<group>"; };
 		B5745BA92BF506910049B304 /* DataOtterGuageWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataOtterGuageWidgetView.swift; sourceTree = "<group>"; };
 		B5745BAF2BF5319F0049B304 /* Data Otter iOS Widget GraphExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Data Otter iOS Widget GraphExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5745BB32BF5319F0049B304 /* Data_Otter_iOS_Widget_GraphBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_Otter_iOS_Widget_GraphBundle.swift; sourceTree = "<group>"; };
@@ -384,6 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				B586C9EB2BF3A6EB009A564A /* HistoryGraphView.swift */,
+				B56C22A22D2F31CE005F48F2 /* Small Stat Graph.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -667,6 +674,7 @@
 				B51ECC922C66B30800B15BC7 /* Monitor Service Data.swift in Sources */,
 				B5210EDA2BF595F500854A3C /* MonitorCreationResult.swift in Sources */,
 				B5210EB12BF5950B00854A3C /* ContentView.swift in Sources */,
+				B56C22A32D2F31CE005F48F2 /* Small Stat Graph.swift in Sources */,
 				B5210ED42BF595EA00854A3C /* HistoryGraphView.swift in Sources */,
 				B5210ED62BF595EE00854A3C /* Monitor.swift in Sources */,
 				B5210EDC2BF595F900854A3C /* Monitors Service.swift in Sources */,
@@ -682,6 +690,7 @@
 				B51ECC932C66B30800B15BC7 /* Monitor Service Data.swift in Sources */,
 				B5210EDB2BF595F600854A3C /* MonitorCreationResult.swift in Sources */,
 				B5210EC72BF5959400854A3C /* Data_Otter_WatchOS_Widget.swift in Sources */,
+				B56C22A62D2F31CE005F48F2 /* Small Stat Graph.swift in Sources */,
 				B5210ED52BF595EB00854A3C /* HistoryGraphView.swift in Sources */,
 				B5210ED72BF595EE00854A3C /* Monitor.swift in Sources */,
 				B5210EDD2BF595F900854A3C /* Monitors Service.swift in Sources */,
@@ -694,6 +703,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B56C22A52D2F31CE005F48F2 /* Small Stat Graph.swift in Sources */,
 				B5745BB42BF5319F0049B304 /* Data_Otter_iOS_Widget_GraphBundle.swift in Sources */,
 				B5745BB62BF5319F0049B304 /* Data_Otter_iOS_Widget_Graph.swift in Sources */,
 				B5745BCA2BF577810049B304 /* MonitorCreationResult.swift in Sources */,
@@ -722,6 +732,7 @@
 				B5CB0B292C2C68FB001D202C /* MonitorListSkeleton.swift in Sources */,
 				B5509A292D1B4204000D35D4 /* Rocks General View.swift in Sources */,
 				B586C9DF2BF2569D009A564A /* Monitors Service.swift in Sources */,
+				B56C22A42D2F31CE005F48F2 /* Small Stat Graph.swift in Sources */,
 				B51ECC9F2C66B69B00B15BC7 /* Application List Skeleton View.swift in Sources */,
 				B51ECC8F2C66B30800B15BC7 /* Monitor Service Data.swift in Sources */,
 				B586C9E92BF2B3D3009A564A /* MonitorCreationResult.swift in Sources */,
@@ -747,6 +758,7 @@
 				B51ECC902C66B30800B15BC7 /* Monitor Service Data.swift in Sources */,
 				B586CA0B2BF3DC49009A564A /* MonitorCreationResult.swift in Sources */,
 				B586C9F82BF3DB8B009A564A /* Data_Otter_iOS_WidgetBundle.swift in Sources */,
+				B56C22A72D2F31CE005F48F2 /* Small Stat Graph.swift in Sources */,
 				B586CA0A2BF3DC36009A564A /* MonitorData.swift in Sources */,
 				B586CA082BF3DBAB009A564A /* Monitor.swift in Sources */,
 				B5745BAA2BF506910049B304 /* DataOtterGuageWidgetView.swift in Sources */,
