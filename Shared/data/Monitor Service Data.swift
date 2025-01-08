@@ -95,3 +95,45 @@ struct ApplicationCreateData: Encodable {
         try container.encode(tags, forKey: .tags)
     }
 }
+
+struct Agent: Codable, Identifiable {
+    let id: Int64
+    let name: String
+    let os: String
+    let status: AgentStatus?
+}
+
+struct AgentStatus: Codable {
+    let date: Date
+    let memoryUsage: Int64
+    let cpuUsage: Int64
+    let diskUsage: Int64
+    let agentVersion: String
+    
+    enum CodingKeys: String, CodingKey {
+        case date
+        case memoryUsage = "memory usage"
+        case cpuUsage = "cpu usage"
+        case diskUsage = "disk usage"
+        case agentVersion = "agent version"
+    }
+    
+    init(date: Date, memoryUsage: Int64, cpuUsage: Int64, diskUsage: Int64, agentVersion: String) {
+        self.date = date
+        self.memoryUsage = memoryUsage
+        self.cpuUsage = cpuUsage
+        self.diskUsage = diskUsage
+        self.agentVersion = agentVersion
+    }
+    
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
+        self.date = dateFormatter.date(from: try container.decode(String.self, forKey: .date)) ?? Date()
+        self.memoryUsage = try container.decode(Int64.self, forKey: .memoryUsage)
+        self.cpuUsage = try container.decode(Int64.self, forKey: .cpuUsage)
+        self.diskUsage = try container.decode(Int64.self, forKey: .diskUsage)
+        self.agentVersion = try container.decode(String.self, forKey: .agentVersion)
+    }
+}

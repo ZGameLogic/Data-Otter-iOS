@@ -14,12 +14,14 @@ class DataOtterModel: ObservableObject {
     @Published var applications: [Application]
     @Published var tags: [Tag]
     @Published var rockStats: [Int64: Int64]
+    @Published var agents: [Agent]
     
     @Published var monitorsLoading: Bool
     @Published var monitorHistoryLoading: Bool
     @Published var applicationLoading: Bool
     @Published var tagsLoading: Bool
     @Published var rockStatsLoading: Bool
+    @Published var agentsLoading: Bool
     
     var applicationGraphData: [GraphEntry] {
         return applications.flatMap { application in
@@ -44,11 +46,13 @@ class DataOtterModel: ObservableObject {
         self.applications = applications
         self.tags = tags
         self.rockStats = rockStats
+        self.agents = []
         monitorsLoading = true
         monitorHistoryLoading = false
         applicationLoading = false
         tagsLoading = false
         rockStatsLoading = false
+        agentsLoading = false
     }
     
     init() {
@@ -57,11 +61,13 @@ class DataOtterModel: ObservableObject {
         applications = []
         tags = []
         rockStats = [:]
+        agents = []
         monitorsLoading = true
         monitorHistoryLoading = true
         applicationLoading = true
         tagsLoading = true
         rockStatsLoading = true
+        agentsLoading = true
         refreshData()
     }
     
@@ -78,6 +84,7 @@ class DataOtterModel: ObservableObject {
         fetchApplications()
         fetchTags()
         fetchMonitors()
+        fetchAgents()
         // Create a background queue for polling `monitorsLoading`
         let backgroundQueue = DispatchQueue(label: "monitors.loading.queue", qos: .background)
         
@@ -184,6 +191,23 @@ class DataOtterModel: ObservableObject {
                 switch result {
                 case .success(let data):
                     self.monitorConfigurations = data
+                case .failure(let error):
+                    print(error)
+                }
+                dispatchGroup.leave()
+            }
+        }
+    }
+    
+    func fetchAgents(){
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        MonitorsService.getAgentsWithStatus { result in
+            DispatchQueue.main.async {
+                self.agentsLoading = false
+                switch result {
+                case .success(let data):
+                    self.agents = data
                 case .failure(let error):
                     print(error)
                 }

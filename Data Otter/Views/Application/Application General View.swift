@@ -40,7 +40,7 @@ struct ApplicationGeneralView: View {
                     Button(action: {
                         showAddApplication = true
                     }) {
-                        Label("Add Item", image: "laptopcomputer.badge.plus")
+                        Label("Add Item", image: "apple.terminal.on.rectangle.badge.plus")
                     }
                 }
             }

@@ -41,6 +41,8 @@
 		B5210EDD2BF595F900854A3C /* Monitors Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9C42BF1948A009A564A /* Monitors Service.swift */; };
 		B53B00D42C87918B008251FE /* Application Detail View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B00D32C87918B008251FE /* Application Detail View.swift */; };
 		B5509A292D1B4204000D35D4 /* Rocks General View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5509A282D1B4204000D35D4 /* Rocks General View.swift */; };
+		B55ED8892D2F1316008E34D2 /* Agent General View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55ED8882D2F1316008E34D2 /* Agent General View.swift */; };
+		B55ED88B2D2F156B008E34D2 /* Agent List View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55ED88A2D2F156B008E34D2 /* Agent List View.swift */; };
 		B56226042D1C756B00EB0348 /* Application Rocks View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56226032D1C756B00EB0348 /* Application Rocks View.swift */; };
 		B5745BAA2BF506910049B304 /* DataOtterGuageWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5745BA92BF506910049B304 /* DataOtterGuageWidgetView.swift */; };
 		B5745BB02BF5319F0049B304 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59747532A41DC2800A5DA4C /* WidgetKit.framework */; };
@@ -173,6 +175,8 @@
 		B53B00D32C87918B008251FE /* Application Detail View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application Detail View.swift"; sourceTree = "<group>"; };
 		B5509A282D1B4204000D35D4 /* Rocks General View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rocks General View.swift"; sourceTree = "<group>"; };
 		B555328F2C17A3AD000EEEC5 /* Data Otter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Data Otter.entitlements"; sourceTree = "<group>"; };
+		B55ED8882D2F1316008E34D2 /* Agent General View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Agent General View.swift"; sourceTree = "<group>"; };
+		B55ED88A2D2F156B008E34D2 /* Agent List View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Agent List View.swift"; sourceTree = "<group>"; };
 		B56226032D1C756B00EB0348 /* Application Rocks View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application Rocks View.swift"; sourceTree = "<group>"; };
 		B5745BA92BF506910049B304 /* DataOtterGuageWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataOtterGuageWidgetView.swift; sourceTree = "<group>"; };
 		B5745BAF2BF5319F0049B304 /* Data Otter iOS Widget GraphExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Data Otter iOS Widget GraphExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -320,6 +324,15 @@
 			path = Rocks;
 			sourceTree = "<group>";
 		};
+		B55ED8872D2F12D4008E34D2 /* Agents */ = {
+			isa = PBXGroup;
+			children = (
+				B55ED8882D2F1316008E34D2 /* Agent General View.swift */,
+				B55ED88A2D2F156B008E34D2 /* Agent List View.swift */,
+			);
+			path = Agents;
+			sourceTree = "<group>";
+		};
 		B5745BB22BF5319F0049B304 /* Data Otter iOS Widget Graph */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,6 +371,7 @@
 		B586C9DB2BF2566A009A564A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B55ED8872D2F12D4008E34D2 /* Agents */,
 				B53B00D22C879160008251FE /* Rocks */,
 				B53B00D12C879155008251FE /* Tags */,
 				B51ECC8D2C66B2B300B15BC7 /* Application */,
@@ -699,6 +713,7 @@
 				B56226042D1C756B00EB0348 /* Application Rocks View.swift in Sources */,
 				B5FB16922BF685BD00BA9447 /* StatusListView.swift in Sources */,
 				B53B00D42C87918B008251FE /* Application Detail View.swift in Sources */,
+				B55ED8892D2F1316008E34D2 /* Agent General View.swift in Sources */,
 				B586C9EC2BF3A6EB009A564A /* HistoryGraphView.swift in Sources */,
 				B586C9E52BF25C2C009A564A /* MonitorDetailView.swift in Sources */,
 				B51ECC952C66B39700B15BC7 /* Application General View.swift in Sources */,
@@ -719,6 +734,7 @@
 				B586C9E32BF25ABE009A564A /* MonitorListView.swift in Sources */,
 				B586C9DE2BF2569A009A564A /* Monitor.swift in Sources */,
 				B586C9D02BF25577009A564A /* Data_OtterApp.swift in Sources */,
+				B55ED88B2D2F156B008E34D2 /* Agent List View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

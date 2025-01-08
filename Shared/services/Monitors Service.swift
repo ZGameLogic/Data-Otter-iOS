@@ -125,6 +125,10 @@ struct MonitorsService {
         getData(from: "\(BASE_URL)/applications", query: [URLQueryItem(name: "include-status", value: "true")], completion)
     }
     
+    public static func getAgentsWithStatus(completion: @escaping (Result<[Agent], Error>) -> Void){
+        getData(from: "\(BASE_URL)/agents", query: [URLQueryItem(name: "include-status", value: "true")], completion)
+    }
+    
     public static func getMonitorsWithStatusSyncronous() -> Result<[Monitor], Error> {
         getDataSynchronously(from: "\(BASE_URL)/monitors", query: [URLQueryItem(name: "include-status", value: "true")])
     }

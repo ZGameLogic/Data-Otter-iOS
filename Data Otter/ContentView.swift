@@ -13,14 +13,14 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             ApplicationGeneralView().tabItem({
-                Label("Applications", systemImage: "laptopcomputer")
+                Label("Applications", systemImage: "apple.terminal.on.rectangle")
             }).tag(0)
             MonitorGeneralView().tabItem({
                 Label("Monitors", systemImage: "chart.bar.doc.horizontal")
             }).tag(1)
-//            EventsView(monitorData: [], monitorHistoryData: [:]).tabItem({
-//                Label("Events", systemImage: "megaphone")
-//            }).tag(2).disabled(true)
+            AgentGeneralView().tabItem({
+                Label("Agents", systemImage: "laptopcomputer")
+            }).tag(1)
         }
         .onReceive(NotificationCenter.default.publisher(for: .monitorSelected)) { notification in
             print("Notication \(notification)")
