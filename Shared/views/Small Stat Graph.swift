@@ -26,6 +26,10 @@ struct SmallStatGraph: View {
             RoundedRectangle(cornerRadius: 8)
                 .fill(Color.gray.opacity(0.2))
         )
+        .chartForegroundStyleScale(
+            domain: [title],
+            range: [Color.accentColor]
+        )
     }
 }
 
