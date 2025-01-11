@@ -13,7 +13,7 @@ class DataOtterModel: ObservableObject {
     @Published var monitorHistoryData: [Int: [Status]]
     @Published var applications: [Application]
     @Published var tags: [Tag]
-    @Published var rockStats: [Int64: Int64]
+    @Published var rockStats: [String: Int64]
     @Published var agents: [Agent]
     @Published var agentStatusHistory: [Int64: [AgentStatus]]
     
@@ -41,7 +41,7 @@ class DataOtterModel: ObservableObject {
         return []
     }
     
-    init(monitorConfigurations: [Monitor], monitorHistoryData: [Int: [Status]], applications: [Application], tags: [Tag], rockStats: [Int64: Int64], agents: [Agent], agentStatusHistory: [Int64: [AgentStatus]]) {
+    init(monitorConfigurations: [Monitor], monitorHistoryData: [Int: [Status]], applications: [Application], tags: [Tag], rockStats: [String: Int64], agents: [Agent], agentStatusHistory: [Int64: [AgentStatus]]) {
         self.monitorConfigurations = monitorConfigurations
         self.monitorHistoryData = monitorHistoryData
         self.applications = applications
@@ -88,6 +88,7 @@ class DataOtterModel: ObservableObject {
         fetchTags()
         fetchMonitors()
         fetchAgents()
+        fetchRockStats()
 
         let backgroundQueue = DispatchQueue(label: "monitors.loading.queue", qos: .background)
         backgroundQueue.async {
@@ -221,6 +222,20 @@ class DataOtterModel: ObservableObject {
                     print(error)
                 }
                 dispatchGroup.leave()
+            }
+        }
+    }
+    
+    func fetchRockStats(){
+        MonitorsService.getRockStats { result in
+            DispatchQueue.main.async {
+                self.rockStatsLoading = false
+                switch result {
+                case .success(let data):
+                    self.rockStats = data
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
     }

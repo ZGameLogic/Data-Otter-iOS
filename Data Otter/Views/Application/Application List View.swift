@@ -26,8 +26,10 @@ struct ApplicationListView: View {
                 Label(application.tags.joined(separator: ", "), systemImage: "tag")
                     .scaledToFit()
             }
-            if let rockCount = viewModel.rockStats[application.id] {
-                Label("\(rockCount)", systemImage: "mountain.2")
+            if let rockCount = viewModel.rockStats["\(application.id)"] {
+                if(rockCount != 0){
+                    Label("\(rockCount)", systemImage: "mountain.2")
+                }
             }
         }
     }
@@ -81,7 +83,7 @@ struct ApplicationListView: View {
             Tag(name: "Kubernetes", description: "Anything in the cluster"),
             Tag(name: "Discord bot", description: "A discord bot")
         ],
-        rockStats: [1:324234, 3:6],
+        rockStats: ["\(1)":324234, "\(3)":6],
         agents: [],
         agentStatusHistory: [:]
     ))

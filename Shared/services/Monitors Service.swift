@@ -129,6 +129,10 @@ struct MonitorsService {
         getData(from: "\(BASE_URL)/agents", query: [URLQueryItem(name: "include-status", value: "true")], completion)
     }
     
+    public static func getRockStats(completion: @escaping(Result<[String: Int64], Error>) -> Void){
+        getData(from: "\(BASE_URL)/rocks/stats", completion)
+    }
+    
     public static func getMonitorsWithStatusSyncronous() -> Result<[Monitor], Error> {
         getDataSynchronously(from: "\(BASE_URL)/monitors", query: [URLQueryItem(name: "include-status", value: "true")])
     }
