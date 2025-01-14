@@ -10,7 +10,7 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>44.201.152.75</key>
+			<key>monitoring.zgamelogic.com</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>

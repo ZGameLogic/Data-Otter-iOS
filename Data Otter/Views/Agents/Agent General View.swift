@@ -17,7 +17,7 @@ struct AgentGeneralView: View {
                     AgentListView(agent: agent)
                 }
             }.navigationTitle("Agents")
-        }
+        }.refreshable{viewModel.refreshData()}
     }
 }
 

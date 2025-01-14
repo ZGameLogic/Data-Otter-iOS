@@ -212,6 +212,15 @@ struct MonitorsService {
         return getMonitorHistory(applicationId: applicationId, id: id, start: twelveHoursAgo, end: nil, condensed: condensed, completion: completion)
     }
     
+    public static func getRockPageable(applicationId: Int, page: Int, size: Int, completion: @escaping (Result<PageableData<Rock>, Error>) -> Void) {
+        var queryItems: [URLQueryItem] = [
+            URLQueryItem(name: "page", value: "\(page)"),
+            URLQueryItem(name: "size", value: "\(size)"),
+        ]
+        
+        return getData(from: "\(BASE_URL)/rocks/\(applicationId)", query: queryItems, completion)
+    }
+    
     public static func getAgentHistory(agentId: Int64, completion: @escaping (Result<[AgentStatus], Error>) -> Void){
         let currentDate = Date()
         let calendar = Calendar.current

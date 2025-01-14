@@ -87,6 +87,11 @@
 		B586CA092BF3DBB0009A564A /* HistoryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9EB2BF3A6EB009A564A /* HistoryGraphView.swift */; };
 		B586CA0A2BF3DC36009A564A /* MonitorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E62BF2AF92009A564A /* MonitorData.swift */; };
 		B586CA0B2BF3DC49009A564A /* MonitorCreationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C9E82BF2B3D3009A564A /* MonitorCreationResult.swift */; };
+		B58877FF2D32F44300D41125 /* Pageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58877FE2D32F44300D41125 /* Pageable.swift */; };
+		B58878002D32F44300D41125 /* Pageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58877FE2D32F44300D41125 /* Pageable.swift */; };
+		B58878012D32F44300D41125 /* Pageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58877FE2D32F44300D41125 /* Pageable.swift */; };
+		B58878022D32F44300D41125 /* Pageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58877FE2D32F44300D41125 /* Pageable.swift */; };
+		B58878032D32F44300D41125 /* Pageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58877FE2D32F44300D41125 /* Pageable.swift */; };
 		B5CB0B292C2C68FB001D202C /* MonitorListSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB0B282C2C68FB001D202C /* MonitorListSkeleton.swift */; };
 		B5FB16922BF685BD00BA9447 /* StatusListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FB16912BF685BD00BA9447 /* StatusListView.swift */; };
 /* End PBXBuildFile section */
@@ -212,6 +217,7 @@
 		B586C9FB2BF3DB8B009A564A /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		B586C9FD2BF3DB8E009A564A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B586C9FF2BF3DB8F009A564A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B58877FE2D32F44300D41125 /* Pageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pageable.swift; sourceTree = "<group>"; };
 		B59747532A41DC2800A5DA4C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		B59747552A41DC2800A5DA4C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		B5CB0B282C2C68FB001D202C /* MonitorListSkeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorListSkeleton.swift; sourceTree = "<group>"; };
@@ -473,6 +479,7 @@
 				B586C9E62BF2AF92009A564A /* MonitorData.swift */,
 				B586C9E82BF2B3D3009A564A /* MonitorCreationResult.swift */,
 				B51ECC8E2C66B30800B15BC7 /* Monitor Service Data.swift */,
+				B58877FE2D32F44300D41125 /* Pageable.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -675,6 +682,7 @@
 				B5210EDA2BF595F500854A3C /* MonitorCreationResult.swift in Sources */,
 				B5210EB12BF5950B00854A3C /* ContentView.swift in Sources */,
 				B56C22A32D2F31CE005F48F2 /* Small Stat Graph.swift in Sources */,
+				B58878012D32F44300D41125 /* Pageable.swift in Sources */,
 				B5210ED42BF595EA00854A3C /* HistoryGraphView.swift in Sources */,
 				B5210ED62BF595EE00854A3C /* Monitor.swift in Sources */,
 				B5210EDC2BF595F900854A3C /* Monitors Service.swift in Sources */,
@@ -691,6 +699,7 @@
 				B5210EDB2BF595F600854A3C /* MonitorCreationResult.swift in Sources */,
 				B5210EC72BF5959400854A3C /* Data_Otter_WatchOS_Widget.swift in Sources */,
 				B56C22A62D2F31CE005F48F2 /* Small Stat Graph.swift in Sources */,
+				B58877FF2D32F44300D41125 /* Pageable.swift in Sources */,
 				B5210ED52BF595EB00854A3C /* HistoryGraphView.swift in Sources */,
 				B5210ED72BF595EE00854A3C /* Monitor.swift in Sources */,
 				B5210EDD2BF595F900854A3C /* Monitors Service.swift in Sources */,
@@ -707,6 +716,7 @@
 				B5745BB42BF5319F0049B304 /* Data_Otter_iOS_Widget_GraphBundle.swift in Sources */,
 				B5745BB62BF5319F0049B304 /* Data_Otter_iOS_Widget_Graph.swift in Sources */,
 				B5745BCA2BF577810049B304 /* MonitorCreationResult.swift in Sources */,
+				B58878032D32F44300D41125 /* Pageable.swift in Sources */,
 				B5745BC22BF535EF0049B304 /* Monitor.swift in Sources */,
 				B5745BC52BF571260049B304 /* MonitorData.swift in Sources */,
 				B5745BC72BF575340049B304 /* Monitors Service.swift in Sources */,
@@ -726,6 +736,7 @@
 				B55ED8892D2F1316008E34D2 /* Agent General View.swift in Sources */,
 				B586C9EC2BF3A6EB009A564A /* HistoryGraphView.swift in Sources */,
 				B586C9E52BF25C2C009A564A /* MonitorDetailView.swift in Sources */,
+				B58878002D32F44300D41125 /* Pageable.swift in Sources */,
 				B51ECC952C66B39700B15BC7 /* Application General View.swift in Sources */,
 				B586C9E72BF2AF92009A564A /* MonitorData.swift in Sources */,
 				B586C9EE2BF3BB04009A564A /* AddMonitorView.swift in Sources */,
@@ -759,6 +770,7 @@
 				B586CA0B2BF3DC49009A564A /* MonitorCreationResult.swift in Sources */,
 				B586C9F82BF3DB8B009A564A /* Data_Otter_iOS_WidgetBundle.swift in Sources */,
 				B56C22A72D2F31CE005F48F2 /* Small Stat Graph.swift in Sources */,
+				B58878022D32F44300D41125 /* Pageable.swift in Sources */,
 				B586CA0A2BF3DC36009A564A /* MonitorData.swift in Sources */,
 				B586CA082BF3DBAB009A564A /* Monitor.swift in Sources */,
 				B5745BAA2BF506910049B304 /* DataOtterGuageWidgetView.swift in Sources */,

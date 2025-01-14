@@ -18,6 +18,15 @@ struct Rock: Codable, Identifiable {
         case appId = "applicaiton id"
         case pebble
     }
+    
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
+        self.id = dateFormatter.date(from: try container.decode(String.self, forKey: .id)) ?? Date()
+        self.appId = try container.decode(Int64.self, forKey: .appId)
+        self.pebble = try container.decode(String.self, forKey: .pebble)
+    }
 }
 
 struct Application: Codable, Identifiable, Hashable {
