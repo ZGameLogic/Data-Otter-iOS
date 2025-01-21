@@ -167,6 +167,8 @@ struct MonitorsService {
             queryItems.append(URLQueryItem(name: "end", value: formattedEndDate))
         }
         
+        queryItems.append(URLQueryItem(name: "fill", value: "true"))
+        
         getData(from: "\(BASE_URL)/agent/\(agentId)/status/history", query: queryItems, completion)
     }
     

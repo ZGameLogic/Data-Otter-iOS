@@ -26,10 +26,13 @@ struct AgentListView: View {
             }
             if let his = viewModel.agentStatusHistory[agent.id] {
                 if(!his.isEmpty) {
-                    HStack {
-                        SmallStatGraph(title: "memory", history: viewModel.getAgentStatusHistory(agentId: agent.id, stat: .RAM))
-                        SmallStatGraph(title: "cpu", history: viewModel.getAgentStatusHistory(agentId: agent.id, stat: .CPU))
-                        SmallStatGraph(title: "disk", history: viewModel.getAgentStatusHistory(agentId: agent.id, stat: .DISK))
+                    ScrollView(.horizontal) {
+                        HStack {
+                            SmallStatGraph(title: "cpu", history: viewModel.getAgentStatusHistory(agentId: agent.id, stat: .CPU))
+                            SmallStatGraph(title: "status", history: viewModel.getAgentStatusHistory(agentId: agent.id, stat: .STATUS))
+                            SmallStatGraph(title: "memory", history: viewModel.getAgentStatusHistory(agentId: agent.id, stat: .RAM))
+                            SmallStatGraph(title: "disk", history: viewModel.getAgentStatusHistory(agentId: agent.id, stat: .DISK))
+                        }
                     }
                 }
             }

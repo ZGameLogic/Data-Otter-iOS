@@ -322,11 +322,13 @@ class DataOtterModel: ObservableObject {
         if let history = agentStatusHistory[agentId] {
             switch(stat) {
             case .RAM:
-                return history.map { SmallStat(date: $0.date, value: $0.memoryUsage) }
+                return history.filter { $0.status }.map { SmallStat(date: $0.date, value: $0.memoryUsage) }
             case .DISK:
-                return history.map { SmallStat(date: $0.date, value: $0.diskUsage) }
+                return history.filter { $0.status }.map { SmallStat(date: $0.date, value: $0.diskUsage) }
             case .CPU:
-                return history.map { SmallStat(date: $0.date, value: $0.cpuUsage) }
+                return history.filter { $0.status }.map { SmallStat(date: $0.date, value: $0.cpuUsage) }
+            case .STATUS:
+                return history.map { SmallStat(date: $0.date, value: $0.status ? 100 : 0)}
             }
         }
         

@@ -30,6 +30,7 @@ struct SmallStatGraph: View {
             domain: [title],
             range: [Color.accentColor]
         )
+        .chartYScale(domain: [0, history.max(by: { $0.value < $1.value })?.value ?? 100])
     }
 }
 
