@@ -242,23 +242,22 @@ class DataOtterModel: ObservableObject {
     
     func fetchAgentHistory(){
         let dispatchGroup = DispatchGroup()
-        var tempHistoryData: [Int64: [AgentStatus]] = [:]
+        dispatchGroup.notify(queue: .main) {
+            self.agentStatusHistory = [:]
+        }
         for agent in agents {
             dispatchGroup.enter()
             MonitorsService.getAgentHistory(agentId: agent.id) { result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let data):
-                        tempHistoryData[agent.id] = data
+                        self.agentStatusHistory[agent.id] = data
                     case .failure(let error):
                         print(error)
                     }
                     dispatchGroup.leave()
                 }
             }
-        }
-        dispatchGroup.notify(queue: .main) {
-            self.agentStatusHistory = tempHistoryData
         }
     }
     

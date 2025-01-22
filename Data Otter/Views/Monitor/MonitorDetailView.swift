@@ -46,9 +46,7 @@ struct MonitorDetailView: View {
             }
         }.sheet(isPresented: $showEditMonitor, content: {
             EditMonitorView(monitor: $monitor, showing: $showEditMonitor)
-        }).onAppear{
-            print(history.count)
-        }
+        })
     }
     
     func getMonitorHistoryForGraph() -> [GraphEntry] {

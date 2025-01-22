@@ -9,7 +9,7 @@ import Foundation
 
 struct MonitorsService {
     #if targetEnvironment(simulator)
-    static let BASE_URL = "http://localhost:8080"
+    static let BASE_URL = "http://monitoring.zgamelogic.com:8080"
     #else
     static let BASE_URL = "http://monitoring.zgamelogic.com:8080"
     #endif
@@ -215,7 +215,7 @@ struct MonitorsService {
     }
     
     public static func getRockPageable(applicationId: Int, page: Int, size: Int, completion: @escaping (Result<PageableData<Rock>, Error>) -> Void) {
-        var queryItems: [URLQueryItem] = [
+        let queryItems: [URLQueryItem] = [
             URLQueryItem(name: "page", value: "\(page)"),
             URLQueryItem(name: "size", value: "\(size)"),
         ]
