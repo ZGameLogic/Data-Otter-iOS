@@ -16,6 +16,8 @@ class DataOtterModel: ObservableObject {
     @Published var rockStats: [String: Int64]
     @Published var agents: [Agent]
     @Published var agentStatusHistory: [Int64: [AgentStatus]]
+    @Published var rocks: [Int64: [Rock]]
+    @Published var rockPages: [Int64: PageableData<Rock>]
     
     @Published var monitorsLoading: Bool
     @Published var monitorHistoryLoading: Bool
@@ -41,7 +43,7 @@ class DataOtterModel: ObservableObject {
         return []
     }
     
-    init(monitorConfigurations: [Monitor], monitorHistoryData: [Int: [Status]], applications: [Application], tags: [Tag], rockStats: [String: Int64], agents: [Agent], agentStatusHistory: [Int64: [AgentStatus]]) {
+    init(monitorConfigurations: [Monitor], monitorHistoryData: [Int: [Status]], applications: [Application], tags: [Tag], rockStats: [String: Int64], agents: [Agent], agentStatusHistory: [Int64: [AgentStatus]], rocks: [Int64: [Rock]], rockPages: [Int64: PageableData<Rock>]) {
         self.monitorConfigurations = monitorConfigurations
         self.monitorHistoryData = monitorHistoryData
         self.applications = applications
@@ -49,6 +51,8 @@ class DataOtterModel: ObservableObject {
         self.rockStats = rockStats
         self.agents = agents
         self.agentStatusHistory = agentStatusHistory
+        self.rocks = rocks
+        self.rockPages = rockPages
         monitorsLoading = true
         monitorHistoryLoading = false
         applicationLoading = false
@@ -65,6 +69,8 @@ class DataOtterModel: ObservableObject {
         rockStats = [:]
         agents = []
         agentStatusHistory = [:]
+        rocks = [:]
+        rockPages = [:]
         monitorsLoading = true
         monitorHistoryLoading = true
         applicationLoading = true
@@ -332,5 +338,27 @@ class DataOtterModel: ObservableObject {
         }
         
         return []
+    }
+    
+    func fetchMoreApplicationRocks(applicationId: Int64) {
+        print("Fetching more rocks \(applicationId)")
+        let pageNumber: Int64
+        if let page = rockPages[applicationId] {
+            if(page.last) { return }
+            pageNumber = page.pageable.pageNumber + 1
+        } else {
+            pageNumber = 0
+        }
+        MonitorsService.getRockPageable(applicationId: applicationId, page: pageNumber, size: 10) { result in
+            DispatchQueue.main.async {
+                switch(result){
+                case .success(let data):
+                    self.rockPages[applicationId] = data
+                    self.rocks[applicationId, default: []] += data.content
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
     }
 }

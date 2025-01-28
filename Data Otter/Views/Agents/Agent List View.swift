@@ -62,6 +62,7 @@ struct AgentListView: View {
         agentStatusHistory: [1: [
             AgentStatus(date: Date().addingTimeInterval(-12 * 60 * 60), memoryUsage: 12, cpuUsage: 10, diskUsage: 0, agentVersion: "0.0.1"),
             AgentStatus(date: Date(), memoryUsage: 34, cpuUsage: 10, diskUsage: 90, agentVersion: "0.0.1"),
-        ]]
+        ]],
+        rocks: [:], rockPages: [:]
     ))
 }

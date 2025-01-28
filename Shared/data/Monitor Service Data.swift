@@ -8,15 +8,56 @@
 import Foundation
 import SwiftUI
 
-struct Rock: Codable, Identifiable {
+struct Rock: Codable, Identifiable, Equatable {
+    static func == (lhs: Rock, rhs: Rock) -> Bool {
+        return lhs.id == rhs.id && lhs.appId == rhs.appId
+    }
+    
     let id: Date
     let appId: Int64
-    let pebble: String
+    let pebble: Pebble
     
     enum CodingKeys: String, CodingKey {
         case id = "date"
-        case appId = "applicaiton id"
+        case appId = "application id"
         case pebble
+    }
+    
+    enum Pebble: Codable {
+        case string(String)
+        case dictionary([String: Any])
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.singleValueContainer()
+            // Try decoding as a String
+            if let stringValue = try? container.decode(String.self) {
+                self = .string(stringValue)
+            }
+            // Try decoding as a dictionary
+            else if let dictionaryValue = try? container.decode([String: AnyCodable].self) {
+                self = .dictionary(dictionaryValue.mapValues { $0.value })
+            }
+            // Throw an error if neither works
+            else {
+                throw DecodingError.typeMismatch(
+                    Pebble.self,
+                    DecodingError.Context(
+                        codingPath: decoder.codingPath,
+                        debugDescription: "Expected String or Dictionary"
+                    )
+                )
+            }
+        }
+        
+        func encode(to encoder: Encoder) throws {
+            var container = encoder.singleValueContainer()
+            switch self {
+            case .string(let value):
+                try container.encode(value)
+            case .dictionary(let value):
+                try container.encode(value.mapValues { AnyCodable($0) })
+            }
+        }
     }
     
     init(from decoder: any Decoder) throws {
@@ -25,7 +66,72 @@ struct Rock: Codable, Identifiable {
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
         self.id = dateFormatter.date(from: try container.decode(String.self, forKey: .id)) ?? Date()
         self.appId = try container.decode(Int64.self, forKey: .appId)
-        self.pebble = try container.decode(String.self, forKey: .pebble)
+        self.pebble = try container.decode(Pebble.self, forKey: .pebble)
+    }
+}
+
+struct AnyCodable: Codable {
+    let value: Any?
+    
+    init(_ value: Any?) {
+        self.value = value
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        
+        if container.decodeNil() {
+            self.value = nil
+        } else if let intValue = try? container.decode(Int.self) {
+            self.value = intValue
+        } else if let doubleValue = try? container.decode(Double.self) {
+            self.value = doubleValue
+        } else if let boolValue = try? container.decode(Bool.self) {
+            self.value = boolValue
+        } else if let stringValue = try? container.decode(String.self) {
+            self.value = stringValue
+        } else if let dictionaryValue = try? container.decode([String: AnyCodable].self) {
+            self.value = dictionaryValue.mapValues { $0.value }
+        } else if let arrayValue = try? container.decode([AnyCodable].self) {
+            self.value = arrayValue.map { $0.value }
+        } else {
+            throw DecodingError.typeMismatch(
+                AnyCodable.self,
+                DecodingError.Context(
+                    codingPath: decoder.codingPath,
+                    debugDescription: "Unsupported type"
+                )
+            )
+        }
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        
+        switch value {
+        case nil:
+            try container.encodeNil()
+        case let intValue as Int:
+            try container.encode(intValue)
+        case let doubleValue as Double:
+            try container.encode(doubleValue)
+        case let boolValue as Bool:
+            try container.encode(boolValue)
+        case let stringValue as String:
+            try container.encode(stringValue)
+        case let dictionaryValue as [String: Any]:
+            try container.encode(dictionaryValue.mapValues { AnyCodable($0) })
+        case let arrayValue as [Any]:
+            try container.encode(arrayValue.map { AnyCodable($0) })
+        default:
+            throw EncodingError.invalidValue(
+                value as Any,
+                EncodingError.Context(
+                    codingPath: encoder.codingPath,
+                    debugDescription: "Unsupported type"
+                )
+            )
+        }
     }
 }
 

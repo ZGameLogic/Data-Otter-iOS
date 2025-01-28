@@ -26,7 +26,7 @@ struct Pageable: Codable {
     let pageNumber: Int64
     let pageSize: Int64
     let sort: Sort
-    let offest: Int64
+    let offset: Int64
     let paged: Bool
     let unpaged: Bool
 }

@@ -214,7 +214,7 @@ struct MonitorsService {
         return getMonitorHistory(applicationId: applicationId, id: id, start: twelveHoursAgo, end: nil, condensed: condensed, completion: completion)
     }
     
-    public static func getRockPageable(applicationId: Int, page: Int, size: Int, completion: @escaping (Result<PageableData<Rock>, Error>) -> Void) {
+    public static func getRockPageable(applicationId: Int64, page: Int64, size: Int, completion: @escaping (Result<PageableData<Rock>, Error>) -> Void) {
         let queryItems: [URLQueryItem] = [
             URLQueryItem(name: "page", value: "\(page)"),
             URLQueryItem(name: "size", value: "\(size)"),

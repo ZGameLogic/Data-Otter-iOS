@@ -85,6 +85,7 @@ struct ApplicationListView: View {
         ],
         rockStats: ["\(1)":324234, "\(3)":6],
         agents: [],
-        agentStatusHistory: [:]
+        agentStatusHistory: [:],
+        rocks: [:], rockPages: [:]
     ))
 }

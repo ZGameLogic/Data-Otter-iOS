@@ -7,12 +7,31 @@
 
 import SwiftUI
 
-struct Application_Detail_View: View {
+struct ApplicationDetailView: View {
+    @EnvironmentObject var viewModel: DataOtterModel
+    let application: Application
+    
     var body: some View {
-        Text("Hello, World!")
+        List {
+            Section("Data") {
+                Text("ID: \(application.id)")
+                if let desc = application.description {
+                    Text(desc)
+                }
+                Text("Tags: \(application.tags.joined(separator: ", "))")
+                Text("Monitors: \(application.monitorIds.count)")
+            }
+            NavigationLink(value: application.id) {
+                Text("Rocks")
+            }
+        }.navigationTitle("\(application.name)")
+        .navigationDestination(for: Int64.self) { appId in
+            Text("Coming soon")
+//            RockGeneralView(appId: appId)
+        }
     }
 }
 
 #Preview {
-    Application_Detail_View()
+    ApplicationDetailView(application: Application(id: 1, name: "Test Application", description: "Boom a huge description", monitorIds: [], tags: [], status: nil))
 }

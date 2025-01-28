@@ -24,8 +24,10 @@ struct ApplicationGeneralView: View {
                         ApplicationListSkeletonView()
                         ApplicationListSkeletonView()
                     } else { // loaded and data
-                        ForEach(viewModel.applications) {
-                            ApplicationListView(application: $0)
+                        ForEach(viewModel.applications) {application in
+                            NavigationLink(value: application) {
+                                ApplicationListView(application: application)
+                            }
                         }
                     }
                 }
@@ -34,6 +36,9 @@ struct ApplicationGeneralView: View {
                         HistoryGraphView(history: viewModel.applicationGraphData)
                     }
                 }
+            }
+            .navigationDestination(for: Application.self) { application in
+                ApplicationDetailView(application: application)
             }
             .toolbar {
                 ToolbarItem {
@@ -59,6 +64,7 @@ struct ApplicationGeneralView: View {
             tags: [],
             rockStats: [:],
             agents: [],
-            agentStatusHistory: [:]
+            agentStatusHistory: [:],
+            rocks: [:], rockPages: [:]
         ))
 }
