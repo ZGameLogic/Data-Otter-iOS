@@ -341,7 +341,6 @@ class DataOtterModel: ObservableObject {
     }
     
     func fetchMoreApplicationRocks(applicationId: Int64) {
-        print("Fetching more rocks \(applicationId)")
         let pageNumber: Int64
         if let page = rockPages[applicationId] {
             if(page.last) { return }

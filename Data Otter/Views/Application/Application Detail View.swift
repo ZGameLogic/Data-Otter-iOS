@@ -26,8 +26,7 @@ struct ApplicationDetailView: View {
             }
         }.navigationTitle("\(application.name)")
         .navigationDestination(for: Int64.self) { appId in
-            Text("Coming soon")
-//            RockGeneralView(appId: appId)
+            RockGeneralView(appId: appId)
         }
     }
 }

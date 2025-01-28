@@ -68,7 +68,7 @@ struct RockGeneralView: View {
             
             for f in fields {
                 if !availableFields.keys.contains(f) {
-                    availableFields[f] = true
+                    availableFields[f] = false
                 }
             }
         }
