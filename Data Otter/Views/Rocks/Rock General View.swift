@@ -17,24 +17,26 @@ struct RockGeneralView: View {
     
     var body: some View {
         List {
-            if showFields {
-                Section("Fields") {
-                    ForEach(availableFields.keys.sorted(), id: \.self) { key in
-                        Toggle(key, isOn: Binding(
-                            get: { availableFields[key] ?? false },
-                            set: { availableFields[key] = $0 }
-                        ))
-                    }
-                }
-            }
+//            if showFields {
+//                Section("Fields") {
+//                    ForEach(availableFields.keys.sorted(), id: \.self) { key in
+//                        Toggle(key, isOn: Binding(
+//                            get: { availableFields[key] ?? false },
+//                            set: { availableFields[key] = $0 }
+//                        ))
+//                    }
+//                }
+//            }
             ForEach(viewModel.rocks[appId] ?? []) { rock in
                 switch(rock.pebble) {
                 case .dictionary(let dict):
                     VStack(alignment: .leading) {
-                        ForEach(availableFields.sorted(by: { $0.key < $1.key }), id: \.key) { key, value in
-                            if value {
-                                if let f = dict[key] as? String {
+                        ForEach(dict.keys.sorted(), id: \.self) { key in
+                            if let value = dict[key] {
+                                if let f = value as? String {
                                     Text("\(key): \(f)")
+                                } else if let n = value as? CustomStringConvertible {
+                                    Text("\(key): \(n)")
                                 }
                             }
                         }
@@ -68,7 +70,7 @@ struct RockGeneralView: View {
             
             for f in fields {
                 if !availableFields.keys.contains(f) {
-                    availableFields[f] = false
+                    availableFields[f] = true
                 }
             }
         }

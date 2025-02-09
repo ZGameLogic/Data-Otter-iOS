@@ -207,6 +207,10 @@ struct MonitorsService {
         return getDataSynchronously(from: "\(BASE_URL)/monitors/\(applicationId)/\(id)/history", query: queryItems)
     }
     
+    public static func getApplicationsSyncronous() -> Result<[Application], Error> {
+        return getDataSynchronously(from: "\(BASE_URL)/applications")
+    }
+    
     public static func getMonitorHistory(applicationId: Int, id: Int, condensed: Bool, completion: @escaping (Result<[Status], Error>) -> Void) {
         let currentDate = Date()
         let calendar = Calendar.current

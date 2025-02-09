@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5058EE22D498AFA006F3DE3 /* Table View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5058EE12D498AFA006F3DE3 /* Table View.swift */; };
+		B5058EE32D498AFA006F3DE3 /* Table View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5058EE12D498AFA006F3DE3 /* Table View.swift */; };
+		B5058EE42D498AFA006F3DE3 /* Table View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5058EE12D498AFA006F3DE3 /* Table View.swift */; };
+		B5058EE52D498AFA006F3DE3 /* Table View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5058EE12D498AFA006F3DE3 /* Table View.swift */; };
+		B5058EE62D498AFA006F3DE3 /* Table View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5058EE12D498AFA006F3DE3 /* Table View.swift */; };
 		B509826E2BF6A8FF00F5A277 /* MonitorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509826D2BF6A8FF00F5A277 /* MonitorsModel.swift */; };
 		B51ECC8F2C66B30800B15BC7 /* Monitor Service Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51ECC8E2C66B30800B15BC7 /* Monitor Service Data.swift */; };
 		B51ECC902C66B30800B15BC7 /* Monitor Service Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51ECC8E2C66B30800B15BC7 /* Monitor Service Data.swift */; };
@@ -164,6 +169,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B5058EE12D498AFA006F3DE3 /* Table View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Table View.swift"; sourceTree = "<group>"; };
 		B509826D2BF6A8FF00F5A277 /* MonitorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorsModel.swift; sourceTree = "<group>"; };
 		B51ECC8E2C66B30800B15BC7 /* Monitor Service Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Monitor Service Data.swift"; sourceTree = "<group>"; };
 		B51ECC942C66B39700B15BC7 /* Application General View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application General View.swift"; sourceTree = "<group>"; };
@@ -394,6 +400,7 @@
 			children = (
 				B586C9EB2BF3A6EB009A564A /* HistoryGraphView.swift */,
 				B56C22A22D2F31CE005F48F2 /* Small Stat Graph.swift */,
+				B5058EE12D498AFA006F3DE3 /* Table View.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -685,6 +692,7 @@
 				B5210EDC2BF595F900854A3C /* Monitors Service.swift in Sources */,
 				B5210ED82BF595F200854A3C /* MonitorData.swift in Sources */,
 				B5210EAF2BF5950B00854A3C /* Data_Otter_WatchOSApp.swift in Sources */,
+				B5058EE62D498AFA006F3DE3 /* Table View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,6 +710,7 @@
 				B5210EDD2BF595F900854A3C /* Monitors Service.swift in Sources */,
 				B5210ED92BF595F200854A3C /* MonitorData.swift in Sources */,
 				B5210EC92BF5959400854A3C /* AppIntent.swift in Sources */,
+				B5058EE52D498AFA006F3DE3 /* Table View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,6 +720,7 @@
 			files = (
 				B56C22A52D2F31CE005F48F2 /* Small Stat Graph.swift in Sources */,
 				B5745BB42BF5319F0049B304 /* Data_Otter_iOS_Widget_GraphBundle.swift in Sources */,
+				B5058EE32D498AFA006F3DE3 /* Table View.swift in Sources */,
 				B5745BB62BF5319F0049B304 /* Data_Otter_iOS_Widget_Graph.swift in Sources */,
 				B5745BCA2BF577810049B304 /* MonitorCreationResult.swift in Sources */,
 				B58878032D32F44300D41125 /* Pageable.swift in Sources */,
@@ -729,6 +739,7 @@
 			files = (
 				B5FB16922BF685BD00BA9447 /* StatusListView.swift in Sources */,
 				B53B00D42C87918B008251FE /* Application Detail View.swift in Sources */,
+				B5058EE42D498AFA006F3DE3 /* Table View.swift in Sources */,
 				B55ED8892D2F1316008E34D2 /* Agent General View.swift in Sources */,
 				B586C9EC2BF3A6EB009A564A /* HistoryGraphView.swift in Sources */,
 				B586C9E52BF25C2C009A564A /* MonitorDetailView.swift in Sources */,
@@ -772,6 +783,7 @@
 				B5745BAA2BF506910049B304 /* DataOtterGuageWidgetView.swift in Sources */,
 				B586CA092BF3DBB0009A564A /* HistoryGraphView.swift in Sources */,
 				B586C9FC2BF3DB8B009A564A /* AppIntent.swift in Sources */,
+				B5058EE22D498AFA006F3DE3 /* Table View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
