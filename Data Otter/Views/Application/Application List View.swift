@@ -24,7 +24,6 @@ struct ApplicationListView: View {
             }
             if(!application.tags.isEmpty){
                 Label(application.tags.joined(separator: ", "), systemImage: "tag")
-                    .scaledToFit()
             }
             if let rockCount = viewModel.rockStats["\(application.id)"] {
                 if(rockCount != 0){
