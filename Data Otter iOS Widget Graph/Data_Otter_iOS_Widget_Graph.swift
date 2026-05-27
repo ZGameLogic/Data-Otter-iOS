@@ -7,6 +7,7 @@
 
 import WidgetKit
 import SwiftUI
+import Charts
 
 struct Provider: AppIntentTimelineProvider {
     let previewData: [Monitor]
@@ -70,19 +71,116 @@ struct Provider: AppIntentTimelineProvider {
 struct Data_Otter_iOS_Widget_GraphEntryView : View {
     var entry: Provider.Entry
 
-    var body: some View {
-        HistoryGraphView(history: getHistoryForGraph())
+    struct BinCount: Identifiable {
+        let id = UUID()
+        let start: Date
+        let end: Date
+        let count: Int
     }
-    
-    func getHistoryForGraph() -> [GraphEntry] {
-        return entry.monitors.flatMap({ monitor in
-            if let historyData = entry.history["\(monitor.applicationId)\(monitor.id)"] {
-                return historyData.map({status in
-                    GraphEntry(name: monitor.name, taken: status.dateRecorded, status: status.status)
-                })
+
+    var body: some View {
+        let bins = computeHalfHourBins()
+        VStack(alignment: .leading) {
+            if bins.isEmpty {
+                Text("No data")
+            } else {
+                Chart(bins) { bin in
+                    BarMark(
+                        x: .value("Time", bin.start),
+                        y: .value("Monitors Up", bin.count),
+                        width: .fixed(10)
+                    )
+                    .foregroundStyle(.purple)
+                }
+                // Force the domain to exactly cover our bins to avoid side padding
+                .chartXScale(domain: (bins.first?.start ?? entry.date)...(bins.last?.end ?? entry.date))
+                // Keep labels minimal to reduce clutter and wasted space
+                .chartXAxis {
+                    AxisMarks(values: .stride(by: .hour, count: 2)) { value in
+                        AxisGridLine()
+                        AxisValueLabel(format: .dateTime.hour(), centered: true)
+                    }
+                }
+                .chartYScale(domain: 0...max(1, maxUpCount(in: bins)))
+                .chartYAxis {
+                    AxisMarks(position: .leading)
+                }
+                Text("Updated \(Date.now.formatted(date: .omitted, time: .shortened))").font(.caption2)
+                    .fontWeight(.ultraLight)
             }
-            return []
-        })
+        }
+    }
+
+    private func computeHalfHourBins() -> [BinCount] {
+        let now = entry.date
+        let start = Calendar.current.date(byAdding: .hour, value: -12, to: now) ?? now
+
+        // Build 24 contiguous 30-minute bins
+        var bins: [BinCount] = []
+        var cursor = start
+        let allMonitors = entry.monitors
+
+        // Pre-group history by monitor id key for quick access
+        // Key format used elsewhere is "\(applicationId)\(id)"
+        var historyByMonitor: [String: [Status]] = [:]
+        for monitor in allMonitors {
+            let key = "\(monitor.applicationId)\(monitor.id)"
+            if let list = entry.history[key] {
+                // ensure sorted by date
+                let sorted = list.sorted { $0.dateRecorded < $1.dateRecorded }
+                historyByMonitor[key] = sorted
+            } else {
+                historyByMonitor[key] = []
+            }
+        }
+
+        for _ in 0..<24 {
+            let binStart = cursor
+            let binEnd = Calendar.current.date(byAdding: .minute, value: 30, to: binStart) ?? binStart
+
+            var upCount = 0
+            for monitor in allMonitors {
+                let key = "\(monitor.applicationId)\(monitor.id)"
+                if let statuses = historyByMonitor[key] {
+                    // Find any status samples within [binStart, binEnd)
+                    // If any sample indicates down (status == false), consider it down for the bin.
+                    // Otherwise if there is at least one sample and all are up, count as up.
+                    // If there are no samples for the bin, we conservatively treat as down.
+                    // Modified logic per instructions:
+                    
+                    // Find if any down occurred inside the bin
+                    let wentDownInBin = statuses.contains(where: { $0.dateRecorded >= binStart && $0.dateRecorded < binEnd && $0.status == false })
+
+                    // Find last known status before binEnd
+                    let lastKnown = statuses.last(where: { $0.dateRecorded < binEnd })?.status
+
+                    // Decide up/down for this bin:
+                    // - If any down occurred inside the bin, treat as down
+                    // - Else if we have a last known status up, treat as up
+                    // - Else if there is no prior status yet (nil), treat as up (assume full height for missing data)
+                    // - Else treat as down
+                    if wentDownInBin {
+                        // down
+                    } else if let lastKnown = lastKnown, lastKnown == true {
+                        upCount += 1
+                    } else if lastKnown == nil {
+                        // No data yet for this monitor up to binEnd: assume up
+                        upCount += 1
+                    } else {
+                        // lastKnown is false
+                    }
+                }
+            }
+
+            bins.append(BinCount(start: binStart, end: binEnd, count: upCount))
+            cursor = binEnd
+        }
+
+        return bins
+    }
+
+    private func maxUpCount(in bins: [BinCount]) -> Int {
+        bins.map { $0.count }.max() ?? 0
     }
 }
 
