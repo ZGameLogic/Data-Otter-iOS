@@ -193,7 +193,7 @@ struct MonitorsService {
     public static func getMonitorHistorySyncronous(applicationId: Int, id: Int, condensed: Bool) -> Result<[Status], Error> {
         let currentDate = Date()
         let calendar = Calendar.current
-        let twelveHoursAgo = calendar.date(byAdding: .hour, value: -12, to: currentDate)!
+        let twelveHoursAgo = calendar.date(byAdding: .hour, value: -24, to: currentDate)!
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
@@ -214,7 +214,7 @@ struct MonitorsService {
     public static func getMonitorHistory(applicationId: Int, id: Int, condensed: Bool, completion: @escaping (Result<[Status], Error>) -> Void) {
         let currentDate = Date()
         let calendar = Calendar.current
-        let twelveHoursAgo = calendar.date(byAdding: .hour, value: -12, to: currentDate)!
+        let twelveHoursAgo = calendar.date(byAdding: .hour, value: -24, to: currentDate)!
         return getMonitorHistory(applicationId: applicationId, id: id, start: twelveHoursAgo, end: nil, condensed: condensed, completion: completion)
     }
     
@@ -230,7 +230,7 @@ struct MonitorsService {
     public static func getAgentHistory(agentId: Int64, completion: @escaping (Result<[AgentStatus], Error>) -> Void){
         let currentDate = Date()
         let calendar = Calendar.current
-        let twelveHoursAgo = calendar.date(byAdding: .hour, value: -12, to: currentDate)!
+        let twelveHoursAgo = calendar.date(byAdding: .hour, value: -24, to: currentDate)!
         return getAgentHistory(agentId: agentId, start: twelveHoursAgo, end: nil, completion: completion)
     }
     

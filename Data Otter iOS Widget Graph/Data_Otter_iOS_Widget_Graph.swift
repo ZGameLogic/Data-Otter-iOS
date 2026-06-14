@@ -22,7 +22,7 @@ struct Provider: AppIntentTimelineProvider {
             Monitor(id: 3, applicationId: 1, name: "Test Monitor 3", type: "WEB", url: "", regex: "", status: nil),
             Monitor(id: 4, applicationId: 1, name: "Test Monitor 4", type: "API", url: "", regex: "", status: nil)
         ]
-        startDate = Calendar.current.date(byAdding: .hour, value: -12, to: Date())!
+        startDate = Calendar.current.date(byAdding: .hour, value: -24, to: Date())!
         endDate = Date()
         previewHistoryData = [
             "1": [Status(dateRecorded: startDate, milliseconds: 1, status: true, attempts: 1, statusCode: 200),
@@ -113,7 +113,7 @@ struct Data_Otter_iOS_Widget_GraphEntryView : View {
 
     private func computeHalfHourBins() -> [BinCount] {
         let now = entry.date
-        let start = Calendar.current.date(byAdding: .hour, value: -12, to: now) ?? now
+        let start = Calendar.current.date(byAdding: .hour, value: -24, to: now) ?? now
 
         // Build 24 contiguous 30-minute bins
         var bins: [BinCount] = []

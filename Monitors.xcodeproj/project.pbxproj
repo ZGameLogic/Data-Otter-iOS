@@ -324,13 +324,6 @@
 			path = "Data Otter WatchOS Widget";
 			sourceTree = "<group>";
 		};
-		B53B00D12C879155008251FE /* Tags */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tags;
-			sourceTree = "<group>";
-		};
 		B53B00D22C879160008251FE /* Rocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,7 +382,6 @@
 				B51ECC8D2C66B2B300B15BC7 /* Application */,
 				B55ED8872D2F12D4008E34D2 /* Agents */,
 				B53B00D22C879160008251FE /* Rocks */,
-				B53B00D12C879155008251FE /* Tags */,
 				B586D8CE2BF7FB7000E10E7A /* Monitor */,
 			);
 			path = Views;
